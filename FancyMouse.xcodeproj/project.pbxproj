@@ -1,0 +1,772 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
+		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
+		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
+		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
+		D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE716279C0FAF0082D680 /* AppDelegate.swift */; };
+		D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */; };
+		D1AFE71B279C0FAF0082D680 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE71A279C0FAF0082D680 /* ViewController.swift */; };
+		D1AFE71E279C0FAF0082D680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE71C279C0FAF0082D680 /* Main.storyboard */; };
+		D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE71F279C0FB20082D680 /* Assets.xcassets */; };
+		D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */; };
+		D1AFE72E279C0FB20082D680 /* FancyMouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE72D279C0FB20082D680 /* FancyMouseTests.swift */; };
+		D1AFE738279C0FB20082D680 /* FancyMouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */; };
+		D1AFE73A279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1AFE72A279C0FB20082D680 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AFE70B279C0FAF0082D680 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1AFE712279C0FAF0082D680;
+			remoteInfo = FancyMouse;
+		};
+		D1AFE734279C0FB20082D680 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1AFE70B279C0FAF0082D680 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1AFE712279C0FAF0082D680;
+			remoteInfo = FancyMouse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.release.xcconfig"; sourceTree = "<group>"; };
+		876DC3A595A5C39319F88BCA /* Pods-FancyMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.release.xcconfig"; sourceTree = "<group>"; };
+		BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse_FancyMouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D12A8579279D42A500D0FC49 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		D1AFE713279C0FAF0082D680 /* FancyMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AFE716279C0FAF0082D680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D1AFE71A279C0FAF0082D680 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D1AFE71D279C0FAF0082D680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D1AFE71F279C0FB20082D680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D1AFE722279C0FB20082D680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1AFE724279C0FB20082D680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1AFE729279C0FB20082D680 /* FancyMouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FancyMouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AFE72D279C0FB20082D680 /* FancyMouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseTests.swift; sourceTree = "<group>"; };
+		D1AFE733279C0FB20082D680 /* FancyMouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FancyMouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseUITests.swift; sourceTree = "<group>"; };
+		D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
+		EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1AFE710279C0FAF0082D680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AFE726279C0FB20082D680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AFE730279C0FB20082D680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		44EB2AD12FF37479ED398579 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */,
+				D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */,
+				389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4595E988C6AA8ABD77C5528 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */,
+				876DC3A595A5C39319F88BCA /* Pods-FancyMouse.release.xcconfig */,
+				C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */,
+				EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */,
+				D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */,
+				6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D1AFE70A279C0FAF0082D680 = {
+			isa = PBXGroup;
+			children = (
+				D12A8579279D42A500D0FC49 /* .swiftlint.yml */,
+				D1AFE715279C0FAF0082D680 /* FancyMouse */,
+				D1AFE72C279C0FB20082D680 /* FancyMouseTests */,
+				D1AFE736279C0FB20082D680 /* FancyMouseUITests */,
+				D1AFE714279C0FAF0082D680 /* Products */,
+				A4595E988C6AA8ABD77C5528 /* Pods */,
+				44EB2AD12FF37479ED398579 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D1AFE714279C0FAF0082D680 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE713279C0FAF0082D680 /* FancyMouse.app */,
+				D1AFE729279C0FB20082D680 /* FancyMouseTests.xctest */,
+				D1AFE733279C0FB20082D680 /* FancyMouseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D1AFE715279C0FAF0082D680 /* FancyMouse */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE716279C0FAF0082D680 /* AppDelegate.swift */,
+				D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */,
+				D1AFE71A279C0FAF0082D680 /* ViewController.swift */,
+				D1AFE71C279C0FAF0082D680 /* Main.storyboard */,
+				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
+				D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */,
+				D1AFE724279C0FB20082D680 /* Info.plist */,
+			);
+			path = FancyMouse;
+			sourceTree = "<group>";
+		};
+		D1AFE72C279C0FB20082D680 /* FancyMouseTests */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE72D279C0FB20082D680 /* FancyMouseTests.swift */,
+			);
+			path = FancyMouseTests;
+			sourceTree = "<group>";
+		};
+		D1AFE736279C0FB20082D680 /* FancyMouseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */,
+				D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */,
+			);
+			path = FancyMouseUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D1AFE712279C0FAF0082D680 /* FancyMouse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1AFE73D279C0FB30082D680 /* Build configuration list for PBXNativeTarget "FancyMouse" */;
+			buildPhases = (
+				FA5DA620B22A0194550AD637 /* [CP] Check Pods Manifest.lock */,
+				D12A8578279D415700D0FC49 /* Lint Script */,
+				D1AFE70F279C0FAF0082D680 /* Sources */,
+				D1AFE710279C0FAF0082D680 /* Frameworks */,
+				D1AFE711279C0FAF0082D680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FancyMouse;
+			productName = FancyMouse;
+			productReference = D1AFE713279C0FAF0082D680 /* FancyMouse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D1AFE728279C0FB20082D680 /* FancyMouseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1AFE740279C0FB30082D680 /* Build configuration list for PBXNativeTarget "FancyMouseTests" */;
+			buildPhases = (
+				70D64A8EDC33537DA041EC68 /* [CP] Check Pods Manifest.lock */,
+				D1AFE725279C0FB20082D680 /* Sources */,
+				D1AFE726279C0FB20082D680 /* Frameworks */,
+				D1AFE727279C0FB20082D680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1AFE72B279C0FB20082D680 /* PBXTargetDependency */,
+			);
+			name = FancyMouseTests;
+			productName = FancyMouseTests;
+			productReference = D1AFE729279C0FB20082D680 /* FancyMouseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D1AFE732279C0FB20082D680 /* FancyMouseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1AFE743279C0FB30082D680 /* Build configuration list for PBXNativeTarget "FancyMouseUITests" */;
+			buildPhases = (
+				79E9DD1AB3A46654907B62D4 /* [CP] Check Pods Manifest.lock */,
+				D1AFE72F279C0FB20082D680 /* Sources */,
+				D1AFE730279C0FB20082D680 /* Frameworks */,
+				D1AFE731279C0FB20082D680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1AFE735279C0FB20082D680 /* PBXTargetDependency */,
+			);
+			name = FancyMouseUITests;
+			productName = FancyMouseUITests;
+			productReference = D1AFE733279C0FB20082D680 /* FancyMouseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1AFE70B279C0FAF0082D680 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					D1AFE712279C0FAF0082D680 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					D1AFE728279C0FB20082D680 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = D1AFE712279C0FAF0082D680;
+					};
+					D1AFE732279C0FB20082D680 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = D1AFE712279C0FAF0082D680;
+					};
+				};
+			};
+			buildConfigurationList = D1AFE70E279C0FAF0082D680 /* Build configuration list for PBXProject "FancyMouse" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D1AFE70A279C0FAF0082D680;
+			productRefGroup = D1AFE714279C0FAF0082D680 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1AFE712279C0FAF0082D680 /* FancyMouse */,
+				D1AFE728279C0FB20082D680 /* FancyMouseTests */,
+				D1AFE732279C0FB20082D680 /* FancyMouseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D1AFE711279C0FAF0082D680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */,
+				D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */,
+				D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */,
+				D1AFE71E279C0FAF0082D680 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AFE727279C0FB20082D680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AFE731279C0FB20082D680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70D64A8EDC33537DA041EC68 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FancyMouseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79E9DD1AB3A46654907B62D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FancyMouse-FancyMouseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D12A8578279D415700D0FC49 /* Lint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+		FA5DA620B22A0194550AD637 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FancyMouse-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D1AFE70F279C0FAF0082D680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1AFE71B279C0FAF0082D680 /* ViewController.swift in Sources */,
+				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
+				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AFE725279C0FB20082D680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1AFE72E279C0FB20082D680 /* FancyMouseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1AFE72F279C0FB20082D680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1AFE73A279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift in Sources */,
+				D1AFE738279C0FB20082D680 /* FancyMouseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1AFE72B279C0FB20082D680 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1AFE712279C0FAF0082D680 /* FancyMouse */;
+			targetProxy = D1AFE72A279C0FB20082D680 /* PBXContainerItemProxy */;
+		};
+		D1AFE735279C0FB20082D680 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1AFE712279C0FAF0082D680 /* FancyMouse */;
+			targetProxy = D1AFE734279C0FB20082D680 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D1AFE71C279C0FAF0082D680 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1AFE71D279C0FAF0082D680 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1AFE722279C0FB20082D680 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D1AFE73B279C0FB30082D680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D1AFE73C279C0FB30082D680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1AFE73E279C0FB30082D680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FancyMouse/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.lsh424.FancyMouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D1AFE73F279C0FB30082D680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 876DC3A595A5C39319F88BCA /* Pods-FancyMouse.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FancyMouse/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.lsh424.FancyMouse;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D1AFE741279C0FB30082D680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.lsh424.FancyMouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FancyMouse.app/FancyMouse";
+			};
+			name = Debug;
+		};
+		D1AFE742279C0FB30082D680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.lsh424.FancyMouseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FancyMouse.app/FancyMouse";
+			};
+			name = Release;
+		};
+		D1AFE744279C0FB30082D680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.lsh424.FancyMouseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FancyMouse;
+			};
+			name = Debug;
+		};
+		D1AFE745279C0FB30082D680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.lsh424.FancyMouseUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FancyMouse;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D1AFE70E279C0FAF0082D680 /* Build configuration list for PBXProject "FancyMouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AFE73B279C0FB30082D680 /* Debug */,
+				D1AFE73C279C0FB30082D680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1AFE73D279C0FB30082D680 /* Build configuration list for PBXNativeTarget "FancyMouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AFE73E279C0FB30082D680 /* Debug */,
+				D1AFE73F279C0FB30082D680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1AFE740279C0FB30082D680 /* Build configuration list for PBXNativeTarget "FancyMouseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AFE741279C0FB30082D680 /* Debug */,
+				D1AFE742279C0FB30082D680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1AFE743279C0FB30082D680 /* Build configuration list for PBXNativeTarget "FancyMouseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1AFE744279C0FB30082D680 /* Debug */,
+				D1AFE745279C0FB30082D680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D1AFE70B279C0FAF0082D680 /* Project object */;
+}
