@@ -1,14 +1,20 @@
 disabled_rules:
-  - line_length
   - trailing_whitespace
   - nesting
-  - redundant_type_annotation
   - number_separator
-  - object_literal
-  - file_name
-  - sorted_imports
 
 opt_in_rules:
+  - vertical_parameter_alignment_on_call
+  - operator_usage_whitespace
+  - let_var_whitespace
+  - empty_string
+  - closure_spacing
+  - closure_end_indentation
+  - attributes
+  - sorted_imports
+  - redundant_type_annotation
+  - file_name
+  - file_name_no_space
   - empty_count
   - vertical_whitespace_opening_braces
   - vertical_whitespace_closing_braces
@@ -23,6 +29,8 @@ excluded:
 force_cast: error # 너무 타이트하면 warning으로 바꿔도 됨
 force_try:
   severity: error
+  
+line_length: 100
   
 file_length:
   error: 300 # 10-200룰이란게 있는데, 우리는 조금 완화해서 하나의 파일에 최대 300줄 까지로 해보자!
