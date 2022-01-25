@@ -14,7 +14,6 @@
 		D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE716279C0FAF0082D680 /* AppDelegate.swift */; };
 		D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */; };
 		D1AFE71B279C0FAF0082D680 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE71A279C0FAF0082D680 /* ViewController.swift */; };
-		D1AFE71E279C0FAF0082D680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE71C279C0FAF0082D680 /* Main.storyboard */; };
 		D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE71F279C0FB20082D680 /* Assets.xcassets */; };
 		D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */; };
 		D1AFE72E279C0FB20082D680 /* FancyMouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE72D279C0FB20082D680 /* FancyMouseTests.swift */; };
@@ -51,7 +50,6 @@
 		D1AFE716279C0FAF0082D680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D1AFE71A279C0FAF0082D680 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1AFE71D279C0FAF0082D680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D1AFE71F279C0FB20082D680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1AFE722279C0FB20082D680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1AFE724279C0FB20082D680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				D1AFE716279C0FAF0082D680 /* AppDelegate.swift */,
 				D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */,
 				D1AFE71A279C0FAF0082D680 /* ViewController.swift */,
-				D1AFE71C279C0FAF0082D680 /* Main.storyboard */,
 				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
 				D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */,
 				D1AFE724279C0FB20082D680 /* Info.plist */,
@@ -281,7 +278,6 @@
 				D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */,
 				D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */,
 				D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */,
-				D1AFE71E279C0FAF0082D680 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,14 +428,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D1AFE71C279C0FAF0082D680 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1AFE71D279C0FAF0082D680 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -580,7 +568,6 @@
 				INFOPLIST_FILE = FancyMouse/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -610,7 +597,6 @@
 				INFOPLIST_FILE = FancyMouse/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
