@@ -13,8 +13,7 @@
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
 		D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE716279C0FAF0082D680 /* AppDelegate.swift */; };
 		D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */; };
-		D1AFE71B279C0FAF0082D680 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE71A279C0FAF0082D680 /* ViewController.swift */; };
-		D1AFE71E279C0FAF0082D680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE71C279C0FAF0082D680 /* Main.storyboard */; };
+		D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */; };
 		D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE71F279C0FB20082D680 /* Assets.xcassets */; };
 		D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */; };
 		D1AFE72E279C0FB20082D680 /* FancyMouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE72D279C0FB20082D680 /* FancyMouseTests.swift */; };
@@ -50,8 +49,7 @@
 		D1AFE713279C0FAF0082D680 /* FancyMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AFE716279C0FAF0082D680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D1AFE71A279C0FAF0082D680 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D1AFE71D279C0FAF0082D680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D1AFE71F279C0FB20082D680 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1AFE722279C0FB20082D680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1AFE724279C0FB20082D680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,13 +140,13 @@
 		D1AFE715279C0FAF0082D680 /* FancyMouse */ = {
 			isa = PBXGroup;
 			children = (
-				D1AFE716279C0FAF0082D680 /* AppDelegate.swift */,
-				D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */,
-				D1AFE71A279C0FAF0082D680 /* ViewController.swift */,
-				D1AFE71C279C0FAF0082D680 /* Main.storyboard */,
-				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
-				D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */,
-				D1AFE724279C0FB20082D680 /* Info.plist */,
+				E2B0710F27A0547000EE8373 /* Application */,
+				E2B0711427A0547000EE8373 /* Common */,
+				E2B0710B27A0546F00EE8373 /* Domain */,
+				E2B0710A27A0546F00EE8373 /* Extension */,
+				E2B0710827A0546F00EE8373 /* Presentation */,
+				E2B0711327A0547000EE8373 /* Resources */,
+				E2B0710727A0546F00EE8373 /* Utils */,
 			);
 			path = FancyMouse;
 			sourceTree = "<group>";
@@ -168,6 +166,93 @@
 				D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */,
 			);
 			path = FancyMouseUITests;
+			sourceTree = "<group>";
+		};
+		E2B0710727A0546F00EE8373 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E2B0710827A0546F00EE8373 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				E2B0710927A0546F00EE8373 /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E2B0710927A0546F00EE8373 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E2B0710A27A0546F00EE8373 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		E2B0710B27A0546F00EE8373 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				E2B0710E27A0546F00EE8373 /* Entities */,
+				E2B0710C27A0546F00EE8373 /* Repositories */,
+				E2B0710D27A0546F00EE8373 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		E2B0710C27A0546F00EE8373 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		E2B0710D27A0546F00EE8373 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		E2B0710E27A0546F00EE8373 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		E2B0710F27A0547000EE8373 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE716279C0FAF0082D680 /* AppDelegate.swift */,
+				D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E2B0711327A0547000EE8373 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D1AFE724279C0FB20082D680 /* Info.plist */,
+				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
+				D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E2B0711427A0547000EE8373 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,7 +366,6 @@
 				D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */,
 				D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */,
 				D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */,
-				D1AFE71E279C0FAF0082D680 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1AFE71B279C0FAF0082D680 /* ViewController.swift in Sources */,
+				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
 			);
@@ -432,14 +516,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D1AFE71C279C0FAF0082D680 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D1AFE71D279C0FAF0082D680 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -577,10 +653,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6D8SYQ63KK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FancyMouse/Info.plist;
+				INFOPLIST_FILE = FancyMouse/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -607,10 +682,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6D8SYQ63KK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FancyMouse/Info.plist;
+				INFOPLIST_FILE = FancyMouse/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
