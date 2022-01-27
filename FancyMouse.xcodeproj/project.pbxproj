@@ -147,7 +147,6 @@
 				E2B0710827A0546F00EE8373 /* Presentation */,
 				E2B0711327A0547000EE8373 /* Resources */,
 				E2B0710727A0546F00EE8373 /* Utils */,
-				D1AFE724279C0FB20082D680 /* Info.plist */,
 			);
 			path = FancyMouse;
 			sourceTree = "<group>";
@@ -242,6 +241,7 @@
 		E2B0711327A0547000EE8373 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D1AFE724279C0FB20082D680 /* Info.plist */,
 				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
 				D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */,
 			);
@@ -653,7 +653,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6D8SYQ63KK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FancyMouse/Info.plist;
+				INFOPLIST_FILE = FancyMouse/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -682,7 +682,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6D8SYQ63KK;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FancyMouse/Info.plist;
+				INFOPLIST_FILE = FancyMouse/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
