@@ -285,6 +285,7 @@
 				D1AFE70F279C0FAF0082D680 /* Sources */,
 				D1AFE710279C0FAF0082D680 /* Frameworks */,
 				D1AFE711279C0FAF0082D680 /* Resources */,
+				20F4381A87130E28C751634B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,6 +323,7 @@
 				D1AFE72F279C0FB20082D680 /* Sources */,
 				D1AFE730279C0FB20082D680 /* Frameworks */,
 				D1AFE731279C0FB20082D680 /* Resources */,
+				2B565F336240D7461F9E57B5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -404,6 +406,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		20F4381A87130E28C751634B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FancyMouse/Pods-FancyMouse-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FancyMouse/Pods-FancyMouse-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FancyMouse/Pods-FancyMouse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B565F336240D7461F9E57B5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		70D64A8EDC33537DA041EC68 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

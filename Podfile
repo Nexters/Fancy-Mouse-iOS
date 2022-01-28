@@ -8,6 +8,9 @@ target 'FancyMouse' do
   # Pods for FancyMouse
   
   pod 'SwiftLint'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'SnapKit'
 
   target 'FancyMouseTests' do
     inherit! :search_paths
