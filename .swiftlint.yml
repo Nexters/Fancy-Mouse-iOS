@@ -21,8 +21,8 @@ opt_in_rules:
   
 excluded:
   - Pods
-  - FancyMouse/AppDelegate.swift
-  - FancyMouse/SceneDelegate.swift
+  - FancyMouse/Application/AppDelegate.swift
+  - FancyMouse/Application/SceneDelegate.swift
   - FancyMouseTests
   - FancyMouseUITests
 
