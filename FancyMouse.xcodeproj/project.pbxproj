@@ -26,6 +26,7 @@
 		E23CA6DF27A2F9F200C8381E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */; };
 		E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */; };
 		E283E02227A6363300FC340F /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02127A6363300FC340F /* Folder.swift */; };
+		E283E02727A665D200FC340F /* WordResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02627A665D200FC340F /* WordResponses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProtocol.swift; sourceTree = "<group>"; };
 		E283E02127A6363300FC340F /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		E283E02627A665D200FC340F /* WordResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponses.swift; sourceTree = "<group>"; };
 		EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +162,7 @@
 				E2B0710A27A0546F00EE8373 /* Extension */,
 				E2B0710827A0546F00EE8373 /* Presentation */,
 				E2B0711327A0547000EE8373 /* Resources */,
+				E283E02427A6659200FC340F /* Network */,
 				E2B0710727A0546F00EE8373 /* Utils */,
 			);
 			path = FancyMouse;
@@ -180,6 +183,22 @@
 				D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */,
 			);
 			path = FancyMouseUITests;
+			sourceTree = "<group>";
+		};
+		E283E02427A6659200FC340F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E283E02527A665A300FC340F /* Data */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E283E02527A665A300FC340F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E283E02627A665D200FC340F /* WordResponses.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		E2B0710727A0546F00EE8373 /* Utils */ = {
@@ -541,6 +560,7 @@
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				E23CA6DB27A2F95B00C8381E /* HomeUseCases.swift in Sources */,
 				E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */,
+				E283E02727A665D200FC340F /* WordResponses.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
