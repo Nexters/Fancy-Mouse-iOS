@@ -25,6 +25,7 @@
 		E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DC27A2F9C300C8381E /* Dimmable.swift */; };
 		E23CA6DF27A2F9F200C8381E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */; };
 		E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */; };
+		E283E02227A6363300FC340F /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02127A6363300FC340F /* Folder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		E23CA6DC27A2F9C300C8381E /* Dimmable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
 		E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProtocol.swift; sourceTree = "<group>"; };
+		E283E02127A6363300FC340F /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				E23CA6D527A2F82C00C8381E /* Word.swift */,
+				E283E02127A6363300FC340F /* Folder.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E23CA6DF27A2F9F200C8381E /* StringExtensions.swift in Sources */,
+				E283E02227A6363300FC340F /* Folder.swift in Sources */,
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
