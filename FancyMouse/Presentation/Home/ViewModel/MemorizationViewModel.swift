@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct MemorizationStatus {
+    enum Status {
+        case unknown
+        case memorizing
+        case complete
+    }
+
+    let title: String
+    let status: Status
+}

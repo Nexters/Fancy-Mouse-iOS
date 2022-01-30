@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct HomeWordCell {
+    let title: String
+    let meaning: String
+    let status: MemorizationStatus
+}
