@@ -10,6 +10,8 @@
 		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
 		40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */; };
 		40DFDBA927A7014800FF07CF /* MemorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBA827A7014800FF07CF /* MemorizationViewModel.swift */; };
+		40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */; };
+		40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */; };
 		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
 		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
 		D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A56EC27A80D78002466DA /* BottomSheet.swift */; };
@@ -53,6 +55,8 @@
 		389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCellViewModel.swift; sourceTree = "<group>"; };
 		40DFDBA827A7014800FF07CF /* MemorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizationViewModel.swift; sourceTree = "<group>"; };
+		40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCell.swift; sourceTree = "<group>"; };
+		40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizationView.swift; sourceTree = "<group>"; };
 		6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.release.xcconfig"; sourceTree = "<group>"; };
 		876DC3A595A5C39319F88BCA /* Pods-FancyMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.release.xcconfig"; sourceTree = "<group>"; };
 		BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */,
+				40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */,
+				40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -583,10 +589,12 @@
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */,
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
+				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				40DFDBA927A7014800FF07CF /* MemorizationViewModel.swift in Sources */,
 				E23CA6DB27A2F95B00C8381E /* HomeUseCases.swift in Sources */,
 				E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */,
+				40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */,
 				E283E02727A665D200FC340F /* WordResponses.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
