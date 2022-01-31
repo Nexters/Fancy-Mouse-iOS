@@ -16,6 +16,8 @@ protocol BottomSheetDelegate: AnyObject {
 final class BottomSheet: UIViewController {
     private let contentView: UIView
     private let sheetTitle: String
+    private let contentTopInset: CGFloat
+    private let contentBottomInset: CGFloat
     
     private let containerView: UIView = {
         let view = UIView()
@@ -57,9 +59,11 @@ final class BottomSheet: UIViewController {
     
     weak var delegate: BottomSheetDelegate?
     
-    init(contentView: UIView, title: String) {
+    init(contentView: UIView, title: String, topInset: CGFloat, bottomInset: CGFloat) {
         self.contentView = contentView
         self.sheetTitle = title
+        self.contentTopInset = topInset
+        self.contentBottomInset = bottomInset
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -135,8 +139,8 @@ final class BottomSheet: UIViewController {
         contentView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(24)
             make.trailing.equalToSuperview().offset(-24)
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.bottom.equalTo(okButton.snp.top).offset(-20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(contentTopInset)
+            make.bottom.equalTo(okButton.snp.top).offset(-contentBottomInset)
         }
         
         okButton.snp.makeConstraints { make in
