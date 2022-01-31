@@ -10,12 +10,20 @@ import Foundation
 struct Word {
     let spelling: String
     let meaning: String
-    let createdAt: Date
-    let memo: String
     let status: Status
-    
-    enum Status {
+    let createdAt: Date
+    let memo: String?
+}
+
+extension Word {
+    enum Status: CaseIterable {
         case ready, inProgress, fininshed
+        
+        init(_ description: String) {
+            self = Status.allCases.filter { status in
+                status.description == description
+            }.first ?? .ready
+        }
         
         var description: String {
             switch self {
