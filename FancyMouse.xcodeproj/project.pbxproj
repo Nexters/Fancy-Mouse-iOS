@@ -10,6 +10,7 @@
 		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
 		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
 		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
+		D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A56EC27A80D78002466DA /* BottomSheet.swift */; };
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
 		D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE716279C0FAF0082D680 /* AppDelegate.swift */; };
 		D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 		BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse_FancyMouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D10A56EC27A80D78002466DA /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		D12A8579279D42A500D0FC49 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D1AFE713279C0FAF0082D680 /* FancyMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AFE716279C0FAF0082D680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,12 +158,12 @@
 		D1AFE715279C0FAF0082D680 /* FancyMouse */ = {
 			isa = PBXGroup;
 			children = (
+				E2B0711327A0547000EE8373 /* Resources */,
 				E2B0710F27A0547000EE8373 /* Application */,
 				E2B0711427A0547000EE8373 /* Common */,
 				E2B0710B27A0546F00EE8373 /* Domain */,
 				E2B0710A27A0546F00EE8373 /* Extension */,
 				E2B0710827A0546F00EE8373 /* Presentation */,
-				E2B0711327A0547000EE8373 /* Resources */,
 				E283E02427A6659200FC340F /* Network */,
 				E2B0710727A0546F00EE8373 /* Utils */,
 			);
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */,
+				D10A56EC27A80D78002466DA /* BottomSheet.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				E283E02727A665D200FC340F /* WordResponses.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
+				D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
