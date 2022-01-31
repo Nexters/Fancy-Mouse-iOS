@@ -2,6 +2,7 @@ disabled_rules:
   - trailing_whitespace
   - nesting
   - number_separator
+  - comment_spacing
 
 opt_in_rules:
   - vertical_parameter_alignment_on_call
@@ -10,7 +11,6 @@ opt_in_rules:
   - empty_string
   - closure_spacing
   - closure_end_indentation
-  - attributes
   - sorted_imports
   - redundant_type_annotation
   - file_name
