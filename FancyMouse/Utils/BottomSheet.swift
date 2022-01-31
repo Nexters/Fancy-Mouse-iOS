@@ -13,7 +13,7 @@ protocol BottomSheetDelegate: AnyObject {
     func okWasTapped()
 }
 
-final class BottomSheet: UIViewController {
+final class BottomSheetController: UIViewController {
     private let contentView: UIView
     private let sheetTitle: String
     private let contentTopInset: CGFloat
@@ -93,22 +93,22 @@ final class BottomSheet: UIViewController {
         }
     }
     
-    func set(parentVC: UIViewController) {
-        if let tabBarController = parentVC.tabBarController {
-            tabBarController.addChild(self)
-            tabBarController.view.addSubview(view)
-            
-            let screenBounds = UIScreen.main.bounds
-            self.view.frame = screenBounds
-            
-            self.sheetView.frame.origin = CGPoint(x: 0, y: screenBounds.height)
-            
-            UIView.transition(with: self.view, duration: 0.25,
-                              options: .curveEaseInOut, animations: {
-                self.view.backgroundColor = .black.withAlphaComponent(0.4)
-                self.sheetView.frame .origin = CGPoint(x: 0, y: 0)
-            }, completion: nil)
-        }
+    func setup(parentVC: UIViewController) {
+        guard let tabBarController = parentVC.tabBarController else { return }
+        
+        tabBarController.addChild(self)
+        tabBarController.view.addSubview(self.view)
+        
+        let screenBounds = UIScreen.main.bounds
+        self.view.frame = screenBounds
+        
+        self.sheetView.frame.origin = CGPoint(x: 0, y: screenBounds.height)
+        
+        UIView.transition(with: self.view, duration: 0.25,
+                          options: .curveEaseInOut, animations: {
+            self.view.backgroundColor = .black.withAlphaComponent(0.4)
+            self.sheetView.frame .origin = CGPoint(x: 0, y: 0)
+        }, completion: nil)
     }
     
     private func setupLayout() {
