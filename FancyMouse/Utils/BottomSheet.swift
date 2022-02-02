@@ -97,8 +97,8 @@ final class BottomSheetController: UIViewController {
         }
     }
     
-    func setup(parentVC: UIViewController) {
-        guard let tabBarController = parentVC.tabBarController else { return }
+    func setup(parentViewController: UIViewController) {
+        guard let tabBarController = parentViewController.tabBarController else { return }
         
         tabBarController.addChild(self)
         tabBarController.view.addSubview(self.view)
