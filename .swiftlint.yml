@@ -39,7 +39,7 @@ type_name:
   min_length:
     error: 3
   max_length:
-    warning: 20
+    warning: 40
   excluded: iPhone
 identifier_name:
   min_length:
