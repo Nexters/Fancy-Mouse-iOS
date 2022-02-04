@@ -15,6 +15,7 @@
 		40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */; };
 		40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */; };
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
+		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
 		448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */; };
 		44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1518227AB954D00C2239D /* VocaViewController.swift */; };
 		44F1518527AB95BC00C2239D /* VocaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1518427AB95BC00C2239D /* VocaViewModel.swift */; };
@@ -66,6 +67,7 @@
 		40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCell.swift; sourceTree = "<group>"; };
 		40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizationView.swift; sourceTree = "<group>"; };
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
 		44F1518227AB954D00C2239D /* VocaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewController.swift; sourceTree = "<group>"; };
 		44F1518427AB95BC00C2239D /* VocaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +165,22 @@
 				4456BFB127A849720006D90B /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		446F13CD27AD7F7800EE327E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				446F13CE27AD7F8000EE327E /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		446F13CE27AD7F8000EE327E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				446F13CF27AD7F8E00EE327E /* LoginViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		44EB2AD12FF37479ED398579 /* Frameworks */ = {
@@ -298,6 +316,7 @@
 		E2B0710827A0546F00EE8373 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				446F13CD27AD7F7800EE327E /* Login */,
 				44F1517F27AB94C100C2239D /* Voca */,
 				E2B0710927A0546F00EE8373 /* Home */,
 			);
@@ -645,6 +664,7 @@
 				E23CA6DF27A2F9F200C8381E /* StringExtensions.swift in Sources */,
 				E283E02227A6363300FC340F /* Folder.swift in Sources */,
 				4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */,
+				446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */,
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */,
 				4456BFB227A849720006D90B /* TabBarController.swift in Sources */,
