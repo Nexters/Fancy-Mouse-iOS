@@ -25,6 +25,10 @@
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
 		D16383F927B006F9005C8326 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16383F827B006F9005C8326 /* ColorAssets.xcassets */; };
 		D16383FB27B01085005C8326 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16383FA27B01085005C8326 /* UIColor+Extensions.swift */; };
+		D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16383FC27B011F1005C8326 /* UIFont+Extensions.swift */; };
+		D163840027B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D16383FF27B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf */; };
+		D163840227B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D163840127B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf */; };
+		D163840427B01716005C8326 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D163840327B01716005C8326 /* SpoqaHanSansNeo-Regular.otf */; };
 		D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE716279C0FAF0082D680 /* AppDelegate.swift */; };
 		D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */; };
 		D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */; };
@@ -37,7 +41,7 @@
 		E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */; };
 		E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */; };
 		E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DC27A2F9C300C8381E /* Dimmable.swift */; };
-		E23CA6DF27A2F9F200C8381E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */; };
+		E23CA6DF27A2F9F200C8381E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */; };
 		E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */; };
 		E283E02227A6363300FC340F /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02127A6363300FC340F /* Folder.swift */; };
 		E283E02727A665D200FC340F /* WordResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02627A665D200FC340F /* WordResponses.swift */; };
@@ -82,6 +86,10 @@
 		D12A8579279D42A500D0FC49 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D16383F827B006F9005C8326 /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		D16383FA27B01085005C8326 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		D16383FC27B011F1005C8326 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		D16383FF27B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		D163840127B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
+		D163840327B01716005C8326 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
 		D1AFE713279C0FAF0082D680 /* FancyMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AFE716279C0FAF0082D680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +108,7 @@
 		E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRepositoryProtocol.swift; sourceTree = "<group>"; };
 		E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordUseCaseProtocol.swift; sourceTree = "<group>"; };
 		E23CA6DC27A2F9C300C8381E /* Dimmable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
-		E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProtocol.swift; sourceTree = "<group>"; };
 		E283E02127A6363300FC340F /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		E283E02627A665D200FC340F /* WordResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponses.swift; sourceTree = "<group>"; };
@@ -237,6 +245,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D16383FE27B01685005C8326 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D163840327B01716005C8326 /* SpoqaHanSansNeo-Regular.otf */,
+				D163840127B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf */,
+				D16383FF27B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D1AFE70A279C0FAF0082D680 = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +285,7 @@
 				E2B0710F27A0547000EE8373 /* Application */,
 				E2B0711427A0547000EE8373 /* Common */,
 				E2B0710B27A0546F00EE8373 /* Domain */,
-				E2B0710A27A0546F00EE8373 /* Extension */,
+				E2B0710A27A0546F00EE8373 /* Extensions */,
 				E2B0710827A0546F00EE8373 /* Presentation */,
 				E283E02427A6659200FC340F /* Network */,
 				E2B0710727A0546F00EE8373 /* Utils */,
@@ -336,13 +354,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		E2B0710A27A0546F00EE8373 /* Extension */ = {
+		E2B0710A27A0546F00EE8373 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E23CA6DE27A2F9F200C8381E /* StringExtensions.swift */,
+				E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */,
 				D16383FA27B01085005C8326 /* UIColor+Extensions.swift */,
+				D16383FC27B011F1005C8326 /* UIFont+Extensions.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		E2B0710B27A0546F00EE8373 /* Domain */ = {
@@ -393,6 +412,7 @@
 		E2B0711327A0547000EE8373 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D16383FE27B01685005C8326 /* Fonts */,
 				D1AFE724279C0FB20082D680 /* Info.plist */,
 				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
 				D16383F827B006F9005C8326 /* ColorAssets.xcassets */,
@@ -520,9 +540,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */,
+				D163840027B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */,
+				D163840427B01716005C8326 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				D16383F927B006F9005C8326 /* ColorAssets.xcassets in Resources */,
 				D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */,
+				D163840227B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E23CA6DF27A2F9F200C8381E /* StringExtensions.swift in Sources */,
+				E23CA6DF27A2F9F200C8381E /* String+Extensions.swift in Sources */,
 				E283E02227A6363300FC340F /* Folder.swift in Sources */,
 				4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */,
 				446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */,
@@ -681,6 +704,7 @@
 				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */,
+				D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */,
 				40DFDBA927A7014800FF07CF /* MemorizationViewModel.swift in Sources */,
 				E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */,
 				E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */,
@@ -864,6 +888,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6D8SYQ63KK;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FancyMouse/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
