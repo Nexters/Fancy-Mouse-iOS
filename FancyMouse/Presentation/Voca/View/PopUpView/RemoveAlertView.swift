@@ -13,6 +13,7 @@ protocol RemoveAlertDelegate: AnyObject {
 }
 
 final class RemoveAlertViewController: UIViewController {
+    private let removeTarget: String
     private let removeWordCount: Int
     
     private let alertView: UIView = {
@@ -24,7 +25,7 @@ final class RemoveAlertViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "선택한 폴더를 정말 삭제하시겠어요?"
+        label.text = "선택한 \(removeTarget)를 정말 삭제하시겠어요?"
         label.textColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
@@ -45,7 +46,11 @@ final class RemoveAlertViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.backgroundColor = UIColor(red: 242 / 255, green: 244 / 255, blue: 246 / 255, alpha: 1)
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(cancelWasTapped), for: .touchUpInside)
+        let action = UIAction(title: "cancelAction") { _ in
+            defer { self.dismiss(animated: true, completion: nil) }
+            self.delegate?.cancelWasTapped()
+        }
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
@@ -56,13 +61,18 @@ final class RemoveAlertViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.backgroundColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(acceptWasTapped), for: .touchUpInside)
+        let action = UIAction(title: "acceptAction") { _ in
+            defer { self.dismiss(animated: true, completion: nil) }
+            self.delegate?.acceptWasTapped()
+        }
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     
     weak var delegate: RemoveAlertDelegate?
     
-    init(removeWordCount: Int) {
+    init(removeTarget: String, removeWordCount: Int) {
+        self.removeTarget = removeTarget
         self.removeWordCount = removeWordCount
         super.init(nibName: nil, bundle: nil)
     }
@@ -82,13 +92,8 @@ final class RemoveAlertViewController: UIViewController {
         view.addSubview(alertView)
         alertView.snp.makeConstraints { make in
             make.width.equalTo(335)
+            make.height.equalTo(removeWordCount != 0 ? 190 : 158)
             make.centerY.centerX.equalToSuperview()
-            
-            if removeWordCount != 0 {
-                make.height.equalTo(190)
-            } else {
-                make.height.equalTo(158)
-            }
         }
         
         alertView.addSubview(titleLabel)
@@ -120,15 +125,5 @@ final class RemoveAlertViewController: UIViewController {
             make.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().offset(-20)
         }
-    }
-    
-    @objc private func cancelWasTapped() {
-        defer { dismiss(animated: true, completion: nil) }
-        delegate?.cancelWasTapped()
-    }
-    
-    @objc private func acceptWasTapped() {
-        defer { dismiss(animated: true, completion: nil) }
-        delegate?.acceptWasTapped()
     }
 }
