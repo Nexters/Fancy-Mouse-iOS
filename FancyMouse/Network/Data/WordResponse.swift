@@ -8,21 +8,34 @@
 import Foundation
 
 struct WordResponse: Decodable {
-    let spelling: String
-    let meaning: String
-    let status: String
+    let wordID: Int
+    let folderID: Int
     let createdAt: Date
-    let memo: String?
+    let spelling: String
+    let meanings: [String]
+    let status: Int
+    let memo: String
+    let synonyms: [String]
+    let examples: [String]
+    let urlString: String
+    
+    enum CodingKeys: String, CodingKey {
+        case wordID = "wordId"
+        case folderID = "folderId"
+        case urlString = "url"
+        case spelling, meanings, status, createdAt, memo, synonyms, examples
+    }
 }
 
 extension WordResponse {
     var mappedWord: Word {
         Word(
-            spelling: spelling,
-            meaning: meaning,
-            status: Word.Status(status),
+            wordID: wordID, folderID: folderID,
             createdAt: createdAt,
-            memo: memo
+            spelling: spelling, meanings: meanings,
+            status: Word.Status(status),
+            memo: memo, synonyms: synonyms, examples: examples,
+            urlString: urlString
         )
     }
 }
