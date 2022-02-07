@@ -47,8 +47,8 @@ final class RemoveAlertViewController: UIViewController {
         button.backgroundColor = UIColor(red: 242 / 255, green: 244 / 255, blue: 246 / 255, alpha: 1)
         button.layer.cornerRadius = 10
         let action = UIAction(title: "cancelAction") { _ in
-            defer { self.dismiss(animated: true, completion: nil) }
             self.delegate?.cancelWasTapped()
+            self.dismiss(animated: true, completion: nil)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -62,8 +62,8 @@ final class RemoveAlertViewController: UIViewController {
         button.backgroundColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
         button.layer.cornerRadius = 10
         let action = UIAction(title: "acceptAction") { _ in
-            defer { self.dismiss(animated: true, completion: nil) }
             self.delegate?.acceptWasTapped()
+            self.dismiss(animated: true, completion: nil)
         }
         button.addAction(action, for: .touchUpInside)
         return button
