@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Word {
+struct Word: Equatable {
     let wordID: Int
     let folderID: Int
     let createdAt: Date

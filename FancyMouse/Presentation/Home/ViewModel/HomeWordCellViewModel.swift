@@ -35,6 +35,7 @@ final class HomeWordCellViewModel {
     
     func changeStatus(to status: Word.Status, of wordID: WordID) {
         useCase.changeStatus(to: status, of: wordID)
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.wordRelay.accept($0)
             })
