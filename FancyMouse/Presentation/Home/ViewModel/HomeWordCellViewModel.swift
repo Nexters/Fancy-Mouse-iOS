@@ -13,24 +13,18 @@ final class HomeWordCellViewModel {
     private let useCase: HomeWordUseCaseProtocol
     
     private let wordRelay: BehaviorRelay<Word>
-    private let isSpellingHiddenRelay: BehaviorRelay<Bool> = .init(value: false)
-    private let isMeaningHiddenRelay: BehaviorRelay<Bool> = .init(value: false)
+    private let hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
     
     private let disposeBag = DisposeBag()
     
-    init(useCase: HomeWordUseCaseProtocol, word: Word) {
+    init(
+        useCase: HomeWordUseCaseProtocol,
+        word: Word,
+        hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
+    ) {
         self.useCase = useCase
         wordRelay = .init(value: word)
-    }
-    
-    func toggleSpellingHiddenState() {
-        isSpellingHiddenRelay
-            .accept(!isSpellingHiddenRelay.value)
-    }
-    
-    func toggleMeaningHiddenState() {
-        isMeaningHiddenRelay
-            .accept(!isMeaningHiddenRelay.value)
+        self.hidingStatusRelay = hidingStatusRelay
     }
     
     func changeStatus(to status: Word.Status, of wordID: WordID) {
@@ -44,16 +38,11 @@ final class HomeWordCellViewModel {
 }
 
 extension HomeWordCellViewModel {
-    var isSpellingHiddenObservable: Observable<Bool> {
-        isSpellingHiddenRelay.asObservable()
-    }
-    
-    var isMeaningHiddenObservable: Observable<Bool> {
-        isMeaningHiddenRelay.asObservable()
-    }
-    
     var wordObservable: Observable<Word> {
         wordRelay.asObservable()
     }
+    
+    var hidingStatusObservable: Observable<HomeViewModel.HidingStatus> {
+        hidingStatusRelay.asObservable()
+    }
 }
-
