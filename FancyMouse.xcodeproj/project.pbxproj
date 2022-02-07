@@ -45,7 +45,7 @@
 		E23CA6DF27A2F9F200C8381E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */; };
 		E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */; };
 		E283E02227A6363300FC340F /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02127A6363300FC340F /* Folder.swift */; };
-		E283E02727A665D200FC340F /* WordResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02627A665D200FC340F /* WordResponses.swift */; };
+		E283E02727A665D200FC340F /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02627A665D200FC340F /* WordResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +113,7 @@
 		E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProtocol.swift; sourceTree = "<group>"; };
 		E283E02127A6363300FC340F /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
-		E283E02627A665D200FC340F /* WordResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponses.swift; sourceTree = "<group>"; };
+		E283E02627A665D200FC340F /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
 		EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,7 +324,7 @@
 		E283E02527A665A300FC340F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E283E02627A665D200FC340F /* WordResponses.swift */,
+				E283E02627A665D200FC340F /* WordResponse.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -712,7 +712,7 @@
 				E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */,
 				E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */,
 				40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */,
-				E283E02727A665D200FC340F /* WordResponses.swift in Sources */,
+				E283E02727A665D200FC340F /* WordResponse.swift in Sources */,
 				448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */,
 				D16383FB27B01085005C8326 /* UIColor+Extensions.swift in Sources */,
 				E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */,
