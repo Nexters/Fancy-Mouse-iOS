@@ -6,30 +6,30 @@
 //
 
 import Foundation
+import RxSwift
 
-protocol WordUseCase {
-    func changeStatus(to newStatus: Word.Status)
+protocol WordUseCaseProtocol {
+    func changeStatus(to newStatus: Word.Status, of wordID: WordID) -> Observable<Word>
 }
 
-protocol WordTestUseCase: WordUseCase {
-    func hideSpelling()
-    func hideMeaning()
-    func suffleWords()
+protocol WordEditUseCaseProtocol {
+    func moveFolder(to folderID: FolderID, of wordID: WordID) -> Observable<Void>
+    func editMemo(_ memo: String, wordID: WordID) -> Observable<Word>
 }
 
-protocol WordEditUseCase {
-    // TODO: 폴더 변경을 어떻게 풀지 논의 필요
-    func moveFolder(to folder: Folder)
-    func editMemo(_ memo: String)
+protocol WordDeleteUseCaseProtocol {
+    func deleteWord(_ wordID: WordID)
 }
 
-protocol WordDeleteUseCase {
-    func deleteWord()
+// MARK: Words
+protocol WordsUseCaseProtocol {
+    func loadWords() -> Observable<[Word]>
 }
 
-protocol RemoteWordEditUseCase: WordEditUseCase, WordDeleteUseCase { }
-
-protocol CustomWordEditUseCase: WordEditUseCase {
-    func editWord(_ word: String)
-    func editMeaning(_ meaning: String)
+protocol WordsTestUseCaseProtocol: WordsUseCaseProtocol {
+    func suffleWords() -> Observable<[Word]>
 }
+
+protocol HomeUseCaseProtocol: WordsTestUseCaseProtocol { }
+
+protocol HomeWordUseCaseProtocol: WordUseCaseProtocol { }
