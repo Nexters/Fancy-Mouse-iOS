@@ -26,25 +26,25 @@ final class RemoveAlertViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "선택한 \(removeTarget)를 정말 삭제하시겠어요?"
-        label.textColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .gray90
+        label.font = .spoqaBold(size: 16)
         return label
     }()
     
     private lazy var subLabel: UILabel = {
         let label = UILabel()
         label.text = "폴더 안의 \(removeWordCount)개 단어도 함께 삭제돼요."
-        label.textColor = UIColor(red: 136 / 255, green: 145 / 255, blue: 160 / 255, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .gray60
+        label.font = .spoqaMedium(size: 14)
         return label
     }()
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
-        button.setTitleColor(UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = UIColor(red: 242 / 255, green: 244 / 255, blue: 246 / 255, alpha: 1)
+        button.setTitleColor(.gray60, for: .normal)
+        button.titleLabel?.font = .spoqaMedium(size: 16)
+        button.backgroundColor = .gray30
         button.layer.cornerRadius = 10
         let action = UIAction(title: "cancelAction") { _ in
             self.delegate?.cancelWasTapped()
@@ -58,8 +58,8 @@ final class RemoveAlertViewController: UIViewController {
         let button = UIButton()
         button.setTitle("확인", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
+        button.titleLabel?.font = .spoqaMedium(size: 16)
+        button.backgroundColor = .primary
         button.layer.cornerRadius = 10
         let action = UIAction(title: "acceptAction") { _ in
             self.delegate?.acceptWasTapped()
