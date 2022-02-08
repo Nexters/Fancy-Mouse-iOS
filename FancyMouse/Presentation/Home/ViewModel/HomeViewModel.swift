@@ -36,8 +36,8 @@ final class HomeViewModel {
             .disposed(by: disposeBag)
     }
     
-    func suffleWords() {
-        useCase.suffleWords()
+    func shuffleWords() {
+        useCase.shuffleWords()
             .subscribe(onNext: { [weak self] in
                 self?.wordsRelay.accept($0)
             })

@@ -27,7 +27,7 @@ protocol WordsUseCaseProtocol {
 }
 
 protocol WordsTestUseCaseProtocol: WordsUseCaseProtocol {
-    func suffleWords() -> Observable<[Word]>
+    func shuffleWords() -> Observable<[Word]>
 }
 
 protocol HomeUseCaseProtocol: WordsTestUseCaseProtocol { }
