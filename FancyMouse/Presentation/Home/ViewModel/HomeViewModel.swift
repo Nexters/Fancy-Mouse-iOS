@@ -14,17 +14,12 @@ final class HomeViewModel {
     private let maxWordsCount: Int
     
     private let wordsRelay: BehaviorRelay<[Word]> = .init(value: [])
-    private let hidingStatusRelay: BehaviorRelay<HidingStatus>
+    private let hidingStatusRelay: BehaviorRelay<HidingStatus> = .init(value: .none)
     
     private let disposeBag = DisposeBag()
     
-    init(
-        useCase: HomeUseCaseProtocol,
-        hidingStatusRelay: BehaviorRelay<HidingStatus>,
-        maxWordsCount: Int = 10
-    ) {
+    init(useCase: HomeUseCaseProtocol, maxWordsCount: Int = 10 ) {
         self.useCase = useCase
-        self.hidingStatusRelay = hidingStatusRelay
         self.maxWordsCount = maxWordsCount
     }
     
