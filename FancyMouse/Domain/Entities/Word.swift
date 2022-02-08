@@ -7,9 +7,12 @@
 
 import Foundation
 
+typealias WordID = Int
+typealias FolderID = Int
+
 struct Word: Equatable {
-    let wordID: Int
-    let folderID: Int
+    let wordID: WordID
+    let folderID: FolderID
     let createdAt: Date
     let spelling: String
     let meanings: [String]

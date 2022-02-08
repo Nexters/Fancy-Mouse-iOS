@@ -7,7 +7,4 @@
 
 import Foundation
 
-typealias FolderID = String
-typealias WordID = String
-
 struct Folder { }
