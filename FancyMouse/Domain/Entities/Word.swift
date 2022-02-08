@@ -24,14 +24,8 @@ struct Word: Equatable {
 }
 
 extension Word {
-    enum Status: CaseIterable {
+    enum Status {
         case ready, inProgress, fininshed, unknown
-        
-        init(_ description: String) {
-            self = Status.allCases.filter { status in
-                status.description == description
-            }.first ?? .unknown
-        }
         
         init(_ number: Int) {
             switch number {
