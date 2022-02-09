@@ -13,7 +13,7 @@ struct WordResponse: Decodable {
     let createdAt: Date
     let spelling: String
     let meanings: [String]
-    let status: Int
+    let status: WordStatusResponse
     let memo: String
     let synonyms: [String]
     let examples: [String]
@@ -28,12 +28,27 @@ struct WordResponse: Decodable {
 }
 
 extension WordResponse {
+    enum WordStatusResponse: Int, Decodable {
+        case unknown, ready, inProgress, fininshed
+        
+        var mappedWordStatus: Word.Status {
+            switch self {
+            case .unknown: return .unknown
+            case .ready: return .ready
+            case .inProgress: return .inProgress
+            case .fininshed: return .fininshed
+            }
+        }
+    }
+}
+
+extension WordResponse {
     var mappedWord: Word {
         Word(
             wordID: wordID, folderID: folderID,
             createdAt: createdAt,
             spelling: spelling, meanings: meanings,
-            status: Word.Status(status),
+            status: status.mappedWordStatus,
             memo: memo, synonyms: synonyms, examples: examples,
             urlString: urlString
         )
