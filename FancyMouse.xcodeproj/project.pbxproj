@@ -18,7 +18,12 @@
 		40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */; };
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
 		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
+		4470844227B4122D006F5796 /* FolderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470844127B4122D006F5796 /* FolderUseCase.swift */; };
 		448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */; };
+		44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */; };
+		44A8A97B27B6F94C004C8E6C /* FolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97A27B6F94C004C8E6C /* FolderViewModel.swift */; };
+		44A8A97D27B6F983004C8E6C /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97C27B6F983004C8E6C /* FolderCell.swift */; };
+		44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */; };
 		44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1518227AB954D00C2239D /* VocaViewController.swift */; };
 		44F1518527AB95BC00C2239D /* VocaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1518427AB95BC00C2239D /* VocaViewModel.swift */; };
 		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
@@ -79,7 +84,12 @@
 		40DFDBAC27A832FE00FF07CF /* MemorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizationView.swift; sourceTree = "<group>"; };
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4470844127B4122D006F5796 /* FolderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUseCase.swift; sourceTree = "<group>"; };
 		448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
+		44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
+		44A8A97A27B6F94C004C8E6C /* FolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewModel.swift; sourceTree = "<group>"; };
+		44A8A97C27B6F983004C8E6C /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
+		44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
 		44F1518227AB954D00C2239D /* VocaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewController.swift; sourceTree = "<group>"; };
 		44F1518427AB95BC00C2239D /* VocaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewModel.swift; sourceTree = "<group>"; };
 		6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +210,33 @@
 			isa = PBXGroup;
 			children = (
 				446F13CF27AD7F8E00EE327E /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4470843E27B411F1006F5796 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				4470843F27B411FD006F5796 /* ViewModel */,
+				4470844027B41207006F5796 /* View */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
+		4470843F27B411FD006F5796 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */,
+				44A8A97A27B6F94C004C8E6C /* FolderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4470844027B41207006F5796 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44A8A97C27B6F983004C8E6C /* FolderCell.swift */,
+				44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -347,6 +384,7 @@
 		E2B0710827A0546F00EE8373 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4470843E27B411F1006F5796 /* Folder */,
 				446F13CD27AD7F7800EE327E /* Login */,
 				44F1517F27AB94C100C2239D /* Voca */,
 				E2B0710927A0546F00EE8373 /* Home */,
@@ -395,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */,
+				4470844127B4122D006F5796 /* FolderUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -707,6 +746,8 @@
 				446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
+				44A8A97D27B6F983004C8E6C /* FolderCell.swift in Sources */,
+				44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */,
 				44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */,
 				4456BFB227A849720006D90B /* TabBarController.swift in Sources */,
 				40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */,
@@ -715,12 +756,15 @@
 				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */,
+				44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */,
 				D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */,
 				40DFDBA927A7014800FF07CF /* MemorizationViewModel.swift in Sources */,
+				44A8A97B27B6F94C004C8E6C /* FolderViewModel.swift in Sources */,
 				E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */,
 				E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */,
 				40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */,
 				E283E02727A665D200FC340F /* WordResponse.swift in Sources */,
+				4470844227B4122D006F5796 /* FolderUseCase.swift in Sources */,
 				448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */,
 				D16383FB27B01085005C8326 /* UIColor+Extensions.swift in Sources */,
 				E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */,
