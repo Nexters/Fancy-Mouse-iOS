@@ -23,7 +23,7 @@ final class FilterView: UIView {
         let item = NSCollectionLayoutItem(layoutSize: size)
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(0.146)
+            heightDimension: .fractionalHeight(0.164)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -36,7 +36,7 @@ final class FilterView: UIView {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0)
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(26)
+            heightDimension: .absolute(30)
         )
         let headerElement = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
@@ -53,24 +53,9 @@ final class FilterView: UIView {
             withReuseIdentifier: "FilterViewHeader"
         )
         collectionView.register(FilterViewCell.self, forCellWithReuseIdentifier: "FilterViewCell")
-        collectionView.allowsSelection = true
         collectionView.allowsMultipleSelection = true
-        collectionView.isUserInteractionEnabled = true
         return collectionView
     }()
-    
-    lazy var testButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("테스트버튼", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: #selector(testFunc), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func testFunc() {
-        print(888)
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,8 +75,8 @@ final class FilterView: UIView {
         addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.width.equalTo(UIScreen.main.bounds.width - 48)
-            make.height.equalTo(UIScreen.main.bounds.width - 48).multipliedBy(0.868)
-            make.top.leading.equalToSuperview()
+            make.height.equalTo((UIScreen.main.bounds.width - 48) * 0.892)
+            make.edges.equalToSuperview()
         }
     }
 }
@@ -137,14 +122,14 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(1)
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "FilterViewCell",
-            for: indexPath
-        ) as? FilterViewCell else { return }
-        print(2)
-        cell.layer.borderWidth = 1.5
-        cell.layer.borderColor = UIColor.gray70?.cgColor
-        cell.title.font = .spoqaMedium(size: 14)
+        collectionView.indexPathsForSelectedItems?
+            .filter {
+                $0.section == indexPath.section &&
+                $0.item != indexPath.item &&
+                $0.row != indexPath.row
+            }
+            .forEach {
+                collectionView.deselectItem(at: $0, animated: false)
+            }
     }
 }

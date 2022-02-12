@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, BottomSheetDelegate {
     }
     
     @objc func testClicked() {
-        let bottomSheet = BottomSheetController(contentView: testView, title: "조건 선택하기", topInset: 40, bottomInset: 332)
+        let bottomSheet = BottomSheetController(contentView: testView, title: "조건 선택하기", topInset: 40, bottomInset: 40)
         bottomSheet.delegate = self
         bottomSheet.setup(parentViewController: self)
     }
