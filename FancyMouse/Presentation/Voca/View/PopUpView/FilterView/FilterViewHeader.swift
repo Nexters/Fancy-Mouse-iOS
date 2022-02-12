@@ -10,8 +10,8 @@ import UIKit
 final class FilterViewHeader: UICollectionReusableView {
     lazy var title: UILabel = {
         let label = UILabel()
-        label.font = .spoqaMedium(size: 14)
-        label.textColor = .gray70
+        label.font = .spoqaRegular(size: 14)
+        label.textColor = .gray60
         return label
     }()
     

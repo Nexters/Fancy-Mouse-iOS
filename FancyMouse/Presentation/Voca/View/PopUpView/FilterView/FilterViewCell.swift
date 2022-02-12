@@ -11,7 +11,7 @@ final class FilterViewCell: UICollectionViewCell {
     lazy var title: UILabel = {
         let label = UILabel()
         label.font = .spoqaRegular(size: 14)
-        label.textColor = .gray70
+        label.textColor = .primary
         return label
     }()
     
@@ -29,11 +29,11 @@ final class FilterViewCell: UICollectionViewCell {
         didSet {
             if isSelected {
                 layer.borderWidth = 1.5
-                layer.borderColor = UIColor.gray70?.cgColor
+                layer.borderColor = UIColor.primary?.cgColor
                 title.font = .spoqaMedium(size: 14)
             } else {
                 layer.borderWidth = 1
-                layer.borderColor = UIColor.gray40?.cgColor
+                layer.borderColor = UIColor.primaryWeek?.cgColor
                 title.font = .spoqaRegular(size: 14)
             }
         }
@@ -43,7 +43,7 @@ final class FilterViewCell: UICollectionViewCell {
         backgroundColor = .white
         layer.cornerRadius = 12
         layer.borderWidth = 1
-        layer.borderColor = UIColor.gray40?.cgColor
+        layer.borderColor = UIColor.primaryWeek?.cgColor
         
         addSubview(title)
         title.snp.makeConstraints { make in
