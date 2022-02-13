@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CheckButton: View {
+struct IncompleteButton: View {
     @Binding var isTapped: Bool
     
     var body: some View {
@@ -38,7 +38,7 @@ struct CheckButton: View {
     }
 }
 
-struct XButton: View {
+struct CompleteButton: View {
     @Binding var isTapped: Bool
     
     var body: some View {
@@ -82,9 +82,9 @@ struct LearningView: View {
                 .padding(EdgeInsets(top: 30, leading: 24, bottom: 36, trailing: 24))
             
             HStack {
-                CheckButton(isTapped: $checkIsTapped)
+                CompleteButton(isTapped: $checkIsTapped)
                 Spacer()
-                XButton(isTapped: $xmarkIsTapped)
+                IncompleteButton(isTapped: $xmarkIsTapped)
             }
             .padding(EdgeInsets(top: 0, leading: 60, bottom: 24, trailing: 60))
         }
