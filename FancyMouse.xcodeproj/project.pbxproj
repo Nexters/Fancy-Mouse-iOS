@@ -50,6 +50,7 @@
 		D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F127B922DF0052D0F5 /* LearningView.swift */; };
 		D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */; };
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
+		D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */; };
 		E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */; };
 		E23CA6D627A2F82C00C8381E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D527A2F82C00C8381E /* Word.swift */; };
 		E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */; };
@@ -129,6 +130,7 @@
 		D1E738F127B922DF0052D0F5 /* LearningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningView.swift; sourceTree = "<group>"; };
 		D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		D1E738F527B930470052D0F5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntroView.swift; sourceTree = "<group>"; };
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
 		E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		D1E738F027B9227F0052D0F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */,
 				D1E738F127B922DF0052D0F5 /* LearningView.swift */,
 			);
 			path = View;
@@ -822,6 +825,7 @@
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
 				44F1518527AB95BC00C2239D /* VocaViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
+				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
 				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */,
