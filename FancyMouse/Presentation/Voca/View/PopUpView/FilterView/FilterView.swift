@@ -47,6 +47,7 @@ final class FilterView: UIView {
         let layout = UICollectionViewCompositionalLayout(section: section)
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
+        collectionView.isScrollEnabled = false
         collectionView.register(
             FilterViewHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
