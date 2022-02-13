@@ -7,9 +7,71 @@
 
 import SwiftUI
 
+struct CheckButton: View {
+    @Binding var isTapped: Bool
+    
+    var body: some View {
+        HStack(spacing: 5) {
+            Image("check")
+                .frame(width: 13, height: 16)
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: isTapped ? 8 : 16))
+            if isTapped {
+                Text("암기완료")
+                    .spoqaBold(size: 16)
+                    .padding(.trailing, 16)
+            }
+        }
+        .background(Color.folder02)
+        .foregroundColor(.white)
+        .cornerRadius(16)
+        .onTapGesture {
+            withAnimation(.interactiveSpring()) {
+                isTapped.toggle()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                withAnimation(.interactiveSpring()) {
+                    isTapped.toggle()
+                }
+            }
+        }
+    }
+}
+
+struct XButton: View {
+    @Binding var isTapped: Bool
+    
+    var body: some View {
+        HStack(spacing: 5) {
+            if isTapped {
+                Text("미암기")
+                    .spoqaBold(size: 16)
+                    .padding(.leading, 16)
+            }
+            
+            Image("xmark")
+                .frame(width: 16, height: 16)
+                .padding(EdgeInsets(top: 16, leading: isTapped ? 8 : 16, bottom: 16, trailing: 16))
+        }
+        .background(Color.folder07)
+        .foregroundColor(.white)
+        .cornerRadius(16)
+        .onTapGesture {
+            withAnimation(.interactiveSpring()) {
+                isTapped.toggle()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                withAnimation(.interactiveSpring()) {
+                    isTapped.toggle()
+                }
+            }
+        }
+    }
+}
+
 struct LearningView: View {
-    @State var checkIsTapped = false
-    @State var xmarkIsTapped = false
+    @State private var checkIsTapped = false
+    @State private var xmarkIsTapped = false
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -20,57 +82,9 @@ struct LearningView: View {
                 .padding(EdgeInsets(top: 30, leading: 24, bottom: 36, trailing: 24))
             
             HStack {
-                HStack(spacing: 5) {
-                    Image("check")
-                        .frame(width: 13, height: 16)
-                        .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: checkIsTapped ? 8 : 16))
-                    if checkIsTapped {
-                        Text("암기완료")
-                            .spoqaBold(size: 16)
-                            .padding(.trailing, 16)
-                    }
-                }
-                .background(Color.folder02)
-                .foregroundColor(.white)
-                .cornerRadius(16)
-                .onTapGesture {
-                    withAnimation(.interactiveSpring()) {
-                        checkIsTapped.toggle()
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        withAnimation(.interactiveSpring()) {
-                            checkIsTapped.toggle()
-                        }
-                    }
-                }
-                
+                CheckButton(isTapped: $checkIsTapped)
                 Spacer()
-                
-                HStack(spacing: 5) {
-                    if xmarkIsTapped {
-                        Text("미암기")
-                            .spoqaBold(size: 16)
-                            .padding(.leading, 16)
-                    }
-                    
-                    Image("xmark")
-                        .frame(width: 16, height: 16)
-                        .padding(EdgeInsets(top: 16, leading: xmarkIsTapped ? 8 : 16, bottom: 16, trailing: 16))
-                }
-                .background(Color.folder07)
-                .foregroundColor(.white)
-                .cornerRadius(16)
-                .onTapGesture {
-                    withAnimation(.interactiveSpring()) {
-                        xmarkIsTapped.toggle()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        withAnimation(.interactiveSpring()) {
-                            xmarkIsTapped.toggle()
-                        }
-                    }
-                }
+                XButton(isTapped: $xmarkIsTapped)
             }
             .padding(EdgeInsets(top: 0, leading: 60, bottom: 24, trailing: 60))
         }
