@@ -31,12 +31,12 @@ extension WordResponse {
     enum WordStatusResponse: Int, Decodable {
         case unknown, ready, inProgress, fininshed
         
-        var mappedWordStatus: Word.Status {
+        var mappedWordStatus: Word.MemorizationStatus {
             switch self {
             case .unknown: return .unknown
-            case .ready: return .ready
+            case .ready: return .incomplete
             case .inProgress: return .inProgress
-            case .fininshed: return .fininshed
+            case .fininshed: return .complete
             }
         }
     }
@@ -48,7 +48,7 @@ extension WordResponse {
             wordID: wordID, folderID: folderID,
             createdAt: createdAt,
             spelling: spelling, meanings: meanings,
-            status: status.mappedWordStatus,
+            memorizationStatus: status.mappedWordStatus,
             memo: memo, synonyms: synonyms, examples: examples,
             urlString: urlString
         )
