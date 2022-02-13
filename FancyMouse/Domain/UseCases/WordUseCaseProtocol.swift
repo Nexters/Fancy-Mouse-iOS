@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol WordUseCaseProtocol {
-    func changeWordStatus(to newStatus: Word.MemorizationStatus, of wordID: WordID) -> Observable<Word>
+    func changeMemorizationStatus(to newStatus: Word.MemorizationStatus, of wordID: WordID) -> Observable<Word>
 }
 
 protocol WordEditUseCaseProtocol {
