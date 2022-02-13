@@ -16,7 +16,7 @@ struct Word: Equatable {
     let createdAt: Date
     let spelling: String
     let meanings: [String]
-    let status: Status
+    let memorizationStatus: MemorizationStatus
     let memo: String
     let synonyms: [String]
     let examples: [String]
@@ -24,15 +24,23 @@ struct Word: Equatable {
 }
 
 extension Word {
-    enum Status {
-        case ready, inProgress, fininshed, unknown
+    enum MemorizationStatus {
+        case incomplete, inProgress, complete, unknown
         
         var description: String {
             switch self {
-            case .ready: return "미암기"
+            case .incomplete: return "미암기"
             case .inProgress: return "암기중"
-            case .fininshed: return "암기완료"
+            case .complete: return "암기완료"
             case .unknown: return "알수없음"
+            }
+        }
+        
+        var toggledStatus: Self? {
+            switch self {
+            case .incomplete: return .inProgress
+            case .inProgress: return .incomplete
+            default: return nil
             }
         }
     }
