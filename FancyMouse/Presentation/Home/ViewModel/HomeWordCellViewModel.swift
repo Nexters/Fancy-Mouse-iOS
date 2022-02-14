@@ -32,11 +32,27 @@ final class HomeWordCellViewModel {
         self.hidingStatusRelay = hidingStatusRelay
     }
     
-    func changeStatus(to status: Word.Status, of wordID: WordID) {
-        useCase.changeStatus(to: status, of: wordID)
+    func toggleMemorizationStatus() {
+        let currentWordStatus = word.memorizationStatus
+        
+        guard let toggledStatus = currentWordStatus.toggledStatus
+        else { return }
+        
+        changeMemorizationStatus(to: toggledStatus, of: word.wordID)
+    }
+}
+
+private extension HomeWordCellViewModel {
+    func changeMemorizationStatus(to status: Word.MemorizationStatus, of wordID: WordID) {
+        let isNotLoading = loadingRelay.value
+        guard isNotLoading else { return }
+        
+        loadingRelay.accept(true)
+        useCase.changeMemorizationStatus(to: status, of: wordID)
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.wordRelay.accept($0)
+                self?.loadingRelay.accept(false)
             })
             .disposed(by: disposeBag)
     }
