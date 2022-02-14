@@ -14,6 +14,7 @@ final class HomeWordCellViewModel {
     
     private let wordRelay: BehaviorRelay<Word>
     private let hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
+    private let loadingRelay: BehaviorRelay<Bool> = .init(value: false)
     
     private var word: Word {
         wordRelay.value
@@ -48,5 +49,9 @@ extension HomeWordCellViewModel {
     
     var hidingStatusObservable: Observable<HomeViewModel.HidingStatus> {
         hidingStatusRelay.asObservable()
+    }
+    
+    var loadingObservable: Observable<Bool> {
+        loadingRelay.asObservable()
     }
 }
