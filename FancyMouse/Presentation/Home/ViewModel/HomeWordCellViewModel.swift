@@ -15,6 +15,10 @@ final class HomeWordCellViewModel {
     private let wordRelay: BehaviorRelay<Word>
     private let hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
     
+    private var word: Word {
+        wordRelay.value
+    }
+    
     private let disposeBag = DisposeBag()
     
     init(
