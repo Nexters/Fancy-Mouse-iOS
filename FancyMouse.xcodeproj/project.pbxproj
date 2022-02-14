@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
-		4096687827B79699006BC6ED /* TestTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687727B79699006BC6ED /* TestTabbarViewController.swift */; };
 		4096687E27B79F7E006BC6ED /* AddFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* AddFolderView.swift */; };
 		4096688027B79FA5006BC6ED /* AddFolderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687F27B79FA5006BC6ED /* AddFolderViewCell.swift */; };
 		40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */; };
@@ -79,7 +78,6 @@
 /* Begin PBXFileReference section */
 		389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
-		4096687727B79699006BC6ED /* TestTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabbarViewController.swift; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* AddFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderView.swift; sourceTree = "<group>"; };
 		4096687F27B79FA5006BC6ED /* AddFolderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderViewCell.swift; sourceTree = "<group>"; };
 		40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAlertView.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				40A341A927B24D3C00D4D8DC /* FilterView.swift */,
 				40A341AB27B25CD200D4D8DC /* FilterViewCell.swift */,
 				40D2FD3027B48553002021C8 /* FilterViewHeader.swift */,
-				4096687727B79699006BC6ED /* TestTabbarViewController.swift */,
 			);
 			path = FilterView;
 			sourceTree = "<group>";
@@ -809,7 +806,6 @@
 				E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */,
 				E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */,
 				40DFDBAD27A832FE00FF07CF /* MemorizationView.swift in Sources */,
-				4096687827B79699006BC6ED /* TestTabbarViewController.swift in Sources */,
 				E283E02727A665D200FC340F /* WordResponse.swift in Sources */,
 				4470844227B4122D006F5796 /* FolderUseCase.swift in Sources */,
 				448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */,
