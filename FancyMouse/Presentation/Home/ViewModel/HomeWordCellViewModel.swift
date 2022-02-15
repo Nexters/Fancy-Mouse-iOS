@@ -14,6 +14,11 @@ final class HomeWordCellViewModel {
     
     private let wordRelay: BehaviorRelay<Word>
     private let hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
+    private let loadingRelay: BehaviorRelay<Bool> = .init(value: false)
+    
+    private var word: Word {
+        wordRelay.value
+    }
     
     private let disposeBag = DisposeBag()
     
@@ -27,11 +32,27 @@ final class HomeWordCellViewModel {
         self.hidingStatusRelay = hidingStatusRelay
     }
     
-    func changeStatus(to status: Word.Status, of wordID: WordID) {
-        useCase.changeStatus(to: status, of: wordID)
+    func toggleMemorizationStatus() {
+        let currentWordStatus = word.memorizationStatus
+        
+        guard let toggledStatus = currentWordStatus.toggledStatus
+        else { return }
+        
+        changeMemorizationStatus(to: toggledStatus, of: word.wordID)
+    }
+}
+
+private extension HomeWordCellViewModel {
+    func changeMemorizationStatus(to status: Word.MemorizationStatus, of wordID: WordID) {
+        let isNotLoading = loadingRelay.value
+        guard isNotLoading else { return }
+        
+        loadingRelay.accept(true)
+        useCase.changeMemorizationStatus(to: status, of: wordID)
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.wordRelay.accept($0)
+                self?.loadingRelay.accept(false)
             })
             .disposed(by: disposeBag)
     }
@@ -44,5 +65,9 @@ extension HomeWordCellViewModel {
     
     var hidingStatusObservable: Observable<HomeViewModel.HidingStatus> {
         hidingStatusRelay.asObservable()
+    }
+    
+    var loadingObservable: Observable<Bool> {
+        loadingRelay.asObservable()
     }
 }
