@@ -30,10 +30,10 @@ extension UIColor {
     static let folder10 = UIColor(named: "folder10")
     static let folder11 = UIColor(named: "folder11")
     static let folderBorder = UIColor(named: "folderBorder")
-    static let primary = UIColor(named: "primary")
+    static let primaryColor = UIColor(named: "primary")
     static let primaryWeek = UIColor(named: "primary_week")
     static let primaryDark = UIColor(named: "primary_dark")
-    static let secondary = UIColor(named: "secondary")
+    static let secondaryColor = UIColor(named: "secondary")
     static let secondaryWeek = UIColor(named: "secondary_week")
     static let secondaryDark = UIColor(named: "secondary_dark")
 }

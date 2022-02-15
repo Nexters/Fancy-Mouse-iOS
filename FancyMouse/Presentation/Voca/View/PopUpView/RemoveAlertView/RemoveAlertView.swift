@@ -59,7 +59,7 @@ final class RemoveAlertViewController: UIViewController {
         button.setTitle("확인", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .spoqaMedium(size: 16)
-        button.backgroundColor = .primary
+        button.backgroundColor = .primaryColor
         button.layer.cornerRadius = 10
         let action = UIAction(title: "acceptAction") { _ in
             self.delegate?.acceptWasTapped()
