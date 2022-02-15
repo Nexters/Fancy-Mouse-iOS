@@ -8,7 +8,7 @@
 import UIKit
 
 final class FilterViewCell: UICollectionViewCell {
-    lazy var title: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .spoqaRegular(size: 14)
         label.textColor = .primary
@@ -17,37 +17,46 @@ final class FilterViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
+        setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setUI()
+        setup()
     }
     
     override var isSelected: Bool {
         didSet {
-            if isSelected {
-                layer.borderWidth = 1.5
-                layer.borderColor = UIColor.primary?.cgColor
-                title.font = .spoqaMedium(size: 14)
-            } else {
-                layer.borderWidth = 1
-                layer.borderColor = UIColor.primaryWeek?.cgColor
-                title.font = .spoqaRegular(size: 14)
-            }
+            guard isSelected != oldValue else { return }
+            setupSelected(isSelected)
         }
     }
     
-    private func setUI() {
+    private func setupSelected(_ selected: Bool) {
+        if selected {
+            layer.borderWidth = 1.5
+            layer.borderColor = UIColor.primary?.cgColor
+            titleLabel.font = .spoqaMedium(size: 14)
+        } else {
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.primaryWeek?.cgColor
+            titleLabel.font = .spoqaRegular(size: 14)
+        }
+    }
+    
+    private func setup() {
         backgroundColor = .white
         layer.cornerRadius = 12
         layer.borderWidth = 1
         layer.borderColor = UIColor.primaryWeek?.cgColor
         
-        addSubview(title)
-        title.snp.makeConstraints { make in
+        addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
+    }
+    
+    func setupLabel(_ title: String) {
+        titleLabel.text = title
     }
 }

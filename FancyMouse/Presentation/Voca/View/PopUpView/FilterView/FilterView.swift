@@ -44,6 +44,7 @@ final class FilterView: UIView {
             alignment: .topLeading
         )
         section.boundarySupplementaryItems = [headerElement]
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
@@ -60,14 +61,14 @@ final class FilterView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
+        setup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setUI() {
+    private func setup() {
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -103,7 +104,7 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
             for: indexPath
         ) as? FilterViewCell else { return UICollectionViewCell() }
         
-        cell.title.text = title[indexPath.section][indexPath.row]
+        cell.setupLabel(title[indexPath.section][indexPath.row])
         return cell
     }
     
@@ -118,7 +119,7 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
             for: indexPath
         ) as? FilterViewHeader else { return UICollectionReusableView() }
         
-        headerView.title.text = type[indexPath.section]
+        headerView.setupLabel(type[indexPath.section])
         return headerView
     }
     
