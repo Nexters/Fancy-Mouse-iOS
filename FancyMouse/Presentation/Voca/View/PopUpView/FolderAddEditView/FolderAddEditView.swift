@@ -117,7 +117,7 @@ final class FolderAddEditView: UIView {
             make.leading.trailing.equalToSuperview()
         }
         
-        addSubview(collectionView)
+        backgroundView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.height.equalTo(width * 0.587)
             make.top.equalTo(colorLabel.snp.bottom).offset(12)
