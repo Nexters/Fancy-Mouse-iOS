@@ -60,6 +60,7 @@
 		E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */; };
 		E283E02227A6363300FC340F /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02127A6363300FC340F /* Folder.swift */; };
 		E283E02727A665D200FC340F /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02627A665D200FC340F /* WordResponse.swift */; };
+		E2D3278E27BD2D6B00D1458F /* WordMeaningsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D3278D27BD2D6B00D1458F /* WordMeaningsStackView.swift */; };
 		E2DEFCAA27BCF5E20066FD54 /* WordSpellingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCA927BCF5E20066FD54 /* WordSpellingLabel.swift */; };
 		E2DEFCAC27BCF65D0066FD54 /* WordMeaningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCAB27BCF65D0066FD54 /* WordMeaningView.swift */; };
 		E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */; };
@@ -147,6 +148,7 @@
 		E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProtocol.swift; sourceTree = "<group>"; };
 		E283E02127A6363300FC340F /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		E283E02627A665D200FC340F /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
+		E2D3278D27BD2D6B00D1458F /* WordMeaningsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMeaningsStackView.swift; sourceTree = "<group>"; };
 		E2DEFCA927BCF5E20066FD54 /* WordSpellingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSpellingLabel.swift; sourceTree = "<group>"; };
 		E2DEFCAB27BCF65D0066FD54 /* WordMeaningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMeaningView.swift; sourceTree = "<group>"; };
 		E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMemorizationBadgeButton.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				E2DEFCAB27BCF65D0066FD54 /* WordMeaningView.swift */,
 				E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */,
 				E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */,
+				E2D3278D27BD2D6B00D1458F /* WordMeaningsStackView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
+				E2D3278E27BD2D6B00D1458F /* WordMeaningsStackView.swift in Sources */,
 				D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */,
 				D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
