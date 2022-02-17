@@ -38,7 +38,7 @@ final class WordMoveViewCell: UITableViewCell {
     }
     
     private func wordMove() {
-        //Todo
+        //TODO
     }
     
     private func setup() {

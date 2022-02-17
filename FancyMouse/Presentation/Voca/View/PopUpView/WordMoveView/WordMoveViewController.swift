@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WordMoveView: UIViewController {
+final class WordMoveViewController: UIViewController {
     //Todo: DB연동 후 수정 예정
     private let mockData = ["폴더 01", "폴더 02",
                             "폴더 03", "폴더 04",
@@ -39,7 +39,7 @@ final class WordMoveView: UIViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 self.containerView.frame.origin = CGPoint(x: 0, y: self.view.frame.height)
                 self.dismiss(animated: true)
-            }, completion: nil)
+            })
         })
         button.addAction(action, for: .touchUpInside)
         return button
@@ -105,11 +105,11 @@ final class WordMoveView: UIViewController {
                 translationX: 0,
                 y: -self.containerView.frame.height
             )
-        }, completion: nil)
+        })
     }
 }
 
-extension WordMoveView: UITableViewDelegate, UITableViewDataSource {
+extension WordMoveViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mockData.count
     }
@@ -121,7 +121,7 @@ extension WordMoveView: UITableViewDelegate, UITableViewDataSource {
         ) as? WordMoveViewCell else { return UITableViewCell() }
         
         cell.setupLabel(mockData[indexPath.row])
-        //Todo: DB연동 후 수정 예정
+        //TODO: DB연동 후 수정 예정
         if indexPath.row == 0 {
             cell.setupSelected()
         }
