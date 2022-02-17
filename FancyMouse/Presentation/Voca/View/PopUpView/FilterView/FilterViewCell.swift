@@ -11,7 +11,7 @@ final class FilterViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .spoqaRegular(size: 14)
-        label.textColor = .primary
+        label.textColor = .primaryColor
         return label
     }()
     
@@ -35,7 +35,7 @@ final class FilterViewCell: UICollectionViewCell {
     private func setupSelected(_ selected: Bool) {
         if selected {
             layer.borderWidth = 1.5
-            layer.borderColor = UIColor.primary?.cgColor
+            layer.borderColor = UIColor.primaryColor?.cgColor
             titleLabel.font = .spoqaMedium(size: 14)
         } else {
             layer.borderWidth = 1
