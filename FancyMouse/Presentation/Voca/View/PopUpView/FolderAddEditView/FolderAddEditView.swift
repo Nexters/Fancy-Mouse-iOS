@@ -54,12 +54,16 @@ final class FolderAddEditView: UIView {
         return label
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
+        let size = (UIScreen.main.bounds.width - 48) * 0.146
         layout.minimumLineSpacing = 24
         layout.minimumInteritemSpacing = 41
-        layout.scrollDirection = .vertical
-        
+        layout.itemSize = CGSize(width: size, height: size)
+        return layout
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout
@@ -126,9 +130,7 @@ final class FolderAddEditView: UIView {
     }
 }
 
-extension FolderAddEditView: UICollectionViewDelegate,
-                             UICollectionViewDataSource,
-                             UICollectionViewDelegateFlowLayout {
+extension FolderAddEditView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -153,16 +155,6 @@ extension FolderAddEditView: UICollectionViewDelegate,
         }
         
         return cell
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let size = collectionView.frame.width * 0.146
-        
-        return CGSize(width: size, height: size)
     }
 }
 
