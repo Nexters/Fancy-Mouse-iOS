@@ -8,6 +8,12 @@
 import UIKit
 
 final class FolderAddEditView: UIView {
+    private enum CollectionViewConstants {
+        static let widthInset = 30
+        static let width = UIScreen.main.bounds.width - CGFloat(Self.widthInset * 2)
+        static let cellRatio = 0.152
+    }
+    
     private let colorList = [
         UIColor.folder01,
         UIColor.folder02,
@@ -56,7 +62,7 @@ final class FolderAddEditView: UIView {
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        let size = (UIScreen.main.bounds.width - 48) * 0.146
+        let size = CollectionViewConstants.width * CollectionViewConstants.cellRatio
         layout.minimumLineSpacing = 24
         layout.minimumInteritemSpacing = 41
         layout.itemSize = CGSize(width: size, height: size)
@@ -146,10 +152,11 @@ extension FolderAddEditView: UICollectionViewDelegate, UICollectionViewDataSourc
             withReuseIdentifier: "FolderAddEditViewCell",
             for: indexPath
         ) as? FolderAddEditViewCell else { return UICollectionViewCell() }
+        let isLastIndex = indexPath.row == colorList.count - 1
         
         cell.setupColor(colorList[indexPath.row] ?? UIColor())
         
-        if indexPath.row == colorList.count - 1 {
+        if isLastIndex {
             cell.setupDisabled()
             cell.isUserInteractionEnabled = false
         }
