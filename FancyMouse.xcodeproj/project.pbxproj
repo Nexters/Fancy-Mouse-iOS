@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
+		401837ED27BE620D00773574 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837EC27BE620D00773574 /* UIViewController+Extensions.swift */; };
+		401837EF27BE6D0A00773574 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837EE27BE6D0A00773574 /* SearchViewController.swift */; };
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
 		404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
@@ -18,7 +20,7 @@
 		40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D2FD3027B48553002021C8 /* FilterViewHeader.swift */; };
 		40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */; };
 		40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */; };
-		40E9666A27BDE0BE0020DF89 /* WordMoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666927BDE0BE0020DF89 /* WordMoveView.swift */; };
+		40E9666A27BDE0BE0020DF89 /* WordMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */; };
 		40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */; };
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
 		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
@@ -90,6 +92,8 @@
 
 /* Begin PBXFileReference section */
 		389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		401837EC27BE620D00773574 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		401837EE27BE6D0A00773574 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
 		404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
@@ -100,7 +104,7 @@
 		40D2FD3027B48553002021C8 /* FilterViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewHeader.swift; sourceTree = "<group>"; };
 		40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCellViewModel.swift; sourceTree = "<group>"; };
 		40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCell.swift; sourceTree = "<group>"; };
-		40E9666927BDE0BE0020DF89 /* WordMoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveView.swift; sourceTree = "<group>"; };
+		40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveViewController.swift; sourceTree = "<group>"; };
 		40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveViewCell.swift; sourceTree = "<group>"; };
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +265,7 @@
 		40E9666827BDE0100020DF89 /* WordMoveView */ = {
 			isa = PBXGroup;
 			children = (
-				40E9666927BDE0BE0020DF89 /* WordMoveView.swift */,
+				40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */,
 				40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */,
 			);
 			path = WordMoveView;
@@ -314,6 +318,7 @@
 			children = (
 				44A8A97C27B6F983004C8E6C /* FolderCell.swift */,
 				44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */,
+				401837EE27BE6D0A00773574 /* SearchViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				D16383FC27B011F1005C8326 /* UIFont+Extensions.swift */,
 				D1E738F527B930470052D0F5 /* View+Extensions.swift */,
 				E2DEFCAF27BCF6D50066FD54 /* UIView+Extensions.swift */,
+				401837EC27BE620D00773574 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -870,6 +876,7 @@
 				40A341AC27B25CD200D4D8DC /* FilterViewCell.swift in Sources */,
 				E23CA6DF27A2F9F200C8381E /* String+Extensions.swift in Sources */,
 				E2D3279027BD2EDB00D1458F /* HomeWordCollectionView.swift in Sources */,
+				401837EF27BE6D0A00773574 /* SearchViewController.swift in Sources */,
 				4096688027B79FA5006BC6ED /* FolderAddEditViewCell.swift in Sources */,
 				E283E02227A6363300FC340F /* Folder.swift in Sources */,
 				4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */,
@@ -879,7 +886,8 @@
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */,
 				44A8A97D27B6F983004C8E6C /* FolderCell.swift in Sources */,
-				40E9666A27BDE0BE0020DF89 /* WordMoveView.swift in Sources */,
+				401837ED27BE620D00773574 /* UIViewController+Extensions.swift in Sources */,
+				40E9666A27BDE0BE0020DF89 /* WordMoveViewController.swift in Sources */,
 				44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */,
 				E2DEFCB027BCF6D50066FD54 /* UIView+Extensions.swift in Sources */,
 				E2DEFCAC27BCF65D0066FD54 /* WordMeaningView.swift in Sources */,
