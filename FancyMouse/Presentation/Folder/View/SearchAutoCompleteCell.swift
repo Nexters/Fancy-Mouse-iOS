@@ -5,6 +5,7 @@
 //  Created by 한상진 on 2022/02/19.
 //
 
+import RxSwift
 import UIKit
 
 final class SearchAutoCompleteCell: UITableViewCell {
@@ -17,6 +18,7 @@ final class SearchAutoCompleteCell: UITableViewCell {
     private lazy var wordLabel: UILabel = {
         let label = UILabel()
         label.font = .spoqaRegular(size: 16)
+        label.textColor = .gray50
         return label
     }()
     
@@ -57,8 +59,15 @@ final class SearchAutoCompleteCell: UITableViewCell {
         }
     }
     
-    func setupData(word: String, meaning: String) {
-        wordLabel.text = word
+    func setupData(word: String, meaning: String, inputText: String) {
+        let attributedStr = NSMutableAttributedString(string: word)
+        
+        attributedStr.addAttribute(
+            .foregroundColor,
+            value: UIColor.primaryColor as Any,
+            range: (word as NSString).range(of: inputText, options: .caseInsensitive)
+        )
+        wordLabel.attributedText = attributedStr
         meaningLabel.text = meaning
     }
 }
