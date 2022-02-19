@@ -27,12 +27,14 @@ class FolderCell: UICollectionViewCell {
     var folderImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "FolderImage")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     var moreImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "more")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -40,7 +42,8 @@ class FolderCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "폴더1"
         label.font = .spoqaBold(size: 16)
-        label.textColor = UIColor.primaryDark
+        label.textColor = .darkGray
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -48,7 +51,8 @@ class FolderCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "32"
         label.font = .spoqaRegular(size: 14)
-        label.textColor = UIColor.gray60
+        label.textColor = .darkGray
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
