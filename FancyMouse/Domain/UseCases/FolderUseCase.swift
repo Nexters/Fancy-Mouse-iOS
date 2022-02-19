@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import RxSwift
+
+protocol FolderUseCase {
+    func createFolder(folderName: String, folderColor: String) -> Observable<Folder>
+    
+    func folderList() -> Observable<[Folder]>
+    
+    func update(folder: Folder, folderColor: String, folderName: String) -> Observable<Folder>
+
+    func delete(folder: Folder) -> Observable<Folder>
+}
