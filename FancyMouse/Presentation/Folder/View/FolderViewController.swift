@@ -11,12 +11,12 @@ import SnapKit
 import UIKit
 
 final class FolderViewController: UIViewController {
-    private var folderCount = 12
-    private var disposeBag = DisposeBag()
+    private let folderCount = 12
+    private let disposeBag = DisposeBag()
     
     // MARK: dummy data
     private let folderNameList = [ "폴더1", "수능영어", "토익단어", "TOEFL"]
-    private var webTempString = "www.naver.com"
+    private let webTempString = "www.naver.com"
     
     private lazy var emojiView: UIView = {
         let view = UIView()
@@ -51,9 +51,9 @@ final class FolderViewController: UIViewController {
     }()
     
     private lazy var pasteImageView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "ic_copy")
-        return image
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "ic_copy")
+        return imageView
     }()
     
     private lazy var pasteLabel: UILabel = {
@@ -70,9 +70,9 @@ final class FolderViewController: UIViewController {
     }()
     
     private lazy var folderImageView: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "Folder")
-        return image
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "Folder")
+        return imageView
     }()
     
     private var folderCollectionView: UICollectionView = {
