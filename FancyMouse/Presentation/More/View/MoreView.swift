@@ -15,6 +15,7 @@ enum MoreListRowType: String {
 
 struct MoreListRow: View {
     let type: MoreListRowType
+    let versionInfo = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     var body: some View {
         HStack {
@@ -25,7 +26,7 @@ struct MoreListRow: View {
             Spacer()
             
             if type == .versionInfo {
-                Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")
+                Text(self.versionInfo ?? "")
                     .spoqaBold(size: 12)
                     .foregroundColor(.secondaryColor)
                     .padding(EdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10))
@@ -77,6 +78,7 @@ struct MoreView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 TitleView()
+                
                 ProfileView()
             
                 VStack(spacing: 12) {
