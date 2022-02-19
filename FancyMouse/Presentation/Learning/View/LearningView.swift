@@ -76,10 +76,9 @@ struct LearningView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             // TODO: 카드뷰 개발 중, 개발 완료후 교체 예정
-            Rectangle()
-                .foregroundColor(.white)
-                .cornerRadius(30)
-                .padding(EdgeInsets(top: 30, leading: 24, bottom: 36, trailing: 24))
+            
+            CardView()
+                .padding(EdgeInsets(top: 40, leading: 24, bottom: 60, trailing: 24))
             
             HStack {
                 CompleteButton(isTapped: $checkIsTapped)
