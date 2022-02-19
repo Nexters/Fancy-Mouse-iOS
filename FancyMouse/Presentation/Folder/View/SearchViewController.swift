@@ -7,7 +7,6 @@
 
 import RxCocoa
 import RxSwift
-import UIKit
 
 final class SearchViewController: UIViewController {
     private var searchTextInput: String?
