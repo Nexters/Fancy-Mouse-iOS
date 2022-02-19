@@ -13,7 +13,7 @@ protocol FolderUseCase {
     
     func folderList() -> Observable<[Folder]>
     
-    func update(folder: Folder, folderColor: String, name: String) -> Observable<Folder>
+    func update(folder: Folder, folderColor: String, folderName: String) -> Observable<Folder>
 
     func delete(folder: Folder) -> Observable<Folder>
 }

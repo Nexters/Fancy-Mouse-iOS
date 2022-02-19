@@ -10,6 +10,9 @@
 		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
 		401837ED27BE620D00773574 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837EC27BE620D00773574 /* UIViewController+Extensions.swift */; };
 		401837EF27BE6D0A00773574 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837EE27BE6D0A00773574 /* SearchViewController.swift */; };
+		401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */; };
+		401837F427C01A3B00773574 /* SearchRecentWordsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837F327C01A3B00773574 /* SearchRecentWordsCell.swift */; };
+		401837F627C02EE500773574 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837F527C02EE500773574 /* SearchViewModel.swift */; };
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
 		404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
@@ -51,6 +54,9 @@
 		D1AFE738279C0FB20082D680 /* FancyMouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */; };
 		D1AFE73A279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */; };
 		D1B83E2027B95EEF00AD7A70 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B83E1F27B95EEF00AD7A70 /* MoreView.swift */; };
+		D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB209527C0BF6200EF3F6D /* CardView.swift */; };
+		D1DB209827C1158C00EF3F6D /* MakersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB209727C1158C00EF3F6D /* MakersView.swift */; };
+		D1DB209A27C115AA00EF3F6D /* OpenSourceLicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB209927C115AA00EF3F6D /* OpenSourceLicenseView.swift */; };
 		D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F127B922DF0052D0F5 /* LearningView.swift */; };
 		D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */; };
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
@@ -94,6 +100,9 @@
 		389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		401837EC27BE620D00773574 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		401837EE27BE6D0A00773574 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutoCompleteCell.swift; sourceTree = "<group>"; };
+		401837F327C01A3B00773574 /* SearchRecentWordsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecentWordsCell.swift; sourceTree = "<group>"; };
+		401837F527C02EE500773574 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
 		404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
@@ -142,6 +151,9 @@
 		D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseUITests.swift; sourceTree = "<group>"; };
 		D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D1B83E1F27B95EEF00AD7A70 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		D1DB209527C0BF6200EF3F6D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D1DB209727C1158C00EF3F6D /* MakersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakersView.swift; sourceTree = "<group>"; };
+		D1DB209927C115AA00EF3F6D /* OpenSourceLicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceLicenseView.swift; sourceTree = "<group>"; };
 		D1E738F127B922DF0052D0F5 /* LearningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningView.swift; sourceTree = "<group>"; };
 		D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		D1E738F527B930470052D0F5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
@@ -309,6 +321,7 @@
 			children = (
 				44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */,
 				44A8A97A27B6F94C004C8E6C /* FolderViewModel.swift */,
+				401837F527C02EE500773574 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -319,6 +332,8 @@
 				44A8A97C27B6F983004C8E6C /* FolderCell.swift */,
 				44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */,
 				401837EE27BE6D0A00773574 /* SearchViewController.swift */,
+				401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */,
+				401837F327C01A3B00773574 /* SearchRecentWordsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +465,8 @@
 			isa = PBXGroup;
 			children = (
 				D1B83E1F27B95EEF00AD7A70 /* MoreView.swift */,
+				D1DB209727C1158C00EF3F6D /* MakersView.swift */,
+				D1DB209927C115AA00EF3F6D /* OpenSourceLicenseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,6 +484,7 @@
 			children = (
 				D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */,
 				D1E738F127B922DF0052D0F5 /* LearningView.swift */,
+				D1DB209527C0BF6200EF3F6D /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -882,6 +900,7 @@
 				4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */,
 				446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
+				D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */,
 				40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */,
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */,
@@ -891,15 +910,20 @@
 				44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */,
 				E2DEFCB027BCF6D50066FD54 /* UIView+Extensions.swift in Sources */,
 				E2DEFCAC27BCF65D0066FD54 /* WordMeaningView.swift in Sources */,
+				D1DB209A27C115AA00EF3F6D /* OpenSourceLicenseView.swift in Sources */,
 				D1B83E2027B95EEF00AD7A70 /* MoreView.swift in Sources */,
 				404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */,
+				401837F427C01A3B00773574 /* SearchRecentWordsCell.swift in Sources */,
 				44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */,
 				4456BFB227A849720006D90B /* TabBarController.swift in Sources */,
 				40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */,
+				D1DB209827C1158C00EF3F6D /* MakersView.swift in Sources */,
+				401837F627C02EE500773574 /* SearchViewModel.swift in Sources */,
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
 				44F1518527AB95BC00C2239D /* VocaViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
 				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
+				401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */,
 				E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */,
 				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
