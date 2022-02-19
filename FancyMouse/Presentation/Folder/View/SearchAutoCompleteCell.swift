@@ -37,6 +37,7 @@ final class SearchAutoCompleteCell: UITableViewCell {
     }
     
     private func setup() {
+        selectionStyle = .none
         backgroundColor = .gray30
         
         addSubview(searchImageView)

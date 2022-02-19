@@ -36,15 +36,7 @@ final class SearchViewModel {
     private let searchResult = BehaviorSubject<[String: String]>(value: [:])
     private let disposeBag = DisposeBag()
     
-    private var spellingList = [String]()
-    private var meaningList = [String]()
-    
     func transform(input: Input) -> Output {
-        for data in mockData {
-            spellingList.append(data.spelling)
-            meaningList.append(data.meaning)
-        }
-        
         input.searchTextInput
             .bind(to: searchText)
             .disposed(by: disposeBag)
@@ -53,14 +45,12 @@ final class SearchViewModel {
             .bind(onNext: { str in
                 var resultList = [String: String]()
                 
-                for index in 0..<self.spellingList.count where !str.isEmpty {
-                    let target = self.spellingList[index].uppercased()
+                for item in self.mockData where !str.isEmpty {
+                    let target = item.spelling.uppercased()
                     let input = str.uppercased()
                     
                     let equal = target.hasPrefix(input)
-                    if equal {
-                        resultList[self.spellingList[index]] = self.meaningList[index]
-                    }
+                    if equal { resultList[item.spelling] = item.meaning }
                 }
                 self.searchResult.onNext(resultList)
             }).disposed(by: disposeBag)
