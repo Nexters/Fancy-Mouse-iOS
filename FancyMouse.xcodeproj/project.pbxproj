@@ -15,6 +15,7 @@
 		401837F627C02EE500773574 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837F527C02EE500773574 /* SearchViewModel.swift */; };
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
 		404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */; };
+		4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
 		4096688027B79FA5006BC6ED /* FolderAddEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */; };
 		40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */; };
@@ -105,6 +106,7 @@
 		401837F527C02EE500773574 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
 		404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextBuilder.swift; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
 		4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditViewCell.swift; sourceTree = "<group>"; };
 		40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAlertView.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 			children = (
 				E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */,
 				D10A56EC27A80D78002466DA /* BottomSheet.swift */,
+				4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -931,6 +934,7 @@
 				44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */,
 				D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */,
 				D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */,
+				4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */,
 				4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */,
 				44A8A97B27B6F94C004C8E6C /* FolderViewModel.swift in Sources */,
 				E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */,
