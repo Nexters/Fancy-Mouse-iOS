@@ -15,6 +15,7 @@ struct MakersView: View {
                     .spoqaRegular(size: 20)
                     .foregroundColor(.white)
                 
+                //FIXME: 이미지 바뀔 가능성 있음
                 Image("makers")
                     .resizable()
                     .scaledToFit()
