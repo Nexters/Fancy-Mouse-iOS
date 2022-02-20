@@ -39,17 +39,15 @@ final class EllipsisView: UIView {
     }
     
     func addComponent(title: String, imageName: String, action: UIAction) {
-        let button: UIButton = {
-            let button = UIButton()
-            let image = UIImage(named: imageName)
-            button.setTitle(title, for: .normal)
-            button.setTitleColor(.white, for: .normal)
-            button.titleLabel?.font = .spoqaMedium(size: 14)
-            button.setImage(image, for: .normal)
-            button.semanticContentAttribute = .forceLeftToRight
-            button.addAction(action, for: .touchUpInside)
-            return button
-        }()
+        let button = UIButton()
+        let image = UIImage(named: imageName)
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .spoqaMedium(size: 14)
+        button.setImage(image, for: .normal)
+        button.semanticContentAttribute = .forceLeftToRight
+        button.addAction(action, for: .touchUpInside)
+        
         stackView.addArrangedSubview(button)
     }
 }
