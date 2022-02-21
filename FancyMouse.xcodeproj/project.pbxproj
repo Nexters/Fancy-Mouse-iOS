@@ -16,6 +16,7 @@
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
 		404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */; };
 		4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */; };
+		4080542D27C32ABC00B51574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4080542C27C32ABC00B51574 /* GoogleService-Info.plist */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
 		4096688027B79FA5006BC6ED /* FolderAddEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */; };
 		40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */; };
@@ -107,6 +108,7 @@
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
 		404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextBuilder.swift; sourceTree = "<group>"; };
+		4080542C27C32ABC00B51574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
 		4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditViewCell.swift; sourceTree = "<group>"; };
 		40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAlertView.swift; sourceTree = "<group>"; };
@@ -603,6 +605,7 @@
 		E2B0711327A0547000EE8373 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4080542C27C32ABC00B51574 /* GoogleService-Info.plist */,
 				D16383FE27B01685005C8326 /* Fonts */,
 				D1AFE724279C0FB20082D680 /* Info.plist */,
 				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
@@ -743,6 +746,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */,
+				4080542D27C32ABC00B51574 /* GoogleService-Info.plist in Resources */,
 				D163840027B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf in Resources */,
 				D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */,
 				D163840427B01716005C8326 /* SpoqaHanSansNeo-Regular.otf in Resources */,
