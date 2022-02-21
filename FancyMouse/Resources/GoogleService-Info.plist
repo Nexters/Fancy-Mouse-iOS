@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>75197683931-4r7tpfesiqjgueqsqkgoukm9fi6faop8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.75197683931-4r7tpfesiqjgueqsqkgoukm9fi6faop8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDwSj21DovbTT54XcMP6GDWO88xw1zcav4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>75197683931</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.iOS.FancyMouse</string>
+	<key>PROJECT_ID</key>
+	<string>fancymouse-cb040</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fancymouse-cb040.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:75197683931:ios:c508a2e5b5ae4cb99954fe</string>
+	<key>DATABASE_URL</key>
+	<string>https://fancymouse-cb040-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
