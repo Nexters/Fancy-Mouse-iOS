@@ -11,6 +11,8 @@ target 'FancyMouse' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SnapKit'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'FancyMouseTests' do
     inherit! :search_paths
