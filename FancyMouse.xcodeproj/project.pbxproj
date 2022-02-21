@@ -25,6 +25,7 @@
 		40A341A827AC66C200D4D8DC /* RemoveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */; };
 		40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A341A927B24D3C00D4D8DC /* FilterView.swift */; };
 		40A341AC27B25CD200D4D8DC /* FilterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A341AB27B25CD200D4D8DC /* FilterViewCell.swift */; };
+		40CF121627C3C7600018931D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF121527C3C7600018931D /* CoreDataManager.swift */; };
 		40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D2FD3027B48553002021C8 /* FilterViewHeader.swift */; };
 		40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */; };
 		40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */; };
@@ -120,6 +121,7 @@
 		40A341A727AC66C200D4D8DC /* RemoveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAlertView.swift; sourceTree = "<group>"; };
 		40A341A927B24D3C00D4D8DC /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		40A341AB27B25CD200D4D8DC /* FilterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewCell.swift; sourceTree = "<group>"; };
+		40CF121527C3C7600018931D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		40D2FD3027B48553002021C8 /* FilterViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewHeader.swift; sourceTree = "<group>"; };
 		40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCellViewModel.swift; sourceTree = "<group>"; };
 		40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCell.swift; sourceTree = "<group>"; };
@@ -268,9 +270,10 @@
 		40A031DD27C3B45300473FB6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				40A031DE27C3B45F00473FB6 /* User.xcdatamodeld */,
 				40A031E127C3B5A800473FB6 /* User+CoreDataClass.swift */,
 				40A031E227C3B5A800473FB6 /* User+CoreDataProperties.swift */,
-				40A031DE27C3B45F00473FB6 /* User.xcdatamodeld */,
+				40CF121527C3C7600018931D /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */,
 				D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */,
 				D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */,
+				40CF121627C3C7600018931D /* CoreDataManager.swift in Sources */,
 				4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */,
 				4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */,
 				44A8A97B27B6F94C004C8E6C /* FolderViewModel.swift in Sources */,
