@@ -59,8 +59,9 @@ class AttributedTextBuilder: BuilderType {
     }
     
     func build() -> NSMutableAttributedString {
-        guard let text = self.text else { return NSMutableAttributedString() }
-        guard let range = self.range else { return NSMutableAttributedString() }
+        guard let text = self.text, let range = self.range else {
+            return NSMutableAttributedString()
+        }
         let attributedString = NSMutableAttributedString(string: text)
         
         if let color = backgroundColor {
