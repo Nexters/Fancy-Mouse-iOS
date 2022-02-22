@@ -8,17 +8,35 @@
 import UIKit
 
 final class WordMeaningsStackView: UIStackView {
+    init() {
+        super.init(frame: .zero)
+        
+        setup()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func addSubMeaningViews(with meanings: [String]) {
         meanings.enumerated().forEach { index, meaning in
             addSubMeaningView(index: index + 1, meaning: meaning)
         }
     }
+}
     
-    private func addSubMeaningView(index: Int, meaning: String) {
+private extension WordMeaningsStackView {
+    func setup() {
+        axis = .vertical
+        distribution = .equalSpacing
+        alignment = .fill
+        spacing = 6
+    }
+    
+    func addSubMeaningView(index: Int, meaning: String) {
         let meaningView = WordMeaningView()
         meaningView.index = index
         meaningView.meaning = meaning
-        meaningView.translatesAutoresizingMaskIntoConstraints = false
         
         addArrangedSubview(meaningView)
     }
