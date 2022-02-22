@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol RemoveAlertDelegate: AnyObject {
+protocol DeletionAlertDelegate: AnyObject {
     func cancelWasTapped()
-    func acceptWasTapped()
+    func deleteWasTapped()
 }
 
-final class RemoveAlertViewController: UIViewController {
-    private let removeTarget: String
-    private let removeWordCount: Int
+final class DeletionAlertViewController: UIViewController {
+    private let deleteTarget: String
+    private let deleteWordCount: Int?
     
     private let alertView: UIView = {
         let view = UIView()
@@ -25,30 +25,30 @@ final class RemoveAlertViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "선택한 \(removeTarget)를 정말 삭제하시겠어요?"
-        label.textColor = .gray90
-        label.font = .spoqaBold(size: 16)
+        label.text = "이 \(deleteTarget)를 정말 삭제하시겠어요?"
+        label.textColor = .primaryColor
+        label.font = .spoqaBold(size: 18)
         return label
     }()
     
     private lazy var subLabel: UILabel = {
         let label = UILabel()
-        label.text = "폴더 안의 \(removeWordCount)개 단어도 함께 삭제돼요."
         label.textColor = .gray60
         label.font = .spoqaMedium(size: 14)
+        label.textAlignment = .center
         return label
     }()
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setTitle("취소", for: .normal)
+        button.setTitle("아니요", for: .normal)
         button.setTitleColor(.gray60, for: .normal)
-        button.titleLabel?.font = .spoqaMedium(size: 16)
+        button.titleLabel?.font = .spoqaMedium(size: 14)
         button.backgroundColor = .gray30
         button.layer.cornerRadius = 10
-        let action = UIAction(title: "cancelAction") { _ in
+        let action = UIAction { _ in
             self.delegate?.cancelWasTapped()
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -56,24 +56,24 @@ final class RemoveAlertViewController: UIViewController {
     
     private lazy var acceptButton: UIButton = {
         let button = UIButton()
-        button.setTitle("확인", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .spoqaMedium(size: 16)
+        button.setTitle("삭제하기", for: .normal)
+        button.setTitleColor(.secondaryColor, for: .normal)
+        button.titleLabel?.font = .spoqaMedium(size: 14)
         button.backgroundColor = .primaryColor
         button.layer.cornerRadius = 10
-        let action = UIAction(title: "acceptAction") { _ in
-            self.delegate?.acceptWasTapped()
-            self.dismiss(animated: true, completion: nil)
+        let action = UIAction { _ in
+            self.delegate?.deleteWasTapped()
+            self.dismiss(animated: true)
         }
         button.addAction(action, for: .touchUpInside)
         return button
     }()
     
-    weak var delegate: RemoveAlertDelegate?
+    weak var delegate: DeletionAlertDelegate?
     
-    init(removeTarget: String, removeWordCount: Int) {
-        self.removeTarget = removeTarget
-        self.removeWordCount = removeWordCount
+    init(target: String, wordCount: Int?) {
+        self.deleteTarget = target
+        self.deleteWordCount = wordCount
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -83,47 +83,71 @@ final class RemoveAlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setupView()
+        setupLayout()
+        setupSubLabel()
     }
     
-    private func setUI() {
+    private func setupView() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         view.addSubview(alertView)
+        alertView.addSubview(titleLabel)
+        alertView.addSubview(cancelButton)
+        alertView.addSubview(acceptButton)
+    }
+    
+    private func setupLayout() {
         alertView.snp.makeConstraints { make in
-            make.width.equalTo(335)
-            make.height.equalTo(removeWordCount != 0 ? 190 : 158)
+            make.width.equalTo(315)
+            make.height.equalTo(161)
             make.centerY.centerX.equalToSuperview()
         }
         
-        alertView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
             make.centerX.equalToSuperview()
         }
         
-        if removeWordCount != 0 {
-            alertView.addSubview(subLabel)
-            subLabel.snp.makeConstraints { make in
-                make.top.equalTo(titleLabel.snp.bottom).offset(12)
-                make.centerX.equalToSuperview()
-            }
-        }
-        
-        alertView.addSubview(cancelButton)
-        cancelButton.snp.makeConstraints { make in
-            make.height.equalTo(48)
-            make.width.equalTo(144)
-            make.leading.equalToSuperview().offset(20)
-            make.bottom.equalToSuperview().offset(-20)
-        }
-        
-        alertView.addSubview(acceptButton)
         acceptButton.snp.makeConstraints { make in
             make.height.equalTo(48)
-            make.width.equalTo(144)
+            make.width.equalTo(132)
             make.trailing.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().offset(-20)
         }
+        
+        cancelButton.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.width.equalTo(132)
+            make.leading.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
+        }
+    }
+    
+    private func setupSubLabel() {
+        if deleteWordCount == 0 { return }
+            
+        subLabel.text = deleteWordCount == nil ? "한 번 삭제된 단어는 복구할 수 없어요." : "폴더 안의 \(deleteWordCount ?? 0)개의 단어도 함께 삭제돼요."
+        
+        alertView.addSubview(subLabel)
+        alertView.snp.updateConstraints { make in
+            make.height.equalTo(193)
+        }
+        subLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        guard let subLabeltext = subLabel.text, let count = deleteWordCount else { return }
+        
+        let subLabelAttributedString = NSMutableAttributedString
+            .Builder()
+            .withString(subLabeltext)
+            .withForegroundColor(.primaryColor)
+            .withRange(from: subLabeltext, end: String(count))
+            .build()
+        
+        subLabel.attributedText = subLabelAttributedString
     }
 }
