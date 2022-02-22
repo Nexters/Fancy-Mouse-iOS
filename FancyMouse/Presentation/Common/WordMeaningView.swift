@@ -12,16 +12,28 @@ final class WordMeaningView: UIView {
     private let meaningLabel = UILabel()
     
     var index: Int? {
-        didSet(newValue) {
-            guard let newValue = newValue else { return }
-            
-            indexLabel.text = "\(newValue)."
+        didSet {
+            indexLabel.text = "\(index ?? 0)."
         }
     }
     
     var meaning: String? {
         didSet {
-            meaningLabel.text = meaning
+            let attributedString = NSMutableAttributedString(string: meaning ?? "")
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 6
+            attributedString.addAttribute(
+                NSAttributedString.Key.paragraphStyle,
+                value: paragraphStyle,
+                range: NSRange(location: 0, length: attributedString.length)
+            )
+            meaningLabel.attributedText = attributedString
+        }
+    }
+    
+    var meaningLineNumber: Int? {
+        didSet {
+            meaningLabel.numberOfLines = meaningLineNumber ?? 0
         }
     }
     
@@ -34,10 +46,6 @@ final class WordMeaningView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func updateMeaningLineNumber(with number: Int) {
-        meaningLabel.numberOfLines = number
     }
 }
 
@@ -63,7 +71,7 @@ private extension WordMeaningView {
             indexLabel.heightAnchor.constraint(equalToConstant: 18),
             
             meaningLabel.topAnchor.constraint(equalTo: indexLabel.topAnchor),
-            meaningLabel.heightAnchor.constraint(equalTo: indexLabel.heightAnchor),
+            meaningLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             meaningLabel.leadingAnchor.constraint(equalTo: indexLabel.trailingAnchor, constant: 6),
             meaningLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
