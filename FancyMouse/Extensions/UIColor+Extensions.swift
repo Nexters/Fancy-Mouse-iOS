@@ -36,4 +36,22 @@ extension UIColor {
     static let secondaryColor = UIColor(named: "secondary")
     static let secondaryWeek = UIColor(named: "secondary_week")
     static let secondaryDark = UIColor(named: "secondary_dark")
+    
+    var name: String? {
+        switch self {
+        case UIColor.folder00: return "folder00"
+        case UIColor.folder01: return "folder01"
+        case UIColor.folder02: return "folder02"
+        case UIColor.folder03: return "folder03"
+        case UIColor.folder04: return "folder04"
+        case UIColor.folder05: return "folder05"
+        case UIColor.folder06: return "folder06"
+        case UIColor.folder07: return "folder07"
+        case UIColor.folder08: return "folder08"
+        case UIColor.folder09: return "folder09"
+        case UIColor.folder10: return "folder10"
+        case UIColor.folder11: return "folder11"
+        default: return nil
+        }
+    }
 }
