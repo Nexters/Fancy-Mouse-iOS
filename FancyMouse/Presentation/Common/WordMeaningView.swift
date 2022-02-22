@@ -31,9 +31,9 @@ final class WordMeaningView: UIView {
         }
     }
     
-    var meaningLineNumber: Int? {
+    var meaningLineNumber: Int = 0 {
         didSet {
-            meaningLabel.numberOfLines = meaningLineNumber ?? 0
+            meaningLabel.numberOfLines = meaningLineNumber
         }
     }
     
@@ -56,6 +56,7 @@ private extension WordMeaningView {
         
         meaningLabel.textColor = .gray70
         meaningLabel.font = .spoqaRegular(size: 14)
+        meaningLabel.numberOfLines = meaningLineNumber
     }
     
     func setupLayout() {
