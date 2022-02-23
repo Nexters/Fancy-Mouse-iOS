@@ -36,4 +36,6 @@ extension UIColor {
     static let secondaryColor = UIColor(named: "secondary")
     static let secondaryWeek = UIColor(named: "secondary_week")
     static let secondaryDark = UIColor(named: "secondary_dark")
+    static let gradientBack = UIColor(named: "gradient_back")
+    static let gradientEnd = UIColor(named: "gradient_end")
 }
