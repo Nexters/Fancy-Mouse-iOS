@@ -41,7 +41,7 @@ final class HomeViewController: UIViewController {
         label.textColor = .white
         label.text = "\(wordCount) 개 / 200 개"
         label.font = .spoqaBold(size: 12)
-        label.textColor = UIColor.gray30
+        label.textColor = .gray30
         return label
     }()
     
@@ -63,7 +63,7 @@ final class HomeViewController: UIViewController {
     
     private lazy var gradientView: UIView = {
         var view = ProgressGradientView()
-        view.backgroundColor = UIColor.gradientBack
+        view.backgroundColor = .gradientBack
         return view
     }()
     
