@@ -46,6 +46,7 @@
 		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
 		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
 		C5AF267D27C62C50004E0A72 /* ProgressGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */; };
+		C5AF268727C66F4B004E0A72 /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF268627C66F4B004E0A72 /* VocaDetailViewController.swift */; };
 		D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A56EC27A80D78002466DA /* BottomSheet.swift */; };
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
 		D16383F927B006F9005C8326 /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D16383F827B006F9005C8326 /* ColorAssets.xcassets */; };
@@ -147,6 +148,7 @@
 		BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGradientView.swift; sourceTree = "<group>"; };
+		C5AF268627C66F4B004E0A72 /* VocaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse_FancyMouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10A56EC27A80D78002466DA /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		D12A8579279D42A500D0FC49 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				4033F55D27ABDF1300452616 /* PopUpView */,
 				44F1518227AB954D00C2239D /* VocaViewController.swift */,
 				448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */,
+				C5AF268627C66F4B004E0A72 /* VocaDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */,
 				D16383FB27B01085005C8326 /* UIColor+Extensions.swift in Sources */,
 				E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */,
+				C5AF268727C66F4B004E0A72 /* VocaDetailViewController.swift in Sources */,
 				40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
