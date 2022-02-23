@@ -12,7 +12,7 @@ final class CoreDataManager {
     static let shared = CoreDataManager()
     
     private weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
-    lazy var context = appDelegate!.persistentContainer.viewContext
+    lazy var context = appDelegate?.persistentContainer.viewContext
     lazy var searchDataList = [SearchDataList]()
     
     func fetchData() {
@@ -20,6 +20,7 @@ final class CoreDataManager {
         let sortByDateDesc = NSSortDescriptor(key: "searchDate", ascending: false)
         request.sortDescriptors = [sortByDateDesc]
         
+        guard let context = context else { return }
         do {
             searchDataList = try context.fetch(request)
         } catch {
@@ -27,17 +28,19 @@ final class CoreDataManager {
         }
     }
     
-    func saveContext () {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                print(error)
-            }
+    func saveContext() {
+        guard let context = context, context.hasChanges else { return }
+        
+        do {
+            try context.save()
+        } catch {
+            NSLog("\(error)")
         }
     }
     
     func addData(spelling: String, dateString: String) {
+        guard let context = context else { return }
+        
         let newData = SearchDataList(context: context)
         newData.spelling = spelling
         newData.searchDate = dateString
@@ -48,6 +51,8 @@ final class CoreDataManager {
     func deleteData(spelling: String, dateString: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SearchDataList")
         fetchRequest.predicate = NSPredicate(format: "spelling == %@", NSString(string: spelling))
+        
+        guard let context = context else { return }
         do {
             guard let results = try context.fetch(fetchRequest) as? [SearchDataList] else { return }
             results.filter { $0.spelling == spelling }.forEach { context.delete($0) }

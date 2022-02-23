@@ -16,7 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "User")
         container.loadPersistentStores { _, error in
-            if let error = error { fatalError("Unable to load persistent stores: \(error)") }
+            if let error = error {
+                fatalError("Unable to load persistent stores: \(error)")
+            }
         }
         return container
     }()
