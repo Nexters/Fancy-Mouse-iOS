@@ -1,19 +1,8 @@
 //
-//  FolderUseCaseProtocol.swift
+//  FolderUseCase.swift
 //  FancyMouse
 //
-//  Created by suding on 2022/02/10.
+//  Created by 한상진 on 2022/02/24.
 //
 
 import Foundation
-import RxSwift
-
-protocol FolderUseCase {
-    func createFolder(folderName: String, folderColor: String) -> Observable<Folder>
-    
-    func folderList() -> Observable<[Folder]>
-    
-    func update(folder: Folder, folderColor: String, folderName: String) -> Observable<Folder>
-
-    func delete(folder: Folder) -> Observable<Folder>
-}
