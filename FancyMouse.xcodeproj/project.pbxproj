@@ -77,6 +77,7 @@
 		E234110627C7969400AC8DEE /* WordDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */; };
 		E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */; };
 		E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */; };
+		E234110D27C7F43600AC8DEE /* TogetherSavedSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110C27C7F43600AC8DEE /* TogetherSavedSentenceView.swift */; };
 		E23CA6D627A2F82C00C8381E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D527A2F82C00C8381E /* Word.swift */; };
 		E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */; };
 		E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */; };
@@ -191,6 +192,7 @@
 		E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescriptionView.swift; sourceTree = "<group>"; };
 		E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescriptionsStackView.swift; sourceTree = "<group>"; };
 		E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescription.swift; sourceTree = "<group>"; };
+		E234110C27C7F43600AC8DEE /* TogetherSavedSentenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherSavedSentenceView.swift; sourceTree = "<group>"; };
 		E23CA6D527A2F82C00C8381E /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRepositoryProtocol.swift; sourceTree = "<group>"; };
 		E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -415,6 +417,9 @@
 				44F1518227AB954D00C2239D /* VocaViewController.swift */,
 				448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */,
 				4488EE7027C740F9007FE7AB /* VocaDetailViewController.swift */,
+				E234110C27C7F43600AC8DEE /* TogetherSavedSentenceView.swift */,
+				E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */,
+				E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -683,9 +688,7 @@
 				E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */,
 				E2DEFCAB27BCF65D0066FD54 /* WordMeaningView.swift */,
 				E2D3278D27BD2D6B00D1458F /* WordMeaningsStackView.swift */,
-				E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */,
 				E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */,
-				E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1000,6 +1003,7 @@
 				40A341A827AC66C200D4D8DC /* DeletionAlertView.swift in Sources */,
 				40AFEBEF27C4D1E60023E69B /* FolderAddEditViewModel.swift in Sources */,
 				44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */,
+				E234110D27C7F43600AC8DEE /* TogetherSavedSentenceView.swift in Sources */,
 				D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */,
 				D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */,
 				40CF121627C3C7600018931D /* CoreDataManager.swift in Sources */,
