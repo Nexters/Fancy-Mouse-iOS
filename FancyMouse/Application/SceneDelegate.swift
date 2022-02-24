@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         
-        let viewController = HomeViewController()
+//        let viewController = HomeViewController()
+        let viewController = FolderViewController()
         window?.rootViewController = viewController
     }
 }

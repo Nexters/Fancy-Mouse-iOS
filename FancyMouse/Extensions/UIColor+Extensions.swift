@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias FolderColor = UIColor
+
 extension UIColor {
     static let gray10 = UIColor(named: "gray10")
     static let gray20 = UIColor(named: "gray20")
@@ -36,4 +38,5 @@ extension UIColor {
     static let secondaryColor = UIColor(named: "secondary")
     static let secondaryWeek = UIColor(named: "secondary_week")
     static let secondaryDark = UIColor(named: "secondary_dark")
+    static let explanColor = UIColor(named: "explain")
 }
