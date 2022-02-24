@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31EDDE62A6C75239A1E5F734 /* Pods_FancyMouse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */; };
+		4009E18C27C81385007C5E15 /* FolderAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4009E18B27C81385007C5E15 /* FolderAddCell.swift */; };
 		401837ED27BE620D00773574 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837EC27BE620D00773574 /* UIViewController+Extensions.swift */; };
 		401837EF27BE6D0A00773574 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837EE27BE6D0A00773574 /* SearchViewController.swift */; };
 		401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */; };
@@ -37,6 +38,7 @@
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
 		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
 		4470844227B4122D006F5796 /* FolderUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */; };
+		447A19CF27C8102000F2154A /* FolderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A19CE27C8102000F2154A /* FolderDetailView.swift */; };
 		4488EE7127C740F9007FE7AB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488EE7027C740F9007FE7AB /* VocaDetailViewController.swift */; };
 		448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */; };
 		44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */; };
@@ -78,6 +80,7 @@
 		E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */; };
 		E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */; };
 		E234110D27C7F43600AC8DEE /* TogetherSavedSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110C27C7F43600AC8DEE /* TogetherSavedSentenceView.swift */; };
+		E234110F27C8048B00AC8DEE /* VocaMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110E27C8048B00AC8DEE /* VocaMemoView.swift */; };
 		E23CA6D627A2F82C00C8381E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D527A2F82C00C8381E /* Word.swift */; };
 		E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */; };
 		E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */; };
@@ -114,6 +117,7 @@
 
 /* Begin PBXFileReference section */
 		389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4009E18B27C81385007C5E15 /* FolderAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddCell.swift; sourceTree = "<group>"; };
 		401837EC27BE620D00773574 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		401837EE27BE6D0A00773574 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutoCompleteCell.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUseCaseProtocol.swift; sourceTree = "<group>"; };
+		447A19CE27C8102000F2154A /* FolderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailView.swift; sourceTree = "<group>"; };
 		4488EE7027C740F9007FE7AB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
 		44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 		E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescriptionsStackView.swift; sourceTree = "<group>"; };
 		E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescription.swift; sourceTree = "<group>"; };
 		E234110C27C7F43600AC8DEE /* TogetherSavedSentenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherSavedSentenceView.swift; sourceTree = "<group>"; };
+		E234110E27C8048B00AC8DEE /* VocaMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaMemoView.swift; sourceTree = "<group>"; };
 		E23CA6D527A2F82C00C8381E /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRepositoryProtocol.swift; sourceTree = "<group>"; };
 		E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -375,10 +381,12 @@
 			children = (
 				4096687B27B79F52006BC6ED /* DeletionAlertView */,
 				44A8A97C27B6F983004C8E6C /* FolderCell.swift */,
+				4009E18B27C81385007C5E15 /* FolderAddCell.swift */,
 				44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */,
 				401837EE27BE6D0A00773574 /* SearchViewController.swift */,
 				401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */,
 				401837F327C01A3B00773574 /* SearchRecentWordsCell.swift */,
+				447A19CE27C8102000F2154A /* FolderDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -418,6 +426,7 @@
 				448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */,
 				4488EE7027C740F9007FE7AB /* VocaDetailViewController.swift */,
 				E234110C27C7F43600AC8DEE /* TogetherSavedSentenceView.swift */,
+				E234110E27C8048B00AC8DEE /* VocaMemoView.swift */,
 				E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */,
 				E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */,
 			);
@@ -972,6 +981,7 @@
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
 				E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */,
 				40A031E327C3B5A800473FB6 /* User+CoreDataClass.swift in Sources */,
+				E234110F27C8048B00AC8DEE /* VocaMemoView.swift in Sources */,
 				44A8A97D27B6F983004C8E6C /* FolderCell.swift in Sources */,
 				401837ED27BE620D00773574 /* UIViewController+Extensions.swift in Sources */,
 				40E9666A27BDE0BE0020DF89 /* WordMoveViewController.swift in Sources */,
@@ -979,6 +989,7 @@
 				E2DEFCB027BCF6D50066FD54 /* UIView+Extensions.swift in Sources */,
 				E2DEFCAC27BCF65D0066FD54 /* WordMeaningView.swift in Sources */,
 				D1DB209A27C115AA00EF3F6D /* OpenSourceLicenseView.swift in Sources */,
+				4009E18C27C81385007C5E15 /* FolderAddCell.swift in Sources */,
 				D1B83E2027B95EEF00AD7A70 /* MoreView.swift in Sources */,
 				404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */,
 				401837F427C01A3B00773574 /* SearchRecentWordsCell.swift in Sources */,
@@ -1020,6 +1031,7 @@
 				4488EE7127C740F9007FE7AB /* VocaDetailViewController.swift in Sources */,
 				40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
+				447A19CF27C8102000F2154A /* FolderDetailView.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
 				E2D3278E27BD2D6B00D1458F /* WordMeaningsStackView.swift in Sources */,
 				D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */,
