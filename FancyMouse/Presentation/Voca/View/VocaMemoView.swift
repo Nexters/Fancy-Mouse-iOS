@@ -41,7 +41,7 @@ private extension VocaMemoView {
         
         memoLabel.text = "꼭 외워야 하는데.. 외우기 쉽지않네..고민된다!"
         memoLabel.textColor = .primaryDark
-        memoLabel.font = .spoqaMedium(size: 16)
+        memoLabel.font = .spoqaRegular(size: 16)
         memoLabel.numberOfLines = 0
         
         saveButton.frame = CGRect(x: 0, y: 0, width: 61, height: 28)
