@@ -42,6 +42,7 @@ class FolderCell: UICollectionViewCell {
     
     private func setupView() {
         backgroundColor = .white
+        layer.cornerRadius = 20
         
         addSubview(folderNameLabel)
         addSubview(wordCountLabel)

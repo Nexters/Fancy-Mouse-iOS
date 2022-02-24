@@ -7,41 +7,10 @@
 
 import Firebase
 import RxSwift
-import UIKit
-
-struct FolderUseCase: FolderUseCaseProtocol {
-    func createFolder(folderName: String, folderColor: UIColor) {
-        let testItemsReference = Database.database().reference(withPath: "users/sangjin/folders")
-        let userItemRef = testItemsReference.child("3")
-        let values: [String: Any] = [
-            "color": "folder03",
-            "createdAt": 12345,
-            "folderId": "3",
-            "folderName": "테스트폴더3"
-        ]
-        userItemRef.setValue(values)
-    }
-    
-    func fetchFolder() -> Observable<[Folder]> {
-        <#code#>
-    }
-    
-    func update(folder: Folder, folderColor: String, folderName: String) {
-        <#code#>
-    }
-    
-    func delete(_ folderID: FolderID) {
-        <#code#>
-    }
-    
-}
 
 final class FolderViewController: UIViewController {
-    // MARK: dummy data
-    private let webTempString = "www.naver.com"
-    private let disposeBag = DisposeBag()
     private lazy var viewModel = FolderViewModel(useCase: FolderUseCase())
-    private var test = BehaviorSubject<[Folder]>(value: .init())
+    private let disposeBag = DisposeBag()
     
     private lazy var explainView: UIView = {
         let view = UIView()
@@ -83,7 +52,7 @@ final class FolderViewController: UIViewController {
         button.semanticContentAttribute = .forceLeftToRight
         
         let action = UIAction { _ in
-            UIPasteboard.general.string = self.webTempString
+            UIPasteboard.general.string = "www.google.com"
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -121,9 +90,6 @@ final class FolderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchFolder()
-            .bind(to: test)
-            .disposed(by: disposeBag)
         setupView()
         setupLayout()
         setupBinding()
@@ -138,7 +104,6 @@ final class FolderViewController: UIViewController {
         explainView.addSubview(explainSubLabel)
         explainView.addSubview(explainImageView)
         explainView.addSubview(explainPastButton)
-        
         view.addSubview(collectionView)
     }
     
@@ -151,16 +116,19 @@ final class FolderViewController: UIViewController {
         
         explainCountLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(24)
+            make.width.lessThanOrEqualTo(24)
         }
         
         explainTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(25)
             make.leading.equalTo(explainCountLabel.snp.trailing).offset(2)
+            make.width.equalTo(71)
         }
         
         explainSubLabel.snp.makeConstraints { make in
             make.top.equalTo(explainTitleLabel.snp.bottom).offset(3)
             make.leading.equalToSuperview().offset(24)
+            make.width.equalTo(158)
         }
         
         explainPastButton.snp.makeConstraints { make in
@@ -180,14 +148,14 @@ final class FolderViewController: UIViewController {
     }
     
     private func setupBinding() {
-        test
+        viewModel.fetchFolder()
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
-                print("ㄴㅇ매ㅑ룬야ㅐ루ㅑㅐㅇ누랴ㅐㅇ누랭나라ㅣㄴ")
                 guard let cell = self.collectionView.dequeueReusableCell(
                     withReuseIdentifier: "FolderCell",
                     for: IndexPath.init(row: row, section: 0)
                 ) as? FolderCell else { return UICollectionViewCell() }
                 guard let itemColor = item.folderColor else { return UICollectionViewCell() }
+                
                 cell.setupData(title: item.folderName, count: item.wordCount, color: itemColor)
                 return cell
             }
