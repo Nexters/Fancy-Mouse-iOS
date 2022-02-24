@@ -7,6 +7,7 @@
 
 import UIKit
 
+typealias WordDetailColor = UIColor
 extension UIColor {
     static let gray10 = UIColor(named: "gray10")
     static let gray20 = UIColor(named: "gray20")
