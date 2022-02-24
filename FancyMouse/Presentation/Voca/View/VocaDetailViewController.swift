@@ -2,7 +2,7 @@
 //  VocaDetailViewController.swift
 //  FancyMouse
 //
-//  Created by betty on 2022/02/23.
+//  Created by suding on 2022/02/24.
 //
 
 import Foundation
