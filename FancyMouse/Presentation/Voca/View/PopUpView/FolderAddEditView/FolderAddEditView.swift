@@ -5,29 +5,17 @@
 //  Created by 한상진 on 2022/02/12.
 //
 
-import UIKit
+import RxSwift
 
 final class FolderAddEditView: UIView {
+    lazy var viewModel = FolderAddEditViewModel(.init(), .init())
+    private let disposeBag = DisposeBag()
+    
     private enum CollectionViewConstants {
-        static let widthInset = 30
-        static let width = UIScreen.main.bounds.width - CGFloat(Self.widthInset * 2)
+        static let horizontalInset = 30
+        static let width = UIScreen.main.bounds.width - CGFloat(Self.horizontalInset * 2)
         static let cellRatio = 0.152
     }
-    
-    private let colorList = [
-        UIColor.folder01,
-        UIColor.folder02,
-        UIColor.folder03,
-        UIColor.folder04,
-        UIColor.folder05,
-        UIColor.folder06,
-        UIColor.folder07,
-        UIColor.folder08,
-        UIColor.folder09,
-        UIColor.folder10,
-        UIColor.folder11,
-        UIColor.folder00
-    ]
     
     private lazy var backgroundView = UIView()
     
@@ -44,7 +32,7 @@ final class FolderAddEditView: UIView {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         
         textField.placeholder = "폴더명을 입력해 주세요."
-        textField.layer.borderColor = UIColor.folderBorder?.cgColor
+        textField.layer.borderColor = UIColor.folderBorder.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 12
         textField.leftView = paddingView
@@ -83,92 +71,130 @@ final class FolderAddEditView: UIView {
         return collectionView
     }()
     
+    init(frame: CGRect, originalNameString: String, originalColorString: String) {
+        super.init(frame: frame)
+        setupView()
+        setupViewModel(originalNameString, originalColorString)
+        setupBinding()
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        setupView()
+        setupBinding()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setup() {
-        let width = UIScreen.main.bounds.width - 48
-        
-        textField.delegate = self
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
+    private func setupView() {
         backgroundColor = .white
         
         addSubview(backgroundView)
+        backgroundView.addSubview(titleLabel)
+        backgroundView.addSubview(textField)
+        backgroundView.addSubview(colorLabel)
+        backgroundView.addSubview(collectionView)
+        
+        setupLayout()
+    }
+    
+    private func setupViewModel(_ originalNameString: String, _ originalColorString: String) {
+        self.viewModel = FolderAddEditViewModel(originalNameString, originalColorString)
+    }
+    
+    private func setupLayout() {
+        let width = UIScreen.main.bounds.width - 48
+        
         backgroundView.snp.makeConstraints { make in
             make.width.height.equalTo(width)
             make.edges.equalToSuperview()
         }
         
-        backgroundView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.height.equalTo(18)
-            make.top.leading.trailing.equalToSuperview()
+            make.width.equalTo(60)
+            make.top.leading.equalToSuperview()
         }
         
-        backgroundView.addSubview(textField)
         textField.snp.makeConstraints { make in
             make.height.equalTo(52)
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview()
         }
         
-        backgroundView.addSubview(colorLabel)
         colorLabel.snp.makeConstraints { make in
             make.height.equalTo(18)
+            make.width.equalTo(60)
             make.top.equalTo(textField.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
         }
         
-        backgroundView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.height.equalTo(width * 0.587)
             make.top.equalTo(colorLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview()
         }
     }
-}
-
-extension FolderAddEditView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return colorList.count
-    }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "FolderAddEditViewCell",
-            for: indexPath
-        ) as? FolderAddEditViewCell else { return UICollectionViewCell() }
-        let isLastIndex = indexPath.row == colorList.count - 1
-        
-        cell.setupColor(colorList[indexPath.row] ?? UIColor())
-        
-        if isLastIndex {
-            cell.setupDisabled()
-            cell.isUserInteractionEnabled = false
-        }
-        
-        return cell
-    }
-}
+    private func setupBinding() {
+        Observable.of(viewModel.colorList)
+            .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
+                guard let cell = self.collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "FolderAddEditViewCell",
+                    for: IndexPath.init(row: row, section: 0)
+                ) as? FolderAddEditViewCell else { return UICollectionViewCell() }
+                let isLastIndex = row == self.viewModel.colorList.count - 1
 
-extension FolderAddEditView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        endEditing(true)
-        return false
+                cell.setupColor(item ?? UIColor())
+
+                if isLastIndex {
+                    cell.setupDisabled()
+                    cell.isUserInteractionEnabled = false
+                }
+                return cell
+            }
+            .disposed(by: self.disposeBag)
+        
+        viewModel.folderName
+            .take(1)
+            .filter { !$0.isEmpty }
+            .bind { [weak self] in
+                self?.textField.text = $0
+            }
+            .disposed(by: disposeBag)
+        
+        textField.rx.text.orEmpty
+            .bind(to: viewModel.folderName)
+            .disposed(by: disposeBag)
+        
+        viewModel.folderColor
+            .filter { !$0.isEmpty }
+            .bind { [weak self] in
+                let item = UIColor(named: $0)
+                guard self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) != nil else { return }
+                
+                let index = IndexPath(
+                    item: self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) ?? Int(),
+                    section: 0
+                )
+                self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
+            }
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(UIColor.self)
+            .bind { [weak self] in
+                guard let name = $0.name else { return }
+                self?.viewModel.folderColor.onNext(name)
+            }
+            .disposed(by: disposeBag)
+        
+        textField.rx.controlEvent(.editingDidEndOnExit)
+            .bind {
+                self.endEditing(true)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

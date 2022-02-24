@@ -13,7 +13,7 @@ final class FolderViewModel {
     private let disposeBag = DisposeBag()
     lazy var folderCount = BehaviorSubject<Int>(value: 0)
     lazy var folderList = BehaviorSubject<[Folder]>(value: [])
-
+    
     init(useCase: FolderUseCaseProtocol) {
         self.useCase = useCase
     }

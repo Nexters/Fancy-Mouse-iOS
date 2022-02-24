@@ -35,11 +35,11 @@ final class FilterViewCell: UICollectionViewCell {
     private func setupSelected(_ selected: Bool) {
         if selected {
             layer.borderWidth = 1.5
-            layer.borderColor = UIColor.primaryColor?.cgColor
+            layer.borderColor = UIColor.primaryColor.cgColor
             titleLabel.font = .spoqaMedium(size: 14)
         } else {
             layer.borderWidth = 1
-            layer.borderColor = UIColor.primaryWeek?.cgColor
+            layer.borderColor = UIColor.primaryWeek.cgColor
             titleLabel.font = .spoqaRegular(size: 14)
         }
     }
@@ -48,7 +48,7 @@ final class FilterViewCell: UICollectionViewCell {
         backgroundColor = .white
         layer.cornerRadius = 12
         layer.borderWidth = 1
-        layer.borderColor = UIColor.primaryWeek?.cgColor
+        layer.borderColor = UIColor.primaryWeek.cgColor
         
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

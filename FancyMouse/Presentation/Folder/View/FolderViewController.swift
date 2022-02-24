@@ -8,9 +8,13 @@
 import Firebase
 import RxSwift
 
-final class FolderViewController: UIViewController {
+final class FolderViewController: UIViewController, BottomSheetDelegate {
     private lazy var viewModel = FolderViewModel(useCase: FolderUseCase())
     private let disposeBag = DisposeBag()
+    
+    private var ellipsisView: EllipsisView?
+    private var selectedFolder: Folder?
+    private var folderAddEditView = FolderAddEditView()
     
     private lazy var explainView: UIView = {
         let view = UIView()
@@ -69,8 +73,8 @@ final class FolderViewController: UIViewController {
         let collectionViewWidth = UIScreen.main.bounds.width - 48
         let widthSize = collectionViewWidth * 0.483
         let heightSize = widthSize * 0.917
-        layout.minimumLineSpacing = 11
-        layout.minimumInteritemSpacing = 12
+        layout.minimumLineSpacing = 12
+        layout.minimumInteritemSpacing = 11
         layout.itemSize = CGSize(width: widthSize, height: heightSize)
         return layout
     }()
@@ -80,7 +84,12 @@ final class FolderViewController: UIViewController {
             frame: .zero,
             collectionViewLayout: layout
         )
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(collectionViewWasTapped(sender:))
+        )
         collectionView.backgroundColor = .gray30
+        collectionView.addGestureRecognizer(tap)
         collectionView.register(
             FolderCell.self,
             forCellWithReuseIdentifier: "FolderCell"
@@ -93,6 +102,10 @@ final class FolderViewController: UIViewController {
         setupView()
         setupLayout()
         setupBinding()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        ellipsisView?.removeFromSuperview()
     }
     
     private func setupView() {
@@ -128,7 +141,7 @@ final class FolderViewController: UIViewController {
         explainSubLabel.snp.makeConstraints { make in
             make.top.equalTo(explainTitleLabel.snp.bottom).offset(3)
             make.leading.equalToSuperview().offset(24)
-            make.width.equalTo(158)
+            make.width.equalTo(170)
         }
         
         explainPastButton.snp.makeConstraints { make in
@@ -155,7 +168,12 @@ final class FolderViewController: UIViewController {
                     for: IndexPath.init(row: row, section: 0)
                 ) as? FolderCell else { return UICollectionViewCell() }
                 guard let itemColor = item.folderColor else { return UICollectionViewCell() }
+                self.selectedFolder = item
                 
+                cell.moreButton.addTarget(self,
+                                          action: #selector(self.moreButtonWasTapped(_:)),
+                                          for: .touchUpInside
+                )
                 cell.setupData(title: item.folderName, count: item.wordCount, color: itemColor)
                 return cell
             }
@@ -166,5 +184,61 @@ final class FolderViewController: UIViewController {
                 self?.explainCountLabel.text = "\(count)"
             }
             .disposed(by: disposeBag)
+    }
+    
+    //TODO: 리팩기간에 로직 수정하기
+    @objc private func moreButtonWasTapped(_ sender: UIButton) {
+        ellipsisView?.removeFromSuperview()
+        let view: EllipsisView = {
+            let view = EllipsisView()
+            
+            if let folder = selectedFolder, let color = folder.folderColor {
+                view.addComponent(title: "수정하기", imageName: "edit", action: UIAction { _ in
+                    self.moreButtonEditWasTapped(folderName: folder.folderName, folderColor: color)
+                })
+                view.addComponent(title: "삭제하기", imageName: "delete", action: UIAction { _ in
+                    self.moreButtonDeleteWasTapped(folderID: folder.folderID, wordCount: folder.wordCount)
+                })
+            }
+            return view
+        }()
+        
+        ellipsisView = view
+        self.view.addSubview(ellipsisView ?? UIView())
+        ellipsisView?.snp.makeConstraints { make in
+            make.width.equalTo(108)
+            make.height.equalTo(100)
+            make.top.equalTo(sender.snp.bottom).offset(8)
+            make.trailing.equalTo(sender.snp.trailing).offset(6)
+        }
+    }
+    
+    //TODO: 리팩 기간에 유스케이스+뷰모델로 빼기
+    private func moreButtonEditWasTapped(folderName: String, folderColor: UIColor) {
+        let view = BottomSheetController(
+            contentView: folderAddEditView,
+            title: "폴더 수정하기",
+            topInset: 40,
+            bottomInset: 40
+        )
+        view.setup(parentViewController: self)
+        view.delegate = self
+    }
+    private func moreButtonDeleteWasTapped(folderID: Int, wordCount: Int) {
+        let view = DeletionAlertViewController(target: "폴더", wordCount: 3)
+        view.modalTransitionStyle = .crossDissolve
+        view.modalPresentationStyle = .overFullScreen
+        self.present(view, animated: true, completion: nil)
+    }
+    
+    @objc private func collectionViewWasTapped(sender: UITapGestureRecognizer) {
+        ellipsisView?.removeFromSuperview()
+    }
+    
+    func closeWasTapped() {}
+    
+    func okWasTapped() {
+        guard let folder = selectedFolder else { return }
+        viewModel.update(folder: folder, folderColor: <#T##String#>, folderName: <#T##String#>)
     }
 }

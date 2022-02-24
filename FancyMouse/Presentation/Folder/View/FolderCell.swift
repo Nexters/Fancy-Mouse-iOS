@@ -8,7 +8,7 @@
 import UIKit
 
 class FolderCell: UICollectionViewCell {
-    lazy var folderImageView = UIImageView()
+    private lazy var folderImageView = UIImageView()
     
     lazy var moreButton: UIButton = {
         let button = UIButton()
@@ -16,14 +16,14 @@ class FolderCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var folderNameLabel: UILabel = {
+    private lazy var folderNameLabel: UILabel = {
         let label = UILabel()
         label.font = .spoqaBold(size: 16)
         label.textColor = .primaryDark
         return label
     }()
     
-    lazy var wordCountLabel: UILabel = {
+    private lazy var wordCountLabel: UILabel = {
         let label = UILabel()
         label.font = .spoqaBold(size: 14)
         label.textColor = .gray60
@@ -59,7 +59,7 @@ class FolderCell: UICollectionViewCell {
         folderNameLabel.snp.makeConstraints { make in
             make.top.equalTo(folderImageView.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview().inset(54)
+            make.trailing.equalToSuperview()
         }
         
         wordCountLabel.snp.makeConstraints { make in

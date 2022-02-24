@@ -5,11 +5,24 @@
 //  Created by seunghwan Lee on 2022/01/22.
 //
 
+import CoreData
 import UIKit
 import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    // MARK: CoreData
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "User")
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError("Unable to load persistent stores: \(error)")
+            }
+        }
+        return container
+    }()
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

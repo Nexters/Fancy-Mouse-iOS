@@ -6,17 +6,14 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-
-extension User {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
-        return NSFetchRequest<User>(entityName: "User")
+extension SearchDataList {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<SearchDataList> {
+        return NSFetchRequest<SearchDataList>(entityName: "SearchDataList")
     }
 
-    @NSManaged public var dateStringList: [String]?
-    @NSManaged public var spellingList: [String]?
-
+    @NSManaged public var spelling: String?
+    @NSManaged public var searchDate: String?
 }

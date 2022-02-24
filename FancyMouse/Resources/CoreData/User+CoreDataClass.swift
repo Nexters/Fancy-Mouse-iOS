@@ -6,10 +6,8 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-@objc(User)
-public class User: NSManagedObject {
-
-}
+@objc(SearchDataList)
+public class SearchDataList: NSManagedObject {}
