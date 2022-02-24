@@ -75,14 +75,12 @@ final class FolderAddEditView: UIView {
         super.init(frame: frame)
         setupView()
         setupViewModel(originalNameString, originalColorString)
-        setupLayout()
         setupBinding()
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupLayout()
         setupBinding()
     }
     
@@ -98,6 +96,8 @@ final class FolderAddEditView: UIView {
         backgroundView.addSubview(textField)
         backgroundView.addSubview(colorLabel)
         backgroundView.addSubview(collectionView)
+        
+        setupLayout()
     }
     
     private func setupViewModel(_ originalNameString: String, _ originalColorString: String) {
