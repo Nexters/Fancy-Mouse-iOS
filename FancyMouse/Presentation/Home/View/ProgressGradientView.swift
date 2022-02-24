@@ -28,9 +28,9 @@ final class ProgressGradientView: UIView {
         var endColorB: CGFloat = 0
         var endColorA: CGFloat = 0
 
-        startColor?.getRed(&startColorR, green: &startColorG,
+        startColor.getRed(&startColorR, green: &startColorG,
                            blue: &startColorB, alpha: &startColorA)
-        endColor?.getRed(&endColorR, green: &endColorG,
+        endColor.getRed(&endColorR, green: &endColorG,
                          blue: &endColorB, alpha: &endColorA)
 
         let startAngle: CGFloat = -90
