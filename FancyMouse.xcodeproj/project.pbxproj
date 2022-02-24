@@ -37,6 +37,7 @@
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
 		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
 		4470844227B4122D006F5796 /* FolderUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */; };
+		447A19CF27C8102000F2154A /* FolderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447A19CE27C8102000F2154A /* FolderDetailView.swift */; };
 		4488EE7127C740F9007FE7AB /* VocaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4488EE7027C740F9007FE7AB /* VocaDetailViewController.swift */; };
 		448DECDD27AB9A4C00B104AC /* VocaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */; };
 		44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */; };
@@ -144,6 +145,7 @@
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUseCaseProtocol.swift; sourceTree = "<group>"; };
+		447A19CE27C8102000F2154A /* FolderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailView.swift; sourceTree = "<group>"; };
 		4488EE7027C740F9007FE7AB /* VocaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailViewController.swift; sourceTree = "<group>"; };
 		448DECDC27AB9A4C00B104AC /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
 		44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				401837EE27BE6D0A00773574 /* SearchViewController.swift */,
 				401837F127C01A2D00773574 /* SearchAutoCompleteCell.swift */,
 				401837F327C01A3B00773574 /* SearchRecentWordsCell.swift */,
+				447A19CE27C8102000F2154A /* FolderDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				4488EE7127C740F9007FE7AB /* VocaDetailViewController.swift in Sources */,
 				40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */,
 				E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */,
+				447A19CF27C8102000F2154A /* FolderDetailView.swift in Sources */,
 				D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */,
 				E2D3278E27BD2D6B00D1458F /* WordMeaningsStackView.swift in Sources */,
 				D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */,
