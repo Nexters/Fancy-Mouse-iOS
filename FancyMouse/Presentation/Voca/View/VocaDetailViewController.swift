@@ -16,7 +16,7 @@ final class VocaDetailViewController: UIViewController {
     private let prouncation: String = "[ ˈpɜːrpəs]"
     private let example: String = "In the meantime, the province magistrate provided supplies."
     private let synonym: String = "hide, hat, face, veil, disguise,camouflage"
-    private let togetherSentence: String = "Our campaign is to raise money."
+    private let togetherSentence: String = "Our campaign’s main purpose is to raise money."
     private var myMemoDB: String = ""
     var wordMeanings: [String] = ["(이루고자 하는·이루어야 할) 목적",
                                   "(특정 상황에서 무엇을) 하기 위함, 용도, 의도",
@@ -73,30 +73,11 @@ final class VocaDetailViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var togetherSaveView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray30
-        view.layer.cornerRadius = 20
-        return view
-    }()
-    
-    private lazy var togetherLabel: UILabel = {
-        let label = UILabel()
-        label.text = "함께 저장한 문장"
-        label.textColor = .gray60
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = .left
-        return label
-    }()
-    
-    private lazy var togetherAPILabel: UILabel = {
-        let label = UILabel()
-        label.text = togetherSentence
-        label.textColor = .primaryDark
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-        label.numberOfLines = 3
-        return label
+    private lazy var togetherSavedSentenceView: TogetherSavedSentenceView = {
+        let togetherSavedSentenceView = TogetherSavedSentenceView()
+        togetherSavedSentenceView.sentence = togetherSentence
+        
+        return togetherSavedSentenceView
     }()
     
     private lazy var myMemoView: UIView = {
@@ -258,24 +239,14 @@ private extension VocaDetailViewController {
             make.height.equalTo(1)
         }
         
-        togetherSaveView.snp.makeConstraints { make in
+        togetherSavedSentenceView.snp.makeConstraints { make in
             make.top.equalTo(wordDetailStackView.snp.bottom).offset(24)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(116)
         }
         
-        togetherLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(20)
-            make.leading.equalToSuperview().inset(24)
-        }
-        
-        togetherAPILabel.snp.makeConstraints { make in
-            make.top.equalTo(togetherLabel.snp.bottom).offset(12)
-            make.leading.trailing.equalToSuperview().inset(24)
-        }
-        
         myMemoView.snp.makeConstraints { make in
-            make.top.equalTo(togetherSaveView.snp.bottom).offset(12)
+            make.top.equalTo(togetherSavedSentenceView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(92)
         }
@@ -321,9 +292,7 @@ private extension VocaDetailViewController {
         wordView.addSubview(wordMeaningStackView)
         wordView.addSubview(wordDetailStackView)
         wordView.addSubview(contourView)
-        wordView.addSubview(togetherSaveView)
-        togetherSaveView.addSubview(togetherLabel)
-        togetherSaveView.addSubview(togetherAPILabel)
+        wordView.addSubview(togetherSavedSentenceView)
         wordView.addSubview(myMemoView)
         myMemoView.addSubview(myMemoLabel)
         myMemoView.addSubview(myMemotextField)
