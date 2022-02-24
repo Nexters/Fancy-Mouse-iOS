@@ -100,6 +100,7 @@ PODS:
   - RxSwift (6.2.0)
   - SnapKit (5.0.1)
   - SwiftLint (0.45.1)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Firebase/Core
@@ -108,6 +109,7 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit
   - SwiftLint
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -128,6 +130,7 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - SwiftLint
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Firebase: 13d8d96499e2635428d5bf0ec675df21f95d9a95
@@ -147,7 +150,8 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 5cc85c3994d65286519e7cdc35c3cefd280d2595
+PODFILE CHECKSUM: 8ebc98661f098ac9d4d354a3db50eb68e29aae02
 
 COCOAPODS: 1.11.2
