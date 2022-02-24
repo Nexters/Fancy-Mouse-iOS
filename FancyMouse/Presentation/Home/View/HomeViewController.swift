@@ -8,14 +8,14 @@
 import SnapKit
 import UIKit
 
-final class HomeViewController: UIViewController {
-    private let userName: String = "수진"
-    private let progressPercent: Int = 0
-    private let wordCount: Int = 0
+class HomeViewController: UIViewController {
+    private let userName = "수진"
+    private let progressPercent = 75
+    private let wordCount = 20
     
     private lazy var progressView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.gradientBack
+        view.backgroundColor = .gradientBack
         view.layer.cornerRadius = 24
         return view
     }()
@@ -69,8 +69,8 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         setupPercentFont()
+        setupUI()
     }
 
     private func setupPercentFont() {
@@ -85,6 +85,13 @@ final class HomeViewController: UIViewController {
     
     private func setupUI() {
         self.view.addSubview(progressView)
+        progressView.addSubview(userLabel)
+        progressView.addSubview(percentLabel)
+        progressView.addSubview(wordLabel)
+        progressView.addSubview(entryButton)
+        progressView.addSubview(gradientView)
+        progressView.addSubview(progressImageView)
+        
         progressView.snp.makeConstraints { make in
             make.height.equalTo(305)
             make.top.equalToSuperview().inset(104)
@@ -92,39 +99,33 @@ final class HomeViewController: UIViewController {
             make.trailing.equalToSuperview().inset(24)
         }
         
-        progressView.addSubview(userLabel)
         userLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(24)
             make.leading.equalToSuperview().inset(24)
         }
         
-        progressView.addSubview(percentLabel)
         percentLabel.snp.makeConstraints { make in
             make.top.equalTo(userLabel.snp.bottom).offset(2)
             make.leading.equalToSuperview().inset(24)
         }
-        
-        progressView.addSubview(wordLabel)
+       
         wordLabel.snp.makeConstraints { make in
             make.top.equalTo(percentLabel.snp.bottom).offset(12)
             make.leading.equalToSuperview().inset(24)
         }
 
-        progressView.addSubview(entryButton)
         entryButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(24)
             make.trailing.equalToSuperview().inset(24)
             make.height.width.equalTo(24)
         }
         
-        progressView.addSubview(gradientView)
         gradientView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(124)
             make.trailing.leading.equalToSuperview().inset(24)
             make.height.width.equalTo(152)
         }
         
-        progressView.addSubview(progressImageView)
         progressImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(163)

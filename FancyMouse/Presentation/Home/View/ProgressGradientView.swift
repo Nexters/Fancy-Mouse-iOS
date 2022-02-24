@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-class ProgressGradientView: UIView {
-    var lineWidth: CGFloat = 6 { didSet { setNeedsDisplay(bounds) } }
-    var startColor = UIColor.secondaryColor { didSet { setNeedsDisplay(bounds) } }
-    var endColor = UIColor.gradientEnd { didSet { setNeedsDisplay(bounds) } }
-    var startAngle: CGFloat = -90 { didSet { setNeedsDisplay(bounds) } }
-    var endAngle: CGFloat = 360 { didSet { setNeedsDisplay(bounds) } }
+final class ProgressGradientView: UIView {
+    private var lineWidth: CGFloat = 6 { didSet { setNeedsDisplay(bounds) } }
+    private var startColor = UIColor.secondaryColor { didSet { setNeedsDisplay(bounds) } }
+    private var endColor = UIColor.gradientEnd { didSet { setNeedsDisplay(bounds) } }
+    private var startAngle: CGFloat = -90 { didSet { setNeedsDisplay(bounds) } }
+    private var endAngle: CGFloat = 360 { didSet { setNeedsDisplay(bounds) } }
 
     override func draw(_ rect: CGRect) {
         let gradations = 229
