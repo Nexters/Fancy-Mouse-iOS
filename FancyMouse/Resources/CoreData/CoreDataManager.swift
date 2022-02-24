@@ -6,16 +6,18 @@
 //
 
 import CoreData
+import OSLog
 import UIKit
 
 final class CoreDataManager {
     static let shared = CoreDataManager()
+    private let logger = Logger()
     
     private weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     lazy var context = appDelegate?.persistentContainer.viewContext
     lazy var searchDataList = [SearchDataList]()
     
-    func fetchData() {
+    func fetchRecentSearchData() {
         let request = SearchDataList.fetchRequest()
         let sortByDateDesc = NSSortDescriptor(key: "searchDate", ascending: false)
         request.sortDescriptors = [sortByDateDesc]
@@ -24,7 +26,7 @@ final class CoreDataManager {
         do {
             searchDataList = try context.fetch(request)
         } catch {
-            print(error)
+            logger.log("An error occurred!")
         }
     }
     
@@ -34,11 +36,11 @@ final class CoreDataManager {
         do {
             try context.save()
         } catch {
-            NSLog("\(error)")
+            logger.log("An error occurred!")
         }
     }
     
-    func addData(spelling: String, dateString: String) {
+    func addRecentSearchData(spelling: String, dateString: String) {
         guard let context = context else { return }
         
         let newData = SearchDataList(context: context)
@@ -48,7 +50,7 @@ final class CoreDataManager {
         saveContext()
     }
     
-    func deleteData(spelling: String, dateString: String) {
+    func deleteRecentSearchData(spelling: String, dateString: String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SearchDataList")
         fetchRequest.predicate = NSPredicate(format: "spelling == %@", NSString(string: spelling))
         
@@ -57,7 +59,7 @@ final class CoreDataManager {
             guard let results = try context.fetch(fetchRequest) as? [SearchDataList] else { return }
             results.filter { $0.spelling == spelling }.forEach { context.delete($0) }
         } catch {
-            print(error)
+            logger.log("An error occurred!")
         }
         saveContext()
     }
