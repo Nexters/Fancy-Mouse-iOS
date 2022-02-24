@@ -72,6 +72,7 @@
 		D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */; };
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
 		D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */; };
+		D1FB3C7327C7B0C50017D64F /* OpenSourceLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */; };
 		E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */; };
 		E234110627C7969400AC8DEE /* WordDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */; };
 		E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */; };
@@ -183,6 +184,7 @@
 		D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		D1E738F527B930470052D0F5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntroView.swift; sourceTree = "<group>"; };
+		D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSourceLicense.txt; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 0; };
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
 		E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
 				D16383F827B006F9005C8326 /* ColorAssets.xcassets */,
 				D1AFE721279C0FB20082D680 /* LaunchScreen.storyboard */,
+				D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				D1AFE723279C0FB20082D680 /* LaunchScreen.storyboard in Resources */,
 				D163840427B01716005C8326 /* SpoqaHanSansNeo-Regular.otf in Resources */,
 				D16383F927B006F9005C8326 /* ColorAssets.xcassets in Resources */,
+				D1FB3C7327C7B0C50017D64F /* OpenSourceLicense.txt in Resources */,
 				D1AFE720279C0FB20082D680 /* Assets.xcassets in Resources */,
 				D163840227B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf in Resources */,
 			);
