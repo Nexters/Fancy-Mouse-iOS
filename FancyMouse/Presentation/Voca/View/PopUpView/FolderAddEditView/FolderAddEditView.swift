@@ -12,8 +12,8 @@ final class FolderAddEditView: UIView {
     private let disposeBag = DisposeBag()
     
     private enum CollectionViewConstants {
-        static let widthInset = 30
-        static let width = UIScreen.main.bounds.width - CGFloat(Self.widthInset * 2)
+        static let horizontalInset = 30
+        static let width = UIScreen.main.bounds.width - CGFloat(Self.horizontalInset * 2)
         static let cellRatio = 0.152
     }
     
@@ -114,7 +114,8 @@ final class FolderAddEditView: UIView {
         
         titleLabel.snp.makeConstraints { make in
             make.height.equalTo(18)
-            make.top.leading.trailing.equalToSuperview()
+            make.width.equalTo(60)
+            make.top.leading.equalToSuperview()
         }
         
         textField.snp.makeConstraints { make in
@@ -125,8 +126,9 @@ final class FolderAddEditView: UIView {
         
         colorLabel.snp.makeConstraints { make in
             make.height.equalTo(18)
+            make.width.equalTo(60)
             make.top.equalTo(textField.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
         }
         
         collectionView.snp.makeConstraints { make in
@@ -158,8 +160,8 @@ final class FolderAddEditView: UIView {
         viewModel.folderName
             .take(1)
             .filter { !$0.isEmpty }
-            .bind {
-                self.textField.text = $0
+            .bind { [weak self] in
+                self?.textField.text = $0
             }
             .disposed(by: disposeBag)
         
@@ -169,20 +171,22 @@ final class FolderAddEditView: UIView {
         
         viewModel.folderColor
             .filter { !$0.isEmpty }
-            .bind {
+            .bind { [weak self] in
                 let item = UIColor(named: $0)
+                guard self?.viewModel.colorList.firstIndex(of: item) != nil else { return }
+                
                 let index = IndexPath(
-                    item: self.viewModel.colorList.firstIndex(of: item) ?? Int(),
+                    item: self?.viewModel.colorList.firstIndex(of: item) ?? Int(),
                     section: 0
                 )
-                self.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
+                self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
             }
             .disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(UIColor.self)
-            .bind {
+            .bind { [weak self] in
                 guard let name = $0.name else { return }
-                self.viewModel.folderColor.onNext(name)
+                self?.viewModel.folderColor.onNext(name)
             }
             .disposed(by: disposeBag)
         
