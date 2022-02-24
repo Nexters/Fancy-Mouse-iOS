@@ -13,6 +13,7 @@ target 'FancyMouse' do
   pod 'SnapKit'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Toast-Swift', '~> 5.0.1'
 
   target 'FancyMouseTests' do
     inherit! :search_paths

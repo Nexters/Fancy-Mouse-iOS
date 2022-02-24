@@ -10,9 +10,9 @@ import RxCocoa
 import RxSwift
 
 final class FolderViewModel {
-    private let useCase: FolderUseCase
+    private let useCase: FolderUseCaseProtocol
     
-    init(useCase: FolderUseCase) {
+    init(useCase: FolderUseCaseProtocol) {
         self.useCase = useCase
     }
 
