@@ -29,9 +29,6 @@ final class VocaDetailViewController: UIViewController {
     private let scrollFinishView = UIView()
     private let notificationCenter = NotificationCenter.default
     
-    private let saveAction = UIAction { _ in
-    }
-    
     private lazy var wordLabel: UILabel = {
         let label = UILabel()
         label.text = word
@@ -79,66 +76,13 @@ final class VocaDetailViewController: UIViewController {
         return togetherSavedSentenceView
     }()
     
-    private lazy var myMemoView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 20
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.primaryDark.cgColor
-        return view
-    }()
-    
-    private lazy var myMemoLabel: UILabel = {
-        let label = UILabel()
-        label.text = "내가 남긴 메모"
-        label.textColor = .gray60
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = .left
-        return label
-    }()
-    
-    private lazy var myMemoDBLabel: UILabel = {
-        let label = UILabel()
-        label.text = myMemoDB
-        label.textColor = .primaryDark
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textAlignment = .left
-        label.numberOfLines = 3
-        return label
-    }()
-    
-    private lazy var myMemotextField: UITextField = {
-        let textField = UITextField()
-        return textField
-    }()
-    
-    private lazy var myMemoSaveButton: UIButton = {
-        let button = UIButton()
-        button.frame = CGRect(x: 0, y: 0, width: 61, height: 28)
-        button.layer.backgroundColor = UIColor.gray30.cgColor
-        button.layer.cornerRadius = 6
-        button.setTitle("수정하기", for: .normal)
-        button.setTitleColor(.gray60, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.addAction(saveAction, for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var numberOfMemoLabel: UILabel = {
-        let label = UILabel()
-        let numberOfMemo = String(myMemoDB.count)
-        label.text = "\(numberOfMemo) / 140자"
-        label.textColor = .gray50
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = .right
-        return label
+    private lazy var vocaMemoView: VocaMemoView = {
+        VocaMemoView()
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setup()
-        setupTextField()
     }
     
     func addKeyboardNotifications() {
@@ -239,38 +183,13 @@ private extension VocaDetailViewController {
             make.height.equalTo(116)
         }
         
-        myMemoView.snp.makeConstraints { make in
+        vocaMemoView.snp.makeConstraints { make in
             make.top.equalTo(togetherSavedSentenceView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(24)
-            make.height.equalTo(92)
-        }
-        
-        myMemoLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(20)
-            make.leading.equalToSuperview().inset(24)
-        }
-        
-        myMemotextField.snp.makeConstraints { make in
-            make.top.equalTo(myMemoLabel.snp.bottom).offset(12)
-            make.bottom.equalTo(myMemoView.snp.bottom).offset(-12)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalTo(myMemoView.snp.trailing).offset(-12)
-        }
-        
-        myMemoSaveButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(12)
-            make.trailing.equalToSuperview().inset(16)
-            make.height.equalTo(28)
-            make.width.equalTo(61)
-        }
-        
-        numberOfMemoLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(8)
-            make.trailing.equalToSuperview().inset(16)
         }
         
         scrollFinishView.snp.makeConstraints { make in
-            make.top.equalTo(myMemoView.snp.bottom).inset(10)
+            make.top.equalTo(vocaMemoView.snp.bottom).inset(10)
             make.height.equalTo(40)
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -286,43 +205,7 @@ private extension VocaDetailViewController {
         contentView.addSubview(wordDetailStackView)
         contentView.addSubview(contourView)
         contentView.addSubview(togetherSavedSentenceView)
-        contentView.addSubview(myMemoView)
-        myMemoView.addSubview(myMemoLabel)
-        myMemoView.addSubview(myMemotextField)
-        myMemoView.addSubview(myMemoSaveButton)
-        myMemoView.addSubview(numberOfMemoLabel)
+        contentView.addSubview(vocaMemoView)
         scrollView.addSubview(scrollFinishView)
-    }
-
-    func setup() {
-        if myMemoDB.isEmpty == true {
-            myMemotextField.placeholder = "남긴 메모가 없어요."
-            myMemoView.layer.borderColor = UIColor.gray30.cgColor
-            numberOfMemoLabel.isHidden = true
-        } else {
-            numberOfMemoLabel.isHidden = false
-            myMemotextField.text = myMemoDB
-            myMemotextField.textColor = .primaryDark
-        }
-    }
-    
-    func setupTextField() {
-        self.myMemotextField.rx.controlEvent([.editingChanged])
-            .asObservable()
-            .subscribe(onNext: { _ in
-                self.myMemoSaveButton.layer.backgroundColor = UIColor.primaryDark.cgColor
-                self.myMemoSaveButton.layer.cornerRadius = 6
-                self.myMemoSaveButton.setTitle("저장하기", for: .normal)
-                self.myMemoSaveButton.titleLabel?.textColor = .secondaryLabel
-                self.myMemoSaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-                self.numberOfMemoLabel.isHidden = false
-            }).disposed(by: disposeBag)
-        
-        self.myMemotextField.rx.text
-            .subscribe(onNext: { [weak self] newValue in
-                self?.myMemoDB = newValue ?? ""
-                let number = String(newValue?.count ?? 0)
-                self?.numberOfMemoLabel.text = "\(number) / 140 자"
-            }).disposed(by: disposeBag)
     }
 }
