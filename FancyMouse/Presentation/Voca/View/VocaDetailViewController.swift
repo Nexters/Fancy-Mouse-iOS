@@ -26,7 +26,6 @@ final class VocaDetailViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let wordView = UIView()
     private let scrollFinishView = UIView()
     private let notificationCenter = NotificationCenter.default
     
@@ -119,7 +118,7 @@ final class VocaDetailViewController: UIViewController {
         button.layer.backgroundColor = UIColor.gray30.cgColor
         button.layer.cornerRadius = 6
         button.setTitle("수정하기", for: .normal)
-        button.titleLabel?.textColor = .black
+        button.setTitleColor(.gray60, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         button.addAction(saveAction, for: .touchUpInside)
         return button
@@ -196,21 +195,16 @@ final class VocaDetailViewController: UIViewController {
 private extension VocaDetailViewController {
     func setupUI() {
         addSubViews()
+        view.backgroundColor = .white
         
         scrollView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview()
         }
         
         contentView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.centerX.top.bottom.equalToSuperview()
-        }
-        
-        wordView.backgroundColor = .white
-        
-        wordView.snp.makeConstraints { (make) in
-            make.leading.top.trailing.equalToSuperview()
-            make.height.equalTo(800)
         }
         
         wordLabel.snp.makeConstraints { make in
@@ -277,7 +271,7 @@ private extension VocaDetailViewController {
         
         scrollFinishView.snp.makeConstraints { make in
             make.top.equalTo(myMemoView.snp.bottom).inset(10)
-            make.height.equalTo(10)
+            make.height.equalTo(40)
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
         }
@@ -286,14 +280,13 @@ private extension VocaDetailViewController {
     func addSubViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(wordView)
-        wordView.addSubview(wordLabel)
-        wordView.addSubview(wordCreatedDateLabel)
-        wordView.addSubview(wordMeaningStackView)
-        wordView.addSubview(wordDetailStackView)
-        wordView.addSubview(contourView)
-        wordView.addSubview(togetherSavedSentenceView)
-        wordView.addSubview(myMemoView)
+        contentView.addSubview(wordLabel)
+        contentView.addSubview(wordCreatedDateLabel)
+        contentView.addSubview(wordMeaningStackView)
+        contentView.addSubview(wordDetailStackView)
+        contentView.addSubview(contourView)
+        contentView.addSubview(togetherSavedSentenceView)
+        contentView.addSubview(myMemoView)
         myMemoView.addSubview(myMemoLabel)
         myMemoView.addSubview(myMemotextField)
         myMemoView.addSubview(myMemoSaveButton)
