@@ -38,7 +38,8 @@ extension UIColor {
     static let secondaryColor = UIColor(named: "secondary") ?? #colorLiteral(red: 0.9176470588, green: 1, blue: 0.6823529412, alpha: 1)
     static let secondaryWeek = UIColor(named: "secondary_week") ?? #colorLiteral(red: 0.9607843137, green: 1, blue: 0.8470588235, alpha: 1)
     static let secondaryDark = UIColor(named: "secondary_dark") ?? #colorLiteral(red: 0.8156862745, green: 0.8980392157, blue: 0.5803921569, alpha: 1)
-  
+    static let gradientEnd = UIColor(named: "gradient_end") ?? #colorLiteral(red: 0.3891513646, green: 0.4650174975, blue: 0.2865740061, alpha: 1)
+    static let gradientBack = UIColor(named: "gradient_back") ?? #colorLiteral(red: 0.07226986438, green: 0.1028464511, blue: 0.1279123127, alpha: 1)
     var name: String? {
         switch self {
         case UIColor.folder00: return "folder00"

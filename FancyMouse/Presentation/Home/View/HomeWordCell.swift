@@ -10,8 +10,11 @@ import RxSwift
 import UIKit
 
 // TODO: Reusable 기본 identifier 같은거 공통으로 사용할 수 있는 프로토콜 만들기
-
-final class HomeWordCell: UICollectionViewCell {
+final class HomeWordCell: UITableViewCell {
+    static var identifier: String {
+        return String(describing: Self.self)
+    }
+    
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()

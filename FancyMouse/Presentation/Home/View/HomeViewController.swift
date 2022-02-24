@@ -67,6 +67,17 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var homeWordTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.register(
+            HomeWordCell.self,
+            forCellReuseIdentifier: "HomeWordCell"
+        )
+        return tableView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPercentFont()
@@ -84,6 +95,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
+        self.view.backgroundColor = .gray30
         self.view.addSubview(progressView)
         progressView.addSubview(userLabel)
         progressView.addSubview(percentLabel)
@@ -91,6 +103,7 @@ class HomeViewController: UIViewController {
         progressView.addSubview(entryButton)
         progressView.addSubview(gradientView)
         progressView.addSubview(progressImageView)
+        self.view.addSubview(homeWordTableView)
         
         progressView.snp.makeConstraints { make in
             make.height.equalTo(305)
@@ -130,6 +143,11 @@ class HomeViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalToSuperview().offset(163)
             make.height.width.equalTo(63)
+        }
+        
+        homeWordTableView.snp.makeConstraints { make in
+            make.top.equalTo(progressImageView.snp.bottom).offset(60)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
     }
 }
