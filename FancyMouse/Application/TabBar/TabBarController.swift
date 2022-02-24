@@ -11,39 +11,43 @@ import UIKit
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let homeVC = UINavigationController(rootViewController: HomeViewController())
+        setupTabBar() 
+    }
+    
+    private func setupTabBar() {
+        let homeViewController = UINavigationController(rootViewController: HomeViewController())
         let homeTitle = "홈"
-        let image = UIImage(named: "tab_home_n")
-        let selectedImage = UIImage(named: "tab_home_s")?.withRenderingMode(.alwaysOriginal)
-        let homeTabBarItem = UITabBarItem(title: homeTitle, image: image,
-                                          selectedImage: selectedImage)
-        homeVC.tabBarItem = homeTabBarItem
+        let homeImage = UIImage(named: "tab_home_n")
+        let homeSelectedImage = UIImage(named: "tab_home_s")?.withRenderingMode(.alwaysOriginal)
+        let homeTabBarItem = UITabBarItem(title: homeTitle, image: homeImage,
+                                          selectedImage: homeSelectedImage)
+        homeViewController.tabBarItem = homeTabBarItem
         
-        let wordVC = HomeViewController()
+        let wordViewController = HomeViewController()
         let wordTitle = "단어장"
         let wordImage = UIImage(named: "tab_word_n")
         let wordSelectedImage = UIImage(named: "tab_word_s")?.withRenderingMode(.alwaysOriginal)
         let wordTabBarItem = UITabBarItem(title: wordTitle, image: wordImage,
                                           selectedImage: wordSelectedImage)
-        wordVC.tabBarItem = wordTabBarItem
+        wordViewController.tabBarItem = wordTabBarItem
         
-        let eduVC = HomeViewController()
-        let eduTitle = "학습"
-        let eduImage = UIImage(named: "tab_study_n")
-        let eduSelectedImage = UIImage(named: "tab_study_s")?.withRenderingMode(.alwaysOriginal)
-        let eduTabBarItem = UITabBarItem(title: eduTitle, image: eduImage,
-                                         selectedImage: eduSelectedImage)
-        eduVC.tabBarItem = eduTabBarItem
+        let lerningViewController = HomeViewController()
+        let lerningTitle = "학습"
+        let lerningImage = UIImage(named: "tab_study_n")
+        let lerningSelectedImage = UIImage(named: "tab_study_s")?.withRenderingMode(.alwaysOriginal)
+        let lerningTabBarItem = UITabBarItem(title: lerningTitle, image: lerningImage,
+                                         selectedImage: lerningSelectedImage)
+        lerningViewController.tabBarItem = lerningTabBarItem
         
-        let profileVC = HomeViewController()
-        let profileTitle = "더보기"
-        let profileImage = UIImage(named: "tab_more_n")
-        let profileSelectedImage = UIImage(named: "tab_more_s")?.withRenderingMode(.alwaysOriginal)
-        let profileTabBarItem = UITabBarItem(title: profileTitle, image: profileImage,
-                                             selectedImage: profileSelectedImage)
-        profileVC.tabBarItem = profileTabBarItem
+        let moreViewController = HomeViewController()
+        let moreTitle = "더보기"
+        let moreImage = UIImage(named: "tab_more_n")
+        let moreSelectedImage = UIImage(named: "tab_more_s")?.withRenderingMode(.alwaysOriginal)
+        let moreTabBarItem = UITabBarItem(title: moreTitle, image: moreImage,
+                                             selectedImage: moreSelectedImage)
+        moreViewController.tabBarItem = moreTabBarItem
         
-        viewControllers = [homeVC, wordVC, eduVC, profileVC]
+        viewControllers = [homeViewController, wordViewController,
+                           lerningViewController, moreViewController]
     }
 }
