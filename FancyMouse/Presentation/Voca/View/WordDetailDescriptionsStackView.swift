@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WordDescriptionsStackView: UIStackView {
+final class WordDetailDescriptionsStackView: UIStackView {
     init() {
         super.init(frame: .zero)
         
@@ -25,7 +25,7 @@ final class WordDescriptionsStackView: UIStackView {
     }
 }
     
-private extension WordDescriptionsStackView {
+private extension WordDetailDescriptionsStackView {
     func setup() {
         axis = .vertical
         distribution = .equalSpacing
