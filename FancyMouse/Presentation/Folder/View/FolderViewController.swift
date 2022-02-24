@@ -13,12 +13,15 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     private let disposeBag = DisposeBag()
     
     private var ellipsisView: EllipsisView?
+    
+    //TODO: 리팩기간에 수정
+    private var folderAddEditView: FolderAddEditView?
+    private var folderList: [Folder]?
     private var selectedFolder: Folder?
-    private var folderAddEditView = FolderAddEditView()
     
     private lazy var explainView: UIView = {
         let view = UIView()
-        view.backgroundColor = .explanColor
+        view.backgroundColor = .explainColor
         view.layer.cornerRadius = 24
         return view
     }()
@@ -161,15 +164,17 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     }
     
     private func setupBinding() {
-        viewModel.fetchFolder()
+        refreshData()
+        
+        viewModel.folderList
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
                 guard let cell = self.collectionView.dequeueReusableCell(
                     withReuseIdentifier: "FolderCell",
                     for: IndexPath.init(row: row, section: 0)
                 ) as? FolderCell else { return UICollectionViewCell() }
                 guard let itemColor = item.folderColor else { return UICollectionViewCell() }
-                self.selectedFolder = item
                 
+                cell.moreButton.tag = row
                 cell.moreButton.addTarget(self,
                                           action: #selector(self.moreButtonWasTapped(_:)),
                                           for: .touchUpInside
@@ -178,6 +183,12 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
                 return cell
             }
             .disposed(by: self.disposeBag)
+        
+        viewModel.folderList
+            .bind { [weak self] in
+                self?.folderList = $0
+            }
+            .disposed(by: disposeBag)
         
         viewModel.folderCount
             .bind { [weak self] count in
@@ -189,14 +200,19 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     //TODO: 리팩기간에 로직 수정하기
     @objc private func moreButtonWasTapped(_ sender: UIButton) {
         ellipsisView?.removeFromSuperview()
+        guard let folder = folderList?[sender.tag] else { return }
+        selectedFolder = folder
+        
         let view: EllipsisView = {
             let view = EllipsisView()
             
-            if let folder = selectedFolder, let color = folder.folderColor {
+            if let color = folder.folderColor {
                 view.addComponent(title: "수정하기", imageName: "edit", action: UIAction { _ in
+                    self.ellipsisView?.removeFromSuperview()
                     self.moreButtonEditWasTapped(folderName: folder.folderName, folderColor: color)
                 })
                 view.addComponent(title: "삭제하기", imageName: "delete", action: UIAction { _ in
+                    self.ellipsisView?.removeFromSuperview()
                     self.moreButtonDeleteWasTapped(folderID: folder.folderID, wordCount: folder.wordCount)
                 })
             }
@@ -215,8 +231,10 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     
     //TODO: 리팩 기간에 유스케이스+뷰모델로 빼기
     private func moreButtonEditWasTapped(folderName: String, folderColor: UIColor) {
+        folderAddEditView = FolderAddEditView(frame: .zero, originalNameString: folderName, originalColorString: folderColor.name ?? "")
+
         let view = BottomSheetController(
-            contentView: folderAddEditView,
+            contentView: folderAddEditView ?? UIView(),
             title: "폴더 수정하기",
             topInset: 40,
             bottomInset: 40
@@ -238,7 +256,33 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     func closeWasTapped() {}
     
     func okWasTapped() {
+        //TODO: 리팩기간에 수정하기
         guard let folder = selectedFolder else { return }
-        viewModel.update(folder: folder, folderColor: <#T##String#>, folderName: <#T##String#>)
+        var folderColor = ""
+        var folderName = ""
+        folderAddEditView?.viewModel.folderColor
+            .take(1)
+            .bind { color in
+                folderColor = color
+            }
+            .disposed(by: disposeBag)
+        folderAddEditView?.viewModel.folderName
+            .take(1)
+            .bind { name in
+                folderName = name
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.update(folderID: folder.folderID,
+                         folderColor: folderColor,
+                         folderName: folderName
+        )
+        refreshData()
+        collectionView.reloadData()
+    }
+    
+    //TODO: 리팩 기간에 삭제할 예정
+    private func refreshData() {
+        viewModel.fetchFolder()
     }
 }

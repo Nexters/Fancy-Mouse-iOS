@@ -45,16 +45,11 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return folderList
     }
     
-    func update(folder: Folder, folderColor: String, folderName: String) {
+    func update(folderID: FolderID, folderColor: String, folderName: String) {
+        //TODO: 리팩 기간에 네이밍 수정 예정
         let testItemsReference = Database.database().reference(withPath: "users/sangjin/folders")
-        let userItemRef = testItemsReference.child("\(folder.folderID)")
-        let values: [String: Any] = [
-            "color": folderColor,
-            "createdAt": 12345,
-            "folderId": "\(folder.folderID)",
-            "folderName": folderName
-        ]
-        userItemRef.setValue(values)
+        let userItemRef = testItemsReference.child("\(folderID)")
+        userItemRef.updateChildValues(["folderName": folderName, "color": folderColor])
     }
     
     func delete(_ folderID: FolderID) {

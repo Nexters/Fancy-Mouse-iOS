@@ -12,7 +12,7 @@ protocol FolderUseCaseProtocol {
     
     func fetchFolder() -> Observable<[Folder]>
     
-    func update(folder: Folder, folderColor: String, folderName: String)
+    func update(folderID: FolderID, folderColor: String, folderName: String)
 
     func delete(_ folderID: FolderID)
 }

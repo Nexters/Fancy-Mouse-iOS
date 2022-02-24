@@ -33,8 +33,8 @@ final class FolderViewModel {
         return folderList
     }
 
-    func update(folder: Folder, folderColor: String, folderName: String) {
-        useCase.update(folder: folder, folderColor: folderColor, folderName: folderName)
+    func update(folderID: FolderID, folderColor: String, folderName: String) {
+        useCase.update(folderID: folderID, folderColor: folderColor, folderName: folderName)
     }
     
     func delete(_ folderID: FolderID) {
