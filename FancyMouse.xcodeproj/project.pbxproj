@@ -73,6 +73,9 @@
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
 		D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */; };
 		E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */; };
+		E234110627C7969400AC8DEE /* WordDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */; };
+		E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */; };
+		E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */; };
 		E23CA6D627A2F82C00C8381E /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D527A2F82C00C8381E /* Word.swift */; };
 		E23CA6D927A2F93B00C8381E /* CommonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */; };
 		E23CA6DB27A2F95B00C8381E /* WordUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */; };
@@ -183,6 +186,9 @@
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
 		E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescriptionView.swift; sourceTree = "<group>"; };
+		E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescriptionsStackView.swift; sourceTree = "<group>"; };
+		E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescription.swift; sourceTree = "<group>"; };
 		E23CA6D527A2F82C00C8381E /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		E23CA6D827A2F93B00C8381E /* CommonRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRepositoryProtocol.swift; sourceTree = "<group>"; };
 		E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -525,6 +531,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E234110927C7A14000AC8DEE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		E283E02427A6659200FC340F /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +569,7 @@
 		E2B0710827A0546F00EE8373 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				E234110927C7A14000AC8DEE /* Data */,
 				E2DEFCA827BCF5CA0066FD54 /* Common */,
 				4470843E27B411F1006F5796 /* Folder */,
 				446F13CD27AD7F7800EE327E /* Login */,
@@ -665,7 +680,9 @@
 				E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */,
 				E2DEFCAB27BCF65D0066FD54 /* WordMeaningView.swift */,
 				E2D3278D27BD2D6B00D1458F /* WordMeaningsStackView.swift */,
+				E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */,
 				E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */,
+				E234110727C796E000AC8DEE /* WordDetailDescriptionsStackView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -960,6 +977,7 @@
 				401837F427C01A3B00773574 /* SearchRecentWordsCell.swift in Sources */,
 				44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */,
 				40AFEBF127C626770023E69B /* FolderResponse.swift in Sources */,
+				E234110627C7969400AC8DEE /* WordDetailDescriptionView.swift in Sources */,
 				4456BFB227A849720006D90B /* TabBarController.swift in Sources */,
 				40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */,
 				D1DB209827C1158C00EF3F6D /* MakersView.swift in Sources */,
@@ -969,6 +987,7 @@
 				44F1518527AB95BC00C2239D /* VocaViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
 				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
+				E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */,
 				401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */,
 				E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */,
 				C5AF267D27C62C50004E0A72 /* ProgressGradientView.swift in Sources */,
@@ -997,6 +1016,7 @@
 				E2D3278E27BD2D6B00D1458F /* WordMeaningsStackView.swift in Sources */,
 				D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */,
 				D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */,
+				E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
 				40A031E427C3B5A800473FB6 /* User+CoreDataProperties.swift in Sources */,
 				E2DEFCAA27BCF5E20066FD54 /* WordSpellingLabel.swift in Sources */,
