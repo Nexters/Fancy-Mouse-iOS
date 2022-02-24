@@ -16,6 +16,7 @@
 		401837F627C02EE500773574 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401837F527C02EE500773574 /* SearchViewModel.swift */; };
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
 		404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */; };
+		405F42EC27C82B46004CA542 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F42EB27C82B46004CA542 /* CALayer+Extensions.swift */; };
 		4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */; };
 		4080542D27C32ABC00B51574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4080542C27C32ABC00B51574 /* GoogleService-Info.plist */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
@@ -125,6 +126,7 @@
 		401837F527C02EE500773574 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
 		404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		405F42EB27C82B46004CA542 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextBuilder.swift; sourceTree = "<group>"; };
 		4080542C27C32ABC00B51574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				D1E738F527B930470052D0F5 /* View+Extensions.swift */,
 				E2DEFCAF27BCF6D50066FD54 /* UIView+Extensions.swift */,
 				401837EC27BE620D00773574 /* UIViewController+Extensions.swift */,
+				405F42EB27C82B46004CA542 /* CALayer+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				D1B83E2027B95EEF00AD7A70 /* MoreView.swift in Sources */,
 				404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */,
 				401837F427C01A3B00773574 /* SearchRecentWordsCell.swift in Sources */,
+				405F42EC27C82B46004CA542 /* CALayer+Extensions.swift in Sources */,
 				44F1518327AB954D00C2239D /* VocaViewController.swift in Sources */,
 				40AFEBF127C626770023E69B /* FolderResponse.swift in Sources */,
 				E234110627C7969400AC8DEE /* WordDetailDescriptionView.swift in Sources */,
