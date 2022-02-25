@@ -36,6 +36,11 @@
 		40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */; };
 		40E9666A27BDE0BE0020DF89 /* WordMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */; };
 		40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */; };
+		440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE97C27C8D87D00C73212 /* WalkthroughFirstViewController.swift */; };
+		440FE97F27C8D89600C73212 /* WalkthroughSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE97E27C8D89600C73212 /* WalkthroughSecondViewController.swift */; };
+		440FE98127C8D8A500C73212 /* WalkthroughThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE98027C8D8A500C73212 /* WalkthroughThirdViewController.swift */; };
+		440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE98227C8D8B400C73212 /* WalkthroughMainViewController.swift */; };
+		440FE98627C8D8D500C73212 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE98527C8D8D500C73212 /* Core.swift */; };
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
 		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
 		4470844227B4122D006F5796 /* FolderUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */; };
@@ -151,6 +156,11 @@
 		40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCell.swift; sourceTree = "<group>"; };
 		40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveViewController.swift; sourceTree = "<group>"; };
 		40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveViewCell.swift; sourceTree = "<group>"; };
+		440FE97C27C8D87D00C73212 /* WalkthroughFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFirstViewController.swift; sourceTree = "<group>"; };
+		440FE97E27C8D89600C73212 /* WalkthroughSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughSecondViewController.swift; sourceTree = "<group>"; };
+		440FE98027C8D8A500C73212 /* WalkthroughThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughThirdViewController.swift; sourceTree = "<group>"; };
+		440FE98227C8D8B400C73212 /* WalkthroughMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughMainViewController.swift; sourceTree = "<group>"; };
+		440FE98527C8D8D500C73212 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -347,6 +357,26 @@
 				40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */,
 			);
 			path = WordMoveView;
+			sourceTree = "<group>";
+		};
+		440FE97A27C8D85700C73212 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				440FE97B27C8D86800C73212 /* View */,
+				440FE98527C8D8D500C73212 /* Core.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		440FE97B27C8D86800C73212 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				440FE97C27C8D87D00C73212 /* WalkthroughFirstViewController.swift */,
+				440FE97E27C8D89600C73212 /* WalkthroughSecondViewController.swift */,
+				440FE98027C8D8A500C73212 /* WalkthroughThirdViewController.swift */,
+				440FE98227C8D8B400C73212 /* WalkthroughMainViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4456BFAE27A8492D0006D90B /* TabBar */ = {
@@ -602,6 +632,7 @@
 		E2B0710827A0546F00EE8373 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				440FE97A27C8D85700C73212 /* Walkthrough */,
 				E234110927C7A14000AC8DEE /* Data */,
 				E2DEFCA827BCF5CA0066FD54 /* Common */,
 				4470843E27B411F1006F5796 /* Folder */,
@@ -990,13 +1021,17 @@
 				401837EF27BE6D0A00773574 /* SearchViewController.swift in Sources */,
 				4096688027B79FA5006BC6ED /* FolderAddEditViewCell.swift in Sources */,
 				E283E02227A6363300FC340F /* Folder.swift in Sources */,
+				440FE98127C8D8A500C73212 /* WalkthroughThirdViewController.swift in Sources */,
 				4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */,
 				40A031E027C3B45F00473FB6 /* User.xcdatamodeld in Sources */,
 				446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */,
+				440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
 				D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */,
+				440FE98627C8D8D500C73212 /* Core.swift in Sources */,
 				40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */,
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
+				440FE97F27C8D89600C73212 /* WalkthroughSecondViewController.swift in Sources */,
 				E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */,
 				40A031E327C3B5A800473FB6 /* User+CoreDataClass.swift in Sources */,
 				E2F8478927C88C75009499C7 /* HomeWordDetailCellViewModel.swift in Sources */,
@@ -1023,6 +1058,7 @@
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
 				40BBAE5F27C76DBF002EB05A /* FolderUseCase.swift in Sources */,
 				44F1518527AB95BC00C2239D /* VocaViewModel.swift in Sources */,
+				440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */,
 				E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
 				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
