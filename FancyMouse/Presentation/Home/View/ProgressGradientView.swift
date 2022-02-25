@@ -10,15 +10,14 @@ import UIKit
 
 final class ProgressGradientView: UIView, CAAnimationDelegate {    
     let gradientLayer = CAGradientLayer()
+    let startColor = UIColor(red: 225 / 255, green: 255 / 255, blue: 141 / 255, alpha: 1).cgColor
+    let endColor = UIColor(red: 103 / 255, green: 118 / 255, blue: 77 / 255, alpha: 1).cgColor
     var startAngle: CGFloat = (-(.pi) / 2)
     var endAngle: CGFloat = 3 * ((.pi) / 2)
     
     override func draw(_ rect: CGRect) {
         let center = CGPoint(x: rect.midX, y: rect.midY)
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        
-        let startColor = UIColor(red: 225 / 255, green: 255 / 255, blue: 141 / 255, alpha: 1).cgColor
-        let endColor = UIColor(red: 103 / 255, green: 118 / 255, blue: 77 / 255, alpha: 1).cgColor
         
         self.gradientLayer.colors = [startColor, endColor]
         self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
