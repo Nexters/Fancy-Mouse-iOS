@@ -131,7 +131,7 @@ struct CardStackView: View {
 //                        offset = (isDragging ? self.translation.width : .zero)
                     })
                     .onEnded({ value in
-                        let width = getRect().width - 50
+                        let width = mainBounds.width - 48
                         self.translation = value.translation
                         let checkingStatus = abs(self.translation.width)
     //                                endSwipe = true

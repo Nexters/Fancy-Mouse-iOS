@@ -26,7 +26,7 @@ struct CompleteButton: View {
         .foregroundColor(.white)
         .cornerRadius(16)
         .onTapGesture {
-            viewModel.endSwipeActions(memorizationStatus: .complete) // complete인지 아닌지를 넣어야 겠다 특정 숫자보다
+            viewModel.endSwipeActions(memorizationStatus: .complete) 
         }
     }
 }
@@ -69,8 +69,8 @@ enum MemorizationStatus {
 
 class LearningViewModel: ObservableObject {
     @Published var words: [Word] = []
-    @Published var isCheckTapped: Bool = false
-    @Published var isXmarkTapped: Bool = false
+    @Published var isCheckTapped = false
+    @Published var isXmarkTapped = false
     @Published var cardScale: CGFloat = 1
     
     init() {
@@ -86,9 +86,7 @@ class LearningViewModel: ObservableObject {
     }
     
     //TODO: 페이징 처리, 단어가 5개만 남았을 때, 한번에 10개씩 불러오기
-    
     // 암기 완료 버튼 누르거나 우측으로 스와이프 시 해당 단어 스테이터스 암기 완료로 변경 및 반영
-    
     func getCardIndex(cardWord: Word) -> Int {
         let index = words.firstIndex { word in
             // FIXME: 나중에 단어 아이디로 변경
@@ -119,8 +117,8 @@ class LearningViewModel: ObservableObject {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if let _ = self.words.first {
-                let _ = withAnimation {
+            if !self.words.isEmpty {
+                withAnimation {
                     self.words.removeFirst()
                     self.cardScale = 1
                 }
@@ -132,43 +130,30 @@ class LearningViewModel: ObservableObject {
 struct CardContainerView: View {
     @EnvironmentObject var viewModel: LearningViewModel
     
-    @State var offset: CGFloat = 0
-    
+//    @State var offset: CGFloat = 0
     @State private var translation: CGSize = .zero
     
-    @State var endSwipe: Bool = false
-    @GestureState var isDragging: Bool = false
-    
-    @State var testVal: CGFloat = 1
+//    @State var endSwipe: Bool = false
+//    @GestureState var isDragging: Bool = false
     
     var body: some View {
         ZStack {
-            if viewModel.words.isEmpty {
-                //FIXME: 임시
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ForEach(viewModel.words.reversed()) { word in
+                let index = CGFloat(viewModel.getCardIndex(cardWord: word))
+                let topOffset = (index <= 2 ? index : 2) * 10 * viewModel.cardScale
 
-            } else {
-                ForEach(viewModel.words.reversed()) { word in
-                    let index = CGFloat(viewModel.getCardIndex(cardWord: word))
-//                    let topOffset = (index <= 2 ? index : 2) * 10 * testVal
-                    let topOffset = (index <= 2 ? index : 2) * 10 * viewModel.cardScale
+                GeometryReader { proxy in
+                    let size = proxy.size
 
-                    GeometryReader { proxy in
-                        let size = proxy.size
-
-                        ZStack {
-//                            CardStackView(word: word, testVal: $testVal)
-                            CardStackView(word: word)
-                                .environmentObject(viewModel)
+                    ZStack {
+                        CardStackView(word: word)
+                            .environmentObject(viewModel)
 //                                .frame(width: size.width - (topOffset * 4), height: size.height )
-                                .frame(width: size.width - (topOffset * 4), height: size.height - (topOffset * 3))
-                                .offset(y: topOffset * 2.5)
-                                .offset(x: offset)
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            .frame(width: size.width - (topOffset * 4), height: size.height - (topOffset * 3))
+                            .offset(y: topOffset * 2.5)
+//                            .offset(x: offset)
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 }
             }
         }
