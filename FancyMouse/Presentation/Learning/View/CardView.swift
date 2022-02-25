@@ -63,7 +63,7 @@ struct CardView: View {
                 // TODO: 유동적으로 데이터를 반영하기에는 list나 LazyVStack이 좋을듯, 데이터 구조 잡히면 변경할 예정, row 뷰도 별도로 뺄 예정
                 VStack(alignment: .leading, spacing: 6) {
                     ForEach((0..<word.meanings.count)) { idx in
-                        WordMeaningRow(number: idx, meaning: word.meanings[idx])
+                        WordMeaningRow(number: idx + 1, meaning: word.meanings[idx])
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -81,7 +81,7 @@ struct CardView: View {
                 Button {
                     isVisiable.toggle()
                 } label: {
-                    Image(isVisiable ? "btn_view" : "btn_hide")
+                    Image(isVisiable ? "btn_hide" : "btn_view")
                 }
             }
         }

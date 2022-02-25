@@ -96,6 +96,35 @@ extension View {
     }
 }
 
+//struct LottieView: UIViewRepresentable {
+//    var name: String
+//    var loopMode: LottieLoopMode = .playOnce
+//    
+//    var animationView = AnimationView()
+//    
+//    func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+//        let view = UIView(frame: .zero)
+//        
+//        animationView.animation = Animation.named(name)
+//        animationView.contentMode = .scaleAspectFit
+//        animationView.loopMode = loopMode
+//        animationView.animationSpeed = 1
+//        animationView.play()
+//        
+//        animationView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(animationView)
+//        
+//        NSLayoutConstraint.activate([
+//                    animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+//                    animationView.widthAnchor.constraint(equalTo: view.widthAnchor)
+//                ])
+//                
+//                return view
+//    }
+//    
+//    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {}
+//}
+
 struct LearningView: View {
     @EnvironmentObject var viewModel: LearningViewModel
     
@@ -109,7 +138,7 @@ struct LearningView: View {
             
             VStack(alignment: .center, spacing: 0) {
                 CardContainerView()
-                    .padding(EdgeInsets(top: rectHeight * 0.091, leading: 0, bottom: rectHeight * 0.137, trailing: 0))
+                    .padding(EdgeInsets(top: rectHeight * 0.07, leading: 0, bottom: rectHeight * 0.11, trailing: 0))
                 
                 HStack {
                     InCompleteButton()
