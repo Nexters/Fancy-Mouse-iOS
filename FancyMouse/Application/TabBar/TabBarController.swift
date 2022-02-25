@@ -11,7 +11,34 @@ import UIKit
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTabBarColor()
         setupTabBar() 
+    }
+    
+    private func setupTabBarColor() {
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont.spoqaMedium(size: 11)],
+            for: .normal
+        )
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.font: UIFont.spoqaMedium(size: 11)],
+            for: .selected
+        )
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.gray50],
+            for: .normal
+        )
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.primaryColor],
+            for: .selected
+        )
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.white
+        tabBar.layer.applyShadow(color: .gray40, alpha: 16, xValue: 0, yValue: -8, blur: 16, spread: 0)
+        tabBar.barTintColor = .white
+        tabBar.isTranslucent = true
+        
     }
     
     private func setupTabBar() {
@@ -23,7 +50,7 @@ class TabBarController: UITabBarController {
                                           selectedImage: homeSelectedImage)
         homeViewController.tabBarItem = homeTabBarItem
         
-        let wordViewController = HomeViewController()
+        let wordViewController = FolderViewController()
         let wordTitle = "단어장"
         let wordImage = UIImage(named: "tab_word_n")
         let wordSelectedImage = UIImage(named: "tab_word_s")?.withRenderingMode(.alwaysOriginal)
