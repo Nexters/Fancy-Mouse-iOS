@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: CoreData
     lazy var persistentContainer: NSPersistentContainer = {
@@ -26,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        GIDSignIn.sharedInstance()?.clientID = ""
-        GIDSignIn.sharedInstance()?.delegate = self
         return true
     }
 
