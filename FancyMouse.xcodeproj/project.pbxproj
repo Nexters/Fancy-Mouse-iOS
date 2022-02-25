@@ -73,6 +73,7 @@
 		D1AFE72E279C0FB20082D680 /* FancyMouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE72D279C0FB20082D680 /* FancyMouseTests.swift */; };
 		D1AFE738279C0FB20082D680 /* FancyMouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */; };
 		D1AFE73A279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */; };
+		D1B21E5227C8FCF200CC7AF8 /* LearningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B21E5127C8FCF200CC7AF8 /* LearningViewModel.swift */; };
 		D1B83E2027B95EEF00AD7A70 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B83E1F27B95EEF00AD7A70 /* MoreView.swift */; };
 		D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB209527C0BF6200EF3F6D /* CardView.swift */; };
 		D1DB209827C1158C00EF3F6D /* MakersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DB209727C1158C00EF3F6D /* MakersView.swift */; };
@@ -202,6 +203,7 @@
 		D1AFE733279C0FB20082D680 /* FancyMouseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FancyMouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AFE737279C0FB20082D680 /* FancyMouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseUITests.swift; sourceTree = "<group>"; };
 		D1AFE739279C0FB20082D680 /* FancyMouseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyMouseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D1B21E5127C8FCF200CC7AF8 /* LearningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningViewModel.swift; sourceTree = "<group>"; };
 		D1B83E1F27B95EEF00AD7A70 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		D1DB209527C0BF6200EF3F6D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		D1DB209727C1158C00EF3F6D /* MakersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakersView.swift; sourceTree = "<group>"; };
@@ -564,6 +566,14 @@
 			path = FancyMouseUITests;
 			sourceTree = "<group>";
 		};
+		D1B21E5027C8FCD200CC7AF8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D1B21E5127C8FCF200CC7AF8 /* LearningViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D1B83E1D27B95ED000AD7A70 /* More */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +595,7 @@
 		D1E738EF27B922470052D0F5 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				D1B21E5027C8FCD200CC7AF8 /* ViewModel */,
 				D1E738F027B9227F0052D0F5 /* View */,
 			);
 			path = Learning;
@@ -1068,6 +1079,7 @@
 				E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
 				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
+				D1B21E5227C8FCF200CC7AF8 /* LearningViewModel.swift in Sources */,
 				E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */,
 				401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */,
 				E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */,
