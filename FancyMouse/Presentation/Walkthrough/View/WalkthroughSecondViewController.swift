@@ -5,10 +5,10 @@
 //  Created by suding on 2022/02/25.
 //
 
+import SnapKit
 import UIKit
 
 class WalkthroughSecondViewController: UIViewController {
-    
     lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = "내가 알고싶은 단어만 모아"

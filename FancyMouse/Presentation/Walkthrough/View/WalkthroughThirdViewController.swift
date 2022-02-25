@@ -9,16 +9,14 @@ import SnapKit
 import UIKit
 
 class WalkthroughThirdViewController: UIViewController {
-    
     lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = "리마인딩까지 할 수 있어요!"
         label.textColor = .white
-        label.font = .spoqaMedium(size: 24)
+        label.font = .spoqaBold(size: 24)
         return label
     }()
-    
-    
+        
     lazy var subTitle: UILabel = {
         let label = UILabel()
         label.text = """
@@ -37,7 +35,6 @@ class WalkthroughThirdViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

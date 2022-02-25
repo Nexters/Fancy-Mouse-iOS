@@ -16,7 +16,7 @@ class WalkthroughMainViewController: UIViewController {
     
     lazy var navigationView: UIView = {
         let view = UIView()
-        view.backgroundColor = .primaryDark
+        view.backgroundColor = .explainColor
         return view
     }()
 
@@ -81,7 +81,7 @@ class WalkthroughMainViewController: UIViewController {
     }
 
     private func configure() {
-        view.backgroundColor = UIColor(red: 0.081, green: 0.1, blue: 0.129, alpha: 1)
+        view.backgroundColor = .explainColor
         view.addSubview(navigationView)
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
@@ -165,10 +165,6 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
             nextButton.imageEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 32)
             
             let action = UIAction(handler: { _ in
-                guard let clientID = FirebaseApp.app()?.options.clientID else {
-                    return
-                }
-                let signInConfig = GIDConfiguration.init(clientID: clientID)
             })
             nextButton.addAction(action, for: .touchUpInside)
         }
