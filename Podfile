@@ -15,6 +15,7 @@ target 'FancyMouse' do
   pod 'Firebase/Database'
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'GoogleSignIn'
+  pod 'Firebase/Auth'
   target 'FancyMouseTests' do
     inherit! :search_paths
     # Pods for testing
