@@ -30,10 +30,23 @@ class FolderCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var plusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "plus")
+        return imageView
+    }()
+    
+    private lazy var plusLabel: UILabel = {
+        let label = UILabel()
+        label.text = "폴더 추가하기"
+        label.font = .spoqaMedium(size: 14)
+        label.textColor = .gray60
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -48,9 +61,15 @@ class FolderCell: UICollectionViewCell {
         addSubview(wordCountLabel)
         addSubview(folderImageView)
         addSubview(moreButton)
+        
+        //TODO: 리팩토링 후 변경 예정
+        addSubview(plusImageView)
+        addSubview(plusLabel)
     }
     
-    private func setupLayout() {
+    func setupFolderLayout() {
+        layer.applyShadow()
+        
         folderImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(24)
@@ -73,22 +92,38 @@ class FolderCell: UICollectionViewCell {
         }
     }
     
+    func setupAddButtonLayout() {
+        backgroundColor = .gray30
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.white.cgColor
+        layer.applyShadow(alpha: 0.4, blur: 20)
+        
+        plusImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(45)
+            make.centerX.equalToSuperview()
+        }
+        plusLabel.snp.makeConstraints { make in
+            make.top.equalTo(plusImageView.snp.bottom).offset(12)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
     func setupData(title: String, count: Int, color: FolderColor) {
         var imageString = ""
         
         switch color {
-        case .folder00 ?? .folder00: imageString = "folder00"
-        case .folder01 ?? .folder01: imageString = "folder01"
-        case .folder02 ?? .folder02: imageString = "folder02"
-        case .folder03 ?? .folder03: imageString = "folder03"
-        case .folder04 ?? .folder04: imageString = "folder04"
-        case .folder05 ?? .folder05: imageString = "folder05"
-        case .folder06 ?? .folder06: imageString = "folder06"
-        case .folder07 ?? .folder07: imageString = "folder07"
-        case .folder08 ?? .folder08: imageString = "folder08"
-        case .folder09 ?? .folder09: imageString = "folder09"
-        case .folder10 ?? .folder10: imageString = "folder10"
-        case .folder11 ?? .folder11: imageString = "folder11"
+        case .folder00: imageString = "folder00"
+        case .folder01: imageString = "folder01"
+        case .folder02: imageString = "folder02"
+        case .folder03: imageString = "folder03"
+        case .folder04: imageString = "folder04"
+        case .folder05: imageString = "folder05"
+        case .folder06: imageString = "folder06"
+        case .folder07: imageString = "folder07"
+        case .folder08: imageString = "folder08"
+        case .folder09: imageString = "folder09"
+        case .folder10: imageString = "folder10"
+        case .folder11: imageString = "folder11"
         default: imageString = "folder00"
         }
         

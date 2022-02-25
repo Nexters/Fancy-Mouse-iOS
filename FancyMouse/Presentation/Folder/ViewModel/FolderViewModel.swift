@@ -18,7 +18,7 @@ final class FolderViewModel {
         self.useCase = useCase
     }
 
-    func createFolder(folderName: String, folderColor: UIColor) {
+    func createFolder(folderName: String, folderColor: String) {
         useCase.createFolder(folderName: folderName, folderColor: folderColor)
     }
 

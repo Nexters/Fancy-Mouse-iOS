@@ -13,7 +13,7 @@ struct FolderResponse: Decodable {
     let color: FolderColorResponse
     let createdAt, folderID: Int
     let folderName: String
-    let wordList: [WordList]
+    let wordList: [WordList?]
     
     enum CodingKeys: String, CodingKey {
         case color, createdAt
@@ -22,7 +22,12 @@ struct FolderResponse: Decodable {
     }
     
     var mappedFolder: Folder {
-        Folder(folderID: folderID, folderColor: color.mappedFolderColor, folderName: folderName, wordCount: wordList.count)
+        Folder(
+            folderID: folderID,
+            folderColor: color.mappedFolderColor,
+            folderName: folderName,
+            wordCount: wordList.count
+        )
     }
     
     //TODO: 일단 간단한 방어코드 넣어놓고 추후 리팩토링 예정
@@ -32,7 +37,7 @@ struct FolderResponse: Decodable {
         folderName = try container.decode(String.self, forKey: .folderName)
         createdAt = try container.decode(Int.self, forKey: .createdAt)
         color = (try? container.decode(FolderColorResponse.self, forKey: .color)) ?? .folder00
-        wordList = try container.decode([WordList].self, forKey: .wordList)
+        wordList = try container.decodeIfPresent([WordList].self, forKey: .wordList) ?? []
     }
 }
 

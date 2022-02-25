@@ -9,14 +9,14 @@ import Firebase
 import RxSwift
 
 struct FolderUseCase: FolderUseCaseProtocol {
-    func createFolder(folderName: String, folderColor: UIColor) {
+    func createFolder(folderName: String, folderColor: String) {
         let testItemsReference = Database.database().reference(withPath: "users/sangjin/folders")
         let userItemRef = testItemsReference.child("3")
         let values: [String: Any] = [
-            "color": "folder03",
+            "color": folderColor,
             "createdAt": 12345,
             "folderId": "3",
-            "folderName": "테스트폴더3"
+            "folderName": folderName
         ]
         userItemRef.setValue(values)
     }
@@ -40,6 +40,10 @@ struct FolderUseCase: FolderUseCaseProtocol {
             if let folderData = response?.mappedFolder {
                 folderArray.append(folderData)
             }
+        }
+        //TODO: 리팩 때 삭제 예정
+        if folderArray.count < 12 {
+            folderArray.append(Folder(folderID: -1, folderColor: .none, folderName: "", wordCount: -1))
         }
         folderList.onNext(folderArray)
         return folderList

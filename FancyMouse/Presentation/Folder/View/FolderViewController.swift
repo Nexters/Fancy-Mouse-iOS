@@ -11,13 +11,15 @@ import RxSwift
 final class FolderViewController: UIViewController, BottomSheetDelegate {
     private lazy var viewModel = FolderViewModel(useCase: FolderUseCase())
     private let disposeBag = DisposeBag()
-    
     private var ellipsisView: EllipsisView?
     
-    //TODO: 리팩기간에 수정
+    //TODO: 리팩 기간에 수정
     private var folderAddEditView: FolderAddEditView?
     private var folderList: [Folder]?
     private var selectedFolder: Folder?
+    private var isNewFolder = true
+    private var inputFolderName = ""
+    private var inputFolderColorName = ""
     
     private lazy var explainView: UIView = {
         let view = UIView()
@@ -87,12 +89,7 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
             frame: .zero,
             collectionViewLayout: layout
         )
-        let tap = UITapGestureRecognizer(
-            target: self,
-            action: #selector(collectionViewWasTapped(sender:))
-        )
         collectionView.backgroundColor = .gray30
-        collectionView.addGestureRecognizer(tap)
         collectionView.register(
             FolderCell.self,
             forCellWithReuseIdentifier: "FolderCell"
@@ -129,35 +126,30 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(126)
         }
-        
         explainCountLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(24)
             make.width.lessThanOrEqualTo(24)
         }
-        
         explainTitleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(25)
             make.leading.equalTo(explainCountLabel.snp.trailing).offset(2)
             make.width.equalTo(71)
         }
-        
         explainSubLabel.snp.makeConstraints { make in
             make.top.equalTo(explainTitleLabel.snp.bottom).offset(3)
             make.leading.equalToSuperview().offset(24)
             make.width.equalTo(170)
         }
-        
         explainPastButton.snp.makeConstraints { make in
             make.top.equalTo(explainSubLabel.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(24)
         }
-        
         explainImageView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(39)
             make.trailing.equalToSuperview().inset(30)
         }
-        
         collectionView.snp.makeConstraints { make in
+            //TODO: 리팩 때 수정 (셀 쉐도우 짤림)
             make.top.equalTo(explainView.snp.bottom).offset(24)
             make.leading.trailing.bottom.equalToSuperview().inset(24)
         }
@@ -165,25 +157,6 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     
     private func setupBinding() {
         refreshData()
-        
-        viewModel.folderList
-            .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
-                guard let cell = self.collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "FolderCell",
-                    for: IndexPath.init(row: row, section: 0)
-                ) as? FolderCell else { return UICollectionViewCell() }
-                guard let itemColor = item.folderColor else { return UICollectionViewCell() }
-                
-                cell.moreButton.tag = row
-                cell.moreButton.addTarget(self,
-                                          action: #selector(self.moreButtonWasTapped(_:)),
-                                          for: .touchUpInside
-                )
-                cell.setupData(title: item.folderName, count: item.wordCount, color: itemColor)
-                return cell
-            }
-            .disposed(by: self.disposeBag)
-        
         viewModel.folderList
             .bind { [weak self] in
                 self?.folderList = $0
@@ -195,6 +168,41 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
                 self?.explainCountLabel.text = "\(count)"
             }
             .disposed(by: disposeBag)
+        
+        viewModel.folderList
+            .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
+                guard let cell = self.collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "FolderCell",
+                    for: IndexPath.init(row: row, section: 0)
+                ) as? FolderCell else { return UICollectionViewCell() }
+                
+                //TODO: 리팩 때 삭제 예정
+                if row == (self.folderList?.count)! - 1 {
+                    cell.setupAddButtonLayout()
+                } else {
+                    guard let itemColor = item.folderColor else { return UICollectionViewCell() }
+                    cell.moreButton.tag = row
+                    cell.moreButton.addTarget(self,
+                                              action: #selector(self.moreButtonWasTapped(_:)),
+                                              for: .touchUpInside
+                    )
+                    cell.setupFolderLayout()
+                    cell.setupData(title: item.folderName, count: item.wordCount, color: itemColor)
+                }
+                return cell
+            }
+            .disposed(by: self.disposeBag)
+        
+        collectionView.rx.itemSelected
+            .bind { [weak self] in
+                self?.ellipsisView?.removeFromSuperview()
+                guard let count = self?.folderList?.count else { return }
+                guard $0.last == count - 1 else {
+                    self?.navigationController?.pushViewController(FolderDetailView(), animated: true)
+                    return
+                }
+                self?.addNewFolder()
+            }.disposed(by: disposeBag)
     }
     
     //TODO: 리팩기간에 로직 수정하기
@@ -231,6 +239,7 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
     
     //TODO: 리팩 기간에 유스케이스+뷰모델로 빼기
     private func moreButtonEditWasTapped(folderName: String, folderColor: UIColor) {
+        isNewFolder = false
         folderAddEditView = FolderAddEditView(frame: .zero, originalNameString: folderName, originalColorString: folderColor.name ?? "")
 
         let view = BottomSheetController(
@@ -239,6 +248,26 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
             topInset: 40,
             bottomInset: 40
         )
+        //TODO: 리팩기간에 뷰모델 input-output으로 구성
+        folderAddEditView?.viewModel.folderName
+            .bind { [weak self] in
+                self?.inputFolderName = $0
+            }
+            .disposed(by: disposeBag)
+        folderAddEditView?.viewModel.folderColor
+            .bind { [weak self] in
+                self?.inputFolderColorName = $0
+            }
+            .disposed(by: disposeBag)
+        let test = Observable.combineLatest((folderAddEditView?.viewModel.folderName)!, (folderAddEditView?.viewModel.folderColor)!)
+            .map { name, color in
+                return !name.isEmpty && !color.isEmpty
+            }
+        test.bind {
+            view.okButton.isEnabled = $0
+            view.okButton.backgroundColor = $0 ? .primaryColor : .gray40
+            view.okButton.setTitleColor($0 ? .secondaryColor : .gray50, for: .normal)
+        }.disposed(by: disposeBag)
         view.setup(parentViewController: self)
         view.delegate = self
     }
@@ -249,23 +278,56 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
         self.present(view, animated: true, completion: nil)
     }
     
-    @objc private func collectionViewWasTapped(sender: UITapGestureRecognizer) {
-        ellipsisView?.removeFromSuperview()
+    private func addNewFolder() {
+        isNewFolder = true
+        folderAddEditView = FolderAddEditView()
+        
+        let view = BottomSheetController(
+            contentView: folderAddEditView ?? UIView(),
+            title: "폴더 추가하기",
+            topInset: 40,
+            bottomInset: 40
+        )
+        //TODO: 리팩기간에 뷰모델 input-output으로 구성
+        folderAddEditView?.viewModel.folderName
+            .bind { [weak self] in
+                self?.inputFolderName = $0
+            }
+            .disposed(by: disposeBag)
+        folderAddEditView?.viewModel.folderColor
+            .bind { [weak self] in
+                self?.inputFolderColorName = $0
+            }
+            .disposed(by: disposeBag)
+        let test = Observable.combineLatest((folderAddEditView?.viewModel.folderName)!, (folderAddEditView?.viewModel.folderColor)!)
+            .map { name, color in
+                return !name.isEmpty && !color.isEmpty
+            }
+        test.bind {
+            view.okButton.isEnabled = $0
+            view.okButton.backgroundColor = $0 ? .primaryColor : .gray40
+            view.okButton.setTitleColor($0 ? .secondaryColor : .gray50, for: .normal)
+        }.disposed(by: disposeBag)
+        view.setup(parentViewController: self)
+        view.delegate = self
+        view.setup(parentViewController: self)
+        view.delegate = self
     }
     
     func closeWasTapped() {}
     
     func okWasTapped() {
         //TODO: 리팩기간에 수정하기
-        guard let folder = selectedFolder else { return }
         var folderColor = ""
         var folderName = ""
+        
         folderAddEditView?.viewModel.folderColor
             .take(1)
             .bind { color in
                 folderColor = color
             }
             .disposed(by: disposeBag)
+        
         folderAddEditView?.viewModel.folderName
             .take(1)
             .bind { name in
@@ -273,10 +335,16 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
             }
             .disposed(by: disposeBag)
         
-        viewModel.update(folderID: folder.folderID,
-                         folderColor: folderColor,
-                         folderName: folderName
-        )
+        if isNewFolder {
+            viewModel.createFolder(folderName: folderName, folderColor: folderColor)
+        } else {
+            guard let folder = selectedFolder else { return }
+            
+            viewModel.update(folderID: folder.folderID,
+                             folderColor: folderColor,
+                             folderName: folderName
+            )
+        }
         refreshData()
         collectionView.reloadData()
     }
