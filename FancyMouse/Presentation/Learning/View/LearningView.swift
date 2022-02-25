@@ -176,21 +176,25 @@ struct LearningView: View {
     let rectHeight = UIScreen.main.bounds.height
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        ZStack {
+            Color.primaryDark
+                .ignoresSafeArea(.all)
+            
             VStack(alignment: .center, spacing: 0) {
-                CardContainerView()
-                    .padding(EdgeInsets(top: rectHeight * 0.091, leading: 0, bottom: rectHeight * 0.137, trailing: 0))
-                
-                HStack {
-                    InCompleteButton()
-                    Spacer()
-                    CompleteButton()
+                VStack(alignment: .center, spacing: 0) {
+                    CardContainerView()
+                        .padding(EdgeInsets(top: rectHeight * 0.091, leading: 0, bottom: rectHeight * 0.137, trailing: 0))
+                    
+                    HStack {
+                        InCompleteButton()
+                        Spacer()
+                        CompleteButton()
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 36, bottom: rectHeight * 0.091, trailing: 36))
                 }
-                .padding(EdgeInsets(top: 0, leading: 36, bottom: rectHeight * 0.091, trailing: 36))
+                .padding(.horizontal, rectWidth * 0.073)
             }
-            .padding(.horizontal, rectWidth * 0.073)
         }
-        .background(Color.primaryDark)
     }
 }
 

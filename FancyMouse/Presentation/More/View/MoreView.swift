@@ -29,7 +29,7 @@ struct MoreListRow: View {
                 Text(self.versionInfo ?? "")
                     .spoqaBold(size: 12)
                     .foregroundColor(.secondaryColor)
-                    .padding(EdgeInsets(top: 6, leading: 10, bottom: 6, trailing: 10))
+                    .padding(EdgeInsets(top: 3, leading: 10, bottom: 3, trailing: 10))
                     .background(Color.primaryColor)
                     .cornerRadius(20)
             } else {
@@ -76,39 +76,43 @@ struct MoreView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                TitleView()
+            ZStack {
+                Color.gray30
+                .edgesIgnoringSafeArea(.all)
                 
-                ProfileView()
-            
-                VStack(spacing: 12) {
-                    ForEach(moreListRowTypes, id: \.self) { rowType in
-                        NavigationLink(destination: Text(rowType.rawValue)) {
-                            MoreListRow(type: rowType)
+                VStack(alignment: .leading) {
+                    TitleView()
+                    
+                    ProfileView()
+                
+                    VStack(spacing: 12) {
+                        ForEach(moreListRowTypes, id: \.self) { rowType in
+                            NavigationLink(destination: Text(rowType.rawValue)) {
+                                MoreListRow(type: rowType)
+                            }
                         }
                     }
-                }
-                
-                Spacer()
-                
-                HStack(spacing: 20) {
+                    
                     Spacer()
-                    Text("로그아웃")
-                    Rectangle()
-                        .frame(width: 1)
-                    Text("회원탈퇴")
-                    Spacer()
+                    
+                    HStack(spacing: 20) {
+                        Spacer()
+                        Text("로그아웃")
+                        Rectangle()
+                            .frame(width: 1)
+                        Text("회원탈퇴")
+                        Spacer()
+                    }
+                    .frame(height: 18)
+                    .padding(.bottom, 60)
+                    .spoqaMedium(size: 14)
+                    .foregroundColor(.gray50)
                 }
-                .frame(height: 18)
-                .padding(.bottom, 60)
-                .spoqaMedium(size: 14)
-                .foregroundColor(.gray50)
+                .padding(.horizontal, 24)
+                .navigationBarTitle("")
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
             }
-            .padding(.horizontal, 24)
-            .background(Color.gray30)
-            .navigationBarTitle("")
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
         }
     }
 }
