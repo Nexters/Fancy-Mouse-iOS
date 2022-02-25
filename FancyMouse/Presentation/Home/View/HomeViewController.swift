@@ -102,6 +102,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         ) as? HomeSectionHeaderView
         else { return nil }
         
+        let action = UIAction { _ in
+            self.words.shuffle()
+            DispatchQueue.main.async {
+                self.homeWordTableView.reloadData()
+            }
+        }
+        
+        headerView.suffleButton.addAction(action, for: .touchUpInside)
+        
         return headerView
     }
     
@@ -156,6 +165,8 @@ struct HomeViewUseCase: HomeUseCaseProtocol {
 }
 
 final class HomeSectionHeaderView: UITableViewHeaderFooterView {
+    let suffleButton = UIButton()
+    
     private var hiddingLabel: UILabel {
         let hiddingLabel = UILabel()
         hiddingLabel.textColor = .gray50
@@ -170,7 +181,6 @@ final class HomeSectionHeaderView: UITableViewHeaderFooterView {
         let hidingSpellingLabel = hiddingLabel
         let ellipseImageView = UIImageView()
         let hidingMeaningsLabel = hiddingLabel
-        let suffleButton = UIButton()
         
         hidingSpellingLabel.text = "단어숨김"
         hidingMeaningsLabel.text = "뜻숨김"
