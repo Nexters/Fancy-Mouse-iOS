@@ -56,6 +56,7 @@ class HomeViewController: UIViewController {
         let image = UIImage(named: "btn_entry")
         button.setImage(image, for: .normal)
         let entryAction = UIAction() { _ in
+            
         }
         button.addAction(entryAction, for: .touchUpInside)
         return button
@@ -84,6 +85,12 @@ class HomeViewController: UIViewController {
         setupUI()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.bool(forKey: "isLoginedUser") {
+            return
+        }
+    }
+    
     private func setupPercentFont() {
         let fullText = percentLabel.text ?? ""
         let attribtuedString = NSMutableAttributedString(string: fullText)

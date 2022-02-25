@@ -537,6 +537,7 @@
 		D1AFE715279C0FAF0082D680 /* FancyMouse */ = {
 			isa = PBXGroup;
 			children = (
+				4080542C27C32ABC00B51574 /* GoogleService-Info.plist */,
 				E2B0711327A0547000EE8373 /* Resources */,
 				E2B0710F27A0547000EE8373 /* Application */,
 				E2B0711427A0547000EE8373 /* Common */,
@@ -737,7 +738,6 @@
 			isa = PBXGroup;
 			children = (
 				40A031DD27C3B45300473FB6 /* CoreData */,
-				4080542C27C32ABC00B51574 /* GoogleService-Info.plist */,
 				D16383FE27B01685005C8326 /* Fonts */,
 				D1AFE724279C0FB20082D680 /* Info.plist */,
 				D1AFE71F279C0FB20082D680 /* Assets.xcassets */,
