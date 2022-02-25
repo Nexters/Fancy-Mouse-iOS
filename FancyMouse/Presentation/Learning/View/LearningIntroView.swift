@@ -14,7 +14,7 @@ enum LearningState {
 
 // FIXME: 파일명, 뷰명 변경
 struct LearningIntroView: View {
-    var state: LearningState = .start
+    var state: LearningState = .end
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -24,7 +24,22 @@ struct LearningIntroView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(EdgeInsets(top: 40, leading: 24, bottom: 0, trailing: 24))
             
-            Spacer(minLength: 24)
+            if state == .end {
+                HStack(spacing: 0) {
+                    Text("7개의 단어 중 ")
+                    Text("5")
+                        .spoqaMedium(size: 16)
+                        .foregroundColor(.secondaryColor)
+                    Text("개를 암기했어요.")
+                    Spacer()
+                }
+                .spoqaRegular(size: 16)
+                .foregroundColor(.gray50)
+                .padding(.top, 12)
+                .padding(.leading, 24)
+            }
+            
+            Spacer(minLength: 30)
             
             Image(state == .start ? "img_study" : "img_study_com")
                 .resizable()

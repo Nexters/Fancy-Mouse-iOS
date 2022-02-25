@@ -38,7 +38,7 @@ final class HomeWordCellViewModel {
         guard let toggledStatus = currentWordStatus.toggledStatus
         else { return }
         
-        changeMemorizationStatus(to: toggledStatus, of: word.wordID)
+        changeMemorizationStatus(to: toggledStatus, of: word.id)
     }
 }
 
