@@ -24,9 +24,18 @@ class LearningViewModel: ObservableObject {
     }
     
     private func fetchDummyData() {
-        let spellings = ["I", "Love", "Nexters", "Fancy", "Mouse", "Team", "🙂"]
-        for idx in (0...6) {
-            let word = Word(id: idx, folderID: 0, createdAt: Date(), spelling: spellings[idx], meanings: ["(이루고자 하는, 이루어야 할) 목적,(특정 상황에서 무엇을) 하기 위함.","(삶에 의미를 주는) 목적"], memorizationStatus: .inProgress, memo: "", synonyms: [""], examples: [""], urlString: "")
+        let spellings = ["comprehensive", "strategy", "complication", "dim", "access", "resource", "sentimental"]
+        let meaningsList = [["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제"], ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"]
+                            ,["(장소로의) 입장", "접근권, 접촉기회", "(컴퓨터에) 접속하다"], ["(자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
+                            ["정서(감정)적인", "(지나치게) 감상적인"]]
+        let memos = ["이건 제발 외우자! ㅜㅜ", "", "", "디자인 관련해서 자주 나오는 용어!", "", "", ""]
+        let synonymsList: [[String]] = [["complete", "full"],[],[],["vague"],[],[],[]]
+        let examplesList: [[String]] = [["a comprehensive survey of modern music."],[],[],["This light is too dim to read by."],[],[],[]]
+        
+        for idx in (0..<spellings.count) {
+            let word = Word(id: idx, folderID: idx, createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
+                            spelling: spellings[idx], meanings: meaningsList[idx],
+                            memorizationStatus: .inProgress, memo: memos[idx], synonyms: synonymsList[idx], examples: examplesList[idx], urlString: "")
             words.append(word)
         }
     }

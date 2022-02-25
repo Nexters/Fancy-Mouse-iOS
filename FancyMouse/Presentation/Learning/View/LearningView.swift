@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CompleteButton: View {
-//    @Binding var isTapped: Bool
     @EnvironmentObject var viewModel: LearningViewModel
     
     var body: some View {
@@ -32,7 +31,6 @@ struct CompleteButton: View {
 }
 
 struct InCompleteButton: View {
-//    @Binding var isTapped: Bool
     @EnvironmentObject var viewModel: LearningViewModel
     
     var body: some View {
