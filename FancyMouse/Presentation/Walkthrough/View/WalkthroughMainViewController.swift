@@ -61,7 +61,7 @@ class WalkthroughMainViewController: UIViewController {
         pageControl.pageIndicatorTintColor = .gray60
         pageControl.currentPage = 0
         pageControl.numberOfPages = 3
-        pageControl.preferredIndicatorImage = UIImage(named:"heart")
+        pageControl.preferredIndicatorImage = UIImage(named:"Rectangle")
         let action = UIAction(handler: { _ in
         })
         pageControl.addAction(action, for: .valueChanged)
