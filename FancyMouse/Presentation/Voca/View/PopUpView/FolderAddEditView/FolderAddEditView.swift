@@ -147,7 +147,7 @@ final class FolderAddEditView: UIView {
                 ) as? FolderAddEditViewCell else { return UICollectionViewCell() }
                 let isLastIndex = row == self.viewModel.colorList.count - 1
 
-                cell.setupColor(item ?? UIColor())
+                cell.setupColor(item)
 
                 if isLastIndex {
                     cell.setupDisabled()
@@ -179,7 +179,15 @@ final class FolderAddEditView: UIView {
                     item: self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) ?? Int(),
                     section: 0
                 )
-                self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
+                //TODO: 리팩 때 수정
+                if item != .folder00 {
+                    self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
+                    self?.textField.isUserInteractionEnabled = true
+                    self?.collectionView.isUserInteractionEnabled = true
+                } else {
+                    self?.textField.isUserInteractionEnabled = false
+                    self?.collectionView.isUserInteractionEnabled = false
+                }
             }
             .disposed(by: disposeBag)
         

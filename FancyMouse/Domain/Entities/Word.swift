@@ -17,7 +17,7 @@ struct Word: Equatable, Identifiable {
     let spelling: String
     let meanings: [String]
     let memorizationStatus: MemorizationStatus
-    let memo: String
+    let memo: String?
     let synonyms: [String]
     let examples: [String]
     let urlString: String
