@@ -35,7 +35,7 @@ class TabBarController: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.white
-        tabBar.layer.applyShadow(color: .gray40, alpha: 16, xValue: 0, yValue: -8, blur: 16, spread: 0)
+        tabBar.layer.applyShadow(color: .gray40, alpha: 0.16, xValue: 0, yValue: -8, blur: 16, spread: 0)
         tabBar.barTintColor = .white
         tabBar.isTranslucent = true
         
@@ -44,7 +44,7 @@ class TabBarController: UITabBarController {
     private func setupTabBar() {
         let homeViewController = UINavigationController(rootViewController: HomeViewController())
         let homeTitle = "홈"
-        let homeImage = UIImage(named: "tab_home_n")
+        let homeImage = UIImage(named: "tab_home_n")?.withRenderingMode(.alwaysOriginal)
         let homeSelectedImage = UIImage(named: "tab_home_s")?.withRenderingMode(.alwaysOriginal)
         let homeTabBarItem = UITabBarItem(title: homeTitle, image: homeImage,
                                           selectedImage: homeSelectedImage)
@@ -52,7 +52,7 @@ class TabBarController: UITabBarController {
         
         let wordViewController = FolderViewController()
         let wordTitle = "단어장"
-        let wordImage = UIImage(named: "tab_word_n")
+        let wordImage = UIImage(named: "tab_word_n")?.withRenderingMode(.alwaysOriginal)
         let wordSelectedImage = UIImage(named: "tab_word_s")?.withRenderingMode(.alwaysOriginal)
         let wordTabBarItem = UITabBarItem(title: wordTitle, image: wordImage,
                                           selectedImage: wordSelectedImage)
@@ -60,7 +60,7 @@ class TabBarController: UITabBarController {
         
         let lerningViewController = HomeViewController()
         let lerningTitle = "학습"
-        let lerningImage = UIImage(named: "tab_study_n")
+        let lerningImage = UIImage(named: "tab_study_n")?.withRenderingMode(.alwaysOriginal)
         let lerningSelectedImage = UIImage(named: "tab_study_s")?.withRenderingMode(.alwaysOriginal)
         let lerningTabBarItem = UITabBarItem(title: lerningTitle, image: lerningImage,
                                          selectedImage: lerningSelectedImage)
@@ -68,7 +68,7 @@ class TabBarController: UITabBarController {
         
         let moreViewController = HomeViewController()
         let moreTitle = "더보기"
-        let moreImage = UIImage(named: "tab_more_n")
+        let moreImage = UIImage(named: "tab_more_n")?.withRenderingMode(.alwaysOriginal)
         let moreSelectedImage = UIImage(named: "tab_more_s")?.withRenderingMode(.alwaysOriginal)
         let moreTabBarItem = UITabBarItem(title: moreTitle, image: moreImage,
                                              selectedImage: moreSelectedImage)
