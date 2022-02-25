@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol ViewModelBindable {
+    func bindViewModel()
+}
+
+protocol WordViewModelProtocol: ViewModelBindable {
+    func updateWord(_ word: Word)
+}
+
+protocol WordCellViewModelProtocol: ViewModelBindable {
+    func updateWord(_ word: Word)
+}
+
