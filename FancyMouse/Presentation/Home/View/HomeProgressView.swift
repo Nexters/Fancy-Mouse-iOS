@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-final class HomeProgressView: UIView {
+final class HomeProgressView: UITableViewHeaderFooterView {
     private let userName = "수진"
     private let progressPercent = 75
     private let wordCount = 20
@@ -67,9 +67,8 @@ final class HomeProgressView: UIView {
         return view
     }()
 
-    init() {
-        super.init(frame: .zero)
-        
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setupPercentFont()
         setupUI()
     }
@@ -127,7 +126,7 @@ final class HomeProgressView: UIView {
         
         gradientView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(124)
-            make.trailing.leading.equalToSuperview().inset(24)
+            make.centerX.equalToSuperview()
             make.height.width.equalTo(152)
         }
         
