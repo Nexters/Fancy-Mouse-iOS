@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-struct IncompleteButton: View {
-    @Binding var isTapped: Bool
+struct CompleteButton: View {
+//    @Binding var isTapped: Bool
+    @EnvironmentObject var viewModel: LearningViewModel
     
     var body: some View {
         HStack(spacing: 5) {
             Image("check")
                 .frame(width: 13, height: 16)
-                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: isTapped ? 8 : 16))
-            if isTapped {
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: viewModel.isCheckTapped ? 8 : 16))
+            if viewModel.isCheckTapped {
                 Text("암기완료")
                     .spoqaBold(size: 16)
                     .padding(.trailing, 16)
@@ -25,25 +26,18 @@ struct IncompleteButton: View {
         .foregroundColor(.white)
         .cornerRadius(16)
         .onTapGesture {
-            withAnimation(.interactiveSpring()) {
-                isTapped.toggle()
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation(.interactiveSpring()) {
-                    isTapped.toggle()
-                }
-            }
+            viewModel.endSwipeActions(memorizationStatus: .complete) // complete인지 아닌지를 넣어야 겠다 특정 숫자보다
         }
     }
 }
 
-struct CompleteButton: View {
-    @Binding var isTapped: Bool
+struct InCompleteButton: View {
+//    @Binding var isTapped: Bool
+    @EnvironmentObject var viewModel: LearningViewModel
     
     var body: some View {
         HStack(spacing: 5) {
-            if isTapped {
+            if viewModel.isXmarkTapped {
                 Text("미암기")
                     .spoqaBold(size: 16)
                     .padding(.leading, 16)
@@ -51,20 +45,13 @@ struct CompleteButton: View {
             
             Image("xmark")
                 .frame(width: 16, height: 16)
-                .padding(EdgeInsets(top: 16, leading: isTapped ? 8 : 16, bottom: 16, trailing: 16))
+                .padding(EdgeInsets(top: 16, leading: viewModel.isXmarkTapped ? 8 : 16, bottom: 16, trailing: 16))
         }
         .background(Color.folder07)
         .foregroundColor(.white)
         .cornerRadius(16)
         .onTapGesture {
-            withAnimation(.interactiveSpring()) {
-                isTapped.toggle()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation(.interactiveSpring()) {
-                    isTapped.toggle()
-                }
-            }
+            viewModel.endSwipeActions(memorizationStatus: .incomplete)
         }
     }
 }
@@ -78,22 +65,22 @@ struct CardTestModel: Identifiable {
 enum MemorizationStatus {
     case complete
     case incomplete
-    case none
 }
 
 class LearningViewModel: ObservableObject {
     @Published var words: [Word] = []
-//    @Published var MemorizationStatus: MemorizationStatus = .none
     @Published var isCheckTapped: Bool = false
     @Published var isXmarkTapped: Bool = false
+    @Published var cardScale: CGFloat = 1
     
     init() {
         fetchDummyData()
     }
     
     private func fetchDummyData() {
+        let spellings = ["I", "Love", "Nexters", "Fancy", "Mouse", "Team", "🙂"]
         for idx in (0...6) {
-            let word = Word(id: idx, folderID: 0, createdAt: Date(), spelling: "Purpose", meanings: ["(이루고자 하는, 이루어야 할) 목적,(특정 상황에서 무엇을) 하기 위함.","(삶에 의미를 주는) 목적"], memorizationStatus: .inProgress, memo: "", synonyms: [""], examples: [""], urlString: "")
+            let word = Word(id: idx, folderID: 0, createdAt: Date(), spelling: spellings[idx], meanings: ["(이루고자 하는, 이루어야 할) 목적,(특정 상황에서 무엇을) 하기 위함.","(삶에 의미를 주는) 목적"], memorizationStatus: .inProgress, memo: "", synonyms: [""], examples: [""], urlString: "")
             words.append(word)
         }
     }
@@ -110,24 +97,39 @@ class LearningViewModel: ObservableObject {
         
         return index
     }
+    
+    func endSwipeActions(memorizationStatus: MemorizationStatus) {
+        withAnimation(.none) {
+//            endSwipe = true
+            if memorizationStatus == .complete {
+                isCheckTapped.toggle()
+            } else {
+                isXmarkTapped.toggle()
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            withAnimation(.interactiveSpring()) {
+                if memorizationStatus == .complete {
+                    self.isCheckTapped.toggle()
+                } else {
+                    self.isXmarkTapped.toggle()
+                }
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let _ = self.words.first {
+                let _ = withAnimation {
+                    self.words.removeFirst()
+                    self.cardScale = 1
+                }
+            }
+        }
+    }
 }
 
-//class CardViewModel: ObservableObject {
-//    @Published var dummyData: [CardTestModel] =
-//    [CardTestModel(word: "1"), CardTestModel(word: "1"), CardTestModel(word: "1"), CardTestModel(word: "1"), CardTestModel(word: "1"), CardTestModel(word: "1"), CardTestModel(word: "1")]
-//
-//    func getIndex(dummy: CardTestModel) -> Int {
-//        let index = dummyData.firstIndex { card in
-//            return dummy.id == card.id
-//        } ?? 0
-//
-//        return index
-//    }
-//}
-
 struct CardContainerView: View {
-    //    @ObservedObject var viewModel = CardViewModel()
-//    @StateObject var viewModel2 = CardViewModel()
     @EnvironmentObject var viewModel: LearningViewModel
     
     @State var offset: CGFloat = 0
@@ -146,19 +148,19 @@ struct CardContainerView: View {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+
             } else {
                 ForEach(viewModel.words.reversed()) { word in
                     let index = CGFloat(viewModel.getCardIndex(cardWord: word))
-                    let topOffset = (index <= 2 ? index : 2) * 10 * testVal
-                    
+//                    let topOffset = (index <= 2 ? index : 2) * 10 * testVal
+                    let topOffset = (index <= 2 ? index : 2) * 10 * viewModel.cardScale
+
                     GeometryReader { proxy in
                         let size = proxy.size
-                        
+
                         ZStack {
-                            // 카드뷰 자체가 오프셋을 갖고..
-                            // 프레임하고 y오프셋 조절
-                            // 백그라운드 색 조절 필요
-                            CardStackView(word: word, testVal: $testVal)
+//                            CardStackView(word: word, testVal: $testVal)
+                            CardStackView(word: word)
                                 .environmentObject(viewModel)
 //                                .frame(width: size.width - (topOffset * 4), height: size.height )
                                 .frame(width: size.width - (topOffset * 4), height: size.height - (topOffset * 3))
@@ -170,18 +172,19 @@ struct CardContainerView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: .constant(viewModel.words.isEmpty)) {
+            LearningIntroView()
+        }
     }
 }
 
 extension View {
-    func getRect() -> CGRect {
+    var mainBounds: CGRect {
         return UIScreen.main.bounds
     }
 }
 
 struct LearningView: View {
-//    @State private var checkIsTapped = false
-//    @State private var xmarkIsTapped = false
     @EnvironmentObject var viewModel: LearningViewModel
     
     let rectWidth = UIScreen.main.bounds.width
@@ -194,9 +197,9 @@ struct LearningView: View {
                     .padding(EdgeInsets(top: rectHeight * 0.091, leading: 0, bottom: rectHeight * 0.137, trailing: 0))
                 
                 HStack {
-                    CompleteButton(isTapped: $viewModel.isCheckTapped)
+                    InCompleteButton()
                     Spacer()
-                    IncompleteButton(isTapped: $viewModel.isXmarkTapped)
+                    CompleteButton()
                 }
                 .padding(EdgeInsets(top: 0, leading: 36, bottom: rectHeight * 0.091, trailing: 36))
             }

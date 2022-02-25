@@ -26,8 +26,8 @@ struct LearningIntroView: View {
             
             if state == .end {
                 HStack(spacing: 0) {
-                    Text("200개의 단어 중 ")
-                    Text("50")
+                    Text("7개의 단어 중 ")
+                    Text("5")
                         .spoqaMedium(size: 16)
                         .foregroundColor(.secondaryColor)
                     Text("개를 암기했어요.")
