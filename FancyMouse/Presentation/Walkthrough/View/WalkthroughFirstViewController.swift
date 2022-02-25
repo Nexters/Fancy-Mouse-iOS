@@ -5,18 +5,17 @@
 //  Created by suding on 2022/02/25.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 class WalkthroughFirstViewController: UIViewController {
     lazy var mainTitle: UILabel = {
         let label = UILabel()
         label.text = "슥 - 드래그 해서"
         label.textColor = .white
-        label.font = .spoqaMedium(size: 24)
+        label.font = .spoqaBold(size: 24)
         return label
     }()
-    
     
     lazy var subTitle: UILabel = {
         let label = UILabel()
@@ -25,7 +24,7 @@ class WalkthroughFirstViewController: UIViewController {
         단어를 저장할 수 있어요.
         """
         label.textColor = .gray50
-        label.font = .spoqaMedium(size: 24)
+        label.font = .spoqaMedium(size: 16)
         label.numberOfLines = 2
         return label
     }()
@@ -36,7 +35,6 @@ class WalkthroughFirstViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
