@@ -56,6 +56,12 @@ struct CardView: View {
                 .spoqaBold(size: 28)
                 .foregroundColor(.primaryColor)
             
+//            Text("Purpose")
+//                .spoqaBold(size: 40)
+//                .minimumScaleFactor(0.01)
+//                .foregroundColor(.primaryColor)
+//            
+            
             Divider()
                 .frame(height: 1)
                 .foregroundColor(.gray50) // FIXME: color gray30으로 체인지
@@ -118,8 +124,9 @@ struct CardStackView: View {
     @State var endSwipe: Bool = false
     @GestureState var isDragging: Bool = false
 
-    @EnvironmentObject var viewModel: CardViewModel
-    var card: CardTestModel
+    @EnvironmentObject var viewModel: LearningViewModel
+    
+//    var word: Word
     @Binding var testVal: CGFloat
     
     var body: some View {
@@ -146,7 +153,7 @@ struct CardStackView: View {
                         
                         // Fix
                         let width1 = (getRect().width - 50) / 2
-                        testVal = max((width1 - self.translation.width) / width1, 0.7)
+                        testVal = max((width1 - abs(self.translation.width)) / width1, 0.2) // 0.7
                         
                         print(self.translation.width, width1, testVal)
     //                                            let translation = value.translation.width
@@ -162,7 +169,8 @@ struct CardStackView: View {
 //                        testVal = max((width1 - self.translation.width) / width1, 0)
 //                        testVal = 1
 
-                        let checkingStatus = (self.translation.width > 0 ? self.translation.width : -self.translation.width)
+//                        let checkingStatus = (self.translation.width > 0 ? self.translation.width : -self.translation.width)
+                        let checkingStatus = abs(self.translation.width)
     //                                endSwipe = true
                         withAnimation {
                             if checkingStatus > (width / 2) {
@@ -179,6 +187,7 @@ struct CardStackView: View {
                         }
                     })
             )
+//            .onReceive(<#T##publisher: Publisher##Publisher#>, perform: <#T##(Publisher.Output) -> Void#>)
         }
     }
     
@@ -188,9 +197,10 @@ struct CardStackView: View {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            if let _ = viewModel.dummyData.first {
+            if let _ = viewModel.words.first {
                 let _ = withAnimation {
-                    viewModel.dummyData.removeFirst()
+                    viewModel.words.removeFirst()
+                    testVal = 1
                 }
             }
         }
@@ -199,6 +209,7 @@ struct CardStackView: View {
 
 struct CardStackView_Previews: PreviewProvider {
     static var previews: some View {
-        CardStackView(card: CardTestModel(word: "1"), testVal: .constant(1))
+        CardStackView(testVal: .constant(1))
+            .environmentObject(LearningViewModel())
     }
 }
