@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 final class ProgressGradientView: UIView {
+    fileprivate var progressLayer = CAShapeLayer()
+    
     private var lineWidth: CGFloat = 6 { didSet { setNeedsDisplay(bounds) } }
     private var startColor = UIColor.secondaryColor { didSet { setNeedsDisplay(bounds) } }
     private var endColor = UIColor.gradientEnd { didSet { setNeedsDisplay(bounds) } }
@@ -28,10 +30,11 @@ final class ProgressGradientView: UIView {
         var endColorB: CGFloat = 0
         var endColorA: CGFloat = 0
 
-        startColor.getRed(&startColorR, green: &startColorG,
-                           blue: &startColorB, alpha: &startColorA)
+        startColor.getRed(&startColorR,
+                          green: &startColorG,
+                          blue: &startColorB, alpha: &startColorA)
         endColor.getRed(&endColorR, green: &endColorG,
-                         blue: &endColorB, alpha: &endColorA)
+                        blue: &endColorB, alpha: &endColorA)
 
         let startAngle: CGFloat = -90
         let endAngle: CGFloat = 180
@@ -68,5 +71,14 @@ final class ProgressGradientView: UIView {
             path.stroke()
             angle = currentEndAngle
         }
+    }
+    func setProgressWithAnimation(duration: TimeInterval, value: Float) {
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = duration
+        animation.fromValue = 0
+        animation.toValue = value
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        progressLayer.strokeEnd = CGFloat(value)
+        progressLayer.add(animation, forKey: "animateprogress")
     }
 }

@@ -40,8 +40,8 @@ class HomeViewController: UIViewController {
         let label = UILabel()
         label.textColor = .white
         label.text = "\(wordCount) 개 / 200 개"
-        label.font = .spoqaBold(size: 12)
-        label.textColor = .gray30
+        label.font = .spoqaRegular(size: 12)
+        label.textColor = .gray50
         return label
     }()
     
@@ -56,7 +56,9 @@ class HomeViewController: UIViewController {
         let image = UIImage(named: "btn_entry")
         button.setImage(image, for: .normal)
         let entryAction = UIAction() { _ in
-            
+            let nextVC = FolderDetailView()
+            nextVC.modalPresentationStyle = .overFullScreen
+            self.present(nextVC, animated: true)
         }
         button.addAction(entryAction, for: .touchUpInside)
         return button
@@ -100,7 +102,7 @@ class HomeViewController: UIViewController {
                                       range: range)
         percentLabel.attributedText = attribtuedString
     }
-    
+
     private func setupUI() {
         self.view.backgroundColor = .gray30
         self.view.addSubview(progressView)
