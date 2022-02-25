@@ -62,11 +62,11 @@ struct CardView: View {
             if isVisiable {
                 // TODO: 유동적으로 데이터를 반영하기에는 list나 LazyVStack이 좋을듯, 데이터 구조 잡히면 변경할 예정, row 뷰도 별도로 뺄 예정
                 VStack(alignment: .leading, spacing: 6) {
-                    WordMeaningRow(number: 1, meaning: "(이루고자 하는, 이루어야 할) 목적")
-                    WordMeaningRow(number: 2, meaning: "(특정 상황에서 무엇을) 하기 위함, 용도, 의도")
-                    WordMeaningRow(number: 3, meaning: "(특정 상황에서 무엇을) 하기 위함, 용도, 의도 하기 위함, 용도, 의도 하기 위함, 용도, 의도 하기 위함, 용도, 의도")
+                    ForEach((0..<word.meanings.count)) { idx in
+                        WordMeaningRow(number: idx, meaning: word.meanings[idx])
+                    }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             } else {
                 Text("우측 하단의 아이콘을\n터치하면 뜻을 확인할 수 있어요!")
                     .spoqaRegular(size: 14)
