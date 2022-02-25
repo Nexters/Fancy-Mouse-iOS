@@ -167,7 +167,7 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
             .bind { [weak self] count in
 //                self?.explainCountLabel.text = "\(count)"
                 //TODO: 시연영상 찍고 돌려놓을 예정
-                self?.explainSubLabel.text = "2"
+                self?.explainCountLabel.text = "2"
             }
             .disposed(by: disposeBag)
         
