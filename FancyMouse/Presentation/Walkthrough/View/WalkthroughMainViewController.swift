@@ -5,6 +5,9 @@
 //  Created by suding on 2022/02/25.
 //
 
+import AuthenticationServices
+import Firebase
+import GoogleSignIn
 import SnapKit
 import UIKit
 
@@ -18,7 +21,9 @@ class WalkthroughMainViewController: UIViewController {
     }()
 
     lazy var pageViewController: UIPageViewController = {
-        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        let pageViewController = UIPageViewController(transitionStyle: .scroll,
+                                                      navigationOrientation: .horizontal,
+                                                      options: nil)
         return pageViewController
     }()
     
@@ -48,7 +53,6 @@ class WalkthroughMainViewController: UIViewController {
         return button
     }()
     
-    
     lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.currentPageIndicatorTintColor = .secondaryColor
@@ -66,11 +70,11 @@ class WalkthroughMainViewController: UIViewController {
         setupDelegate()
         configure()
         if let firstVC = dataViewControllers.first {
-            pageViewController.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            pageViewController.setViewControllers([firstVC], direction: .forward,
+                                                  animated: true, completion: nil)
         }
     }
 
-    
     private func setupDelegate() {
         pageViewController.dataSource = self
         pageViewController.delegate = self
@@ -84,11 +88,10 @@ class WalkthroughMainViewController: UIViewController {
         view.addSubview(pageControl)
         
         if case 0...1 = currentIndex {
-            nextButton.setTitle("다음", for : .normal)
+            nextButton.setTitle("다음", for: .normal)
         }
         view.addSubview(nextButton)
         pageControl.currentPage = currentIndex
-        
         
         navigationView.snp.makeConstraints { make in
             make.width.top.equalToSuperview()
@@ -102,7 +105,6 @@ class WalkthroughMainViewController: UIViewController {
         }
         pageViewController.didMove(toParent: self)
         
-     
         nextButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalToSuperview().inset(24)
@@ -116,9 +118,10 @@ class WalkthroughMainViewController: UIViewController {
     }
 }
 
-extension WalkthroughMainViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+extension WalkthroughMainViewController: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController)
+    -> UIViewController? {
         guard let index = dataViewControllers.firstIndex(of: viewController) else { return nil }
         let previousIndex = index - 1
         currentIndex = previousIndex
@@ -127,8 +130,12 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource, UIPageV
         }
         return dataViewControllers[previousIndex]
     }
+}
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+extension WalkthroughMainViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController)
+    -> UIViewController? {
         guard let index = dataViewControllers.firstIndex(of: viewController) else { return nil }
         let nextIndex = index + 1
         currentIndex = nextIndex
@@ -139,25 +146,29 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource, UIPageV
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
-                             didFinishAnimating finished: Bool,
-                             previousViewControllers: [UIViewController],
-                             transitionCompleted completed: Bool) {
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
        guard completed,
          let currentVC = pageViewController.viewControllers?.first,
          let index = dataViewControllers.firstIndex(of: currentVC) else { return }
          pageControl.currentPage = index
         
         if index == 2 {
-            nextButton.setTitle("Google로 시작하기", for : .normal)
+            nextButton.setTitle("Google로 시작하기", for: .normal)
             nextButton.setImage(#imageLiteral(resourceName: "_ic_chrome logo"), for: .normal)
             nextButton.setTitleColor(.secondaryColor, for: .normal)
             nextButton.imageView?.contentMode = .scaleAspectFit
             nextButton.titleLabel?.font = .spoqaBold(size: 16)
             nextButton.contentHorizontalAlignment = .center
             nextButton.semanticContentAttribute = .forceLeftToRight
-            nextButton.imageEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 32) 
+            nextButton.imageEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 32)
+            
             let action = UIAction(handler: { _ in
-                
+                guard let clientID = FirebaseApp.app()?.options.clientID else {
+                    return
+                }
+                let signInConfig = GIDConfiguration.init(clientID: clientID)
             })
             nextButton.addAction(action, for: .touchUpInside)
         }

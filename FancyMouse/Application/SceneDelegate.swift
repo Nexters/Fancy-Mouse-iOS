@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
