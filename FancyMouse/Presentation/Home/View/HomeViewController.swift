@@ -5,8 +5,8 @@
 //  Created by seunghwan Lee on 2022/01/22.
 //
 
-import RxSwift
 import RxCocoa
+import RxSwift
 import UIKit
 
 final class HomeViewController: UIViewController {
@@ -67,18 +67,18 @@ private extension HomeViewController {
     }
     
     func setupMockData() {
-        let spellings = ["comprehensive", "strategy", "complication", "dim", "access", "resource", "sentimental"]
-        let meaningsList = [["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제", "복잡함"], ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"]
+        let spellings = ["purpose", "comprehensive", "strategy", "complication", "dim", "access", "resource", "sentimental"]
+        let meaningsList = [["(이루고자 하는·이루어야 할) 목적", "(특정 상황에서 무엇을) 하기 위함, 용도, 의도", "(삶에 의미를 주는) 목적[목적의식]"], ["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제", "복잡함"], ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"]
                             ,["(장소로의) 입장", "접근권, 접촉기회", "(컴퓨터에) 접속하다"], ["(자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
                             ["정서(감정)적인", "(지나치게) 감상적인"]]
-        let memos = ["이건 제발 외우자! ㅜㅜ", "", "", "디자인 관련해서 자주 나오는 용어!", "", "", ""]
-        let synonymsList: [[String]] = [["complete", "full"],[],[],["vague"],[],[],[]]
-        let examplesList: [[String]] = [["a comprehensive survey of modern music."],[],[],["This light is too dim to read by."],[],[],[]]
+        let memos = ["꼭 외워야 하는데.. 외우기 쉽지않네..고민된다!", "이건 제발 외우자! ㅜㅜ", "", "", "디자인 관련해서 자주 나오는 용어!", "", "", ""]
+        let synonymsList: [[String]] = [[], ["complete", "full"],[],[],["vague"],[],[],[]]
+        let examplesList: [[String]] = [[], ["a comprehensive survey of modern music."],[],[],["This light is too dim to read by."],[],[],[]]
         
-        for idx in (0..<spellings.count) {
-            let word = Word(id: idx, folderID: idx, createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
-                            spelling: spellings[idx], meanings: meaningsList[idx],
-                            memorizationStatus: .inProgress, memo: memos[idx], synonyms: synonymsList[idx], examples: examplesList[idx], urlString: "")
+        for index in (0..<spellings.count) {
+            let word = Word(id: index, folderID: index, createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
+                            spelling: spellings[index], meanings: meaningsList[index],
+                            memorizationStatus: .inProgress, memo: memos[index], synonyms: synonymsList[index], examples: examplesList[index], urlString: "")
             words.append(word)
         }
     }
@@ -109,9 +109,35 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        headerView.suffleButton.addAction(action, for: .touchUpInside)
+        headerView.shuffleButton.addAction(action, for: .touchUpInside)
         
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let navigationBar = navigationController?.navigationBar
+        else { return }
+        
+        let backButtonImage =  #imageLiteral(resourceName: "btn_back").withRenderingMode(.alwaysTemplate)
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.backIndicatorImage = backButtonImage
+        navigationBar.backIndicatorTransitionMaskImage = backButtonImage
+        navigationBar.tintColor = .primaryColor
+        navigationBar.isTranslucent = true
+        
+        let fakeNavigationBar = UIView(frame: .zero)
+        fakeNavigationBar.translatesAutoresizingMaskIntoConstraints = false
+        fakeNavigationBar.isUserInteractionEnabled = false
+        fakeNavigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        fakeNavigationBar.isHidden = true
+        
+        view.insertSubview(fakeNavigationBar, belowSubview: navigationBar)
+        fakeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        fakeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        fakeNavigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        
+        show(VocaDetailViewController(), sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -165,7 +191,7 @@ struct HomeViewUseCase: HomeUseCaseProtocol {
 }
 
 final class HomeSectionHeaderView: UITableViewHeaderFooterView {
-    let suffleButton = UIButton()
+    let shuffleButton = UIButton()
     
     private var hiddingLabel: UILabel {
         let hiddingLabel = UILabel()
@@ -185,26 +211,26 @@ final class HomeSectionHeaderView: UITableViewHeaderFooterView {
         hidingSpellingLabel.text = "단어숨김"
         hidingMeaningsLabel.text = "뜻숨김"
         ellipseImageView.image = #imageLiteral(resourceName: "ellipse")
-        suffleButton.setImage(#imageLiteral(resourceName: "suffle"), for: .normal)
+        shuffleButton.setImage(#imageLiteral(resourceName: "shuffle"), for: .normal)
         
-        [hidingSpellingLabel, ellipseImageView, hidingMeaningsLabel, suffleButton].forEach {
+        [hidingSpellingLabel, ellipseImageView, hidingMeaningsLabel, shuffleButton].forEach {
             sectionHeaderView.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            hidingSpellingLabel.centerYAnchor.constraint(equalTo: suffleButton.centerYAnchor),
+            hidingSpellingLabel.centerYAnchor.constraint(equalTo: shuffleButton.centerYAnchor),
             hidingSpellingLabel.leadingAnchor.constraint(equalTo: sectionHeaderView.leadingAnchor),
             
-            ellipseImageView.centerYAnchor.constraint(equalTo: suffleButton.centerYAnchor),
+            ellipseImageView.centerYAnchor.constraint(equalTo: shuffleButton.centerYAnchor),
             ellipseImageView.leadingAnchor.constraint(equalTo: hidingSpellingLabel.trailingAnchor, constant: 8),
             
-            hidingMeaningsLabel.centerYAnchor.constraint(equalTo: suffleButton.centerYAnchor),
+            hidingMeaningsLabel.centerYAnchor.constraint(equalTo: shuffleButton.centerYAnchor),
             hidingMeaningsLabel.leadingAnchor.constraint(equalTo: ellipseImageView.trailingAnchor, constant: 8),
             
-            suffleButton.topAnchor.constraint(equalTo: sectionHeaderView.topAnchor),
-            suffleButton.bottomAnchor.constraint(equalTo: sectionHeaderView.bottomAnchor),
-            suffleButton.trailingAnchor.constraint(equalTo: sectionHeaderView.trailingAnchor)
+            shuffleButton.topAnchor.constraint(equalTo: sectionHeaderView.topAnchor),
+            shuffleButton.bottomAnchor.constraint(equalTo: sectionHeaderView.bottomAnchor),
+            shuffleButton.trailingAnchor.constraint(equalTo: sectionHeaderView.trailingAnchor)
         ])
         
         return sectionHeaderView
