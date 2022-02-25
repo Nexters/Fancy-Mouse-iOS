@@ -51,7 +51,7 @@ class TabBarController: UITabBarController {
                                           selectedImage: homeSelectedImage)
         homeViewController.tabBarItem = homeTabBarItem
         
-        let wordViewController = FolderViewController()
+        let wordViewController = UINavigationController(rootViewController: FolderViewController())
         let wordTitle = "단어장"
         let wordImage = UIImage(named: "tab_word_n")?.withRenderingMode(.alwaysOriginal)
         let wordSelectedImage = UIImage(named: "tab_word_s")?.withRenderingMode(.alwaysOriginal)
