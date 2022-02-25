@@ -52,6 +52,16 @@ private extension HomeWordCell {
         view.backgroundColor = .white
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        let action = UIAction { _ in
+            if self.statusButton.titleLabel?.text == "미암기" {
+                self.statusButton.setupInProgress()
+            } else {
+                self.statusButton.setupIncomplete()
+            }
+        }
+        
+        statusButton.addAction(action, for: .touchUpInside)
         statusButton.titleLabel?.font = .spoqaBold(size: 12)
     }
     
