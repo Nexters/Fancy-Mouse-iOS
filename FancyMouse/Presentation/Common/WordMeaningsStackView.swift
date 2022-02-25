@@ -19,6 +19,9 @@ final class WordMeaningsStackView: UIStackView {
     }
     
     func addSubMeaningViews(with meanings: [String]) {
+        subviews.forEach {
+            $0.removeFromSuperview()
+        }
         meanings.enumerated().forEach { index, meaning in
             addSubMeaningView(index: index + 1, meaning: meaning)
         }
@@ -37,6 +40,7 @@ private extension WordMeaningsStackView {
         let meaningView = WordMeaningView()
         meaningView.index = index
         meaningView.meaning = meaning
+        meaningView.meaningLineNumber = 1
         
         addArrangedSubview(meaningView)
     }

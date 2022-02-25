@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+final class HomeWordDetailViewModel: WordViewModelProtocol {
+    func updateWord(_ word: Word) { }
+    
+    func bindViewModel() { }
+}
