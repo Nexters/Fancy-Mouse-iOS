@@ -24,6 +24,7 @@ class LearningViewModel: ObservableObject {
     }
     
     private func fetchDummyData() {
+        var words: [Word] = []
         let spellings = ["comprehensive", "strategy", "complication", "dim", "access", "resource", "sentimental"]
         let meaningsList = [["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제"], ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"]
                             ,["(장소로의) 입장", "접근권, 접촉기회", "(컴퓨터에) 접속하다"], ["(자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
@@ -38,6 +39,8 @@ class LearningViewModel: ObservableObject {
                             memorizationStatus: .inProgress, memo: memos[idx], synonyms: synonymsList[idx], examples: examplesList[idx], urlString: "")
             words.append(word)
         }
+        
+        self.words = words
     }
     
     //TODO: 페이징 처리, 단어가 5개만 남았을 때, 한번에 10개씩 불러오기
