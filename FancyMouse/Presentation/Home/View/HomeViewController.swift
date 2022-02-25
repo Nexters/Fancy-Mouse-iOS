@@ -10,8 +10,10 @@ import RxCocoa
 import UIKit
 
 final class HomeViewController: UIViewController {
-    let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
-    var words: [Word] = []
+    private let progressView = HomeProgressView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 305))
+    
+    private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
+    private var words: [Word] = []
     
     private lazy var homeWordTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -25,6 +27,7 @@ final class HomeViewController: UIViewController {
             HomeProgressView.self,
             forHeaderFooterViewReuseIdentifier: "HomeProgressView"
         )
+        
         return tableView
     }()
     
@@ -45,22 +48,14 @@ private extension HomeViewController {
     }
     
     func setupLayout() {
-//        view.addSubview(progressView)
         view.addSubview(homeWordTableView)
-//        progressView.translatesAutoresizingMaskIntoConstraints = false
         homeWordTableView.translatesAutoresizingMaskIntoConstraints = false
-        
-//        NSLayoutConstraint.activate([
-//            progressView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-//            progressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
-//        ])
         
         NSLayoutConstraint.activate([
             homeWordTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             homeWordTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             homeWordTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            homeWordTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            homeWordTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -80,6 +75,8 @@ private extension HomeViewController {
     func setupTableView() {
         homeWordTableView.delegate = self
         homeWordTableView.dataSource = self
+        
+        homeWordTableView.tableHeaderView = progressView
     }
 }
 
@@ -88,31 +85,38 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return words.count
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section == 0, let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HomeProgressView") as? HomeProgressView else { return nil }
-        return headerCell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 305
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeWordCell", for: indexPath) as? HomeWordCell else { return UITableViewCell() }
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "HomeWordCell",
+                for: indexPath
+            ) as? HomeWordCell
+        else { return UITableViewCell() }
         
-        let cellViewModel = HomeWordCellViewModel(useCase: HomeWordUseCase(), word: words[indexPath.row], hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>(value: .none))
+        let cellViewModel = HomeWordCellViewModel(
+            useCase: HomeWordUseCase(),
+            word: words[indexPath.row],
+            hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>(value: .none)
+        )
         cell.configure(viewModel: cellViewModel)
-        cell.layer.cornerRadius = 20
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        131 + 12
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
 }
 
 struct HomeWordUseCase: HomeWordUseCaseProtocol {
-    func changeMemorizationStatus(to newStatus: Word.MemorizationStatus, of wordID: WordID) -> Observable<Word> {
+    func changeMemorizationStatus(
+        to newStatus: Word.MemorizationStatus,
+        of wordID: WordID
+    ) -> Observable<Word> {
         return PublishSubject<Word>()
     }
 }

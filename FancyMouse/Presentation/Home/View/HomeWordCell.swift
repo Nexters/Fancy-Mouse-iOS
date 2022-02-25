@@ -14,7 +14,7 @@ final class HomeWordCell: UITableViewCell {
     static var identifier: String {
         return String(describing: Self.self)
     }
-    
+    private let view = UIView()
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
@@ -27,6 +27,12 @@ final class HomeWordCell: UITableViewCell {
         
         viewModel = nil
         disposeBag = DisposeBag()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        view.layer.cornerRadius = 20
     }
     
     func configure(viewModel: HomeWordCellViewModel) {
@@ -42,29 +48,41 @@ final class HomeWordCell: UITableViewCell {
 
 private extension HomeWordCell {
     func setupUI() {
-        backgroundColor = .white
+        backgroundColor = .gray30
+        view.backgroundColor = .white
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        statusButton.titleLabel?.font = .spoqaBold(size: 12)
     }
     
     func setupLayout() {
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         [spellingLabel, meaningsStackView, statusButton].forEach {
-            addSubview($0)
+            view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            spellingLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            spellingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            view.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            spellingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            spellingLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             
             meaningsStackView.topAnchor.constraint(equalTo: spellingLabel.bottomAnchor, constant: 20),
-            meaningsStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
+            meaningsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
             meaningsStackView.leadingAnchor.constraint(equalTo: spellingLabel.leadingAnchor),
+            meaningsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
             statusButton.topAnchor.constraint(equalTo: spellingLabel.topAnchor),
             statusButton.heightAnchor.constraint(equalToConstant: 27),
+            statusButton.widthAnchor.constraint(equalToConstant: 54),
             statusButton.leadingAnchor.constraint(greaterThanOrEqualTo: spellingLabel.trailingAnchor, constant: 20),
-            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            statusButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
     
@@ -89,6 +107,7 @@ private extension HomeWordCell {
     
     func updateWord(_ word: Word) {
         spellingLabel.text = word.spelling
+        meaningsStackView.addSubMeaningViews(with: word.meanings)
         
         switch word.memorizationStatus {
         case .incomplete: statusButton.setupIncomplete()

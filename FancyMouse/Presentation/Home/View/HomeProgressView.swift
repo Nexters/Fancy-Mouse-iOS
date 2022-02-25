@@ -97,7 +97,7 @@ final class HomeProgressView: UITableViewHeaderFooterView {
         progressView.addSubview(progressImageView)
         
         progressView.snp.makeConstraints { make in
-            make.height.equalTo(305)
+            make.height.equalTo(300)
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
