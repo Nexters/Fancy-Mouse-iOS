@@ -116,6 +116,10 @@ class WalkthroughMainViewController: UIViewController {
             make.bottom.equalTo(nextButton.snp.top).offset(-30)
         }
     }
+    
+    private func setupLogin() {
+        
+    }
 }
 
 extension WalkthroughMainViewController: UIPageViewControllerDelegate {
@@ -163,8 +167,28 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
             nextButton.contentHorizontalAlignment = .center
             nextButton.semanticContentAttribute = .forceLeftToRight
             nextButton.imageEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 32)
-            
             let action = UIAction(handler: { _ in
+                print("google")
+                guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+                let config = GIDConfiguration(clientID: clientID)
+                GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+                    guard error == nil else {
+                        return
+                    }
+                    guard let authentication = user?.authentication,
+                          let idToken = authentication.idToken else {
+                                   return
+                    }
+                    let credential
+                    = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                    accessToken: authentication.accessToken)
+                    Auth.auth().signIn(with: credential) { _, _ in
+                        let nextVC = HomeViewController()
+                        nextVC.modalPresentationStyle = .overFullScreen
+                        self.present(nextVC, animated: true)
+                    }
+                }
+                UserDefaults.standard.set(true, forKey: "isLoginedUser")
             })
             nextButton.addAction(action, for: .touchUpInside)
         }
