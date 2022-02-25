@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
@@ -58,7 +59,8 @@ class TabBarController: UITabBarController {
                                           selectedImage: wordSelectedImage)
         wordViewController.tabBarItem = wordTabBarItem
         
-        let lerningViewController = HomeViewController()
+        let lerningViewController = UIHostingController(rootView:
+                                                        LearningView().environmentObject(LearningViewModel()))
         let lerningTitle = "학습"
         let lerningImage = UIImage(named: "tab_study_n")
         let lerningSelectedImage = UIImage(named: "tab_study_s")?.withRenderingMode(.alwaysOriginal)
@@ -66,7 +68,8 @@ class TabBarController: UITabBarController {
                                          selectedImage: lerningSelectedImage)
         lerningViewController.tabBarItem = lerningTabBarItem
         
-        let moreViewController = HomeViewController()
+        let moreViewController = UIHostingController(rootView: MoreView())
+                                                        
         let moreTitle = "더보기"
         let moreImage = UIImage(named: "tab_more_n")
         let moreSelectedImage = UIImage(named: "tab_more_s")?.withRenderingMode(.alwaysOriginal)
