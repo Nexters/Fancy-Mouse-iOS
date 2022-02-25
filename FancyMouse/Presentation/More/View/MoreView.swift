@@ -87,7 +87,7 @@ struct MoreView: View {
                 
                     VStack(spacing: 12) {
                         ForEach(moreListRowTypes, id: \.self) { rowType in
-                            NavigationLink(destination: Text(rowType.rawValue)) {
+                            NavigationLink(destination: test(type: rowType)) {
                                 MoreListRow(type: rowType)
                             }
                         }
@@ -113,6 +113,17 @@ struct MoreView: View {
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
             }
+        }
+    }
+    
+    @ViewBuilder func test(type: MoreListRowType) -> some View {
+        switch type {
+        case .makers:
+            MakersView()
+        case .openSourceLicense:
+            OpenSourceLicenseView()
+        case .versionInfo:
+            Text("")
         }
     }
 }

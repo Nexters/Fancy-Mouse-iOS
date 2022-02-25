@@ -16,23 +16,28 @@ struct OpenSourceLicenseView: View {
     }()
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Open Source License")
-                .lineLimit(nil)
-                .spoqaBold(size: 24)
-                .padding(.top, 24)
-                .padding(.bottom, 20)
-                .foregroundColor(.white)
+        ZStack {
+            Color.primaryDark
+                .ignoresSafeArea(.all)
             
-            ScrollView {
-                Text(openSourceList)
-                    .padding(.vertical, 20)
+            VStack(alignment: .leading) {
+                Text("Open Source License")
+                    .lineLimit(nil)
+                    .spoqaBold(size: 24)
+                    .padding(.top, 24)
+                    .padding(.bottom, 20)
+                    .foregroundColor(.white)
+                
+                ScrollView {
+                    Text(openSourceList)
+                        .padding(.vertical, 20)
+                }
+                .spoqaRegular(size: 14)
+                .foregroundColor(.gray50)
             }
-            .spoqaRegular(size: 14)
-            .foregroundColor(.gray50)
+            .navigationBarTitle(Text(""), displayMode: .inline)
+            .padding(.horizontal, 24)
         }
-        .padding(.horizontal, 24)
-        .background(Color.primaryDark)
     }
 }
 
