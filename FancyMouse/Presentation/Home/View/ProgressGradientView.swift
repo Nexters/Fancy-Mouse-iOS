@@ -8,65 +8,42 @@
 import Foundation
 import UIKit
 
-final class ProgressGradientView: UIView {
-    private var lineWidth: CGFloat = 6 { didSet { setNeedsDisplay(bounds) } }
-    private var startColor = UIColor.secondaryColor { didSet { setNeedsDisplay(bounds) } }
-    private var endColor = UIColor.gradientEnd { didSet { setNeedsDisplay(bounds) } }
-    private var startAngle: CGFloat = -90 { didSet { setNeedsDisplay(bounds) } }
-    private var endAngle: CGFloat = 360 { didSet { setNeedsDisplay(bounds) } }
-
-    override func draw(_ rect: CGRect) {
-        let gradations = 229
+final class ProgressGradientView: UIView, CAAnimationDelegate {    
+    let gradientLayer: CAGradientLayer = CAGradientLayer()
         
-        var startColorR: CGFloat = 0
-        var startColorG: CGFloat = 0
-        var startColorB: CGFloat = 0
-        var startColorA: CGFloat = 0
+        var startAngle: CGFloat = (-(.pi) / 2)
+        var endAngle: CGFloat = 3 * ((.pi) / 2)
         
-        var endColorR: CGFloat = 0
-        var endColorG: CGFloat = 0
-        var endColorB: CGFloat = 0
-        var endColorA: CGFloat = 0
-
-        startColor.getRed(&startColorR, green: &startColorG,
-                           blue: &startColorB, alpha: &startColorA)
-        endColor.getRed(&endColorR, green: &endColorG,
-                         blue: &endColorB, alpha: &endColorA)
-
-        let startAngle: CGFloat = -90
-        let endAngle: CGFloat = 180
-        let center = CGPoint(x: bounds.midX, y: bounds.midY)
-        let radius = (min(bounds.width, bounds.height) - lineWidth) / 2
-        var angle = startAngle
-
-        for index in 1 ... gradations {
-            let extraAngle = (endAngle - startAngle) / CGFloat(gradations)
-            let currentStartAngle = angle
-            let currentEndAngle = currentStartAngle + extraAngle
-
-            let currentR =
-            ((endColorR - startColorR) / CGFloat(gradations - 1)) * CGFloat(index - 1) + startColorR
-            let currentG =
-            ((endColorG - startColorG) / CGFloat(gradations - 1)) * CGFloat(index - 1) + startColorG
-            let currentB =
-            ((endColorB - startColorB) / CGFloat(gradations - 1)) * CGFloat(index - 1) + startColorB
-            let currentA =
-            ((endColorA - startColorA) / CGFloat(gradations - 1)) * CGFloat(index - 1) + startColorA
-
-            let currentColor = UIColor.init(red: currentR, green: currentG,
-                                            blue: currentB, alpha: currentA)
-
-            let path = UIBezierPath()
-            path.lineWidth = lineWidth
-            path.lineCapStyle = .round
-            path.addArc(withCenter: center,
-                        radius: radius,
-                        startAngle: currentStartAngle * CGFloat(Double.pi / 180.0),
-                        endAngle: currentEndAngle * CGFloat(Double.pi / 180.0),
-                        clockwise: true)
-            currentColor.setStroke()
-            path.stroke()
-            angle = currentEndAngle
+        override func draw(_ rect: CGRect) {
+            let center = CGPoint(x: rect.midX, y: rect.midY)
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            
+            let startColor = UIColor(red: 225 / 255, green: 255 / 255, blue: 141 / 255, alpha: 1).cgColor
+            let endColor = UIColor(red: 103 / 255, green: 118 / 255, blue: 77 / 255, alpha: 1).cgColor
+            
+            self.gradientLayer.colors = [startColor, endColor]
+            self.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+            self.gradientLayer.endPoint = CGPoint(x: 0.0, y: 0)
+            self.gradientLayer.type = .conic
+            self.gradientLayer.frame = rect
+            self.layer.addSublayer(self.gradientLayer)
+            
+            animation.fromValue = 0
+            animation.toValue = 1
+            animation.duration = 1
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+            animation.delegate = self
+            
+            let path = UIBezierPath(arcCenter: center, radius: 60, startAngle: startAngle, endAngle: endAngle - (.pi / 2), clockwise: true)
+            let sliceLayer = CAShapeLayer()
+            sliceLayer.path = path.cgPath
+            sliceLayer.fillColor = nil
+            sliceLayer.lineCap = .round
+            sliceLayer.strokeColor = UIColor.black.cgColor
+            sliceLayer.lineWidth = 6
+            sliceLayer.strokeEnd = 1
+            sliceLayer.add(animation, forKey: animation.keyPath)
+            
+            self.layer.mask = sliceLayer
         }
-    }
 }
