@@ -85,7 +85,7 @@ struct CardContainerView: View {
             }
         }
         .fullScreenCover(isPresented: .constant(viewModel.words.isEmpty)) {
-            LearningIntroView()
+            LearningIntroView(state: .end)
         }
     }
 }

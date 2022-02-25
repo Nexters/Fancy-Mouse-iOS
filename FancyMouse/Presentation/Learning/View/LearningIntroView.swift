@@ -55,6 +55,11 @@ struct LearningIntroView: View {
                 Button {
                     // TODO: 학습 시작, 완료 액션 분기처리
                     print("학습 시작 or 종료")
+                    if state == .start {
+                        
+                    } else {
+                        state == .end
+                    }
                 } label: {
                     Text(state == .start ? "학습 시작하기" : "학습 다시하기")
                         .spoqaMedium(size: 16)
