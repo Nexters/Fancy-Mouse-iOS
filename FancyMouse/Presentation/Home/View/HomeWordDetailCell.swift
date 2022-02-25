@@ -14,6 +14,7 @@ final class HomeWordDetailCell: UITableViewCell {
         return String(describing: Self.self)
     }
     
+    private let view = UIView()
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
@@ -48,7 +49,8 @@ final class HomeWordDetailCell: UITableViewCell {
 
 private extension HomeWordDetailCell {
     func setupUI() {
-        backgroundColor = .white
+        backgroundColor = .gray30
+        view.backgroundColor = .white
         
         contourView.backgroundColor = UIColor(
             red: 0.933, green: 0.945, blue: 0.957, alpha: 1
@@ -59,31 +61,42 @@ private extension HomeWordDetailCell {
         wordCreatedDateLabel.textColor = .gray50
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        statusButton.titleLabel?.font = .spoqaBold(size: 12)
     }
     
     func setupLayout() {
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         [spellingLabel,
          meaningsStackView,
          statusButton,
          contourView,
          wordCreatedDateLabel
         ].forEach {
-            addSubview($0)
+            view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate([
-            spellingLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            spellingLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            spellingLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            view.topAnchor.constraint(equalTo: topAnchor, constant: 6),
+            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
+            view.leadingAnchor.constraint(equalTo: leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            spellingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            spellingLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             
             meaningsStackView.topAnchor.constraint(equalTo: spellingLabel.bottomAnchor, constant: 20),
+            meaningsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
             meaningsStackView.leadingAnchor.constraint(equalTo: spellingLabel.leadingAnchor),
+            meaningsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
             statusButton.topAnchor.constraint(equalTo: spellingLabel.topAnchor),
             statusButton.heightAnchor.constraint(equalToConstant: 27),
+            statusButton.widthAnchor.constraint(equalToConstant: 54),
             statusButton.leadingAnchor.constraint(greaterThanOrEqualTo: spellingLabel.trailingAnchor, constant: 20),
-            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            statusButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             contourView.topAnchor.constraint(equalTo: meaningsStackView.bottomAnchor, constant: 20),
             contourView.leadingAnchor.constraint(equalTo: spellingLabel.leadingAnchor),

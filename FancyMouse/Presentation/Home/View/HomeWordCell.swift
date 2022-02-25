@@ -107,7 +107,14 @@ private extension HomeWordCell {
     
     func updateWord(_ word: Word) {
         spellingLabel.text = word.spelling
-        meaningsStackView.addSubMeaningViews(with: word.meanings)
+        var meanings = [String]()
+        word.meanings.enumerated().forEach { index, meaning in
+            if index < 2 {
+                meanings.append(meaning)
+            }
+        }
+        
+        meaningsStackView.addSubMeaningViews(with: meanings)
         
         switch word.memorizationStatus {
         case .incomplete: statusButton.setupIncomplete()
