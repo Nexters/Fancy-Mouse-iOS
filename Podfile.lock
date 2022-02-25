@@ -107,7 +107,7 @@ PODS:
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.0)
   - leveldb-library (1.22.1)
-  - lottie-ios (3.3.0)
+  - lottie-ios (3.2.3)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -129,7 +129,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - GoogleSignIn
-  - lottie-ios
+  - lottie-ios (~> 3.2.3)
   - RxCocoa
   - RxSwift
   - SnapKit
@@ -179,7 +179,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
@@ -189,6 +189,6 @@ SPEC CHECKSUMS:
   SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 44be002da5e5c277742ac7fdd4e7de7993faa640
+PODFILE CHECKSUM: 68032fad1410e08403f04f85ac60473b2c1e9ac2
 
 COCOAPODS: 1.11.2
