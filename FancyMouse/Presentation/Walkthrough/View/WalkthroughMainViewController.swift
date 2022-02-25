@@ -49,6 +49,8 @@ class WalkthroughMainViewController: UIViewController {
     lazy var nextButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .primaryColor
+        button.setTitle("다음", for: .normal)
+        button.titleLabel?.font = .spoqaMedium(size: 16)
         button.layer.cornerRadius = 14
         return button
     }()
@@ -59,6 +61,7 @@ class WalkthroughMainViewController: UIViewController {
         pageControl.pageIndicatorTintColor = .gray60
         pageControl.currentPage = 0
         pageControl.numberOfPages = 3
+        pageControl.preferredIndicatorImage = UIImage(named:"heart")
         let action = UIAction(handler: { _ in
         })
         pageControl.addAction(action, for: .valueChanged)
@@ -89,6 +92,7 @@ class WalkthroughMainViewController: UIViewController {
         
         if case 0...1 = currentIndex {
             nextButton.setTitle("다음", for: .normal)
+            nextButton.setTitleColor(.secondaryColor, for: .normal)
         }
         view.addSubview(nextButton)
         pageControl.currentPage = currentIndex
@@ -115,10 +119,6 @@ class WalkthroughMainViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(nextButton.snp.top).offset(-30)
         }
-    }
-    
-    private func setupLogin() {
-        
     }
 }
 
@@ -163,7 +163,7 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
             nextButton.setImage(#imageLiteral(resourceName: "_ic_chrome logo"), for: .normal)
             nextButton.setTitleColor(.secondaryColor, for: .normal)
             nextButton.imageView?.contentMode = .scaleAspectFit
-            nextButton.titleLabel?.font = .spoqaBold(size: 16)
+            nextButton.titleLabel?.font = .spoqaMedium(size: 16)
             nextButton.contentHorizontalAlignment = .center
             nextButton.semanticContentAttribute = .forceLeftToRight
             nextButton.imageEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 32)
