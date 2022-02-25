@@ -45,7 +45,7 @@ extension WordResponse {
 extension WordResponse {
     var mappedWord: Word {
         Word(
-            wordID: wordID, folderID: folderID,
+            id: wordID, folderID: folderID,
             createdAt: createdAt,
             spelling: spelling, meanings: meanings,
             memorizationStatus: status.mappedWordStatus,

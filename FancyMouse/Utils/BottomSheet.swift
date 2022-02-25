@@ -31,11 +31,11 @@ final class BottomSheetController: UIViewController {
         return view
     }()
     
-    // TODO: 자주 사용하는 컬러 extension으로 빼기
-    private lazy var okButton: UIButton = {
+    lazy var okButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
+        button.backgroundColor = .primaryColor
         button.setTitle("확인", for: .normal)
+        button.setTitleColor(.secondaryColor, for: .normal)
         button.addTarget(self, action: #selector(okWasTapped), for: .touchUpInside)
         return button
     }()
@@ -52,7 +52,7 @@ final class BottomSheetController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = sheetTitle
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = .spoqaBold(size: 20)
         label.textColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
         return label
     }()

@@ -32,7 +32,7 @@ final class FolderAddEditView: UIView {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
         
         textField.placeholder = "폴더명을 입력해 주세요."
-        textField.layer.borderColor = UIColor.folderBorder?.cgColor
+        textField.layer.borderColor = UIColor.folderBorder.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 12
         textField.leftView = paddingView
@@ -147,7 +147,7 @@ final class FolderAddEditView: UIView {
                 ) as? FolderAddEditViewCell else { return UICollectionViewCell() }
                 let isLastIndex = row == self.viewModel.colorList.count - 1
 
-                cell.setupColor(item ?? UIColor())
+                cell.setupColor(item)
 
                 if isLastIndex {
                     cell.setupDisabled()
@@ -173,13 +173,21 @@ final class FolderAddEditView: UIView {
             .filter { !$0.isEmpty }
             .bind { [weak self] in
                 let item = UIColor(named: $0)
-                guard self?.viewModel.colorList.firstIndex(of: item) != nil else { return }
+                guard self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) != nil else { return }
                 
                 let index = IndexPath(
-                    item: self?.viewModel.colorList.firstIndex(of: item) ?? Int(),
+                    item: self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) ?? Int(),
                     section: 0
                 )
-                self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
+                //TODO: 리팩 때 수정
+                if item != .folder00 {
+                    self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
+                    self?.textField.isUserInteractionEnabled = true
+                    self?.collectionView.isUserInteractionEnabled = true
+                } else {
+                    self?.textField.isUserInteractionEnabled = false
+                    self?.collectionView.isUserInteractionEnabled = false
+                }
             }
             .disposed(by: disposeBag)
         
