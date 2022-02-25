@@ -183,7 +183,7 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
                     = GoogleAuthProvider.credential(withIDToken: idToken,
                                                     accessToken: authentication.accessToken)
                     Auth.auth().signIn(with: credential) { _, _ in
-                        let nextVC = HomeViewController()
+                        let nextVC = TabBarController()
                         nextVC.modalPresentationStyle = .overFullScreen
                         self.present(nextVC, animated: true)
                     }
