@@ -5,15 +5,14 @@
 //  Created by suding on 2022/02/10.
 //
 
-import Foundation
 import RxSwift
 
 protocol FolderUseCaseProtocol {
-    func createFolder(folderName: String, folderColor: String) -> Observable<Folder>
+    func createFolder(folderName: String, folderColor: String)
     
-    func folderList() -> Observable<[Folder]>
+    func fetchFolder() -> Observable<[Folder]>
     
-    func update(folder: Folder, folderColor: String, folderName: String) -> Observable<Folder>
+    func update(folderID: FolderID, folderColor: String, folderName: String)
 
-    func delete(folder: Folder) -> Observable<Folder>
+    func delete(_ folderID: FolderID)
 }

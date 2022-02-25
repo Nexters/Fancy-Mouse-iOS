@@ -33,7 +33,7 @@ force_try:
 line_length: 100
   
 file_length:
-  error: 300 # 10-200룰이란게 있는데, 우리는 조금 완화해서 하나의 파일에 최대 300줄 까지로 해보자!
+#  error: 300 # 10-200룰이란게 있는데, 우리는 조금 완화해서 하나의 파일에 최대 300줄 까지로 해보자!
 
 type_name:
   min_length:

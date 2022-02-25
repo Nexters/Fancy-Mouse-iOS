@@ -45,6 +45,8 @@ final class FolderDetailView: UIViewController {
     }
 
     private func setupUI() {
+        view.backgroundColor = .white
+        
         self.view.addSubview(folderImageView)
         self.view.addSubview(folderLabel)
         self.view.addSubview(arrowImageView)
