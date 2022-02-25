@@ -17,6 +17,7 @@
 		4033F55F27ABDF3F00452616 /* EllipsisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4033F55E27ABDF3F00452616 /* EllipsisView.swift */; };
 		404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */; };
 		405F42EC27C82B46004CA542 /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F42EB27C82B46004CA542 /* CALayer+Extensions.swift */; };
+		405F42EE27C8E35B004CA542 /* HomeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F42ED27C8E35B004CA542 /* HomeFilterView.swift */; };
 		4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */; };
 		4080542D27C32ABC00B51574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4080542C27C32ABC00B51574 /* GoogleService-Info.plist */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
@@ -137,6 +138,7 @@
 		4033F55E27ABDF3F00452616 /* EllipsisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipsisView.swift; sourceTree = "<group>"; };
 		404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		405F42EB27C82B46004CA542 /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
+		405F42ED27C8E35B004CA542 /* HomeFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFilterView.swift; sourceTree = "<group>"; };
 		4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextBuilder.swift; sourceTree = "<group>"; };
 		4080542C27C32ABC00B51574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				40A341AB27B25CD200D4D8DC /* FilterViewCell.swift */,
 				40D2FD3027B48553002021C8 /* FilterViewHeader.swift */,
 				404F0C8B27B8FB80000851F5 /* FilterViewModel.swift */,
+				405F42ED27C8E35B004CA542 /* HomeFilterView.swift */,
 			);
 			path = FilterView;
 			sourceTree = "<group>";
@@ -1096,6 +1099,7 @@
 				E2F8478B27C88CD4009499C7 /* HomeWordCellViewModelProtocol.swift in Sources */,
 				D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */,
 				E2F8478327C889D2009499C7 /* HomeWordDetailCell.swift in Sources */,
+				405F42EE27C8E35B004CA542 /* HomeFilterView.swift in Sources */,
 				E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
 				40A031E427C3B5A800473FB6 /* User+CoreDataProperties.swift in Sources */,
