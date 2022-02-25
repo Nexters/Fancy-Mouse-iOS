@@ -97,6 +97,7 @@
 		E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */; };
 		E2DEFCB027BCF6D50066FD54 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCAF27BCF6D50066FD54 /* UIView+Extensions.swift */; };
 		E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */; };
+		E2F8478327C889D2009499C7 /* HomeWordDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +217,7 @@
 		E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMemorizationBadgeButton.swift; sourceTree = "<group>"; };
 		E2DEFCAF27BCF6D50066FD54 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordDetailCell.swift; sourceTree = "<group>"; };
 		EC4B11ED7886103088F653C6 /* Pods-FancyMouse-FancyMouseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,6 +314,7 @@
 				E2D3278F27BD2EDB00D1458F /* HomeWordTableView.swift */,
 				40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */,
 				C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */,
+				E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				E2D3278E27BD2D6B00D1458F /* WordMeaningsStackView.swift in Sources */,
 				D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */,
 				D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */,
+				E2F8478327C889D2009499C7 /* HomeWordDetailCell.swift in Sources */,
 				E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
 				40A031E427C3B5A800473FB6 /* User+CoreDataProperties.swift in Sources */,
