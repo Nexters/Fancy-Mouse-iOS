@@ -200,7 +200,7 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
                 self?.ellipsisView?.removeFromSuperview()
                 guard let count = self?.folderList?.count else { return }
                 guard $0.last == count - 1 else {
-                    self?.navigationController?.pushViewController(FolderDetailView(), animated: true)
+                    self?.navigationController?.pushViewController(FolderDetailViewController(), animated: true)
                     return
                 }
                 self?.addNewFolder()

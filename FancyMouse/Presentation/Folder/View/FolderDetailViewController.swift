@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-final class FolderDetailView: UIViewController {
+final class FolderDetailViewController: UIViewController {
     private let folderImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Folder")
