@@ -44,10 +44,7 @@ final class HomeFilterView: UIView {
             collectionViewLayout: layout
         )
         collectionView.backgroundColor = .white
-        collectionView.register(
-            FilterViewCell.self,
-            forCellWithReuseIdentifier: "FilterViewCell"
-        )
+        collectionView.registerCell(ofType: FilterViewCell.self)
         return collectionView
     }()
     
@@ -89,13 +86,11 @@ final class HomeFilterView: UIView {
     private func setupBinding() {
         Observable.of(filterList)
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
-                guard let cell = self.collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "FilterViewCell",
-                    for: IndexPath.init(row: row, section: 0)
-                ) as? FilterViewCell else { return UICollectionViewCell() }
-                
-                
+                let cell = self.collectionView.dequeueCell(
+                    for: IndexPath(row: row, section: 0)
+                ) as FilterViewCell
                 cell.setupLabel(item)
+                
                 return cell
             }
             .disposed(by: self.disposeBag)
