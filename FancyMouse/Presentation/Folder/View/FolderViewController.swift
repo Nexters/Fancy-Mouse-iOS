@@ -170,7 +170,7 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
         
         viewModel.folderList
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
-                let cell = self.collectionView.dequeueCell(
+                let cell = self.collectionView.dequeueReusableCell(
                     for: IndexPath(row: row, section: 0)
                 ) as FolderCell
                 

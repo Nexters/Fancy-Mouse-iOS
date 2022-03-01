@@ -138,7 +138,7 @@ final class FolderAddEditView: UIView {
     private func setupBinding() {
         Observable.of(viewModel.colorList)
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
-                let cell = self.collectionView.dequeueCell(
+                let cell = self.collectionView.dequeueReusableCell(
                     for: IndexPath(row: row, section: 0)
                 ) as FolderAddEditViewCell
                 let isLastIndex = row == self.viewModel.colorList.count - 1

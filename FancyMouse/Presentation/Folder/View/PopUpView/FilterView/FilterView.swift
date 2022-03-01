@@ -95,7 +95,7 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(for: indexPath) as FilterViewCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as FilterViewCell
         cell.setupLabel(title[indexPath.section][indexPath.row])
         
         return cell
@@ -106,7 +106,7 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueSupplementaryView(for: indexPath) as FilterViewHeader
+        let headerView = collectionView.dequeueReuseableSupplementaryView(for: indexPath) as FilterViewHeader
         headerView.setupLabel(type[indexPath.section])
         
         return headerView

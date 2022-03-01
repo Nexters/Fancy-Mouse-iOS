@@ -16,7 +16,7 @@ extension UICollectionView {
         register(cellType, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    func dequeueCell<T: UICollectionViewCell>(
+    func dequeueReusableCell<T: UICollectionViewCell>(
         withReuseIdentifier reuseIdentifier: String? = nil,
         for indexPath: IndexPath
     ) -> T {
@@ -25,16 +25,15 @@ extension UICollectionView {
         guard let cell = dequeueReusableCell(
             withReuseIdentifier: reuseIdentifier,
             for: indexPath
-        ) as? T else {
-            fatalError()
-        }
+        ) as? T
+        else { fatalError() }
         
         return cell
     }
     
     func registerSupplementaryView(
         ofType viewType: UICollectionReusableView.Type,
-        forSupplementaryViewOfKind elementKind: String = UICollectionView.elementKindSectionHeader,
+        ofKind elementKind: String = UICollectionView.elementKindSectionHeader,
         withReuseIdentifier identifier: String? = nil
     ) {
         let reuseIdentifier = identifier ?? String(describing: viewType.self)
@@ -45,20 +44,19 @@ extension UICollectionView {
         )
     }
     
-    func dequeueSupplementaryView<T: UICollectionReusableView>(
+    func dequeueReuseableSupplementaryView<T: UICollectionReusableView>(
         ofKind elementKind: String = UICollectionView.elementKindSectionHeader,
-        reuseIdentifier: String? = nil,
+        withReuseIdentifier identifier: String? = nil,
         for indexPath: IndexPath
     ) -> T {
-        let reuseIdentifier = reuseIdentifier ?? String(describing: T.self)
+        let reuseIdentifier = identifier ?? String(describing: T.self)
         
-        guard let view = self.dequeueReusableSupplementaryView(
+        guard let view = dequeueReusableSupplementaryView(
             ofKind: elementKind,
             withReuseIdentifier: reuseIdentifier,
             for: indexPath
-        ) as? T else {
-            fatalError()
-        }
+        ) as? T
+        else { fatalError() }
         
         return view
     }
