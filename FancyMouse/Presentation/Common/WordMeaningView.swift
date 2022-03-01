@@ -62,19 +62,20 @@ private extension WordMeaningView {
     func setupLayout() {
         [indexLabel, meaningLabel].forEach {
             addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        NSLayoutConstraint.activate([
-            indexLabel.topAnchor.constraint(equalTo: topAnchor),
-            indexLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            indexLabel.widthAnchor.constraint(equalToConstant: 13),
-            indexLabel.heightAnchor.constraint(equalToConstant: 18),
-            
-            meaningLabel.topAnchor.constraint(equalTo: indexLabel.topAnchor),
-            meaningLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            meaningLabel.leadingAnchor.constraint(equalTo: indexLabel.trailingAnchor, constant: 6),
-            meaningLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        indexLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.width.equalTo(13)
+            make.height.equalTo(18)
+        }
+        
+        meaningLabel.snp.makeConstraints { make in
+            make.top.equalTo(indexLabel.snp.top)
+            make.bottom.equalToSuperview()
+            make.leading.equalTo(indexLabel.snp.trailing).offset(6)
+            make.trailing.equalToSuperview()
+        }
     }
 }

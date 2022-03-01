@@ -56,14 +56,11 @@ private extension HomeViewController {
     
     func setupLayout() {
         view.addSubview(homeWordTableView)
-        homeWordTableView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            homeWordTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            homeWordTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            homeWordTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            homeWordTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        homeWordTableView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.equalToSuperview().inset(24)
+        }
     }
     
     func setupMockData() {
@@ -215,23 +212,26 @@ final class HomeSectionHeaderView: UITableViewHeaderFooterView {
         
         [hidingSpellingLabel, ellipseImageView, hidingMeaningsLabel, shuffleButton].forEach {
             sectionHeaderView.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        NSLayoutConstraint.activate([
-            hidingSpellingLabel.centerYAnchor.constraint(equalTo: shuffleButton.centerYAnchor),
-            hidingSpellingLabel.leadingAnchor.constraint(equalTo: sectionHeaderView.leadingAnchor),
-            
-            ellipseImageView.centerYAnchor.constraint(equalTo: shuffleButton.centerYAnchor),
-            ellipseImageView.leadingAnchor.constraint(equalTo: hidingSpellingLabel.trailingAnchor, constant: 8),
-            
-            hidingMeaningsLabel.centerYAnchor.constraint(equalTo: shuffleButton.centerYAnchor),
-            hidingMeaningsLabel.leadingAnchor.constraint(equalTo: ellipseImageView.trailingAnchor, constant: 8),
-            
-            shuffleButton.topAnchor.constraint(equalTo: sectionHeaderView.topAnchor),
-            shuffleButton.bottomAnchor.constraint(equalTo: sectionHeaderView.bottomAnchor),
-            shuffleButton.trailingAnchor.constraint(equalTo: sectionHeaderView.trailingAnchor)
-        ])
+        hidingSpellingLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(shuffleButton.snp.centerY)
+            make.leading.equalTo(sectionHeaderView.snp.leading)
+        }
+        
+        ellipseImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(shuffleButton.snp.centerY)
+            make.leading.equalTo(hidingSpellingLabel.snp.trailing).offset(8)
+        }
+        
+        hidingMeaningsLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(shuffleButton.snp.centerY)
+            make.leading.equalTo(ellipseImageView.snp.trailing).offset(8)
+        }
+        
+        shuffleButton.snp.makeConstraints { make in
+            make.top.bottom.trailing.equalTo(sectionHeaderView)
+        }
         
         return sectionHeaderView
     }()
@@ -240,14 +240,10 @@ final class HomeSectionHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
         
         addSubview(sectionHeaderView)
-        sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            sectionHeaderView.topAnchor.constraint(equalTo: topAnchor),
-            sectionHeaderView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            sectionHeaderView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            sectionHeaderView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        sectionHeaderView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {

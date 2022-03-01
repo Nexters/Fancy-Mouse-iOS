@@ -71,29 +71,32 @@ private extension HomeWordCell {
         
         [spellingLabel, meaningsStackView, statusButton].forEach {
             view.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: topAnchor, constant: 6),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            spellingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            spellingLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            
-            meaningsStackView.topAnchor.constraint(equalTo: spellingLabel.bottomAnchor, constant: 20),
-            meaningsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -24),
-            meaningsStackView.leadingAnchor.constraint(equalTo: spellingLabel.leadingAnchor),
-            meaningsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            
-            statusButton.topAnchor.constraint(equalTo: spellingLabel.topAnchor),
-            statusButton.heightAnchor.constraint(equalToConstant: 27),
-            statusButton.widthAnchor.constraint(equalToConstant: 54),
-            statusButton.leadingAnchor.constraint(greaterThanOrEqualTo: spellingLabel.trailingAnchor, constant: 20),
-            statusButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
+        view.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(6)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        spellingLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.top).offset(20)
+            make.leading.equalTo(view.snp.leading).offset(24)
+        }
+        
+        meaningsStackView.snp.makeConstraints { make in
+            make.top.equalTo(spellingLabel.snp.bottom).offset(20)
+            make.bottom.equalTo(view.snp.bottom).inset(24)
+            make.leading.equalTo(spellingLabel.snp.leading)
+            make.trailing.equalTo(view.snp.trailing).inset(24)
+        }
+        
+        statusButton.snp.makeConstraints { make in
+            make.top.equalTo(spellingLabel.snp.top)
+            make.leading.greaterThanOrEqualTo(spellingLabel.snp.trailing).offset(20)
+            make.trailing.equalTo(view.snp.trailing).inset(20)
+            make.width.equalTo(54)
+            make.height.equalTo(27)
+        }
     }
     
     func bindViewModel() {

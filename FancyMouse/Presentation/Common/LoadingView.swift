@@ -37,11 +37,9 @@ final class LoadingView: UIView {
 private extension LoadingView {
     func setupLayout() {
         addSubview(indicator)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            indicator.centerXAnchor.constraint(equalTo: centerXAnchor),
-            indicator.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
+        indicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }

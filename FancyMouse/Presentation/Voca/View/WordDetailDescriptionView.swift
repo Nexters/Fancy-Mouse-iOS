@@ -62,19 +62,18 @@ private extension WordDetailDescriptionView {
     func setupLayout() {
         [titleLabel, descriptionLabel].forEach {
             addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: 39),
-            titleLabel.heightAnchor.constraint(equalToConstant: 18),
-            
-            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 12),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
+        titleLabel.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+            make.width.equalTo(39)
+            make.height.equalTo(18)
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.top)
+            make.bottom.trailing.equalToSuperview()
+            make.leading.equalTo(titleLabel.snp.trailing).offset(12)
+        }
     }
 }
