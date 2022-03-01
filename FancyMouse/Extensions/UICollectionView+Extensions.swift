@@ -17,10 +17,10 @@ extension UICollectionView {
     }
     
     func dequeueReusableCell<T: UICollectionViewCell>(
-        withReuseIdentifier reuseIdentifier: String? = nil,
+        withReuseIdentifier identifier: String? = nil,
         for indexPath: IndexPath
     ) -> T {
-        let reuseIdentifier = reuseIdentifier ?? String(describing: T.self)
+        let reuseIdentifier = identifier ?? String(describing: T.self)
         
         guard let cell = dequeueReusableCell(
             withReuseIdentifier: reuseIdentifier,
