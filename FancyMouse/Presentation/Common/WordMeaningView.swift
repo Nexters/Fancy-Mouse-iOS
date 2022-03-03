@@ -65,17 +65,15 @@ private extension WordMeaningView {
         }
         
         indexLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.top.leading.equalToSuperview()
             make.width.equalTo(13)
             make.height.equalTo(18)
         }
         
         meaningLabel.snp.makeConstraints { make in
             make.top.equalTo(indexLabel.snp.top)
-            make.bottom.equalToSuperview()
             make.leading.equalTo(indexLabel.snp.trailing).offset(6)
-            make.trailing.equalToSuperview()
+            make.bottom.trailing.equalToSuperview()
         }
     }
 }
