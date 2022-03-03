@@ -49,12 +49,8 @@ final class FilterView: UIView {
         collectionView.collectionViewLayout = layout
         collectionView.backgroundColor = .white
         collectionView.isScrollEnabled = false
-        collectionView.register(
-            FilterViewHeader.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: "FilterViewHeader"
-        )
-        collectionView.register(FilterViewCell.self, forCellWithReuseIdentifier: "FilterViewCell")
+        collectionView.registerSupplementaryView(ofType: FilterViewHeader.self)
+        collectionView.registerCell(ofType: FilterViewCell.self)
         collectionView.allowsMultipleSelection = true
         return collectionView
     }()
@@ -99,12 +95,9 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "FilterViewCell",
-            for: indexPath
-        ) as? FilterViewCell else { return UICollectionViewCell() }
-        
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as FilterViewCell
         cell.setupLabel(title[indexPath.section][indexPath.row])
+        
         return cell
     }
     
@@ -113,13 +106,9 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: "FilterViewHeader",
-            for: indexPath
-        ) as? FilterViewHeader else { return UICollectionReusableView() }
-        
+        let headerView = collectionView.dequeueReuseableSupplementaryView(for: indexPath) as FilterViewHeader
         headerView.setupLabel(type[indexPath.section])
+        
         return headerView
     }
     

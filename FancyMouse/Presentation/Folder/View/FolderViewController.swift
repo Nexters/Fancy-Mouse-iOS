@@ -90,10 +90,7 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
             collectionViewLayout: layout
         )
         collectionView.backgroundColor = .gray30
-        collectionView.register(
-            FolderCell.self,
-            forCellWithReuseIdentifier: "FolderCell"
-        )
+        collectionView.registerCell(ofType: FolderCell.self)
         return collectionView
     }()
     
@@ -173,10 +170,9 @@ final class FolderViewController: UIViewController, BottomSheetDelegate {
         
         viewModel.folderList
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
-                guard let cell = self.collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "FolderCell",
-                    for: IndexPath.init(row: row, section: 0)
-                ) as? FolderCell else { return UICollectionViewCell() }
+                let cell = self.collectionView.dequeueReusableCell(
+                    for: IndexPath(row: row, section: 0)
+                ) as FolderCell
                 
                 //TODO: 리팩 때 삭제 예정
                 if row == (self.folderList?.count)! - 1 {
