@@ -188,10 +188,13 @@ final class SearchViewController: UIViewController {
             .disposed(by: self.disposeBag)
         
         cancelButton.rx.tap
-            .bind {
-                self.searchBar.searchTextField.text = ""
-                self.searchBar.endEditing(true)
-                self.setupRecentSearchUI()
+            .bind { [weak self] in
+                guard let self = self else { return }
+                self.dismiss(animated: false) {
+                    self.searchBar.searchTextField.text = ""
+                    self.searchBar.endEditing(true)
+                    self.setupRecentSearchUI()
+                }
             }
             .disposed(by: disposeBag)
         

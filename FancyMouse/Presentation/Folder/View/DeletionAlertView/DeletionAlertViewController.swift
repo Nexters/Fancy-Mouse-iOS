@@ -9,10 +9,11 @@ import UIKit
 
 protocol DeletionAlertDelegate: AnyObject {
     func cancelWasTapped()
-    func deleteWasTapped()
+    func deleteWasTapped(id: String)
 }
 
 final class DeletionAlertViewController: UIViewController {
+    private let deleteID: String
     private let deleteTarget: String
     private let deleteWordCount: Int?
     
@@ -62,7 +63,7 @@ final class DeletionAlertViewController: UIViewController {
         button.backgroundColor = .primaryColor
         button.layer.cornerRadius = 10
         let action = UIAction { _ in
-            self.delegate?.deleteWasTapped()
+            self.delegate?.deleteWasTapped(id: self.deleteID)
             self.dismiss(animated: true)
         }
         button.addAction(action, for: .touchUpInside)
@@ -71,7 +72,8 @@ final class DeletionAlertViewController: UIViewController {
     
     weak var delegate: DeletionAlertDelegate?
     
-    init(target: String, wordCount: Int?) {
+    init(id: String, target: String, wordCount: Int?) {
+        self.deleteID = id
         self.deleteTarget = target
         self.deleteWordCount = wordCount
         super.init(nibName: nil, bundle: nil)
@@ -87,8 +89,10 @@ final class DeletionAlertViewController: UIViewController {
         setupLayout()
         setupSubLabel()
     }
-    
-    private func setupView() {
+}
+
+private extension DeletionAlertViewController {
+    func setupView() {
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         view.addSubview(alertView)
@@ -97,7 +101,7 @@ final class DeletionAlertViewController: UIViewController {
         alertView.addSubview(acceptButton)
     }
     
-    private func setupLayout() {
+    func setupLayout() {
         alertView.snp.makeConstraints { make in
             make.width.equalTo(315)
             make.height.equalTo(161)
@@ -124,7 +128,7 @@ final class DeletionAlertViewController: UIViewController {
         }
     }
     
-    private func setupSubLabel() {
+    func setupSubLabel() {
         if deleteWordCount == 0 { return }
             
         subLabel.text = deleteWordCount == nil ? "한 번 삭제된 단어는 복구할 수 없어요." : "폴더 안의 \(deleteWordCount ?? 0)개의 단어도 함께 삭제돼요."
