@@ -44,7 +44,7 @@ extension UICollectionView {
         )
     }
     
-    func dequeueReuseableSupplementaryView<T: UICollectionReusableView>(
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(
         ofKind elementKind: String = UICollectionView.elementKindSectionHeader,
         withReuseIdentifier identifier: String? = nil,
         for indexPath: IndexPath
