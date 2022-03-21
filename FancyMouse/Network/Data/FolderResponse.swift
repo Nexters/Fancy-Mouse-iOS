@@ -33,7 +33,7 @@ struct FolderResponse: Decodable {
     //TODO: 일단 간단한 방어코드 넣어놓고 추후 리팩토링 예정
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        folderID = try container.decode(String.self, forKey: .folderID)
+        folderID = try container.decode(String.self, forKey: .folderID) //TODO: 추후 FolderID 타입으로 반영 예정
         folderName = try container.decode(String.self, forKey: .folderName)
         createdAt = try container.decode(String.self, forKey: .createdAt)
         color = (try? container.decode(FolderColorResponse.self, forKey: .color)) ?? .folder00

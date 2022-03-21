@@ -33,7 +33,7 @@ final class FolderAddCell: UICollectionViewCell {
 }
 
 private extension FolderAddCell {
-    private func setupView() {
+    func setupView() {
         addSubview(plusImageView)
         addSubview(plusLabel)
         setupLayout()
