@@ -53,15 +53,12 @@ private extension HomeWordCell {
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
-        let action = UIAction { _ in
-            if self.statusButton.titleLabel?.text == "미암기" {
-                self.statusButton.setupInProgress()
-            } else {
-                self.statusButton.setupIncomplete()
-            }
+        let statusButtonAction = UIAction { _ in
+            let isIncomplete = self.statusButton.titleLabel?.text == "미암기"
+            isIncomplete ? self.statusButton.setupInProgress() : self.statusButton.setupIncomplete()
         }
         
-        statusButton.addAction(action, for: .touchUpInside)
+        statusButton.addAction(statusButtonAction, for: .touchUpInside)
         statusButton.titleLabel?.font = .spoqaBold(size: 12)
     }
     
