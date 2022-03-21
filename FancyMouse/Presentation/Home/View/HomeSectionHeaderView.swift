@@ -7,14 +7,14 @@
 
 import UIKit
 
-final class HomeSectionHeaderView: UITableViewHeaderFooterView {
+final class HomeSectionHeaderView: UICollectionReusableView {
     private let shuffleButton = UIButton()
     private let hidingSpellingLabel = HomeWordHidingLabel()
     private let ellipseImageView = UIImageView()
     private let hidingMeaningsLabel = HomeWordHidingLabel()
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
         
         setupUI()
         setupLayout()

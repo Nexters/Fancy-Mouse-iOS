@@ -17,28 +17,7 @@ final class HomeViewController: UIViewController {
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
     private var words: [Word] = []
     
-    private lazy var homeWordTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 305, left: 0, bottom: 0, right: -10)
-        
-        tableView.register(
-            HomeWordCell.self,
-            forCellReuseIdentifier: "HomeWordCell"
-        )
-        tableView.register(
-            HomeProgressView.self,
-            forHeaderFooterViewReuseIdentifier: "HomeProgressView"
-        )
-        
-        tableView.register(
-            HomeSectionHeaderView.self,
-            forHeaderFooterViewReuseIdentifier: "HomeSectionHeaderView"
-        )
-        
-        return tableView
-    }()
+    private let homeWordCollectionView = HomeWordCollectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,19 +36,19 @@ private extension HomeViewController {
     }
     
     func setupLayout() {
-        view.addSubview(homeWordTableView)
+        view.addSubview(homeWordCollectionView)
         
-        homeWordTableView.snp.makeConstraints { make in
+        homeWordCollectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(24)
         }
     }
     
     func setupTableView() {
-        homeWordTableView.delegate = self
-        homeWordTableView.dataSource = self
+        homeWordCollectionView.delegate = self
+        homeWordCollectionView.dataSource = self
         
-        homeWordTableView.tableHeaderView = progressView
+//        homeWordCollectionView.tableHeaderView = progressView
     }
     
     func setupMockData() {
@@ -104,10 +83,12 @@ private extension HomeViewController {
     ]
     static let meaningsList = [
         ["(이루고자 하는·이루어야 할) 목적", "(특정 상황에서 무엇을) 하기 위함, 용도, 의도", "(삶에 의미를 주는) 목적[목적의식]"],
-        ["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제", "복잡함"],
+        ["포괄적인", "종합적인", "능력별 구분을 않는"],
+        ["전략", "계획"],
+        ["(상황을 더 복잡하게 만드는) 문제", "복잡함"],
         ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"],
         ["(장소로의) 입장", "접근권, 접촉기회", "(컴퓨터에) 접속하다"],
-        ["(자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
+        ["자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
         ["정서(감정)적인", "(지나치게) 감상적인"]
     ]
     static let memos = [
@@ -142,67 +123,37 @@ private extension HomeViewController {
     ]
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return words.count
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: 131 + 12)
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: "HomeSectionHeaderView"
-        ) as? HomeSectionHeaderView
-        else { return nil }
-        
-        let action = UIAction { _ in
-            self.words.shuffle()
-            DispatchQueue.main.async {
-                self.homeWordTableView.reloadData()
-            }
-        }
-        
-        headerView.addActionToSuffleButton(action)
-        
-        return headerView
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
+        CGSize(width: collectionView.bounds.width - 48, height: 18)
+    }
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        words.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navigationBar = navigationController?.navigationBar
-        else { return }
-        
-        let backButtonImage =  #imageLiteral(resourceName: "btn_back").withRenderingMode(.alwaysTemplate)
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.backIndicatorImage = backButtonImage
-        navigationBar.backIndicatorTransitionMaskImage = backButtonImage
-        navigationBar.tintColor = .primaryColor
-        navigationBar.isTranslucent = true
-        
-        let fakeNavigationBar = UIView(frame: .zero)
-        fakeNavigationBar.translatesAutoresizingMaskIntoConstraints = false
-        fakeNavigationBar.isUserInteractionEnabled = false
-        fakeNavigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        fakeNavigationBar.isHidden = true
-        
-        view.insertSubview(fakeNavigationBar, belowSubview: navigationBar)
-        fakeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        fakeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        fakeNavigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        
-        show(VocaDetailViewController(), sender: self)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        50
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "HomeWordCell",
-                for: indexPath
-            ) as? HomeWordCell
-        else { return UITableViewCell() }
-        
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeWordCell
         let cellViewModel = HomeWordCellViewModel(
             useCase: HomeWordUseCase(),
             word: words[indexPath.row],
@@ -213,12 +164,54 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        131 + 12
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(
+            for: indexPath
+        ) as HomeSectionHeaderView
+        
+        let action = UIAction { _ in
+            self.words.shuffle()
+            DispatchQueue.main.async {
+                self.homeWordCollectionView.reloadData()
+            }
+        }
+        
+        headerView.addActionToSuffleButton(action)
+        
+        return headerView
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        guard let navigationBar = navigationController?.navigationBar
+        else { return }
+
+        let backButtonImage =  #imageLiteral(resourceName: "btn_back").withRenderingMode(.alwaysTemplate)
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.backIndicatorImage = backButtonImage
+        navigationBar.backIndicatorTransitionMaskImage = backButtonImage
+        navigationBar.tintColor = .primaryColor
+        navigationBar.isTranslucent = true
+
+        let fakeNavigationBar = UIView(frame: .zero)
+        fakeNavigationBar.translatesAutoresizingMaskIntoConstraints = false
+        fakeNavigationBar.isUserInteractionEnabled = false
+        fakeNavigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        fakeNavigationBar.isHidden = true
+
+        view.insertSubview(fakeNavigationBar, belowSubview: navigationBar)
+        fakeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        fakeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        fakeNavigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+
+        show(VocaDetailViewController(), sender: self)
     }
 }
 
