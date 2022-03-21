@@ -9,7 +9,7 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class HomeWordCellViewModel {
+final class HomeWordCellViewModel: WordCellViewModelProtocol {
     private let useCase: HomeWordUseCaseProtocol
     
     private let wordRelay: BehaviorRelay<Word>
