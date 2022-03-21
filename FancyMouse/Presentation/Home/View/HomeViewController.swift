@@ -10,7 +10,9 @@ import RxSwift
 import UIKit
 
 final class HomeViewController: UIViewController {
-    private let progressView = HomeProgressView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 305))
+    private let progressView = HomeProgressView(
+        frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 305)
+    )
     
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
     private var words: [Word] = []
@@ -63,29 +65,81 @@ private extension HomeViewController {
         }
     }
     
-    func setupMockData() {
-        let spellings = ["purpose", "comprehensive", "strategy", "complication", "dim", "access", "resource", "sentimental"]
-        let meaningsList = [["(이루고자 하는·이루어야 할) 목적", "(특정 상황에서 무엇을) 하기 위함, 용도, 의도", "(삶에 의미를 주는) 목적[목적의식]"], ["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제", "복잡함"], ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"]
-                            ,["(장소로의) 입장", "접근권, 접촉기회", "(컴퓨터에) 접속하다"], ["(자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
-                            ["정서(감정)적인", "(지나치게) 감상적인"]]
-        let memos = ["꼭 외워야 하는데.. 외우기 쉽지않네..고민된다!", "이건 제발 외우자! ㅜㅜ", "", "", "디자인 관련해서 자주 나오는 용어!", "", "", ""]
-        let synonymsList: [[String]] = [[], ["complete", "full"],[],[],["vague"],[],[],[]]
-        let examplesList: [[String]] = [[], ["a comprehensive survey of modern music."],[],[],["This light is too dim to read by."],[],[],[]]
-        
-        for index in (0..<spellings.count) {
-            let word = Word(id: index, folderID: index, createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
-                            spelling: spellings[index], meanings: meaningsList[index],
-                            memorizationStatus: .inProgress, memo: memos[index], synonyms: synonymsList[index], examples: examplesList[index], urlString: "")
-            words.append(word)
-        }
-    }
-    
     func setupTableView() {
         homeWordTableView.delegate = self
         homeWordTableView.dataSource = self
         
         homeWordTableView.tableHeaderView = progressView
     }
+    
+    func setupMockData() {
+        for index in (0..<Self.spellings.count) {
+            let word = Word(
+                id: index,
+                folderID: index,
+                createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
+                spelling: Self.spellings[index],
+                meanings: Self.meaningsList[index],
+                memorizationStatus: .inProgress,
+                memo: Self.memos[index],
+                synonyms: Self.synonymsList[index],
+                examples: Self.examplesList[index],
+                urlString: ""
+            )
+            words.append(word)
+        }
+    }
+}
+
+private extension HomeViewController {
+    static let spellings = [
+        "purpose",
+        "comprehensive",
+        "strategy",
+        "complication",
+        "dim",
+        "access",
+        "resource",
+        "sentimental"
+    ]
+    static let meaningsList = [
+        ["(이루고자 하는·이루어야 할) 목적", "(특정 상황에서 무엇을) 하기 위함, 용도, 의도", "(삶에 의미를 주는) 목적[목적의식]"],
+        ["포괄적인", "종합적인", "능력별 구분을 않는"], ["전략", "계획"], ["(상황을 더 복잡하게 만드는) 문제", "복잡함"],
+        ["(빛이) 어둑한", "(장소가) 어둑한", "(형체가) 흐릿한"],
+        ["(장소로의) 입장", "접근권, 접촉기회", "(컴퓨터에) 접속하다"],
+        ["(자원, 재원", "원하는 목적을 이루는 데 도움이 되는) 재료[자산]", "자원[재원]을 제공하다"],
+        ["정서(감정)적인", "(지나치게) 감상적인"]
+    ]
+    static let memos = [
+        "꼭 외워야 하는데.. 외우기 쉽지않네..고민된다!",
+        "이건 제발 외우자! ㅜㅜ",
+        "",
+        "",
+        "디자인 관련해서 자주 나오는 용어!",
+        "",
+        "",
+        ""
+    ]
+    static let synonymsList: [[String]] = [
+        [],
+        ["complete", "full"],
+        [],
+        [],
+        ["vague"],
+        [],
+        [],
+        []
+    ]
+    static let examplesList: [[String]] = [
+        [],
+        ["a comprehensive survey of modern music."],
+        [],
+        [],
+        ["This light is too dim to read by."],
+        [],
+        [],
+        []
+    ]
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -106,7 +160,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        headerView.shuffleButton.addAction(action, for: .touchUpInside)
+        headerView.addActionToSuffleButton(action)
         
         return headerView
     }
@@ -184,69 +238,5 @@ struct HomeViewUseCase: HomeUseCaseProtocol {
     
     func loadWords() -> Observable<[Word]> {
         return PublishSubject<[Word]>()
-    }
-}
-
-final class HomeSectionHeaderView: UITableViewHeaderFooterView {
-    let shuffleButton = UIButton()
-    
-    private var hiddingLabel: UILabel {
-        let hiddingLabel = UILabel()
-        hiddingLabel.textColor = .gray50
-        hiddingLabel.font = .spoqaRegular(size: 14)
-        
-        return hiddingLabel
-    }
-    
-    private lazy var sectionHeaderView: UIView = {
-        let sectionHeaderView = UIView()
-        
-        let hidingSpellingLabel = hiddingLabel
-        let ellipseImageView = UIImageView()
-        let hidingMeaningsLabel = hiddingLabel
-        
-        hidingSpellingLabel.text = "단어숨김"
-        hidingMeaningsLabel.text = "뜻숨김"
-        ellipseImageView.image = #imageLiteral(resourceName: "ellipse")
-        shuffleButton.setImage(#imageLiteral(resourceName: "shuffle"), for: .normal)
-        
-        [hidingSpellingLabel, ellipseImageView, hidingMeaningsLabel, shuffleButton].forEach {
-            sectionHeaderView.addSubview($0)
-        }
-        
-        hidingSpellingLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(shuffleButton.snp.centerY)
-            make.leading.equalTo(sectionHeaderView.snp.leading)
-        }
-        
-        ellipseImageView.snp.makeConstraints { make in
-            make.centerY.equalTo(shuffleButton.snp.centerY)
-            make.leading.equalTo(hidingSpellingLabel.snp.trailing).offset(8)
-        }
-        
-        hidingMeaningsLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(shuffleButton.snp.centerY)
-            make.leading.equalTo(ellipseImageView.snp.trailing).offset(8)
-        }
-        
-        shuffleButton.snp.makeConstraints { make in
-            make.top.bottom.trailing.equalTo(sectionHeaderView)
-        }
-        
-        return sectionHeaderView
-    }()
-    
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        
-        addSubview(sectionHeaderView)
-        
-        sectionHeaderView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
