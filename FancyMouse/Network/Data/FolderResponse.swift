@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias FolderResponseList = [FolderResponse]
+typealias FolderResponseList = [String: FolderResponse?]
 
 struct FolderResponse: Decodable {
     let color: FolderColorResponse

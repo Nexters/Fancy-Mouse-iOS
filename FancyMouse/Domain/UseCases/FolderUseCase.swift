@@ -50,7 +50,8 @@ struct FolderUseCase: FolderUseCaseProtocol {
         else { return Observable<[Folder?]>.of([]) }
         
         folderResponse.forEach { response in
-            folderArray.append(response.mappedFolder)
+          guard let responseValue = response.value else { return }
+          folderArray.append(responseValue.mappedFolder)
         }
         
         if folderArray.count < 12 {
