@@ -18,8 +18,12 @@ final class FolderViewModel {
         self.useCase = useCase
     }
 
-    func createFolder(count: Int, name: String, color: String) {
-        useCase.createFolder(count: count, name: name, color: color)
+    func createFolder(name: String, color: String) {
+        useCase.createFolder(name: name, color: color)
+      
+        let itemsReference = Database.database().reference(withPath: "sangjin")
+        let userItemReference = itemsReference.child("foldersCount")
+        userItemReference.setValue(folderList.value.count)
     }
 
     func fetchFolder() {

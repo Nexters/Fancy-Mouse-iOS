@@ -9,13 +9,13 @@ import Firebase
 import RxSwift
 
 struct FolderUseCase: FolderUseCaseProtocol {
-    func createFolder(count: Int, name: String, color: String) {
+    func createFolder(name: String, color: String) {
         let uuidReference = CFUUIDCreate(nil)
         let uuidStringReference = CFUUIDCreateString(nil, uuidReference)
         let uuid = uuidStringReference as String? ?? ""
         
-        var itemsReference = Database.database().reference(withPath: "sangjin/folders")
-        var userItemReference = itemsReference.child("\(count)")
+        let itemsReference = Database.database().reference(withPath: "sangjin/folders")
+        let userItemReference = itemsReference.child(uuid)
         
         let nowDate = Date()
         let values: [String: Any] = [
@@ -26,10 +26,6 @@ struct FolderUseCase: FolderUseCaseProtocol {
             "wordsCount": 0
         ]
         userItemReference.setValue(values)
-        
-        itemsReference = Database.database().reference(withPath: "sangjin")
-        userItemReference = itemsReference.child("foldersCount")
-        userItemReference.setValue(count)
     }
     
     func fetchFolder() -> Observable<[Folder?]> {

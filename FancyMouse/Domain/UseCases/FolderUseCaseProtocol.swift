@@ -8,7 +8,7 @@
 import RxSwift
 
 protocol FolderUseCaseProtocol {
-    func createFolder(count: Int, name: String, color: String)
+    func createFolder(name: String, color: String)
     
     func fetchFolder() -> Observable<[Folder?]>
     
