@@ -1,5 +1,5 @@
 //
-//  HomeWordTableView.swift
+//  HomeWordCollectionView.swift
 //  FancyMouse
 //
 //  Created by itzel.du on 2022/02/16.
@@ -10,5 +10,5 @@ import RxSwift
 import SnapKit
 import UIKit
 
-final class HomeWordTableView: UIViewController {
+final class HomeWordCollectionView: UIViewController {
 }
