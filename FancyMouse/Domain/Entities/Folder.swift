@@ -12,4 +12,5 @@ struct Folder: Equatable {
     let folderColor: FolderColor?
     let folderName: String
     let wordCount: Int
+    let createdAt: String
 }

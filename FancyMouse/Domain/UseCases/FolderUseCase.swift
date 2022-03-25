@@ -50,6 +50,12 @@ struct FolderUseCase: FolderUseCaseProtocol {
           folderArray.append(responseValue.mappedFolder)
         }
         
+        if folderArray.count > 1 {
+            folderArray.sort { first, second in
+                first?.createdAt ?? "" < second?.createdAt ?? ""
+            }
+        }
+        
         if folderArray.count < 12 {
             folderArray.append(nil)
         }

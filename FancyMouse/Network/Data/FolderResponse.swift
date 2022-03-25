@@ -26,7 +26,8 @@ struct FolderResponse: Decodable {
             folderID: folderID,
             folderColor: color.mappedFolderColor,
             folderName: folderName,
-            wordCount: wordsCount
+            wordCount: wordsCount,
+            createdAt: createdAt
         )
     }
 
