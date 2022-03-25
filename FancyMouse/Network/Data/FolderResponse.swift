@@ -7,37 +7,52 @@
 
 import Foundation
 
-typealias FolderResponseList = [FolderResponse?]
+typealias FolderResponseList = [String: FolderResponse?]
 
 struct FolderResponse: Decodable {
     let color: FolderColorResponse
-    let createdAt, folderID: Int
-    let folderName: String
-    let wordList: [WordList?]
-    
+    let createdAt, folderID, folderName: String
+    let words: [WordList]?
+    let wordsCount: Int
+
     enum CodingKeys: String, CodingKey {
-        case color, createdAt
-        case folderID = "folderId"
-        case folderName, wordList
+        case color, createdAt, words, wordsCount
+        case folderID = "id"
+        case folderName = "name"
     }
-    
+
     var mappedFolder: Folder {
         Folder(
             folderID: folderID,
             folderColor: color.mappedFolderColor,
             folderName: folderName,
-            wordCount: wordList.count
+            wordCount: wordsCount
         )
     }
-    
+
     //TODO: 일단 간단한 방어코드 넣어놓고 추후 리팩토링 예정
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        folderID = try container.decode(Int.self, forKey: .folderID)
+        folderID = try container.decode(String.self, forKey: .folderID) //TODO: 추후 FolderID 타입으로 반영 예정
         folderName = try container.decode(String.self, forKey: .folderName)
-        createdAt = try container.decode(Int.self, forKey: .createdAt)
+        createdAt = try container.decode(String.self, forKey: .createdAt)
         color = (try? container.decode(FolderColorResponse.self, forKey: .color)) ?? .folder00
-        wordList = try container.decodeIfPresent([WordList].self, forKey: .wordList) ?? []
+        words = try container.decodeIfPresent([WordList]?.self, forKey: .words) ?? []
+        wordsCount = try container.decode(Int.self, forKey: .wordsCount)
+    }
+}
+
+//TODO: Word 유스케이스 및 response 부분 수정 완료되면 삭제 예정
+struct WordList: Decodable {
+    let createdAt, folderID, id: String
+    let meanings: [String]
+    let memo, pronounce, spelling: String
+    let synonyms: [String]
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt
+        case folderID = "folderId"
+        case id, meanings, memo, pronounce, spelling, synonyms
     }
 }
 
@@ -63,23 +78,5 @@ extension FolderResponse {
             case .folder11: return .folder11
             }
         }
-    }
-}
-
-//MARK: - 데이터구조 잡힌 뒤 삭제할 코드입니다 (임시 구조체임)
-struct WordList: Codable {
-    let createdAt: Int
-    let examples: [String]
-    let folderID: Int
-    let meaning: [String]
-    let memo, spelling: String
-    let synonyms: [String]
-    let wordID: Int
-
-    enum CodingKeys: String, CodingKey {
-        case createdAt, examples
-        case folderID = "folderId"
-        case meaning, memo, spelling, synonyms
-        case wordID = "wordId"
     }
 }

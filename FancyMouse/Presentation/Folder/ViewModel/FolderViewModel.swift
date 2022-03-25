@@ -6,38 +6,40 @@
 //
 
 import Firebase
+import RxCocoa
 import RxSwift
 
 final class FolderViewModel {
     private let useCase: FolderUseCaseProtocol
     private let disposeBag = DisposeBag()
-    lazy var folderCount = BehaviorSubject<Int>(value: 0)
-    lazy var folderList = BehaviorSubject<[Folder]>(value: [])
+    lazy var folderList = BehaviorRelay<[Folder?]>(value: [])
     
     init(useCase: FolderUseCaseProtocol) {
         self.useCase = useCase
     }
 
-    func createFolder(folderName: String, folderColor: String) {
-        useCase.createFolder(folderName: folderName, folderColor: folderColor)
+    func createFolder(name: String, color: String) {
+        useCase.createFolder(name: name, color: color)
+      
+        let itemsReference = Database.database().reference(withPath: "sangjin")
+        let userItemReference = itemsReference.child("foldersCount")
+        userItemReference.setValue(folderList.value.count)
     }
 
-    func fetchFolder() -> Observable<[Folder]> {
+    func fetchFolder() {
         useCase.fetchFolder()
             .bind { [weak self] in
-                self?.folderCount.onNext($0.count)
-                self?.folderList.onNext($0)
+                self?.folderList.accept($0)
             }
             .disposed(by: disposeBag)
-        
-        return folderList
     }
 
     func update(folderID: FolderID, folderColor: String, folderName: String) {
         useCase.update(folderID: folderID, folderColor: folderColor, folderName: folderName)
     }
-    
-    func delete(_ folderID: FolderID) {
-        useCase.delete(folderID)
+    //TODO: 작업 예정
+    func delete(_ folderID: String) {
+//        useCase.delete(folderID)
+//        fetchFolder()
     }
 }

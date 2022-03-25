@@ -9,55 +9,73 @@ import Firebase
 import RxSwift
 
 struct FolderUseCase: FolderUseCaseProtocol {
-    func createFolder(folderName: String, folderColor: String) {
-        let testItemsReference = Database.database().reference(withPath: "users/sangjin/folders")
-        let userItemRef = testItemsReference.child("3")
+    func createFolder(name: String, color: String) {
+        let uuidReference = CFUUIDCreate(nil)
+        let uuidStringReference = CFUUIDCreateString(nil, uuidReference)
+        let uuid = uuidStringReference as String? ?? ""
+        
+        let itemsReference = Database.database().reference(withPath: "sangjin/folders")
+        let userItemReference = itemsReference.child(uuid)
+        
+        let nowDate = Date()
         let values: [String: Any] = [
-            "color": folderColor,
-            "createdAt": 12345,
-            "folderId": "3",
-            "folderName": folderName
+            "color": color,
+            "createdAt": "\(nowDate)",
+            "id": uuid,
+            "name": name,
+            "wordsCount": 0
         ]
-        userItemRef.setValue(values)
+        userItemReference.setValue(values)
     }
     
-    func fetchFolder() -> Observable<[Folder]> {
-        let folderList = BehaviorSubject<[Folder]>(value: [])
-        var folderArray: [Folder] = []
-        
+    func fetchFolder() -> Observable<[Folder?]> {
+        var folderList: Observable<[Folder?]>
+        var folderArray: [Folder?] = []
         var data = Data()
-        let urlString = "https://fancymouse-cb040-default-rtdb.firebaseio.com/users/sangjin/folders.json"
-        guard let url = URL(string: urlString) else { return folderList }
+        //TODO: 구글 로그인 연동 후 url 수정 예정
+        let urlString = "https://fancymouse-cb040-default-rtdb.firebaseio.com/sangjin/folders.json"
+        guard let url = URL(string: urlString) else { return Observable<[Folder?]>.of([]) }
         
-        do { data = try Data(contentsOf: url) }
-        catch { print(error) }
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            print(error)
+        }
         
         guard let folderResponse = try? JSONDecoder().decode(FolderResponseList.self, from: data)
-        else { return folderList }
+        else { return Observable<[Folder?]>.of([]) }
         
-        folderResponse.filter { $0 != nil }
-        .forEach { response in
-            if let folderData = response?.mappedFolder {
-                folderArray.append(folderData)
-            }
+        folderResponse.forEach { response in
+          guard let responseValue = response.value else { return }
+          folderArray.append(responseValue.mappedFolder)
         }
-        //TODO: 리팩 때 삭제 예정
+        
         if folderArray.count < 12 {
-            folderArray.append(Folder(folderID: -1, folderColor: .none, folderName: "", wordCount: -1))
+            folderArray.append(nil)
         }
-        folderList.onNext(folderArray)
+        
+        folderList = Observable<[Folder?]>.of(folderArray)
         return folderList
     }
     
     func update(folderID: FolderID, folderColor: String, folderName: String) {
-        //TODO: 리팩 기간에 네이밍 수정 예정
-        let testItemsReference = Database.database().reference(withPath: "users/sangjin/folders")
-        let userItemRef = testItemsReference.child("\(folderID)")
-        userItemRef.updateChildValues(["folderName": folderName, "color": folderColor])
+        //TODO: 작업 예정
     }
     
-    func delete(_ folderID: FolderID) {
-        let testItemsReference = Database.database().reference(withPath: "users/sangjin/folders")
-        testItemsReference.child("\(folderID)").removeValue()
+    func delete(_ folderID: String) {
+        //TODO: 작업 예정
+        
+//        let reference = Database.database().reference(withPath: "sangjin/folders")
+//        reference.observeSingleEvent(of: .value, with: { snapshot in
+//            snapshot.children.forEach {
+//                guard let snap = $0 as? DataSnapshot else { return }
+//                guard let dictionary = snap.value as? NSDictionary else { return }
+//
+//                if dictionary["id"] as? String == folderID {
+//                    reference.child(snap.key).removeValue()
+//                    return
+//                }
+//            }
+//        })
     }
 }
