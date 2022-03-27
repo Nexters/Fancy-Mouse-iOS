@@ -51,7 +51,7 @@ final class HomeViewController: UIViewController {
 private extension HomeViewController {
     func setupUI() {
         view.backgroundColor = .gray30
-        setupNavigationBar()
+//        setupNavigationBar()
     }
     
     func setupLayout() {
@@ -112,27 +112,27 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navigationBar = navigationController?.navigationBar
-        else { return }
-        
-        let backButtonImage =  #imageLiteral(resourceName: "btn_back").withRenderingMode(.alwaysTemplate)
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.backIndicatorImage = backButtonImage
-        navigationBar.backIndicatorTransitionMaskImage = backButtonImage
-        navigationBar.tintColor = .primaryColor
-        navigationBar.isTranslucent = true
-        
-        let fakeNavigationBar = UIView(frame: .zero)
-        fakeNavigationBar.translatesAutoresizingMaskIntoConstraints = false
-        fakeNavigationBar.isUserInteractionEnabled = false
-        fakeNavigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        fakeNavigationBar.isHidden = true
-        
-        view.insertSubview(fakeNavigationBar, belowSubview: navigationBar)
-        fakeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        fakeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        fakeNavigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+//        guard let navigationBar = navigationController?.navigationBar
+//        else { return }
+//
+//        let backButtonImage =  #imageLiteral(resourceName: "btn_back").withRenderingMode(.alwaysTemplate)
+//        navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationBar.shadowImage = UIImage()
+//        navigationBar.backIndicatorImage = backButtonImage
+//        navigationBar.backIndicatorTransitionMaskImage = backButtonImage
+//        navigationBar.tintColor = .primaryColor
+//        navigationBar.isTranslucent = true
+//
+//        let fakeNavigationBar = UIView(frame: .zero)
+//        fakeNavigationBar.translatesAutoresizingMaskIntoConstraints = false
+//        fakeNavigationBar.isUserInteractionEnabled = false
+//        fakeNavigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        fakeNavigationBar.isHidden = true
+//
+//        view.insertSubview(fakeNavigationBar, belowSubview: navigationBar)
+//        fakeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        fakeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        fakeNavigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         
         show(VocaDetailViewController(), sender: self)
     }

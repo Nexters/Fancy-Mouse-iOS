@@ -9,20 +9,20 @@ import Toast_Swift
 import UIKit
 
 extension UIViewController {
-    func setupNavigationBar() {
-        let imageView = UIImageView(image: UIImage(named: "logo"))
-        let item = UIBarButtonItem(customView: imageView)
-        navigationItem.leftBarButtonItem = item
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .gray30
-        appearance.shadowColor = .clear
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        navigationController?.additionalSafeAreaInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
-    }
+//    func setupNavigationBar() {
+//        let imageView = UIImageView(image: UIImage(named: "logo"))
+//        let item = UIBarButtonItem(customView: imageView)
+//        navigationItem.leftBarButtonItem = item
+//        
+//        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithOpaqueBackground()
+//        appearance.backgroundColor = .gray30
+//        appearance.shadowColor = .clear
+//        navigationController?.navigationBar.standardAppearance = appearance
+//        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+//        
+//        navigationController?.additionalSafeAreaInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
+//    }
     
     func showToast(message: String, image: UIImage? = nil, position: ToastPosition = .bottom) {
         var style = ToastStyle()

@@ -110,7 +110,7 @@ private extension FolderViewController {
         explainView.addSubview(explainPastButton)
         view.addSubview(collectionView)
         
-        setupNavigationBarUI()
+//        setupNavigationBarUI()
         setupLayout()
         setupBinding()
     }
@@ -133,7 +133,7 @@ private extension FolderViewController {
         
         let item = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = item
-        setupNavigationBar()
+//        setupNavigationBar()
     }
     
     func setupLayout() {
