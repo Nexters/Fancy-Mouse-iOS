@@ -12,7 +12,6 @@ enum LearningState {
     case end
 }
 
-// FIXME: 파일명, 뷰명 변경
 struct LearningIntroEndView: View {
     var state: LearningState = .end
     
@@ -54,11 +53,10 @@ struct LearningIntroEndView: View {
                 
                 Button {
                     // TODO: 학습 시작, 완료 액션 분기처리
-                    print("학습 시작 or 종료")
                     if state == .start {
-                        
+                        // 학습 시작
                     } else {
-                        state == .end
+                        // 학습 종료
                     }
                 } label: {
                     Text(state == .start ? "학습 시작하기" : "학습 다시하기")

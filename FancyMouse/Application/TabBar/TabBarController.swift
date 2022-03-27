@@ -5,9 +5,8 @@
 //  Created by suding on 2022/02/01.
 //
 
-import Foundation
-import UIKit
 import SwiftUI
+import UIKit
 
 class TabBarController: UITabBarController {
     override func viewDidLoad() {
@@ -39,7 +38,6 @@ class TabBarController: UITabBarController {
         tabBar.layer.applyShadow(color: .gray40, alpha: 0.16, xValue: 0, yValue: -8, blur: 16, spread: 0)
         tabBar.barTintColor = .white
         tabBar.isTranslucent = true
-        
     }
     
     private func setupTabBar() {
@@ -59,14 +57,15 @@ class TabBarController: UITabBarController {
                                           selectedImage: wordSelectedImage)
         wordViewController.tabBarItem = wordTabBarItem
         
-        let lerningViewController = UIHostingController(rootView:
-                                                        LearningView().environmentObject(LearningViewModel()))
+        let learningIntroEndViewController = UIHostingController(rootView: LearningIntroEndView(state: .start)
+                                                                 .environmentObject(LearningViewModel()))
         let lerningTitle = "학습"
         let lerningImage = UIImage(named: "tab_study_n")?.withRenderingMode(.alwaysOriginal)
         let lerningSelectedImage = UIImage(named: "tab_study_s")?.withRenderingMode(.alwaysOriginal)
         let lerningTabBarItem = UITabBarItem(title: lerningTitle, image: lerningImage,
-                                         selectedImage: lerningSelectedImage)
-        lerningViewController.tabBarItem = lerningTabBarItem
+                                             selectedImage: lerningSelectedImage)
+        
+        learningIntroEndViewController.tabBarItem = lerningTabBarItem
         
         let moreViewController = UIHostingController(rootView: MoreView())
                                                         
@@ -78,6 +77,6 @@ class TabBarController: UITabBarController {
         moreViewController.tabBarItem = moreTabBarItem
         
         viewControllers = [homeViewController, wordViewController,
-                           lerningViewController, moreViewController]
+                           learningIntroEndViewController, moreViewController]
     }
 }
