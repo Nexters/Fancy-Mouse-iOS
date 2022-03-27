@@ -78,7 +78,7 @@
 		D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F127B922DF0052D0F5 /* LearningView.swift */; };
 		D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */; };
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
-		D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */; };
+		D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */; };
 		D1FB3C7327C7B0C50017D64F /* OpenSourceLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */; };
 		E21F870E27CD192700848B59 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F870D27CD192700848B59 /* UICollectionView+Extensions.swift */; };
 		E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */; };
@@ -207,7 +207,7 @@
 		D1E738F127B922DF0052D0F5 /* LearningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningView.swift; sourceTree = "<group>"; };
 		D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		D1E738F527B930470052D0F5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntroView.swift; sourceTree = "<group>"; };
+		D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntroEndView.swift; sourceTree = "<group>"; };
 		D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSourceLicense.txt; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 0; };
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
@@ -601,7 +601,7 @@
 		D1E738F027B9227F0052D0F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */,
+				D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */,
 				D1E738F127B922DF0052D0F5 /* LearningView.swift */,
 				D1DB209527C0BF6200EF3F6D /* CardView.swift */,
 			);
@@ -1074,7 +1074,7 @@
 				440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */,
 				E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
-				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
+				D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */,
 				D1B21E5227C8FCF200CC7AF8 /* LearningViewModel.swift in Sources */,
 				E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */,
 				401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */,
