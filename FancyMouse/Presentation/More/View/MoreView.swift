@@ -87,8 +87,12 @@ struct MoreView: View {
                 
                     VStack(spacing: 12) {
                         ForEach(moreListRowTypes, id: \.self) { rowType in
-                            NavigationLink(destination: test(type: rowType)) {
+                            if rowType == .versionInfo {
                                 MoreListRow(type: rowType)
+                            } else {
+                                NavigationLink(destination: test(type: rowType)) {
+                                    MoreListRow(type: rowType)
+                                }
                             }
                         }
                     }
