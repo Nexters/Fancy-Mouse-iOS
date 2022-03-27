@@ -1,5 +1,5 @@
 //
-//  LearningIntroView.swift
+//  LearningIntroEndView.swift
 //  FancyMouse
 //
 //  Created by seunghwan Lee on 2022/02/13.
@@ -13,7 +13,7 @@ enum LearningState {
 }
 
 // FIXME: 파일명, 뷰명 변경
-struct LearningIntroView: View {
+struct LearningIntroEndView: View {
     var state: LearningState = .end
     
     var body: some View {
@@ -78,6 +78,6 @@ struct LearningIntroView: View {
 
 struct LearningIntroView_Previews: PreviewProvider {
     static var previews: some View {
-        LearningIntroView()
+        LearningIntroEndView()
     }
 }
