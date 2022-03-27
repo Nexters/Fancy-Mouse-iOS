@@ -1,19 +1,81 @@
 //
-//  FolderUseCaseProtocol.swift
+//  FolderUseCase.swift
 //  FancyMouse
 //
-//  Created by suding on 2022/02/10.
+//  Created by 한상진 on 2022/02/24.
 //
 
-import Foundation
+import Firebase
 import RxSwift
 
-protocol FolderUseCase {
-    func createFolder(folderName: String, folderColor: String) -> Observable<Folder>
+struct FolderUseCase: FolderUseCaseProtocol {
+    func createFolder(name: String, color: String) {
+        let uuidReference = CFUUIDCreate(nil)
+        let uuidStringReference = CFUUIDCreateString(nil, uuidReference)
+        let uuid = uuidStringReference as String? ?? ""
+        
+        let itemsReference = Database.database().reference(withPath: "sangjin/folders")
+        let userItemReference = itemsReference.child(uuid)
+        
+        let nowDate = Date()
+        let values: [String: Any] = [
+            "color": color,
+            "createdAt": "\(nowDate)",
+            "id": uuid,
+            "name": name,
+            "wordsCount": 0
+        ]
+        userItemReference.setValue(values)
+    }
     
-    func folderList() -> Observable<[Folder]>
+    func fetchFolder() -> Observable<[Folder?]> {
+        var folderList: Observable<[Folder?]>
+        var folderArray: [Folder?] = []
+        var data = Data()
+        //TODO: 구글 로그인 연동 후 url 수정 예정
+        let urlString = "https://fancymouse-cb040-default-rtdb.firebaseio.com/sangjin/folders.json"
+        guard let url = URL(string: urlString) else { return Observable<[Folder?]>.of([]) }
+        
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            print(error)
+        }
+        
+        guard let folderResponse = try? JSONDecoder().decode(FolderResponseList.self, from: data)
+        else { return Observable<[Folder?]>.of([]) }
+        
+        folderResponse.forEach { response in
+          guard let responseValue = response.value else { return }
+          folderArray.append(responseValue.mappedFolder)
+        }
+        
+        if folderArray.count < 12 {
+            folderArray.append(nil)
+        }
+        
+        folderList = Observable<[Folder?]>.of(folderArray)
+        return folderList
+    }
     
-    func update(folder: Folder, folderColor: String, folderName: String) -> Observable<Folder>
-
-    func delete(folder: Folder) -> Observable<Folder>
+    func update(folderID: FolderID, folderColor: String, folderName: String) {
+        //TODO: 작업 예정
+    }
+    
+    func delete(_ folderID: String) {
+        //TODO: 작업 예정
+        
+//        let reference = Database.database().reference(withPath: "sangjin/folders")
+//        reference.observeSingleEvent(of: .value, with: { snapshot in
+//            snapshot.children.forEach {
+//                guard let snap = $0 as? DataSnapshot else { return }
+//                guard let dictionary = snap.value as? NSDictionary else { return }
+//
+//                if dictionary["id"] as? String == folderID {
+//                    reference.child(snap.key).removeValue()
+//                    return
+//                }
+//            }
+//        })
+    }
 }

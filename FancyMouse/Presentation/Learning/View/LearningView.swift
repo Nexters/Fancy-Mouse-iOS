@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct IncompleteButton: View {
-    @Binding var isTapped: Bool
+struct CompleteButton: View {
+    @EnvironmentObject var viewModel: LearningViewModel
     
     var body: some View {
         HStack(spacing: 5) {
             Image("check")
                 .frame(width: 13, height: 16)
-                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: isTapped ? 8 : 16))
-            if isTapped {
+                .padding(EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: viewModel.isCheckTapped ? 8 : 16))
+            if viewModel.isCheckTapped {
                 Text("암기완료")
                     .spoqaBold(size: 16)
                     .padding(.trailing, 16)
@@ -25,25 +25,17 @@ struct IncompleteButton: View {
         .foregroundColor(.white)
         .cornerRadius(16)
         .onTapGesture {
-            withAnimation(.interactiveSpring()) {
-                isTapped.toggle()
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation(.interactiveSpring()) {
-                    isTapped.toggle()
-                }
-            }
+            viewModel.endSwipeActions(memorizationStatus: .complete) 
         }
     }
 }
 
-struct CompleteButton: View {
-    @Binding var isTapped: Bool
+struct InCompleteButton: View {
+    @EnvironmentObject var viewModel: LearningViewModel
     
     var body: some View {
         HStack(spacing: 5) {
-            if isTapped {
+            if viewModel.isXmarkTapped {
                 Text("미암기")
                     .spoqaBold(size: 16)
                     .padding(.leading, 16)
@@ -51,48 +43,117 @@ struct CompleteButton: View {
             
             Image("xmark")
                 .frame(width: 16, height: 16)
-                .padding(EdgeInsets(top: 16, leading: isTapped ? 8 : 16, bottom: 16, trailing: 16))
+                .padding(EdgeInsets(top: 16, leading: viewModel.isXmarkTapped ? 8 : 16, bottom: 16, trailing: 16))
         }
         .background(Color.folder07)
         .foregroundColor(.white)
         .cornerRadius(16)
         .onTapGesture {
-            withAnimation(.interactiveSpring()) {
-                isTapped.toggle()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation(.interactiveSpring()) {
-                    isTapped.toggle()
-                }
-            }
+            viewModel.endSwipeActions(memorizationStatus: .incomplete)
         }
     }
 }
 
-struct LearningView: View {
-    @State private var checkIsTapped = false
-    @State private var xmarkIsTapped = false
+struct CardContainerView: View {
+    @EnvironmentObject var viewModel: LearningViewModel
+    
+//    @State var offset: CGFloat = 0
+    @State private var translation: CGSize = .zero
+    
+//    @State var endSwipe: Bool = false
+//    @GestureState var isDragging: Bool = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            // TODO: 카드뷰 개발 중, 개발 완료후 교체 예정
-            
-            CardView()
-                .padding(EdgeInsets(top: 40, leading: 24, bottom: 60, trailing: 24))
-            
-            HStack {
-                CompleteButton(isTapped: $checkIsTapped)
-                Spacer()
-                IncompleteButton(isTapped: $xmarkIsTapped)
+        ZStack {
+            ForEach(viewModel.words.reversed()) { word in
+                let index = CGFloat(viewModel.getCardIndex(cardWord: word))
+                let topOffset = (index <= 2 ? index : 2) * 10 * viewModel.cardScale
+
+                GeometryReader { proxy in
+                    let size = proxy.size
+
+                    ZStack {
+                        CardStackView(word: word)
+                            .environmentObject(viewModel)
+//                                .frame(width: size.width - (topOffset * 4), height: size.height )
+                            .frame(width: size.width - (topOffset * 4), height: size.height - (topOffset * 3))
+                            .offset(y: topOffset * 2.5)
+//                            .offset(x: offset)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                }
             }
-            .padding(EdgeInsets(top: 0, leading: 60, bottom: 24, trailing: 60))
         }
-        .background(Color.primaryDark)
+        .fullScreenCover(isPresented: .constant(viewModel.words.isEmpty)) {
+            LearningIntroView(state: .end)
+        }
+    }
+}
+
+extension View {
+    var mainBounds: CGRect {
+        return UIScreen.main.bounds
+    }
+}
+
+//struct LottieView: UIViewRepresentable {
+//    var name: String
+//    var loopMode: LottieLoopMode = .playOnce
+//    
+//    var animationView = AnimationView()
+//    
+//    func makeUIView(context: UIViewRepresentableContext<LottieView>) -> UIView {
+//        let view = UIView(frame: .zero)
+//        
+//        animationView.animation = Animation.named(name)
+//        animationView.contentMode = .scaleAspectFit
+//        animationView.loopMode = loopMode
+//        animationView.animationSpeed = 1
+//        animationView.play()
+//        
+//        animationView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(animationView)
+//        
+//        NSLayoutConstraint.activate([
+//                    animationView.heightAnchor.constraint(equalTo: view.heightAnchor),
+//                    animationView.widthAnchor.constraint(equalTo: view.widthAnchor)
+//                ])
+//                
+//                return view
+//    }
+//    
+//    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<LottieView>) {}
+//}
+
+struct LearningView: View {
+    @EnvironmentObject var viewModel: LearningViewModel
+    
+    let rectWidth = UIScreen.main.bounds.width
+    let rectHeight = UIScreen.main.bounds.height
+    
+    var body: some View {
+        ZStack {
+            Color.primaryDark
+                .ignoresSafeArea(.all)
+            
+            VStack(alignment: .center, spacing: 0) {
+                CardContainerView()
+                    .padding(EdgeInsets(top: rectHeight * 0.07, leading: 0, bottom: rectHeight * 0.11, trailing: 0))
+                
+                HStack {
+                    InCompleteButton()
+                    Spacer()
+                    CompleteButton()
+                }
+                .padding(EdgeInsets(top: 0, leading: 36, bottom: rectHeight * 0.091, trailing: 36))
+            }
+            .padding(.horizontal, rectWidth * 0.073)
+        }
     }
 }
 
 struct LearningView_Previews: PreviewProvider {
     static var previews: some View {
-        LearningView()
+        LearningView().environmentObject(LearningViewModel())
     }
 }

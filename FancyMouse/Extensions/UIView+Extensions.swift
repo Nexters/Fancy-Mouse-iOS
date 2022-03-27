@@ -5,4 +5,10 @@
 //  Created by itzel.du on 2022/02/16.
 //
 
-import Foundation
+import UIKit
+
+extension UIView {
+    var circularCornerRadius: CGFloat {
+        bounds.height / 2
+    }
+}
