@@ -5,4 +5,15 @@
 //  Created by seunghwan Lee on 2022/03/27.
 //
 
-import Foundation
+import UIKit
+
+final class BaseViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.tintColor = .primaryColor
+    }
+}
