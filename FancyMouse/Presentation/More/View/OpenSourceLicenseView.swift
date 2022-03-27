@@ -28,7 +28,7 @@ struct OpenSourceLicenseView: View {
                     .padding(.bottom, 20)
                     .foregroundColor(.white)
                 
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     Text(openSourceList)
                         .padding(.vertical, 20)
                 }
