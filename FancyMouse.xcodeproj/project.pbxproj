@@ -62,6 +62,7 @@
 		D163840027B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D16383FF27B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf */; };
 		D163840227B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D163840127B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf */; };
 		D163840427B01716005C8326 /* SpoqaHanSansNeo-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D163840327B01716005C8326 /* SpoqaHanSansNeo-Regular.otf */; };
+		D16C5AD927F0797A00A64730 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D16C5AD827F0797A00A64730 /* BaseViewController.swift */; };
 		D1AFE717279C0FAF0082D680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE716279C0FAF0082D680 /* AppDelegate.swift */; };
 		D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */; };
 		D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */; };
@@ -78,7 +79,7 @@
 		D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F127B922DF0052D0F5 /* LearningView.swift */; };
 		D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */; };
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
-		D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */; };
+		D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */; };
 		D1FB3C7327C7B0C50017D64F /* OpenSourceLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */; };
 		E21F870E27CD192700848B59 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F870D27CD192700848B59 /* UICollectionView+Extensions.swift */; };
 		E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */; };
@@ -187,6 +188,7 @@
 		D16383FF27B016ED005C8326 /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		D163840127B0170C005C8326 /* SpoqaHanSansNeo-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.otf"; sourceTree = "<group>"; };
 		D163840327B01716005C8326 /* SpoqaHanSansNeo-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.otf"; sourceTree = "<group>"; };
+		D16C5AD827F0797A00A64730 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D1AFE713279C0FAF0082D680 /* FancyMouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyMouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AFE716279C0FAF0082D680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AFE718279C0FAF0082D680 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -207,7 +209,7 @@
 		D1E738F127B922DF0052D0F5 /* LearningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningView.swift; sourceTree = "<group>"; };
 		D1E738F327B9230E0052D0F5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		D1E738F527B930470052D0F5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntroView.swift; sourceTree = "<group>"; };
+		D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningIntroEndView.swift; sourceTree = "<group>"; };
 		D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSourceLicense.txt; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 0; };
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
@@ -601,7 +603,7 @@
 		D1E738F027B9227F0052D0F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D1E738F727B9350B0052D0F5 /* LearningIntroView.swift */,
+				D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */,
 				D1E738F127B922DF0052D0F5 /* LearningView.swift */,
 				D1DB209527C0BF6200EF3F6D /* CardView.swift */,
 			);
@@ -749,6 +751,7 @@
 			isa = PBXGroup;
 			children = (
 				E23CA6DC27A2F9C300C8381E /* Dimmable.swift */,
+				D16C5AD827F0797A00A64730 /* BaseViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
 				D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */,
+				D16C5AD927F0797A00A64730 /* BaseViewController.swift in Sources */,
 				440FE98627C8D8D500C73212 /* Core.swift in Sources */,
 				40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */,
 				D1AFE71B279C0FAF0082D680 /* HomeViewController.swift in Sources */,
@@ -1074,7 +1078,7 @@
 				440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */,
 				E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
-				D1E738F827B9350B0052D0F5 /* LearningIntroView.swift in Sources */,
+				D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */,
 				D1B21E5227C8FCF200CC7AF8 /* LearningViewModel.swift in Sources */,
 				E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */,
 				401837F227C01A2D00773574 /* SearchAutoCompleteCell.swift in Sources */,
