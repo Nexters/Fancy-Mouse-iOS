@@ -84,8 +84,10 @@ final class FolderAddEditView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupView() {
+}
+
+private extension FolderAddEditView {
+    func setupView() {
         backgroundColor = .white
         
         addSubview(backgroundView)
@@ -97,11 +99,11 @@ final class FolderAddEditView: UIView {
         setupLayout()
     }
     
-    private func setupViewModel(_ originalNameString: String, _ originalColorString: String) {
+    func setupViewModel(_ originalNameString: String, _ originalColorString: String) {
         self.viewModel = FolderAddEditViewModel(originalNameString, originalColorString)
     }
     
-    private func setupLayout() {
+    func setupLayout() {
         let width = UIScreen.main.bounds.width - 48
         
         backgroundView.snp.makeConstraints { make in
@@ -135,7 +137,7 @@ final class FolderAddEditView: UIView {
         }
     }
     
-    private func setupBinding() {
+    func setupBinding() {
         Observable.of(viewModel.colorList)
             .bind(to: collectionView.rx.items) { (_, row, item) -> UICollectionViewCell in
                 let cell = self.collectionView.dequeueReusableCell(
@@ -168,29 +170,28 @@ final class FolderAddEditView: UIView {
         viewModel.folderColor
             .filter { !$0.isEmpty }
             .bind { [weak self] in
-                let item = UIColor(named: $0)
-                guard self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) != nil else { return }
+                guard let self = self,
+                      let item = UIColor(named: $0),
+                      let itemIndex = self.viewModel.colorList.firstIndex(of: item)
+                else { return }
                 
                 let index = IndexPath(
-                    item: self?.viewModel.colorList.firstIndex(of: item ?? UIColor()) ?? Int(),
+                    item: itemIndex,
                     section: 0
                 )
-                //TODO: 리팩 때 수정
-                if item != .folder00 {
-                    self?.collectionView.selectItem(at: index, animated: false, scrollPosition: .init())
-                    self?.textField.isUserInteractionEnabled = true
-                    self?.collectionView.isUserInteractionEnabled = true
-                } else {
-                    self?.textField.isUserInteractionEnabled = false
-                    self?.collectionView.isUserInteractionEnabled = false
-                }
+                
+                self.collectionView.selectItem(
+                    at: index,
+                    animated: false,
+                    scrollPosition: .init()
+                )
             }
             .disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(UIColor.self)
             .bind { [weak self] in
                 guard let name = $0.name else { return }
-                self?.viewModel.folderColor.onNext(name)
+                self?.viewModel.folderColor.accept(name)
             }
             .disposed(by: disposeBag)
         
@@ -199,11 +200,5 @@ final class FolderAddEditView: UIView {
                 self.endEditing(true)
             }
             .disposed(by: disposeBag)
-    }
-}
-
-extension BottomSheetController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
 }

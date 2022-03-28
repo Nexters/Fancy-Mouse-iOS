@@ -77,6 +77,10 @@ final class BottomSheetController: UIViewController {
         setupLayout()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @objc private func okWasTapped() {
         defer { dismissSheet() }
         delegate?.okWasTapped()

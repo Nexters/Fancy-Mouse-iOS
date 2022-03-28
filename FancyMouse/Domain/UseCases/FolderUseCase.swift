@@ -64,8 +64,11 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return folderList
     }
     
-    func update(folderID: FolderID, folderColor: String, folderName: String) {
-        //TODO: 작업 예정
+    func update(folderID: String, folderColor: String, folderName: String) {
+        //TODO: 구글 로그인 연동 후 path 수정 예정
+        let itemsReference = Database.database().reference(withPath: "sangjin/folders")
+        let userItemReference = itemsReference.child(folderID)
+        userItemReference.updateChildValues(["name": folderName, "color": folderColor])
     }
     
     func delete(_ folderID: String) {
