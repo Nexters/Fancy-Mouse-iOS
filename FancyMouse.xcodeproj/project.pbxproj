@@ -55,6 +55,8 @@
 		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
 		C536117727F30509005A59CE /* FolderDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117627F30509005A59CE /* FolderDetailUseCase.swift */; };
 		C536117C27F30543005A59CE /* FolderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117B27F30543005A59CE /* FolderDetailViewModel.swift */; };
+		C536117E27F32EA9005A59CE /* VocaDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117D27F32EA9005A59CE /* VocaDetailUseCase.swift */; };
+		C536118127F32FC8005A59CE /* VocaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536118027F32FC8005A59CE /* VocaViewModel.swift */; };
 		C5AF267D27C62C50004E0A72 /* ProgressGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */; };
 		D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A56EC27A80D78002466DA /* BottomSheet.swift */; };
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
@@ -182,6 +184,8 @@
 		C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C536117627F30509005A59CE /* FolderDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailUseCase.swift; sourceTree = "<group>"; };
 		C536117B27F30543005A59CE /* FolderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailViewModel.swift; sourceTree = "<group>"; };
+		C536117D27F32EA9005A59CE /* VocaDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailUseCase.swift; sourceTree = "<group>"; };
+		C536118027F32FC8005A59CE /* VocaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewModel.swift; sourceTree = "<group>"; };
 		C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGradientView.swift; sourceTree = "<group>"; };
 		D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse_FancyMouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10A56EC27A80D78002466DA /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
@@ -472,6 +476,7 @@
 		44F1517F27AB94C100C2239D /* Voca */ = {
 			isa = PBXGroup;
 			children = (
+				C536117F27F32FBA005A59CE /* ViewModel */,
 				44F1518127AB952300C2239D /* View */,
 			);
 			path = Voca;
@@ -525,6 +530,14 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C536117F27F32FBA005A59CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C536118027F32FC8005A59CE /* VocaViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D16383FE27B01685005C8326 /* Fonts */ = {
@@ -740,6 +753,7 @@
 				4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */,
 				40BBAE5E27C76DBF002EB05A /* FolderUseCase.swift */,
 				C536117627F30509005A59CE /* FolderDetailUseCase.swift */,
+				C536117D27F32EA9005A59CE /* VocaDetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1075,6 +1089,7 @@
 				440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
 				D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */,
+				C536117E27F32EA9005A59CE /* VocaDetailUseCase.swift in Sources */,
 				D16C5AD927F0797A00A64730 /* BaseViewController.swift in Sources */,
 				440FE98627C8D8D500C73212 /* Core.swift in Sources */,
 				40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */,
@@ -1104,6 +1119,7 @@
 				40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */,
 				D1DB209827C1158C00EF3F6D /* MakersView.swift in Sources */,
 				401837F627C02EE500773574 /* SearchViewModel.swift in Sources */,
+				C536118127F32FC8005A59CE /* VocaViewModel.swift in Sources */,
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
 				40BBAE5F27C76DBF002EB05A /* FolderUseCase.swift in Sources */,
 				440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */,
