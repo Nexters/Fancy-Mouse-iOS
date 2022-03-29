@@ -53,6 +53,8 @@
 		44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */; };
 		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
 		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
+		C536117727F30509005A59CE /* FolderDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117627F30509005A59CE /* FolderDetailUseCase.swift */; };
+		C536117C27F30543005A59CE /* FolderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117B27F30543005A59CE /* FolderDetailViewModel.swift */; };
 		C5AF267D27C62C50004E0A72 /* ProgressGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */; };
 		D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A56EC27A80D78002466DA /* BottomSheet.swift */; };
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
@@ -178,6 +180,8 @@
 		876DC3A595A5C39319F88BCA /* Pods-FancyMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.release.xcconfig"; sourceTree = "<group>"; };
 		BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C536117627F30509005A59CE /* FolderDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailUseCase.swift; sourceTree = "<group>"; };
+		C536117B27F30543005A59CE /* FolderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailViewModel.swift; sourceTree = "<group>"; };
 		C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGradientView.swift; sourceTree = "<group>"; };
 		D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse_FancyMouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10A56EC27A80D78002466DA /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
@@ -451,7 +455,6 @@
 				44A8A97C27B6F983004C8E6C /* FolderCell.swift */,
 				4009E18B27C81385007C5E15 /* FolderAddCell.swift */,
 				44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */,
-				447A19CE27C8102000F2154A /* FolderDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -497,6 +500,31 @@
 				6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C536117827F3051F005A59CE /* FolderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				447A19CE27C8102000F2154A /* FolderDetailViewController.swift */,
+				C536117927F30525005A59CE /* ViewModel */,
+				C536117A27F3052A005A59CE /* View */,
+			);
+			path = FolderDetail;
+			sourceTree = "<group>";
+		};
+		C536117927F30525005A59CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C536117B27F30543005A59CE /* FolderDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C536117A27F3052A005A59CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D16383FE27B01685005C8326 /* Fonts */ = {
@@ -648,6 +676,7 @@
 		E2B0710827A0546F00EE8373 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C536117827F3051F005A59CE /* FolderDetail */,
 				440FE97A27C8D85700C73212 /* Walkthrough */,
 				E234110927C7A14000AC8DEE /* Data */,
 				E2DEFCA827BCF5CA0066FD54 /* Common */,
@@ -710,6 +739,7 @@
 				E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */,
 				4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */,
 				40BBAE5E27C76DBF002EB05A /* FolderUseCase.swift */,
+				C536117627F30509005A59CE /* FolderDetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1053,6 +1083,7 @@
 				E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */,
 				40A031E327C3B5A800473FB6 /* User+CoreDataClass.swift in Sources */,
 				E2F8478927C88C75009499C7 /* HomeWordDetailCellViewModel.swift in Sources */,
+				C536117C27F30543005A59CE /* FolderDetailViewModel.swift in Sources */,
 				E234110F27C8048B00AC8DEE /* VocaMemoView.swift in Sources */,
 				44A8A97D27B6F983004C8E6C /* FolderCell.swift in Sources */,
 				E21F870E27CD192700848B59 /* UICollectionView+Extensions.swift in Sources */,
@@ -1078,6 +1109,7 @@
 				440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */,
 				E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
+				C536117727F30509005A59CE /* FolderDetailUseCase.swift in Sources */,
 				D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */,
 				D1B21E5227C8FCF200CC7AF8 /* LearningViewModel.swift in Sources */,
 				E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */,
