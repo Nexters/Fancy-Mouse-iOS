@@ -80,8 +80,8 @@ private extension FolderCell {
 }
 
 extension FolderCell {
-    func setupData(title: String, count: Int, color: String) {
-        folderImageView.image = UIImage(named: color)
+    func setupData(title: String, count: Int, colorString: String) {
+        folderImageView.image = UIImage(named: colorString)
         folderNameLabel.text = title
         wordCountLabel.text = "\(count)"
     }

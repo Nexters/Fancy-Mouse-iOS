@@ -193,7 +193,7 @@ private extension FolderViewController {
                 cell.setupData(
                     title: item.folderName,
                     count: item.wordCount,
-                    color: item.folderColor
+                    colorString: item.folderColor
                 )
                 cell.moreButton.tag = row
                 cell.moreButton.addTarget(
