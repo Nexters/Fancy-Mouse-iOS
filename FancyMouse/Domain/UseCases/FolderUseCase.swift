@@ -47,18 +47,18 @@ struct FolderUseCase: FolderUseCaseProtocol {
         
         folderResponse.forEach { response in
           guard let responseValue = response.value else { return }
-          folderArray.append(responseValue.mappedFolder)
+            let folder = Folder(
+                folderID: responseValue.folderID,
+                folderColor: responseValue.color,
+                folderName: responseValue.folderName,
+                wordCount: responseValue.wordsCount,
+                createdAt: responseValue.createdAt
+            )
+            folderArray.append(folder)
         }
         
-        if folderArray.count > 1 {
-            folderArray.sort { first, second in
-                first?.createdAt ?? "" < second?.createdAt ?? ""
-            }
-        }
-        
-        if folderArray.count < 12 {
-            folderArray.append(nil)
-        }
+        folderArray = sortFolders(folderArray)
+        folderArray = addNilForExtraCell(folderArray)
         
         folderList = Observable<[Folder?]>.of(folderArray)
         return folderList
@@ -86,5 +86,25 @@ struct FolderUseCase: FolderUseCaseProtocol {
 //                }
 //            }
 //        })
+    }
+}
+
+private extension FolderUseCase {
+    func sortFolders(_ folderArray: [Folder?]) -> [Folder?] {
+        var folderArray = folderArray
+        if folderArray.count > 1 {
+            folderArray.sort { first, second in
+                first?.createdAt ?? "" < second?.createdAt ?? ""
+            }
+        }
+        return folderArray
+    }
+    
+    func addNilForExtraCell(_ folderArray: [Folder?]) -> [Folder?] {
+        var folderArray = folderArray
+        if folderArray.count < 12 {
+            folderArray.append(nil)
+        }
+        return folderArray
     }
 }

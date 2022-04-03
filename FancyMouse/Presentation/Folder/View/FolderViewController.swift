@@ -189,9 +189,12 @@ private extension FolderViewController {
                 ) as FolderCell
                 
                 guard let item = item else { return UICollectionViewCell() }
-                guard let itemColor = item.folderColor else { return UICollectionViewCell() }
                 
-                cell.setupData(title: item.folderName, count: item.wordCount, color: itemColor)
+                cell.setupData(
+                    title: item.folderName,
+                    count: item.wordCount,
+                    color: item.folderColor
+                )
                 cell.moreButton.tag = row
                 cell.moreButton.addTarget(
                     self,
@@ -236,18 +239,18 @@ private extension FolderViewController {
         
         let view: EllipsisView = {
             let view = EllipsisView()
-            guard let color = folder.folderColor else { return view }
             
             view.addComponent(title: "수정하기", imageName: "edit", action: UIAction { _ in
                 self.ellipsisView?.removeFromSuperview()
                 self.viewModel.isFolderExist = true
-                self.moreButtonEditWasTapped(folder)
+                self.editButtonWasTapped(folder)
             })
             view.addComponent(title: "삭제하기", imageName: "delete", action: UIAction { _ in
                 self.ellipsisView?.removeFromSuperview()
-                self.moreButtonDeleteWasTapped(
+                self.deleteButtonWasTapped(
                     folderID: folder.folderID,
-                    wordCount: folder.wordCount)
+                    wordCount: folder.wordCount
+                )
             })
             return view
         }()
@@ -262,19 +265,19 @@ private extension FolderViewController {
         }
     }
     
-    func moreButtonEditWasTapped(_ folder: Folder) {
-        guard let colorName = folder.folderColor?.name else { return }
+    func editButtonWasTapped(_ folder: Folder) {
+        let folderAddEditViewModel = folderAddEditView.viewModel
         
         folderAddEditView = FolderAddEditView(
             frame: .zero,
             originalNameString: folder.folderName,
-            originalColorString: colorName
+            originalColorString: folder.folderColor
         )
-       folderAddEditView.viewModel.folderID.accept(folder.folderID)
+        folderAddEditViewModel.folderID.accept(folder.folderID)
         
         let input = FolderViewModel.Input(
-            currentFolderName: folderAddEditView.viewModel.folderName.asObservable(),
-            currentFolderColor: folderAddEditView.viewModel.folderColor.asObservable()
+            currentFolderName: folderAddEditViewModel.folderName.asObservable(),
+            currentFolderColor: folderAddEditViewModel.folderColor.asObservable()
         )
         let output = viewModel.transform(input: input)
         
@@ -297,7 +300,7 @@ private extension FolderViewController {
         bottomSheet.setup(parentViewController: self)
     }
     
-    func moreButtonDeleteWasTapped(folderID: String, wordCount: Int) {
+    func deleteButtonWasTapped(folderID: String, wordCount: Int) {
         let view = DeletionAlertViewController(id: folderID, target: "폴더", wordCount: wordCount)
         view.modalTransitionStyle = .crossDissolve
         view.modalPresentationStyle = .overFullScreen
@@ -342,9 +345,9 @@ extension FolderViewController: DeletionAlertDelegate {
     }
 }
 extension FolderViewController: BottomSheetDelegate {
-    func closeWasTapped() {}
+    func closeButtonWasTapped() {}
     
-    func okWasTapped() {
+    func okButtonWasTapped() {
         let folderAddEditViewModel = folderAddEditView.viewModel
         
         if viewModel.isFolderExist {
