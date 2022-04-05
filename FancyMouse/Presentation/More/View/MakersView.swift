@@ -24,6 +24,7 @@ struct MakersView: View {
                 }
                 .padding(EdgeInsets(top: 24, leading: 24, bottom: 50, trailing: 24))
             }
+            .clipped()
         }
         .navigationBarTitle(Text(""), displayMode: .inline)
     }
