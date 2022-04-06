@@ -20,6 +20,7 @@
 		405F42EE27C8E35B004CA542 /* HomeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F42ED27C8E35B004CA542 /* HomeFilterView.swift */; };
 		4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */; };
 		4080542D27C32ABC00B51574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4080542C27C32ABC00B51574 /* GoogleService-Info.plist */; };
+		408279CB27FDFA32006E22B7 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408279CA27FDFA32006E22B7 /* Folders.swift */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
 		4096688027B79FA5006BC6ED /* FolderAddEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */; };
 		40A031E027C3B45F00473FB6 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A031DE27C3B45F00473FB6 /* User.xcdatamodeld */; };
@@ -147,6 +148,7 @@
 		405F42ED27C8E35B004CA542 /* HomeFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFilterView.swift; sourceTree = "<group>"; };
 		4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextBuilder.swift; sourceTree = "<group>"; };
 		4080542C27C32ABC00B51574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		408279CA27FDFA32006E22B7 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
 		4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditViewCell.swift; sourceTree = "<group>"; };
 		40A031DF27C3B45F00473FB6 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 			children = (
 				4470843F27B411FD006F5796 /* ViewModel */,
 				4470844027B41207006F5796 /* View */,
+				408279CA27FDFA32006E22B7 /* Folders.swift */,
 			);
 			path = Folder;
 			sourceTree = "<group>";
@@ -1089,6 +1092,7 @@
 				440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
 				D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */,
+				408279CB27FDFA32006E22B7 /* Folders.swift in Sources */,
 				C536117E27F32EA9005A59CE /* VocaDetailUseCase.swift in Sources */,
 				D16C5AD927F0797A00A64730 /* BaseViewController.swift in Sources */,
 				440FE98627C8D8D500C73212 /* Core.swift in Sources */,
