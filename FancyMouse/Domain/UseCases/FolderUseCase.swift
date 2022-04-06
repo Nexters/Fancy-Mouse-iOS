@@ -29,8 +29,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
     }
     
     func fetchFolder() -> Observable<[Folder?]> {
-        var folderList: Observable<[Folder?]>
-        var folderArray: [Folder?] = []
+        var folders = Folders()
         var data = Data()
         //TODO: 구글 로그인 연동 후 url 수정 예정
         let urlString = "https://fancymouse-cb040-default-rtdb.firebaseio.com/sangjin/folders.json"
@@ -54,14 +53,10 @@ struct FolderUseCase: FolderUseCaseProtocol {
                 wordCount: responseValue.wordsCount,
                 createdAt: responseValue.createdAt
             )
-            folderArray.append(folder)
+            folders.add(folder)
         }
         
-        folderArray = sortFolders(folderArray)
-        folderArray = addNilForExtraCell(folderArray)
-        
-        folderList = Observable<[Folder?]>.of(folderArray)
-        return folderList
+        return Observable<[Folder?]>.of(folders.values)
     }
     
     func update(folderID: String, folderColor: String, folderName: String) {
@@ -86,25 +81,5 @@ struct FolderUseCase: FolderUseCaseProtocol {
 //                }
 //            }
 //        })
-    }
-}
-
-private extension FolderUseCase {
-    func sortFolders(_ folderArray: [Folder?]) -> [Folder?] {
-        var folderArray = folderArray
-        if folderArray.count > 1 {
-            folderArray.sort { first, second in
-                first?.createdAt ?? "" < second?.createdAt ?? ""
-            }
-        }
-        return folderArray
-    }
-    
-    func addNilForExtraCell(_ folderArray: [Folder?]) -> [Folder?] {
-        var folderArray = folderArray
-        if folderArray.count < 12 {
-            folderArray.append(nil)
-        }
-        return folderArray
     }
 }

@@ -288,7 +288,7 @@ private extension FolderViewController {
             bottomInset: 44
         )
         
-        output.isEnableCreate
+        output.isEnableCreateFolder
             .drive(onNext: {
                 bottomSheet.okButton.isEnabled = $0
                 bottomSheet.okButton.backgroundColor = $0 ? .primaryColor : .gray40
@@ -324,7 +324,7 @@ private extension FolderViewController {
             bottomInset: 44
         )
         
-        output.isEnableCreate
+        output.isEnableCreateFolder
             .drive(onNext: {
                 bottomSheet.okButton.isEnabled = $0
                 bottomSheet.okButton.backgroundColor = $0 ? .primaryColor : .gray40

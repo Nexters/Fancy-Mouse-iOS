@@ -16,7 +16,7 @@ final class FolderViewModel {
     }
     
     struct Output {
-        var isEnableCreate: Driver<Bool>
+        var isEnableCreateFolder: Driver<Bool>
     }
     
     private let useCase: FolderUseCaseProtocol
@@ -29,14 +29,14 @@ final class FolderViewModel {
     }
     
     func transform(input: Input) -> Output {
-        let isEnableCreate = Observable.combineLatest(
+        let isEnableCreateFolder = Observable.combineLatest(
             input.currentFolderName,
             input.currentFolderColor
         ).map {
             return !$0.0.isEmpty && !$0.1.isEmpty
         }.asDriver(onErrorJustReturn: false)
         
-        return Output(isEnableCreate: isEnableCreate)
+        return Output(isEnableCreateFolder: isEnableCreateFolder)
     }
 
     func createFolder(name: String, color: String) {
