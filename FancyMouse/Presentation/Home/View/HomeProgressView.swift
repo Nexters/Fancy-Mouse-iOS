@@ -8,17 +8,10 @@
 import SnapKit
 import UIKit
 
-final class HomeProgressView: UITableViewHeaderFooterView {
+final class HomeProgressView: UICollectionViewCell {
     private let userName = "수진"
     private let progressPercent = 75
     private let wordCount = 20
-    
-    private lazy var progressView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gradientBack
-        view.layer.cornerRadius = 24
-        return view
-    }()
     
     private lazy var userLabel: UILabel = {
         let label = UILabel()
@@ -66,9 +59,10 @@ final class HomeProgressView: UITableViewHeaderFooterView {
         view.backgroundColor = .gradientBack
         return view
     }()
-
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
         setupPercentFont()
         setupUI()
     }
@@ -76,8 +70,10 @@ final class HomeProgressView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupPercentFont() {
+}
+
+private extension HomeProgressView {
+    func setupPercentFont() {
         let fullText = percentLabel.text ?? ""
         let attribtuedString = NSMutableAttributedString(string: fullText)
         let range = (fullText as NSString).range(of: "\(progressPercent)%")
@@ -87,20 +83,16 @@ final class HomeProgressView: UITableViewHeaderFooterView {
         percentLabel.attributedText = attribtuedString
     }
     
-    private func setupUI() {
-        addSubview(progressView)
-        progressView.addSubview(userLabel)
-        progressView.addSubview(percentLabel)
-        progressView.addSubview(wordLabel)
-        progressView.addSubview(entryButton)
-        progressView.addSubview(gradientView)
-        progressView.addSubview(progressImageView)
+    func setupUI() {
+        backgroundColor = .gradientBack
+        layer.cornerRadius = 24
         
-        progressView.snp.makeConstraints { make in
+        [userLabel, percentLabel, wordLabel, entryButton, gradientView, progressImageView].forEach {
+            addSubview($0)
+        }
+        
+        snp.makeConstraints { make in
             make.height.equalTo(305)
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
         }
         
         userLabel.snp.makeConstraints { make in

@@ -34,6 +34,7 @@ final class HomeSectionHeaderView: UICollectionReusableView {
 
 private extension HomeSectionHeaderView {
     func setupUI() {
+        backgroundColor = .gray30
         hidingSpellingLabel.text = "단어숨김"
         hidingMeaningsLabel.text = "뜻숨김"
         ellipseImageView.image = #imageLiteral(resourceName: "ellipse")
@@ -61,7 +62,9 @@ private extension HomeSectionHeaderView {
         }
         
         shuffleButton.snp.makeConstraints { make in
-            make.top.bottom.trailing.equalToSuperview()
+            make.height.equalTo(18)
+            make.top.bottom.equalToSuperview().offset(3)
+            make.trailing.equalToSuperview()
         }
     }
 }

@@ -17,6 +17,7 @@ final class HomeWordCollectionView: UICollectionView {
         flowLayout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         flowLayout.minimumLineSpacing = 6
         flowLayout.scrollDirection = .vertical
+        flowLayout.sectionHeadersPinToVisibleBounds = true
         
         super.init(frame: frame, collectionViewLayout: flowLayout)
         
@@ -30,8 +31,9 @@ final class HomeWordCollectionView: UICollectionView {
 
 private extension HomeWordCollectionView {
     func setupUI() {
-        backgroundColor = .clear
+        backgroundColor = .gray30
         
+        registerCell(ofType: HomeProgressView.self)
         registerCell(ofType: HomeWordCell.self)
         registerSupplementaryView(ofType: HomeSectionHeaderView.self)
     }

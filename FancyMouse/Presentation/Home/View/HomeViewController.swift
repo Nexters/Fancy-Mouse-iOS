@@ -129,7 +129,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 131 + 12)
+        indexPath.section == 0 ?
+        CGSize(width: collectionView.bounds.width, height: 305) :
+        CGSize(width: collectionView.bounds.width, height: 131)
     }
     
     func collectionView(
@@ -142,17 +144,29 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        words.count
+        switch section {
+        case 0: return 1
+        case 1: return words.count
+        default: return 0
+        }
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        if indexPath.section == 0 {
+            return collectionView.dequeueReusableCell(for: indexPath) as HomeProgressView
+        }
+        
         let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeWordCell
         let cellViewModel = HomeWordCellViewModel(
             useCase: HomeWordUseCase(),
@@ -189,28 +203,8 @@ extension HomeViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        guard let navigationBar = navigationController?.navigationBar
-        else { return }
-
-        let backButtonImage =  #imageLiteral(resourceName: "btn_back").withRenderingMode(.alwaysTemplate)
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-        navigationBar.backIndicatorImage = backButtonImage
-        navigationBar.backIndicatorTransitionMaskImage = backButtonImage
-        navigationBar.tintColor = .primaryColor
-        navigationBar.isTranslucent = true
-
-        let fakeNavigationBar = UIView(frame: .zero)
-        fakeNavigationBar.translatesAutoresizingMaskIntoConstraints = false
-        fakeNavigationBar.isUserInteractionEnabled = false
-        fakeNavigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        fakeNavigationBar.isHidden = true
-
-        view.insertSubview(fakeNavigationBar, belowSubview: navigationBar)
-        fakeNavigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        fakeNavigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        fakeNavigationBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-
+        guard indexPath.section > 0 else { return }
+        
         show(VocaDetailViewController(), sender: self)
     }
 }
