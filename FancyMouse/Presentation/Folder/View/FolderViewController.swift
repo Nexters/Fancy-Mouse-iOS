@@ -266,13 +266,14 @@ private extension FolderViewController {
     }
     
     func editButtonWasTapped(_ folder: Folder) {
-        let folderAddEditViewModel = folderAddEditView.viewModel
-        
         folderAddEditView = FolderAddEditView(
             frame: .zero,
             originalNameString: folder.folderName,
             originalColorString: folder.folderColor
         )
+        
+        let folderAddEditViewModel = folderAddEditView.viewModel
+        
         folderAddEditViewModel.folderID.accept(folder.folderID)
         
         let input = FolderViewModel.Input(
