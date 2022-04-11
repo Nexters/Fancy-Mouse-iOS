@@ -5,11 +5,12 @@
 //  Created by 한상진 on 2022/02/22.
 //
 
-import RxSwift
+import RxRelay
 
 final class FolderAddEditViewModel {
-    var folderName = BehaviorSubject<String>(value: .init())
-    var folderColor = BehaviorSubject<String>(value: .init())
+    var folderName = BehaviorRelay<String>(value: .init())
+    var folderColor = BehaviorRelay<String>(value: .init())
+    var folderID = BehaviorRelay<String>(value: .init())
     
     let colorList = [
         UIColor.folder01,
@@ -27,7 +28,7 @@ final class FolderAddEditViewModel {
     ]
     
     init(_ originalNameString: String, _ originalColorString: String) {
-        self.folderName.onNext(originalNameString)
-        self.folderColor.onNext(originalColorString)
+        self.folderName.accept(originalNameString)
+        self.folderColor.accept(originalColorString)
     }
 }

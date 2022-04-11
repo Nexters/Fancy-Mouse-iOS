@@ -9,7 +9,8 @@ import Foundation
 
 struct Folder: Equatable {
     let folderID: String
-    let folderColor: FolderColor?
+    let folderColor: String
     let folderName: String
     let wordCount: Int
+    let createdAt: String
 }

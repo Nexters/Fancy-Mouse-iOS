@@ -9,8 +9,8 @@ import SnapKit
 import UIKit
 
 protocol BottomSheetDelegate: AnyObject {
-    func closeWasTapped()
-    func okWasTapped()
+    func closeButtonWasTapped()
+    func okButtonWasTapped()
 }
 
 final class BottomSheetController: UIViewController {
@@ -36,7 +36,7 @@ final class BottomSheetController: UIViewController {
         button.backgroundColor = .primaryColor
         button.setTitle("확인", for: .normal)
         button.setTitleColor(.secondaryColor, for: .normal)
-        button.addTarget(self, action: #selector(okWasTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(okButtonWasTapped), for: .touchUpInside)
         return button
     }()
     
@@ -44,7 +44,7 @@ final class BottomSheetController: UIViewController {
         let button = UIButton()
         button.tintColor = UIColor(red: 80 / 255, green: 88 / 255, blue: 102 / 255, alpha: 1)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.addTarget(self, action: #selector(closeWasTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(closeButtonWasTapped), for: .touchUpInside)
         return button
     }()
     
@@ -77,14 +77,19 @@ final class BottomSheetController: UIViewController {
         setupLayout()
     }
     
-    @objc private func okWasTapped() {
-        defer { dismissSheet() }
-        delegate?.okWasTapped()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
-    @objc private func closeWasTapped() {
+    @objc private func okButtonWasTapped() {
         defer { dismissSheet() }
-        delegate?.closeWasTapped()
+        delegate?.okButtonWasTapped()
+    }
+    
+    @objc private func closeButtonWasTapped() {
+        defer { dismissSheet() }
+        delegate?.closeButtonWasTapped()
     }
     
     private func dismissSheet() {

@@ -8,7 +8,6 @@
 import UIKit
 
 typealias WordDetailColor = UIColor
-typealias FolderColor = UIColor
 
 extension UIColor {
     static let gray10 = UIColor(named: "gray10") ?? #colorLiteral(red: 0.9882352941, green: 0.9882352941, blue: 0.9882352941, alpha: 1)

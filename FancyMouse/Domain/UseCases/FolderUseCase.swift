@@ -29,8 +29,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
     }
     
     func fetchFolder() -> Observable<[Folder?]> {
-        var folderList: Observable<[Folder?]>
-        var folderArray: [Folder?] = []
+        var folders = Folders()
         var data = Data()
         //TODO: 구글 로그인 연동 후 url 수정 예정
         let urlString = "https://fancymouse-cb040-default-rtdb.firebaseio.com/sangjin/folders.json"
@@ -47,19 +46,24 @@ struct FolderUseCase: FolderUseCaseProtocol {
         
         folderResponse.forEach { response in
           guard let responseValue = response.value else { return }
-          folderArray.append(responseValue.mappedFolder)
+            let folder = Folder(
+                folderID: responseValue.folderID,
+                folderColor: responseValue.color,
+                folderName: responseValue.folderName,
+                wordCount: responseValue.wordsCount,
+                createdAt: responseValue.createdAt
+            )
+            folders.add(folder)
         }
         
-        if folderArray.count < 12 {
-            folderArray.append(nil)
-        }
-        
-        folderList = Observable<[Folder?]>.of(folderArray)
-        return folderList
+        return Observable<[Folder?]>.of(folders.values)
     }
     
-    func update(folderID: FolderID, folderColor: String, folderName: String) {
-        //TODO: 작업 예정
+    func update(folderID: String, folderColor: String, folderName: String) {
+        //TODO: 구글 로그인 연동 후 path 수정 예정
+        let itemsReference = Database.database().reference(withPath: "sangjin/folders")
+        let userItemReference = itemsReference.child(folderID)
+        userItemReference.updateChildValues(["name": folderName, "color": folderColor])
     }
     
     func delete(_ folderID: String) {
