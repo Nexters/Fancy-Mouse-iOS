@@ -44,7 +44,7 @@ final class FolderViewModel {
         return Output(isEnableCreateFolder: isEnableCreateFolder)
     }
 
-    func createFolder(name: String, color: String, completion: @escaping (Int) -> Void) {
+    func createFolder(name: String, color: String) {
         var originFolderList = folderListRelay.value
         
         useCase.createFolder(name: name, color: color)
@@ -53,7 +53,6 @@ final class FolderViewModel {
                 originFolderList = originFolderList.compactMap { $0 }.sorted { $0.createdAt < $1.createdAt }
                 if originFolderList.count < 12 { originFolderList.append(nil) }
                 self?.folderListRelay.accept(originFolderList)
-                completion(originFolderList.count)
             }.disposed(by: disposeBag)
       
         let itemsReference = Database.database().reference(withPath: "sangjin")
@@ -76,22 +75,17 @@ final class FolderViewModel {
     func update(
         folderID: String,
         folderColor: String,
-        folderName: String,
-        completion: @escaping (Int) -> Void
+        folderName: String
     ) {
         var originFolderList = folderListRelay.value
         
         useCase.update(folderID: folderID, folderColor: folderColor, folderName: folderName)
             .bind { [weak self] in
-                var indexNumber: Int?
                 for idx in 0..<originFolderList.count
                 where originFolderList[idx]?.folderID == folderID {
                     originFolderList[idx] = $0
-                    indexNumber = idx
                 }
                 self?.folderListRelay.accept(originFolderList)
-                guard let indexNumber = indexNumber else { return }
-                completion(indexNumber)
             }.disposed(by: disposeBag)
     }
     
