@@ -31,27 +31,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
                 if let error = error {
                     print(error)
                 } else {
-                    var data = Data()
-                    guard let url = URL(string: "\(reference.url).json") else { return }
-                    do {
-                        data = try Data(contentsOf: url)
-                    } catch {
-                        print(error)
-                    }
-
-                    guard let folderResponse = try? JSONDecoder().decode(
-                        FolderResponse.self,
-                        from: data
-                    ) else { return }
-                    
-                    let folder = Folder(
-                        folderID: folderResponse.folderID,
-                        folderColor: folderResponse.color,
-                        folderName: folderResponse.folderName,
-                        wordCount: folderResponse.wordsCount,
-                        createdAt: folderResponse.createdAt
-                    )
-                    createResponse.onNext(folder)
+                    getFolderDataFromUrl(url: reference.url, observable: createResponse)
                 }
             }
             return Disposables.create()
@@ -76,7 +56,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
         else { return Observable<[Folder?]>.of([]) }
         
         folderResponse.forEach { response in
-          guard let responseValue = response.value else { return }
+            guard let responseValue = response.value else { return }
             let folder = Folder(
                 folderID: responseValue.folderID,
                 folderColor: responseValue.color,
@@ -102,27 +82,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
                 if let error = error {
                     print(error)
                 } else {
-                    var data = Data()
-                    guard let url = URL(string: "\(reference.url).json") else { return }
-                    do {
-                        data = try Data(contentsOf: url)
-                    } catch {
-                        print(error)
-                    }
-
-                    guard let folderResponse = try? JSONDecoder().decode(
-                        FolderResponse.self,
-                        from: data
-                    ) else { return }
-                    
-                    let folder = Folder(
-                        folderID: folderResponse.folderID,
-                        folderColor: folderResponse.color,
-                        folderName: folderResponse.folderName,
-                        wordCount: folderResponse.wordsCount,
-                        createdAt: folderResponse.createdAt
-                    )
-                    updateResponse.onNext(folder)
+                    getFolderDataFromUrl(url: reference.url, observable: updateResponse)
                 }
             }
             return Disposables.create()
@@ -147,5 +107,29 @@ struct FolderUseCase: FolderUseCaseProtocol {
                 }
             }
         })
+    }
+}
+
+private extension FolderUseCase {
+    func getFolderDataFromUrl(url: String, observable: AnyObserver<Folder>) {
+        var data = Data()
+        guard let url = URL(string: "\(url).json") else { return }
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            print(error)
+        }
+        
+        guard let folderResponse = try? JSONDecoder().decode(FolderResponse.self, from: data)
+        else { return }
+        
+        let folder = Folder(
+            folderID: folderResponse.folderID,
+            folderColor: folderResponse.color,
+            folderName: folderResponse.folderName,
+            wordCount: folderResponse.wordsCount,
+            createdAt: folderResponse.createdAt
+        )
+        observable.onNext(folder)
     }
 }
