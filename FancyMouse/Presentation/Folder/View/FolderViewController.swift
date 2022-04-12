@@ -358,12 +358,19 @@ extension FolderViewController: BottomSheetDelegate {
                 folderID: folderAddEditViewModel.folderID.value,
                 folderColor: folderAddEditViewModel.folderColor.value,
                 folderName: folderAddEditViewModel.folderName.value
-            )
+            ) { itemIndex in
+                self.collectionView.reloadItems(at: [IndexPath(item: itemIndex, section: 0)])
+            }
         } else {
-            viewModel.createFolder(name: folderAddEditViewModel.folderName.value,
-                                   color: folderAddEditViewModel.folderColor.value)
+            viewModel.createFolder(
+                name: folderAddEditViewModel.folderName.value,
+                color: folderAddEditViewModel.folderColor.value
+            ) { count in
+                self.collectionView.reloadItems(at: [
+                    IndexPath(item: count - 1, section: 0),
+                    IndexPath(item: count - 2, section: 0)
+                ])
+            }
         }
-        
-        collectionView.reloadData()
     }
 }

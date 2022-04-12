@@ -9,7 +9,7 @@ import Firebase
 import RxSwift
 
 struct FolderUseCase: FolderUseCaseProtocol {
-    func createFolder(name: String, color: String) {
+    func createFolder(name: String, color: String) -> Observable<Folder> {
         let uuidReference = CFUUIDCreate(nil)
         let uuidStringReference = CFUUIDCreateString(nil, uuidReference)
         let uuid = uuidStringReference as String? ?? ""
@@ -25,7 +25,38 @@ struct FolderUseCase: FolderUseCaseProtocol {
             "name": name,
             "wordsCount": 0
         ]
-        userItemReference.setValue(values)
+        
+        let folderObservable = Observable<Folder>.create { createResponse in
+            userItemReference.setValue(values) { error, reference in
+                if let error = error {
+                    print(error)
+                } else {
+                    var data = Data()
+                    guard let url = URL(string: "\(reference.url).json") else { return }
+                    do {
+                        data = try Data(contentsOf: url)
+                    } catch {
+                        print(error)
+                    }
+
+                    guard let folderResponse = try? JSONDecoder().decode(
+                        FolderResponse.self,
+                        from: data
+                    ) else { return }
+                    
+                    let folder = Folder(
+                        folderID: folderResponse.folderID,
+                        folderColor: folderResponse.color,
+                        folderName: folderResponse.folderName,
+                        wordCount: folderResponse.wordsCount,
+                        createdAt: folderResponse.createdAt
+                    )
+                    createResponse.onNext(folder)
+                }
+            }
+            return Disposables.create()
+        }
+        return folderObservable
     }
     
     func fetchFolder() -> Observable<[Folder?]> {

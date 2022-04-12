@@ -43,8 +43,17 @@ final class FolderViewModel {
         return Output(isEnableCreateFolder: isEnableCreateFolder)
     }
 
-    func createFolder(name: String, color: String) {
+    func createFolder(name: String, color: String, completion: @escaping (Int) -> Void) {
+        var originFolderList = folderListRelay.value
+        
         useCase.createFolder(name: name, color: color)
+            .bind { [weak self] in
+                originFolderList.append($0)
+                originFolderList = originFolderList.compactMap { $0 }.sorted { $0.createdAt < $1.createdAt }
+                if originFolderList.count < 12 { originFolderList.append(nil) }
+                self?.folderListRelay.accept(originFolderList)
+                completion(originFolderList.count)
+            }.disposed(by: disposeBag)
       
         let itemsReference = Database.database().reference(withPath: "sangjin")
         let userItemReference = itemsReference.child("foldersCount")
@@ -66,17 +75,22 @@ final class FolderViewModel {
     func update(
         folderID: String,
         folderColor: String,
-        folderName: String
+        folderName: String,
+        completion: @escaping (Int) -> Void
     ) {
-        var originfolderList = folderListRelay.value
+        var originFolderList = folderListRelay.value
         
         useCase.update(folderID: folderID, folderColor: folderColor, folderName: folderName)
             .bind { [weak self] in
-                for idx in 0..<originfolderList.count
-                where originfolderList[idx]?.folderID == folderID {
-                        originfolderList[idx] = $0
+                var indexNumber: Int?
+                for idx in 0..<originFolderList.count
+                where originFolderList[idx]?.folderID == folderID {
+                    originFolderList[idx] = $0
+                    indexNumber = idx
                 }
-                self?.folderListRelay.accept(originfolderList)
+                self?.folderListRelay.accept(originFolderList)
+                guard let indexNumber = indexNumber else { return }
+                completion(indexNumber)
             }.disposed(by: disposeBag)
     }
     //TODO: 작업 예정
