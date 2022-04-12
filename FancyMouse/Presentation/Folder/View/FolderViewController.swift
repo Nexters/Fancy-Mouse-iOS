@@ -87,7 +87,7 @@ final class FolderViewController: UIViewController {
         collectionView.backgroundColor = .gray30
         collectionView.registerCell(ofType: FolderCell.self)
         collectionView.registerCell(ofType: FolderAddCell.self)
-        collectionView.contentInset = UIEdgeInsets(top: 24, left: 24, bottom: 0, right: 24)
+        collectionView.contentInset = UIEdgeInsets(top: 4, left: 24, bottom: 24, right: 24)
         return collectionView
     }()
     
@@ -168,7 +168,7 @@ private extension FolderViewController {
             make.trailing.equalToSuperview().inset(30)
         }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(explainView.snp.bottom)
+            make.top.equalTo(explainView.snp.bottom).offset(20)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
