@@ -59,11 +59,45 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return Observable<[Folder?]>.of(folders.values)
     }
     
-    func update(folderID: String, folderColor: String, folderName: String) {
+    func update(folderID: String, folderColor: String, folderName: String) -> Observable<Folder> {
         //TODO: 구글 로그인 연동 후 path 수정 예정
         let itemsReference = Database.database().reference(withPath: "sangjin/folders")
         let userItemReference = itemsReference.child(folderID)
-        userItemReference.updateChildValues(["name": folderName, "color": folderColor])
+        let folderObservable = Observable<Folder>.create { updateResponse in
+            userItemReference.updateChildValues([
+                "name": folderName,
+                "color": folderColor
+            ]) { error, reference in
+                if let error = error {
+                    print(error)
+                } else {
+                    var data = Data()
+                    guard let url = URL(string: "\(reference.url).json") else { return }
+                    do {
+                        data = try Data(contentsOf: url)
+                    } catch {
+                        print(error)
+                    }
+
+                    guard let folderResponse = try? JSONDecoder().decode(
+                        FolderResponse.self,
+                        from: data
+                    ) else { return }
+                    
+                    let folder = Folder(
+                        folderID: folderResponse.folderID,
+                        folderColor: folderResponse.color,
+                        folderName: folderResponse.folderName,
+                        wordCount: folderResponse.wordsCount,
+                        createdAt: folderResponse.createdAt
+                    )
+                    updateResponse.onNext(folder)
+                }
+            }
+            return Disposables.create()
+        }
+        
+        return folderObservable
     }
     
     func delete(_ folderID: String) {

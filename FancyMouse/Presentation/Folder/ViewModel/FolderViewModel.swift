@@ -19,9 +19,13 @@ final class FolderViewModel {
         var isEnableCreateFolder: Driver<Bool>
     }
     
+    struct FolderList {
+        var folderListRelay: BehaviorRelay<[Folder?]>
+    }
+    
     private let useCase: FolderUseCaseProtocol
     private let disposeBag = DisposeBag()
-    lazy var folderList = BehaviorRelay<[Folder?]>(value: [])
+    private let folderListRelay = BehaviorRelay<[Folder?]>(value: [])
     var isFolderExist = false
     
     init(useCase: FolderUseCaseProtocol) {
@@ -44,19 +48,36 @@ final class FolderViewModel {
       
         let itemsReference = Database.database().reference(withPath: "sangjin")
         let userItemReference = itemsReference.child("foldersCount")
-        userItemReference.setValue(folderList.value.count)
+        userItemReference.setValue(folderListRelay.value.count)
     }
 
-    func fetchFolder() {
+    func fetchFolder(_ folderList: FolderList) {
+        folderListRelay.bind {
+            folderList.folderListRelay.accept($0)
+        }.disposed(by: disposeBag)
+        
         useCase.fetchFolder()
             .bind { [weak self] in
-                self?.folderList.accept($0)
+                self?.folderListRelay.accept($0)
             }
             .disposed(by: disposeBag)
     }
 
-    func update(folderID: String, folderColor: String, folderName: String) {
+    func update(
+        folderID: String,
+        folderColor: String,
+        folderName: String
+    ) {
+        var originfolderList = folderListRelay.value
+        
         useCase.update(folderID: folderID, folderColor: folderColor, folderName: folderName)
+            .bind { [weak self] in
+                for idx in 0..<originfolderList.count
+                where originfolderList[idx]?.folderID == folderID {
+                        originfolderList[idx] = $0
+                }
+                self?.folderListRelay.accept(originfolderList)
+            }.disposed(by: disposeBag)
     }
     //TODO: 작업 예정
     func delete(_ folderID: String) {
