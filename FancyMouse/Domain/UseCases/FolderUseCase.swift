@@ -131,20 +131,21 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return folderObservable
     }
     
-    func delete(_ folderID: String) {
-        //TODO: 작업 예정
-        
-//        let reference = Database.database().reference(withPath: "sangjin/folders")
-//        reference.observeSingleEvent(of: .value, with: { snapshot in
-//            snapshot.children.forEach {
-//                guard let snap = $0 as? DataSnapshot else { return }
-//                guard let dictionary = snap.value as? NSDictionary else { return }
-//
-//                if dictionary["id"] as? String == folderID {
-//                    reference.child(snap.key).removeValue()
-//                    return
-//                }
-//            }
-//        })
+    func delete(_ folderID: String, completion: @escaping () -> Void) {
+        //TODO: 구글 로그인 연동 후 path 수정 예정
+        let reference = Database.database().reference(withPath: "sangjin/folders")
+        reference.observeSingleEvent(of: .value, with: { snapshot in
+            snapshot.children.forEach {
+                guard let snap = $0 as? DataSnapshot else { return }
+                guard let dictionary = snap.value as? NSDictionary else { return }
+                
+                if dictionary["id"] as? String == folderID {
+                    reference.child(snap.key).removeValue { _, _ in
+                        completion()
+                        return
+                    }
+                }
+            }
+        })
     }
 }

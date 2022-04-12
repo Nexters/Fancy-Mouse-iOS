@@ -253,6 +253,7 @@ private extension FolderViewController {
                     folderID: folder.folderID,
                     wordCount: folder.wordCount
                 )
+                self.viewModel.isDeletingIndexNumber = sender.tag
             })
             return view
         }()

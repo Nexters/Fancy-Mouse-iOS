@@ -27,6 +27,7 @@ final class FolderViewModel {
     private let disposeBag = DisposeBag()
     private let folderListRelay = BehaviorRelay<[Folder?]>(value: [])
     var isFolderExist = false
+    var isDeletingIndexNumber = -1
     
     init(useCase: FolderUseCaseProtocol) {
         self.useCase = useCase
@@ -93,9 +94,13 @@ final class FolderViewModel {
                 completion(indexNumber)
             }.disposed(by: disposeBag)
     }
-    //TODO: 작업 예정
+    
     func delete(_ folderID: String) {
-//        useCase.delete(folderID)
-//        fetchFolder()
+        var originFolderList = folderListRelay.value
+        originFolderList.remove(at: isDeletingIndexNumber)
+        
+        useCase.delete(folderID) {
+            self.folderListRelay.accept(originFolderList)
+        }
     }
 }
