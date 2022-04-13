@@ -183,6 +183,12 @@ extension HomeViewController: UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
+        if indexPath.section == 0 {
+            return collectionView.dequeueReusableSupplementaryView(
+                for: indexPath
+            ) as EmptySectionHeaderView
+        }
+        
         let headerView = collectionView.dequeueReusableSupplementaryView(
             for: indexPath
         ) as HomeSectionHeaderView

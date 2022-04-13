@@ -36,5 +36,6 @@ private extension HomeWordCollectionView {
         registerCell(ofType: HomeProgressView.self)
         registerCell(ofType: HomeWordCell.self)
         registerSupplementaryView(ofType: HomeSectionHeaderView.self)
+        registerSupplementaryView(ofType: EmptySectionHeaderView.self)
     }
 }

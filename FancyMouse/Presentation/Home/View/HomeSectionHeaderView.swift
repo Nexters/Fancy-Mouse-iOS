@@ -12,6 +12,7 @@ protocol HomeSectionHeaderViewDelegate: AnyObject {
     func didTapHidingMeaningsButton(_ homeSectionHeaderView: HomeSectionHeaderView)
 }
 
+final class EmptySectionHeaderView: UICollectionReusableView { }
 final class HomeSectionHeaderView: UICollectionReusableView {
     private let shuffleButton = UIButton()
     private let hidingSpellingLabel = HomeWordHidingLabel()
