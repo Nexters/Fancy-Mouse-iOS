@@ -142,6 +142,20 @@ extension HomeViewController: UICollectionViewDataSource {
         guard indexPath.section > 0 else { return }
         
         show(VocaDetailViewController(), sender: self)
+extension HomeViewController: HomeSectionHeaderViewDelegate {
+    func didTapShuffleButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
+        homeViewModel.shuffleWords()
+        DispatchQueue.main.async {
+            self.homeWordCollectionView.reloadData()
+        }
+    }
+    
+    func didTapHidingSpellingButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
+        homeViewModel.changeHidingStatus(with: .word)
+    }
+    
+    func didTapHidingMeaningsButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
+        homeViewModel.changeHidingStatus(with: .meaning)
     }
 }
 
