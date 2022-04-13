@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol Hidable: AnyObject {
+    func hide()
+    func show()
+}
 final class WordSpellingLabel: UILabel {
     init() {
         super.init(frame: .zero)
