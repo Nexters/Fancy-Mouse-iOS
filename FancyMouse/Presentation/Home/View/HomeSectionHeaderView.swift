@@ -6,6 +6,11 @@
 //
 
 import UIKit
+protocol HomeSectionHeaderViewDelegate: AnyObject {
+    func didTapShuffleButton(_ homeSectionHeaderView: HomeSectionHeaderView)
+    func didTapHidingSpellingButton(_ homeSectionHeaderView: HomeSectionHeaderView)
+    func didTapHidingMeaningsButton(_ homeSectionHeaderView: HomeSectionHeaderView)
+}
 
 final class HomeSectionHeaderView: UICollectionReusableView {
     private let shuffleButton = UIButton()
