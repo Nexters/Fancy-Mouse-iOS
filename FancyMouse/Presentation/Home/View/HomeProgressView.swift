@@ -91,10 +91,6 @@ private extension HomeProgressView {
             addSubview($0)
         }
         
-        snp.makeConstraints { make in
-            make.height.equalTo(305)
-        }
-        
         userLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(24)
             make.leading.equalToSuperview().inset(24)
