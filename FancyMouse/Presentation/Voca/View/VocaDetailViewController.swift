@@ -152,7 +152,7 @@ private extension VocaDetailViewController {
         }
         
         wordLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(74)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
@@ -166,15 +166,15 @@ private extension VocaDetailViewController {
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
-        wordDetailStackView.snp.makeConstraints { make in
-            make.top.equalTo(wordMeaningStackView.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(24)
-        }
-        
         contourView.snp.makeConstraints { make in
             make.top.equalTo(wordMeaningStackView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(1)
+        }
+        
+        wordDetailStackView.snp.makeConstraints { make in
+            make.top.equalTo(contourView.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
         togetherSavedSentenceView.snp.makeConstraints { make in
