@@ -10,11 +10,8 @@ import RxSwift
 import UIKit
 
 final class HomeViewController: UIViewController {
-    private let progressView = HomeProgressView(
-        frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 305)
-    )
-    
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
+    private let disposeBag = DisposeBag()
     private var words: [Word] = []
     
     private let homeWordCollectionView = HomeWordCollectionView()
@@ -25,6 +22,8 @@ final class HomeViewController: UIViewController {
         setupUI()
         setupLayout()
         setupTableView()
+        bindViewModel()
+        homeViewModel.loadWords()
     }
 }
 
@@ -39,17 +38,22 @@ private extension HomeViewController {
         
         homeWordCollectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.leading.trailing.equalToSuperview()
         }
     }
     
     func setupTableView() {
         homeWordCollectionView.delegate = self
         homeWordCollectionView.dataSource = self
-        
-//        homeWordCollectionView.tableHeaderView = progressView
     }
     
+    func bindViewModel() {
+        homeViewModel.wordsObservable
+            .asDriver(onErrorDriveWith: .never())
+            .drive(onNext: { [weak self] in
+                self?.words = $0
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -60,8 +64,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         indexPath.section == 0 ?
-        CGSize(width: collectionView.bounds.width, height: 305) :
-        CGSize(width: collectionView.bounds.width, height: 131)
+        CGSize(width: collectionView.bounds.width - 48, height: 305) :
+        CGSize(width: collectionView.bounds.width - 48, height: 131)
     }
     
     func collectionView(
@@ -69,7 +73,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int
     ) -> CGSize {
-        CGSize(width: collectionView.bounds.width - 48, height: 18)
+        section == 0 ?
+        CGSize(width: collectionView.bounds.width - 48, height: 0) :
+        CGSize(width: collectionView.bounds.width - 48, height: 30)
     }
 }
 
@@ -101,7 +107,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cellViewModel = HomeWordCellViewModel(
             useCase: HomeWordUseCase(),
             word: words[indexPath.row],
-            hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>(value: .none)
+            hidingStatusObservable: homeViewModel.hidingStatusObservable
         )
         cell.configure(viewModel: cellViewModel)
         
@@ -123,14 +129,8 @@ extension HomeViewController: UICollectionViewDataSource {
             for: indexPath
         ) as HomeSectionHeaderView
         
-        let action = UIAction { _ in
-            self.words.shuffle()
-            DispatchQueue.main.async {
-                self.homeWordCollectionView.reloadData()
-            }
-        }
-        
-        headerView.addActionToSuffleButton(action)
+        headerView.hidingStatusObservable = homeViewModel.hidingStatusObservable
+        headerView.delegate = self
         
         return headerView
     }
@@ -141,7 +141,12 @@ extension HomeViewController: UICollectionViewDataSource {
     ) {
         guard indexPath.section > 0 else { return }
         
-        show(VocaDetailViewController(), sender: self)
+        let viewController = VocaDetailViewController()
+        viewController.configure(wordID: indexPath.row)
+        show(viewController, sender: self)
+    }
+}
+
 extension HomeViewController: HomeSectionHeaderViewDelegate {
     func didTapShuffleButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
         homeViewModel.shuffleWords()
@@ -169,12 +174,8 @@ struct HomeWordUseCase: HomeWordUseCaseProtocol {
 }
 
 struct HomeViewUseCase: HomeUseCaseProtocol {
-    func shuffleWords() -> Observable<[Word]> {
-        return PublishSubject<[Word]>()
-    }
-    
     func loadWords() -> Observable<[Word]> {
-        return PublishSubject<[Word]>()
+        return BehaviorSubject<[Word]>(value: MockData.words)
     }
 }
 

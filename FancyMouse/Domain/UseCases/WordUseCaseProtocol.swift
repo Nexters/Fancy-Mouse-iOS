@@ -29,10 +29,6 @@ protocol WordsUseCaseProtocol {
     func loadWords() -> Observable<[Word]>
 }
 
-protocol WordsTestUseCaseProtocol: WordsUseCaseProtocol {
-    func shuffleWords() -> Observable<[Word]>
-}
-
-protocol HomeUseCaseProtocol: WordsTestUseCaseProtocol { }
+protocol HomeUseCaseProtocol: WordsUseCaseProtocol { }
 
 protocol HomeWordUseCaseProtocol: WordUseCaseProtocol { }

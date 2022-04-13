@@ -88,6 +88,23 @@ private extension HomeWordCell {
                 self?.updateWord($0)
             })
             .disposed(by: disposeBag)
+        
+        viewModel?.hidingStatusObservable
+            .asDriver(onErrorDriveWith: .never())
+            .drive(onNext: { [weak self] status in
+                switch status {
+                case .none:
+                    self?.spellingLabel.show()
+                    self?.meaningsStackView.show()
+                case .meaning:
+                    self?.spellingLabel.show()
+                    self?.meaningsStackView.hide()
+                case .word:
+                    self?.spellingLabel.hide()
+                    self?.meaningsStackView.show()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindUI(withViewModel viewModel: HomeWordCellViewModel) {

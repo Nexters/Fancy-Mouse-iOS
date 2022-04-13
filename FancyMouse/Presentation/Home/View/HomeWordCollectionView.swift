@@ -14,7 +14,7 @@ final class HomeWordCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        flowLayout.sectionInset = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
         flowLayout.minimumLineSpacing = 6
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionHeadersPinToVisibleBounds = true
