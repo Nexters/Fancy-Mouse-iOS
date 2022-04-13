@@ -34,6 +34,7 @@ private extension WordMeaningsStackView {
         distribution = .equalSpacing
         alignment = .fill
         spacing = 6
+        layer.cornerRadius = 8
     }
     
     func addSubMeaningView(index: Int, meaning: String) {
@@ -43,5 +44,26 @@ private extension WordMeaningsStackView {
         meaningView.meaningLineNumber = 1
         
         addArrangedSubview(meaningView)
+    }
+}
+
+extension WordMeaningsStackView: Hidable {
+    func hide() {
+        backgroundColor = .gray30
+        
+        arrangedSubviews.forEach {
+            if let subview = $0 as? Hidable {
+                subview.hide()
+            }
+        }
+    }
+    
+    func show() {
+        backgroundColor = .clear
+        arrangedSubviews.forEach {
+            if let subview = $0 as? Hidable {
+                subview.show()
+            }
+        }
     }
 }
