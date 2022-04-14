@@ -21,7 +21,7 @@ final class HomeViewController: UIViewController {
         
         setupUI()
         setupLayout()
-        setupTableView()
+        setupCollectionView()
         bindViewModel()
         homeViewModel.loadWords()
     }
@@ -42,7 +42,7 @@ private extension HomeViewController {
         }
     }
     
-    func setupTableView() {
+    func setupCollectionView() {
         homeWordCollectionView.delegate = self
         homeWordCollectionView.dataSource = self
     }
