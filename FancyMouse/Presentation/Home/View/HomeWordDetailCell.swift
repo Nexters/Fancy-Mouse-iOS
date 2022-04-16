@@ -10,7 +10,7 @@ import RxSwift
 import UIKit
 
 protocol HomeWordDetailCellDelegate: AnyObject {
-    func didTapMoreButton(_ homeWordDetailViewCell: HomeWordDetailCell)
+    func didTapMoreButton(_ button: UIButton)
 }
 
 final class HomeWordDetailCell: UICollectionViewCell {
@@ -70,7 +70,7 @@ private extension HomeWordDetailCell {
         
         moreButton.setImage(UIImage(named: "more"), for: .normal)
         let moreButtonAction = UIAction { _ in
-            self.delegate?.didTapMoreButton(self)
+            self.delegate?.didTapMoreButton(self.moreButton)
         }
         moreButton.addAction(moreButtonAction, for: .touchUpInside)
     }

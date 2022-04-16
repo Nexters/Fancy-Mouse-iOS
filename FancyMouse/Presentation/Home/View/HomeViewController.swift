@@ -246,6 +246,7 @@ final class WordDetailListViewController: UIViewController {
             section: CollectionViewComponents.makeWordDetailSection()
         )
     )
+    private var ellipsisView: EllipsisView?
     
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
     private let disposeBag = DisposeBag()
@@ -298,6 +299,7 @@ extension WordDetailListViewController: UICollectionViewDataSource {
             hidingStatusObservable: homeViewModel.hidingStatusObservable
         )
         cell.configure(viewModel: cellViewModel)
+        cell.delegate = self
         
         return cell
     }
@@ -314,6 +316,28 @@ extension WordDetailListViewController: UICollectionViewDataSource {
 //        headerView.delegate = self
         
         return headerView
+    }
+}
+
+extension WordDetailListViewController: HomeWordDetailCellDelegate {
+    func didTapMoreButton(_ button: UIButton) {
+        ellipsisView?.removeFromSuperview()
+        ellipsisView = EllipsisView()
+        
+        ellipsisView?.addComponent(title: "이동하기", imageName: "edit", action: UIAction { _ in
+            self.ellipsisView?.removeFromSuperview()
+        })
+        ellipsisView?.addComponent(title: "삭제하기", imageName: "delete", action: UIAction { _ in
+            self.ellipsisView?.removeFromSuperview()
+        })
+        
+        view.addSubview(ellipsisView ?? UIView())
+        self.ellipsisView?.snp.makeConstraints { make in
+            make.width.equalTo(108)
+            make.height.equalTo(100)
+            make.top.equalTo(button.snp.bottom).offset(8)
+            make.trailing.equalTo(button.snp.trailing).offset(18)
+        }
     }
 }
 
