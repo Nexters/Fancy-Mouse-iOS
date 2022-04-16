@@ -9,7 +9,7 @@ import Firebase
 import RxSwift
 import RxRelay
 
-final class FolderViewController: UIViewController {
+final class FolderViewController: BaseViewController {
     private lazy var viewModel = FolderViewModel(useCase: FolderUseCase())
     private lazy var folders = FolderViewModel.FolderList(folderListRelay: BehaviorRelay<[Folder?]>(value: []))
     private lazy var folderAddEditView = FolderAddEditView()
@@ -113,7 +113,7 @@ private extension FolderViewController {
         explainView.addSubview(explainPastButton)
         view.addSubview(collectionView)
         
-//        setupNavigationBarUI()
+        setupNavigationBarUI()
         setupLayout()
         setupBinding()
     }
@@ -134,9 +134,7 @@ private extension FolderViewController {
             }
             .disposed(by: disposeBag)
         
-        let item = UIBarButtonItem(customView: button)
-        navigationItem.rightBarButtonItem = item
-//        setupNavigationBar()
+        setupNavigationTitleImage()
     }
     
     func setupLayout() {
