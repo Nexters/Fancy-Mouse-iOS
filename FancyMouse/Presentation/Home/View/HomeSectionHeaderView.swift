@@ -64,7 +64,7 @@ private extension WordSectionHeaderView {
         
         totalLabel.snp.makeConstraints { make in
             make.centerY.equalTo(filterButton.snp.centerY)
-            make.leading.equalToSuperview().offset(24)
+            make.leading.equalToSuperview()
         }
         
         numberLabel.snp.makeConstraints { make in
@@ -79,7 +79,7 @@ private extension WordSectionHeaderView {
         
         filterButton.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
+            make.trailing.equalToSuperview()
         }
     }
 }
