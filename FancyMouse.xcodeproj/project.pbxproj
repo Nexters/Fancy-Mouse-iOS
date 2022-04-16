@@ -43,6 +43,7 @@
 		440FE98127C8D8A500C73212 /* WalkthroughThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE98027C8D8A500C73212 /* WalkthroughThirdViewController.swift */; };
 		440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE98227C8D8B400C73212 /* WalkthroughMainViewController.swift */; };
 		440FE98627C8D8D500C73212 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE98527C8D8D500C73212 /* Core.swift */; };
+		442275ED280AE38600633CAE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442275EC280AE38600633CAE /* StartViewController.swift */; };
 		4456BFB227A849720006D90B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456BFB127A849720006D90B /* TabBarController.swift */; };
 		446F13D027AD7F8E00EE327E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446F13CF27AD7F8E00EE327E /* LoginViewController.swift */; };
 		4470844227B4122D006F5796 /* FolderUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */; };
@@ -171,6 +172,7 @@
 		440FE98027C8D8A500C73212 /* WalkthroughThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughThirdViewController.swift; sourceTree = "<group>"; };
 		440FE98227C8D8B400C73212 /* WalkthroughMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughMainViewController.swift; sourceTree = "<group>"; };
 		440FE98527C8D8D500C73212 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		442275EC280AE38600633CAE /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		4456BFB127A849720006D90B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		446F13CF27AD7F8E00EE327E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderUseCaseProtocol.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 			children = (
 				440FE97B27C8D86800C73212 /* View */,
 				440FE98527C8D8D500C73212 /* Core.swift */,
+				442275EC280AE38600633CAE /* StartViewController.swift */,
 			);
 			path = Walkthrough;
 			sourceTree = "<group>";
@@ -1124,6 +1127,7 @@
 				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				40A341A827AC66C200D4D8DC /* DeletionAlertViewController.swift in Sources */,
+				442275ED280AE38600633CAE /* StartViewController.swift in Sources */,
 				40AFEBEF27C4D1E60023E69B /* FolderAddEditViewModel.swift in Sources */,
 				44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */,
 				E234110D27C7F43600AC8DEE /* TogetherSavedSentenceView.swift in Sources */,
