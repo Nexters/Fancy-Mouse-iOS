@@ -94,7 +94,10 @@ extension HomeViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            return collectionView.dequeueReusableCell(for: indexPath) as HomeProgressView
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeProgressView
+            cell.delegate = self
+            
+            return cell
         }
         
         let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeWordCell
@@ -127,6 +130,13 @@ extension HomeViewController: UICollectionViewDataSource {
         headerView.bind(hidingStatusObservable: homeViewModel.hidingStatusObservable)
         
         return headerView
+    }
+}
+
+extension HomeViewController: HomeProgressCellDelegate {
+    func didTapEntryButton(_ entryButton: UIButton) {
+        let viewController = WordDetailListViewController()
+        show(viewController, sender: self)
     }
 }
 
