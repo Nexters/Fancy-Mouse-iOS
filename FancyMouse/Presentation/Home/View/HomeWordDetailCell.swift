@@ -9,15 +9,22 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+protocol HomeWordDetailCellDelegate: AnyObject {
+    func didTapMoreButton(_ moreButton: UIButton)
+}
+
 final class HomeWordDetailCell: UICollectionViewCell {
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
     private let contourView = UIView()
     private let wordCreatedDateLabel = UILabel()
+    private let moreButton = UIButton()
     
     private var viewModel: HomeWordCellViewModel?
     private var disposeBag = DisposeBag()
+    
+    weak var delegate: HomeWordDetailCellDelegate?
     
     var isStatusButtonHidden = false {
         didSet {
@@ -60,13 +67,20 @@ private extension HomeWordDetailCell {
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         statusButton.titleLabel?.font = .spoqaBold(size: 12)
+        
+        moreButton.setImage(UIImage(named: "more"), for: .normal)
+        let moreButtonAction = UIAction { _ in
+            self.delegate?.didTapMoreButton(self.moreButton)
+        }
+        moreButton.addAction(moreButtonAction, for: .touchUpInside)
     }
     
     func setupLayout() {
         [spellingLabel, statusButton,
          meaningsStackView,
          contourView,
-         wordCreatedDateLabel
+         wordCreatedDateLabel,
+         moreButton
         ].forEach {
             addSubview($0)
         }
@@ -100,6 +114,12 @@ private extension HomeWordDetailCell {
         wordCreatedDateLabel.snp.makeConstraints { make in
             make.top.equalTo(contourView.snp.bottom).offset(12)
             make.leading.equalTo(spellingLabel.snp.leading)
+        }
+        
+        moreButton.snp.makeConstraints { make in
+            make.centerY.equalTo(wordCreatedDateLabel.snp.centerY)
+            make.bottom.equalToSuperview().inset(12)
+            make.trailing.equalToSuperview().inset(24)
         }
     }
     
