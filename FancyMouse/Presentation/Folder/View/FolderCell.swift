@@ -20,6 +20,7 @@ final class FolderCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .spoqaBold(size: 16)
         label.textColor = .primaryDark
+        label.numberOfLines = 0
         return label
     }()
     
@@ -37,6 +38,11 @@ final class FolderCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        moreButton.isHidden = false
     }
 }
 
@@ -63,12 +69,11 @@ private extension FolderCell {
         
         folderNameLabel.snp.makeConstraints { make in
             make.top.equalTo(folderImageView.snp.bottom).offset(12)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
         wordCountLabel.snp.makeConstraints { make in
-            make.top.equalTo(folderNameLabel.snp.bottom).offset(37)
+            make.bottom.equalToSuperview().offset(-20)
             make.leading.trailing.equalToSuperview().inset(24)
         }
         

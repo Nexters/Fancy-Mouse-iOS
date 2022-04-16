@@ -164,6 +164,16 @@ private extension FolderAddEditView {
             .disposed(by: disposeBag)
         
         textField.rx.text.orEmpty
+            .asDriver()
+            .drive(onNext: { [weak self] in
+                guard $0.count > 10 else { return }
+                
+                let index = $0.index($0.startIndex, offsetBy: 10)
+                self?.textField.text = String($0[..<index])
+            })
+            .disposed(by: disposeBag)
+        
+        textField.rx.text.orEmpty
             .bind(to: viewModel.folderName)
             .disposed(by: disposeBag)
         

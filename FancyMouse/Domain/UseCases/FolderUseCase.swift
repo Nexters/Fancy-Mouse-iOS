@@ -9,7 +9,7 @@ import Firebase
 import RxSwift
 
 struct FolderUseCase: FolderUseCaseProtocol {
-    func createFolder(name: String, color: String) {
+    func createFolder(name: String, color: String) -> Observable<Folder> {
         let uuidReference = CFUUIDCreate(nil)
         let uuidStringReference = CFUUIDCreateString(nil, uuidReference)
         let uuid = uuidStringReference as String? ?? ""
@@ -25,7 +25,18 @@ struct FolderUseCase: FolderUseCaseProtocol {
             "name": name,
             "wordsCount": 0
         ]
-        userItemReference.setValue(values)
+        
+        let folderObservable = Observable<Folder>.create { createResponse in
+            userItemReference.setValue(values) { error, reference in
+                if let error = error {
+                    print(error)
+                } else {
+                    getFolderDataFromUrl(url: reference.url, observable: createResponse)
+                }
+            }
+            return Disposables.create()
+        }
+        return folderObservable
     }
     
     func fetchFolder() -> Observable<[Folder?]> {
@@ -45,7 +56,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
         else { return Observable<[Folder?]>.of([]) }
         
         folderResponse.forEach { response in
-          guard let responseValue = response.value else { return }
+            guard let responseValue = response.value else { return }
             let folder = Folder(
                 folderID: responseValue.folderID,
                 folderColor: responseValue.color,
@@ -59,27 +70,66 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return Observable<[Folder?]>.of(folders.values)
     }
     
-    func update(folderID: String, folderColor: String, folderName: String) {
+    func update(folderID: String, folderColor: String, folderName: String) -> Observable<Folder> {
         //TODO: 구글 로그인 연동 후 path 수정 예정
         let itemsReference = Database.database().reference(withPath: "sangjin/folders")
         let userItemReference = itemsReference.child(folderID)
-        userItemReference.updateChildValues(["name": folderName, "color": folderColor])
+        let folderObservable = Observable<Folder>.create { updateResponse in
+            userItemReference.updateChildValues([
+                "name": folderName,
+                "color": folderColor
+            ]) { error, reference in
+                if let error = error {
+                    print(error)
+                } else {
+                    getFolderDataFromUrl(url: reference.url, observable: updateResponse)
+                }
+            }
+            return Disposables.create()
+        }
+        
+        return folderObservable
     }
     
-    func delete(_ folderID: String) {
-        //TODO: 작업 예정
+    func delete(_ folderID: String, completion: @escaping () -> Void) {
+        //TODO: 구글 로그인 연동 후 path 수정 예정
+        let reference = Database.database().reference(withPath: "sangjin/folders")
+        reference.observeSingleEvent(of: .value, with: { snapshot in
+            snapshot.children.forEach {
+                guard let snap = $0 as? DataSnapshot else { return }
+                guard let dictionary = snap.value as? NSDictionary else { return }
+                
+                if dictionary["id"] as? String == folderID {
+                    reference.child(snap.key).removeValue { _, _ in
+                        completion()
+                        return
+                    }
+                }
+            }
+        })
+    }
+}
+
+private extension FolderUseCase {
+    func getFolderDataFromUrl(url: String, observable: AnyObserver<Folder>) {
+        var data = Data()
+        guard let url = URL(string: "\(url).json") else { return }
+        do {
+            data = try Data(contentsOf: url)
+        } catch {
+            print(error)
+        }
         
-//        let reference = Database.database().reference(withPath: "sangjin/folders")
-//        reference.observeSingleEvent(of: .value, with: { snapshot in
-//            snapshot.children.forEach {
-//                guard let snap = $0 as? DataSnapshot else { return }
-//                guard let dictionary = snap.value as? NSDictionary else { return }
-//
-//                if dictionary["id"] as? String == folderID {
-//                    reference.child(snap.key).removeValue()
-//                    return
-//                }
-//            }
-//        })
+        guard let folderResponse = try? JSONDecoder().decode(FolderResponse.self, from: data)
+        else { return }
+        
+        let folder = Folder(
+            folderID: folderResponse.folderID,
+            folderColor: folderResponse.color,
+            folderName: folderResponse.folderName,
+            wordCount: folderResponse.wordsCount,
+            createdAt: folderResponse.createdAt
+        )
+        observable.onNext(folder)
     }
 }
