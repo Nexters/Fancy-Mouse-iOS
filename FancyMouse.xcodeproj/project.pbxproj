@@ -352,6 +352,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		40BB4255280AA4CA006F568F /* FolderDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				447A19CE27C8102000F2154A /* FolderDetailViewController.swift */,
+			);
+			path = FolderDetailView;
+			sourceTree = "<group>";
+		};
 		40DFDBA427A7010E00FF07CF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +453,7 @@
 		4470843F27B411FD006F5796 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C536117B27F30543005A59CE /* FolderDetailViewModel.swift */,
 				44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */,
 				44A8A97A27B6F94C004C8E6C /* FolderViewModel.swift */,
 				401837F527C02EE500773574 /* SearchViewModel.swift */,
@@ -456,6 +465,7 @@
 		4470844027B41207006F5796 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				40BB4255280AA4CA006F568F /* FolderDetailView */,
 				403A7F8927CB8C1F0044E2FD /* SearchView */,
 				4033F55D27ABDF1300452616 /* PopUpView */,
 				4096687B27B79F52006BC6ED /* DeletionAlertView */,
@@ -508,31 +518,6 @@
 				6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C536117827F3051F005A59CE /* FolderDetail */ = {
-			isa = PBXGroup;
-			children = (
-				447A19CE27C8102000F2154A /* FolderDetailViewController.swift */,
-				C536117927F30525005A59CE /* ViewModel */,
-				C536117A27F3052A005A59CE /* View */,
-			);
-			path = FolderDetail;
-			sourceTree = "<group>";
-		};
-		C536117927F30525005A59CE /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C536117B27F30543005A59CE /* FolderDetailViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		C536117A27F3052A005A59CE /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C536117F27F32FBA005A59CE /* ViewModel */ = {
@@ -692,7 +677,6 @@
 		E2B0710827A0546F00EE8373 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C536117827F3051F005A59CE /* FolderDetail */,
 				440FE97A27C8D85700C73212 /* Walkthrough */,
 				E234110927C7A14000AC8DEE /* Data */,
 				E2DEFCA827BCF5CA0066FD54 /* Common */,
