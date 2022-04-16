@@ -13,8 +13,6 @@ extension UIViewController {
         let imageView = UIImageView(image: UIImage(named: "logo"))
         let item = UIBarButtonItem(customView: imageView)
         navigationItem.leftBarButtonItem = item
-
-        navigationController?.additionalSafeAreaInsets = UIEdgeInsets(top: 3, left: 0, bottom: 0, right: 0)
     }
     
     func showToast(message: String, image: UIImage? = nil, position: ToastPosition = .bottom) {
