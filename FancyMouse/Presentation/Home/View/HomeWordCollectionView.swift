@@ -67,24 +67,12 @@ enum CollectionViewComponents {
         return section
     }
     
-    static func makeHomeWordSection(using layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-        let columns = 1
-        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(131)
-        )
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: columns)
-        
+    static func makeHomeWordSection(
+        using layoutEnvironment: NSCollectionLayoutEnvironment
+    ) -> NSCollectionLayoutSection {
         var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
         configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
-            let delete = UIContextualAction(style: .destructive, title: "암기완료") { action, view, completion in
+            let delete = UIContextualAction(style: .destructive, title: "암기완료") { _, _, completion in
 //                self?.delete(at: indexPath)
                 completion(true)
             }
@@ -111,13 +99,4 @@ enum CollectionViewComponents {
         
         return section
     }
-}
-
-struct ElementKind {
-    static let badge = "badge-element-kind"
-    static let background = "background-element-kind"
-    static let sectionHeader = "section-header-element-kind"
-    static let sectionFooter = "section-footer-element-kind"
-    static let layoutHeader = "layout-header-element-kind"
-    static let layoutFooter = "layout-footer-element-kind"
 }
