@@ -9,7 +9,9 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: BaseViewController {
+    private let progressView = HomeProgressView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 48, height: 305))
+    
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
     private let disposeBag = DisposeBag()
     private var words: [Word] = []
@@ -21,6 +23,7 @@ final class HomeViewController: UIViewController {
         
         setupUI()
         setupLayout()
+
         setupCollectionView()
         bindViewModel()
         homeViewModel.loadWords()
@@ -30,7 +33,7 @@ final class HomeViewController: UIViewController {
 private extension HomeViewController {
     func setupUI() {
         view.backgroundColor = .gray30
-        setupNavigationBar()
+        setupNavigationTitleImage()
     }
     
     func setupLayout() {

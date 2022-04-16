@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        setupNavigationController()
         sleep(3)
         return true
     }
@@ -35,6 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         handled = GIDSignIn.sharedInstance.handle(url)
         if handled { return true }
         return false
+    }
+    
+    private func setupNavigationController() {
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().tintColor = .white
+        
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "btn_back")?.withRenderingMode(.automatic).withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -18, bottom: 0, right: 0))
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "btn_back")?.withRenderingMode(.automatic).withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -18, bottom: 0, right: 0))
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: UIControl.State.highlighted)
     }
 
     // MARK: UISceneSession Lifecycle
