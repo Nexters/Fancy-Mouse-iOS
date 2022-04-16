@@ -63,22 +63,13 @@ private extension HomeViewController {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        indexPath.section == 0 ?
-        CGSize(width: collectionView.bounds.width - 48, height: 305) :
-        CGSize(width: collectionView.bounds.width - 48, height: 131)
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        referenceSizeForHeaderInSection section: Int
-    ) -> CGSize {
-        section == 0 ?
-        CGSize(width: collectionView.bounds.width - 48, height: 0) :
-        CGSize(width: collectionView.bounds.width - 48, height: 30)
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        guard indexPath.section > 0 else { return }
+        
+        let viewController = VocaDetailViewController()
+        viewController.configure(wordID: indexPath.row)
+        show(viewController, sender: self)
     }
 }
 
@@ -136,17 +127,6 @@ extension HomeViewController: UICollectionViewDataSource {
         headerView.bind(hidingStatusObservable: homeViewModel.hidingStatusObservable)
         
         return headerView
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath
-    ) {
-        guard indexPath.section > 0 else { return }
-        
-        let viewController = VocaDetailViewController()
-        viewController.configure(wordID: indexPath.row)
-        show(viewController, sender: self)
     }
 }
 

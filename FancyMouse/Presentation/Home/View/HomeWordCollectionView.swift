@@ -12,14 +12,7 @@ import UIKit
 
 final class HomeWordCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
-        flowLayout.minimumLineSpacing = 12
-        flowLayout.scrollDirection = .vertical
-        flowLayout.sectionHeadersPinToVisibleBounds = true
-        
-        super.init(frame: frame, collectionViewLayout: flowLayout)
+        super.init(frame: frame, collectionViewLayout: CollectionViewComponents.homeWordCollectionViewLayout)
         
         setupUI()
     }
@@ -38,4 +31,93 @@ private extension HomeWordCollectionView {
         registerSupplementaryView(ofType: HomeSectionHeaderView.self)
         registerSupplementaryView(ofType: EmptySectionHeaderView.self)
     }
+}
+
+enum CollectionViewComponents {
+    static let homeWordCollectionViewLayout: UICollectionViewLayout = {
+        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            if sectionIndex == 0 {
+                return makeHomeWordProgressSectionLayout()
+            }
+            
+            return makeHomeWordSection(using: layoutEnvironment)
+        }
+        
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
+    }()
+    
+    static func makeHomeWordProgressSectionLayout() -> NSCollectionLayoutSection {
+        let columns = 1
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(305)
+        )
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: columns)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
+        
+        return section
+    }
+    
+    static func makeHomeWordSection(using layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        let columns = 1
+        
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(131)
+        )
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: columns)
+        
+        var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
+        configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
+            let delete = UIContextualAction(style: .destructive, title: "암기완료") { action, view, completion in
+//                self?.delete(at: indexPath)
+                completion(true)
+            }
+            return UISwipeActionsConfiguration(actions: [delete])
+        }
+        configuration.showsSeparators = false
+        
+        let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
+        section.interGroupSpacing = 12
+        
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(30)
+        )
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        sectionHeader.pinToVisibleBounds = true
+        sectionHeader.zIndex = 2
+        section.boundarySupplementaryItems = [sectionHeader]
+        
+        return section
+    }
+}
+
+struct ElementKind {
+    static let badge = "badge-element-kind"
+    static let background = "background-element-kind"
+    static let sectionHeader = "section-header-element-kind"
+    static let sectionFooter = "section-footer-element-kind"
+    static let layoutHeader = "layout-header-element-kind"
+    static let layoutFooter = "layout-footer-element-kind"
 }
