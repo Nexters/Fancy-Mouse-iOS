@@ -9,12 +9,12 @@ import Foundation
 import RxRelay
 import RxSwift
 
-final class HomeWordCellViewModel {
+final class HomeWordCellViewModel: WordCellViewModelProtocol {
     private let useCase: HomeWordUseCaseProtocol
     
     private let wordRelay: BehaviorRelay<Word>
-    private let hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
     private let loadingRelay: BehaviorRelay<Bool> = .init(value: false)
+    let hidingStatusObservable: Observable<HomeViewModel.HidingStatus>
     
     private var word: Word {
         wordRelay.value
@@ -25,11 +25,11 @@ final class HomeWordCellViewModel {
     init(
         useCase: HomeWordUseCaseProtocol,
         word: Word,
-        hidingStatusRelay: BehaviorRelay<HomeViewModel.HidingStatus>
+        hidingStatusObservable: Observable<HomeViewModel.HidingStatus>
     ) {
         self.useCase = useCase
         wordRelay = .init(value: word)
-        self.hidingStatusRelay = hidingStatusRelay
+        self.hidingStatusObservable = hidingStatusObservable
     }
     
     func toggleMemorizationStatus() {
@@ -61,10 +61,6 @@ private extension HomeWordCellViewModel {
 extension HomeWordCellViewModel {
     var wordObservable: Observable<Word> {
         wordRelay.asObservable()
-    }
-    
-    var hidingStatusObservable: Observable<HomeViewModel.HidingStatus> {
-        hidingStatusRelay.asObservable()
     }
     
     var loadingObservable: Observable<Bool> {

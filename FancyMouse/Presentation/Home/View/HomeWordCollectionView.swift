@@ -10,5 +10,32 @@ import RxSwift
 import SnapKit
 import UIKit
 
-final class HomeWordCollectionView: UIViewController {
+final class HomeWordCollectionView: UICollectionView {
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
+        flowLayout.minimumLineSpacing = 12
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionHeadersPinToVisibleBounds = true
+        
+        super.init(frame: frame, collectionViewLayout: flowLayout)
+        
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension HomeWordCollectionView {
+    func setupUI() {
+        backgroundColor = .gray30
+        
+        registerCell(ofType: HomeProgressView.self)
+        registerCell(ofType: HomeWordCell.self)
+        registerSupplementaryView(ofType: HomeSectionHeaderView.self)
+        registerSupplementaryView(ofType: EmptySectionHeaderView.self)
+    }
 }

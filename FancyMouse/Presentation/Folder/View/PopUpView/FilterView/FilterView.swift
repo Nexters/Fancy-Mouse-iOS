@@ -106,7 +106,7 @@ extension FilterView: UICollectionViewDelegate, UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReuseableSupplementaryView(for: indexPath) as FilterViewHeader
+        let headerView = collectionView.dequeueReusableSupplementaryView(for: indexPath) as FilterViewHeader
         headerView.setupLabel(type[indexPath.section])
         
         return headerView

@@ -7,15 +7,10 @@
 
 import Foundation
 
-protocol ViewModelBindable {
-    func bindViewModel()
-}
-
-protocol WordViewModelProtocol: ViewModelBindable {
+protocol WordViewModelProtocol {
     func updateWord(_ word: Word)
 }
 
-protocol WordCellViewModelProtocol: ViewModelBindable {
-    func updateWord(_ word: Word)
+protocol WordCellViewModelProtocol {
+    func toggleMemorizationStatus()
 }
-

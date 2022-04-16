@@ -9,7 +9,10 @@ import Foundation
 import RxSwift
 
 protocol WordUseCaseProtocol {
-    func changeMemorizationStatus(to newStatus: Word.MemorizationStatus, of wordID: WordID) -> Observable<Word>
+    func changeMemorizationStatus(
+        to newStatus: Word.MemorizationStatus,
+        of wordID: WordID
+    ) -> Observable<Word>
 }
 
 protocol WordEditUseCaseProtocol {
@@ -26,10 +29,6 @@ protocol WordsUseCaseProtocol {
     func loadWords() -> Observable<[Word]>
 }
 
-protocol WordsTestUseCaseProtocol: WordsUseCaseProtocol {
-    func shuffleWords() -> Observable<[Word]>
-}
-
-protocol HomeUseCaseProtocol: WordsTestUseCaseProtocol { }
+protocol HomeUseCaseProtocol: WordsUseCaseProtocol { }
 
 protocol HomeWordUseCaseProtocol: WordUseCaseProtocol { }
