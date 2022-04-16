@@ -101,11 +101,31 @@ final class HomeSectionHeaderView: UICollectionReusableView {
         setupUI()
         setupLayout()
         setupAction()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func bind(hidingStatusObservable: Observable<HomeViewModel.HidingStatus>) {
+        self.hidingStatusObservable = hidingStatusObservable
+        
+        self.hidingStatusObservable?
+            .asDriver(onErrorDriveWith: .never())
+            .drive(onNext: { [weak self] status in
+                switch status {
+                case .none:
+                    self?.hidingSpellingButton.unfocused()
+                    self?.hidingMeaningsButton.unfocused()
+                case .word:
+                    self?.hidingSpellingButton.focused()
+                    self?.hidingMeaningsButton.unfocused()
+                case .meaning:
+                    self?.hidingSpellingButton.unfocused()
+                    self?.hidingMeaningsButton.focused()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -172,5 +192,17 @@ final class HomeWordHidingButton: UIButton {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension HomeWordHidingButton {
+    func focused() {
+        setTitleColor(.gray70, for: .normal)
+        titleLabel?.font = .spoqaBold(size: 14)
+    }
+    
+    func unfocused() {
+        setTitleColor(.gray50, for: .normal)
+        titleLabel?.font = .spoqaRegular(size: 14)
     }
 }

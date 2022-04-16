@@ -129,8 +129,8 @@ extension HomeViewController: UICollectionViewDataSource {
             for: indexPath
         ) as HomeSectionHeaderView
         
-        headerView.hidingStatusObservable = homeViewModel.hidingStatusObservable
         headerView.delegate = self
+        headerView.bind(hidingStatusObservable: homeViewModel.hidingStatusObservable)
         
         return headerView
     }
