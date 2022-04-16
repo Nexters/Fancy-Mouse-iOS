@@ -20,6 +20,7 @@ final class FolderCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .spoqaBold(size: 16)
         label.textColor = .primaryDark
+        label.numberOfLines = 0
         return label
     }()
     
@@ -37,6 +38,11 @@ final class FolderCell: UICollectionViewCell {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        moreButton.isHidden = false
     }
 }
 
@@ -63,12 +69,11 @@ private extension FolderCell {
         
         folderNameLabel.snp.makeConstraints { make in
             make.top.equalTo(folderImageView.snp.bottom).offset(12)
-            make.leading.equalToSuperview().offset(24)
-            make.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
         wordCountLabel.snp.makeConstraints { make in
-            make.top.equalTo(folderNameLabel.snp.bottom).offset(37)
+            make.bottom.equalToSuperview().offset(-20)
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
@@ -80,26 +85,8 @@ private extension FolderCell {
 }
 
 extension FolderCell {
-    func setupData(title: String, count: Int, color: FolderColor) {
-        var imageString = ""
-        
-        switch color {
-        case .folder00: imageString = "folder00"
-        case .folder01: imageString = "folder01"
-        case .folder02: imageString = "folder02"
-        case .folder03: imageString = "folder03"
-        case .folder04: imageString = "folder04"
-        case .folder05: imageString = "folder05"
-        case .folder06: imageString = "folder06"
-        case .folder07: imageString = "folder07"
-        case .folder08: imageString = "folder08"
-        case .folder09: imageString = "folder09"
-        case .folder10: imageString = "folder10"
-        case .folder11: imageString = "folder11"
-        default: imageString = "folder00"
-        }
-        
-        folderImageView.image = UIImage(named: imageString)
+    func setupData(title: String, count: Int, colorString: String) {
+        folderImageView.image = UIImage(named: colorString)
         folderNameLabel.text = title
         wordCountLabel.text = "\(count)"
     }

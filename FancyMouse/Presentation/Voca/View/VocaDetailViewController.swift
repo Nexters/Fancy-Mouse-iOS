@@ -11,14 +11,14 @@ import SnapKit
 import UIKit
 
 final class VocaDetailViewController: UIViewController {
-    private let word: String = "Purpose"
-    private let wordAddDate: String = "2022-01-23"
-    private let prouncation: String = "[ ˈpɜːrpəs]"
-    private let example: String = "In the meantime, the province magistrate provided supplies."
-    private let synonym: String = "hide, hat, face, veil, disguise,camouflage"
-    private let togetherSentence: String = "Our campaign’s main purpose is to raise money."
+    private var word: String = "Purpose"
+    private var wordAddDate: String = "2022-01-23"
+    private var pronunciation: String = "[ ˈpɜːrpəs]"
+    private var example: String = "In the meantime, the province magistrate provided supplies."
+    private var synonym: String = "hide, hat, face, veil, disguise,camouflage"
+    private var togetherSentence: String = "Our campaign’s main purpose is to raise money."
     private var myMemoDB: String = ""
-    var wordMeanings: [String] = ["(이루고자 하는·이루어야 할) 목적",
+    private var wordMeanings: [String] = ["(이루고자 하는·이루어야 할) 목적",
                                   "(특정 상황에서 무엇을) 하기 위함, 용도, 의도",
                                   "결단력"]
     
@@ -61,11 +61,29 @@ final class VocaDetailViewController: UIViewController {
     
     private lazy var wordDetailStackView: WordDetailDescriptionsStackView = {
         let stackView = WordDetailDescriptionsStackView()
-        stackView.addSubDescriptionViews(with: [
-            WordDetailDescription(title: "발음", description: prouncation, color: .folder02),
-            WordDetailDescription(title: "예문", description: example, color: .folder03),
-            WordDetailDescription(title: "동의어", description: synonym, color: .folder04)
-        ])
+        var descriptions = [WordDetailDescription]()
+        if !pronunciation.isEmpty {
+            descriptions += [WordDetailDescription(
+                title: "발음",
+                description: pronunciation,
+                color: .folder02
+            )]
+        }
+        if !example.isEmpty {
+            descriptions += [WordDetailDescription(
+                title: "예문",
+                description: example,
+                color: .folder03
+            )]
+        }
+        if !synonym.isEmpty {
+            descriptions += [WordDetailDescription(
+                title: "동의어",
+                description: synonym,
+                color: .folder04
+            )]
+        }
+        stackView.addSubDescriptionViews(with: descriptions)
         return stackView
     }()
     
@@ -134,6 +152,19 @@ final class VocaDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.removeKeyboardNotifications()
     }
+    
+    func configure(wordID: WordID) {
+        word = MockData.words[wordID].spelling
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        wordAddDate = dateFormatter.string(from: MockData.words[wordID].createdAt)
+        pronunciation = ""
+        example = MockData.words[wordID].examples.first ?? ""
+        synonym = MockData.words[wordID].synonyms.first ?? ""
+        togetherSentence = ""
+        myMemoDB = MockData.words[wordID].memo ?? ""
+        wordMeanings = MockData.words[wordID].meanings
+    }
 }
 
 private extension VocaDetailViewController {
@@ -152,7 +183,7 @@ private extension VocaDetailViewController {
         }
         
         wordLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(74)
+            make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
@@ -166,15 +197,15 @@ private extension VocaDetailViewController {
             make.leading.trailing.equalToSuperview().inset(24)
         }
         
-        wordDetailStackView.snp.makeConstraints { make in
-            make.top.equalTo(wordMeaningStackView.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview().inset(24)
-        }
-        
         contourView.snp.makeConstraints { make in
             make.top.equalTo(wordMeaningStackView.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(1)
+        }
+        
+        wordDetailStackView.snp.makeConstraints { make in
+            make.top.equalTo(contourView.snp.bottom).offset(24)
+            make.leading.trailing.equalToSuperview().inset(24)
         }
         
         togetherSavedSentenceView.snp.makeConstraints { make in

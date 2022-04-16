@@ -32,14 +32,17 @@ final class HomeViewModel {
     }
     
     func shuffleWords() {
-        useCase.shuffleWords()
-            .subscribe(onNext: { [weak self] in
-                self?.wordsRelay.accept($0)
-            })
-            .disposed(by: disposeBag)
+        let shuffledWords = wordsRelay.value.shuffled()
+        wordsRelay.accept(shuffledWords)
     }
     
     func changeHidingStatus(with hidingStatus: HidingStatus) {
+        guard hidingStatusRelay.value != hidingStatus
+        else {
+            hidingStatusRelay.accept(.none)
+            return
+        }
+        
         hidingStatusRelay.accept(hidingStatus)
     }
     
@@ -54,6 +57,6 @@ extension HomeViewModel {
     }
     
     var hidingStatusObservable: Observable<HidingStatus> {
-        hidingStatusRelay.asObservable()
+        hidingStatusRelay.asObservable().share()
     }
 }

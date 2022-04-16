@@ -20,6 +20,7 @@
 		405F42EE27C8E35B004CA542 /* HomeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F42ED27C8E35B004CA542 /* HomeFilterView.swift */; };
 		4080542B27C2F84200B51574 /* AttributedTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */; };
 		4080542D27C32ABC00B51574 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4080542C27C32ABC00B51574 /* GoogleService-Info.plist */; };
+		408279CB27FDFA32006E22B7 /* Folders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408279CA27FDFA32006E22B7 /* Folders.swift */; };
 		4096687E27B79F7E006BC6ED /* FolderAddEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */; };
 		4096688027B79FA5006BC6ED /* FolderAddEditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */; };
 		40A031E027C3B45F00473FB6 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 40A031DE27C3B45F00473FB6 /* User.xcdatamodeld */; };
@@ -53,6 +54,10 @@
 		44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */; };
 		6D735C5414DE20D5A428BB89 /* Pods_FancyMouse_FancyMouseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */; };
 		8CA76EB1F1EF9FF34F35C580 /* Pods_FancyMouseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389128B8839DA84697DB44DA /* Pods_FancyMouseTests.framework */; };
+		C536117727F30509005A59CE /* FolderDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117627F30509005A59CE /* FolderDetailUseCase.swift */; };
+		C536117C27F30543005A59CE /* FolderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117B27F30543005A59CE /* FolderDetailViewModel.swift */; };
+		C536117E27F32EA9005A59CE /* VocaDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536117D27F32EA9005A59CE /* VocaDetailUseCase.swift */; };
+		C536118127F32FC8005A59CE /* VocaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C536118027F32FC8005A59CE /* VocaViewModel.swift */; };
 		C5AF267D27C62C50004E0A72 /* ProgressGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */; };
 		D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10A56EC27A80D78002466DA /* BottomSheet.swift */; };
 		D12A857A279D42A500D0FC49 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D12A8579279D42A500D0FC49 /* .swiftlint.yml */; };
@@ -143,6 +148,7 @@
 		405F42ED27C8E35B004CA542 /* HomeFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFilterView.swift; sourceTree = "<group>"; };
 		4080542A27C2F84200B51574 /* AttributedTextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedTextBuilder.swift; sourceTree = "<group>"; };
 		4080542C27C32ABC00B51574 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		408279CA27FDFA32006E22B7 /* Folders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folders.swift; sourceTree = "<group>"; };
 		4096687D27B79F7E006BC6ED /* FolderAddEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditView.swift; sourceTree = "<group>"; };
 		4096687F27B79FA5006BC6ED /* FolderAddEditViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderAddEditViewCell.swift; sourceTree = "<group>"; };
 		40A031DF27C3B45F00473FB6 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
@@ -178,6 +184,10 @@
 		876DC3A595A5C39319F88BCA /* Pods-FancyMouse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.release.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.release.xcconfig"; sourceTree = "<group>"; };
 		BE2BDDEFD6749B4EC249285E /* Pods_FancyMouse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12FC0A6DAE4758A49E27C3E /* Pods-FancyMouse-FancyMouseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse-FancyMouseUITests/Pods-FancyMouse-FancyMouseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C536117627F30509005A59CE /* FolderDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailUseCase.swift; sourceTree = "<group>"; };
+		C536117B27F30543005A59CE /* FolderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDetailViewModel.swift; sourceTree = "<group>"; };
+		C536117D27F32EA9005A59CE /* VocaDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaDetailUseCase.swift; sourceTree = "<group>"; };
+		C536118027F32FC8005A59CE /* VocaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaViewModel.swift; sourceTree = "<group>"; };
 		C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressGradientView.swift; sourceTree = "<group>"; };
 		D0EB5A87F5630E7481C5CD59 /* Pods_FancyMouse_FancyMouseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyMouse_FancyMouseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10A56EC27A80D78002466DA /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
@@ -342,6 +352,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		40BB4255280AA4CA006F568F /* FolderDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				447A19CE27C8102000F2154A /* FolderDetailViewController.swift */,
+			);
+			path = FolderDetailView;
+			sourceTree = "<group>";
+		};
 		40DFDBA427A7010E00FF07CF /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +445,7 @@
 			children = (
 				4470843F27B411FD006F5796 /* ViewModel */,
 				4470844027B41207006F5796 /* View */,
+				408279CA27FDFA32006E22B7 /* Folders.swift */,
 			);
 			path = Folder;
 			sourceTree = "<group>";
@@ -434,6 +453,7 @@
 		4470843F27B411FD006F5796 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C536117B27F30543005A59CE /* FolderDetailViewModel.swift */,
 				44A8A97827B6F938004C8E6C /* ViewModelBindableType.swift */,
 				44A8A97A27B6F94C004C8E6C /* FolderViewModel.swift */,
 				401837F527C02EE500773574 /* SearchViewModel.swift */,
@@ -445,13 +465,13 @@
 		4470844027B41207006F5796 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				40BB4255280AA4CA006F568F /* FolderDetailView */,
 				403A7F8927CB8C1F0044E2FD /* SearchView */,
 				4033F55D27ABDF1300452616 /* PopUpView */,
 				4096687B27B79F52006BC6ED /* DeletionAlertView */,
 				44A8A97C27B6F983004C8E6C /* FolderCell.swift */,
 				4009E18B27C81385007C5E15 /* FolderAddCell.swift */,
 				44A8A97E27B6F9C3004C8E6C /* FolderViewController.swift */,
-				447A19CE27C8102000F2154A /* FolderDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -469,6 +489,7 @@
 		44F1517F27AB94C100C2239D /* Voca */ = {
 			isa = PBXGroup;
 			children = (
+				C536117F27F32FBA005A59CE /* ViewModel */,
 				44F1518127AB952300C2239D /* View */,
 			);
 			path = Voca;
@@ -497,6 +518,14 @@
 				6413CF62F48053629F98AB31 /* Pods-FancyMouseTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C536117F27F32FBA005A59CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C536118027F32FC8005A59CE /* VocaViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D16383FE27B01685005C8326 /* Fonts */ = {
@@ -710,6 +739,8 @@
 				E23CA6DA27A2F95B00C8381E /* WordUseCaseProtocol.swift */,
 				4470844127B4122D006F5796 /* FolderUseCaseProtocol.swift */,
 				40BBAE5E27C76DBF002EB05A /* FolderUseCase.swift */,
+				C536117627F30509005A59CE /* FolderDetailUseCase.swift */,
+				C536117D27F32EA9005A59CE /* VocaDetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1045,6 +1076,8 @@
 				440FE98327C8D8B400C73212 /* WalkthroughMainViewController.swift in Sources */,
 				40A341AA27B24D3C00D4D8DC /* FilterView.swift in Sources */,
 				D1DB209627C0BF6200EF3F6D /* CardView.swift in Sources */,
+				408279CB27FDFA32006E22B7 /* Folders.swift in Sources */,
+				C536117E27F32EA9005A59CE /* VocaDetailUseCase.swift in Sources */,
 				D16C5AD927F0797A00A64730 /* BaseViewController.swift in Sources */,
 				440FE98627C8D8D500C73212 /* Core.swift in Sources */,
 				40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */,
@@ -1053,6 +1086,7 @@
 				E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */,
 				40A031E327C3B5A800473FB6 /* User+CoreDataClass.swift in Sources */,
 				E2F8478927C88C75009499C7 /* HomeWordDetailCellViewModel.swift in Sources */,
+				C536117C27F30543005A59CE /* FolderDetailViewModel.swift in Sources */,
 				E234110F27C8048B00AC8DEE /* VocaMemoView.swift in Sources */,
 				44A8A97D27B6F983004C8E6C /* FolderCell.swift in Sources */,
 				E21F870E27CD192700848B59 /* UICollectionView+Extensions.swift in Sources */,
@@ -1073,11 +1107,13 @@
 				40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */,
 				D1DB209827C1158C00EF3F6D /* MakersView.swift in Sources */,
 				401837F627C02EE500773574 /* SearchViewModel.swift in Sources */,
+				C536118127F32FC8005A59CE /* VocaViewModel.swift in Sources */,
 				E23CA6D627A2F82C00C8381E /* Word.swift in Sources */,
 				40BBAE5F27C76DBF002EB05A /* FolderUseCase.swift in Sources */,
 				440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */,
 				E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */,
 				D1E738F227B922DF0052D0F5 /* LearningView.swift in Sources */,
+				C536117727F30509005A59CE /* FolderDetailUseCase.swift in Sources */,
 				D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */,
 				D1B21E5227C8FCF200CC7AF8 /* LearningViewModel.swift in Sources */,
 				E234110B27C7A15400AC8DEE /* WordDetailDescription.swift in Sources */,

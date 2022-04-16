@@ -51,12 +51,17 @@ final class WordMeaningView: UIView {
 
 private extension WordMeaningView {
     func setupUI() {
-        indexLabel.textColor = .gray70
+        setupDefaultLableColor()
+        
         indexLabel.font = .spoqaBold(size: 14)
         
-        meaningLabel.textColor = .gray70
         meaningLabel.font = .spoqaRegular(size: 14)
         meaningLabel.numberOfLines = meaningLineNumber
+    }
+    
+    func setupDefaultLableColor() {
+        indexLabel.textColor = .gray70
+        meaningLabel.textColor = .gray70
     }
     
     func setupLayout() {
@@ -75,5 +80,16 @@ private extension WordMeaningView {
             make.leading.equalTo(indexLabel.snp.trailing).offset(6)
             make.bottom.trailing.equalToSuperview()
         }
+    }
+}
+
+extension WordMeaningView: Hidable {
+    func hide() {
+        indexLabel.textColor = .gray30
+        meaningLabel.textColor = .gray30
+    }
+    
+    func show() {
+        setupDefaultLableColor()
     }
 }

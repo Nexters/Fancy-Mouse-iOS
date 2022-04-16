@@ -9,12 +9,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class HomeWordDetailCell: UITableViewCell {
-    static var identifier: String {
-        return String(describing: Self.self)
-    }
-    
-    private let view = UIView()
+final class HomeWordDetailCell: UICollectionViewCell {
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
@@ -37,6 +32,12 @@ final class HomeWordDetailCell: UITableViewCell {
         disposeBag = DisposeBag()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.cornerRadius = 20
+    }
+    
     func configure(viewModel: HomeWordCellViewModel) {
         self.viewModel = viewModel
         
@@ -49,12 +50,9 @@ final class HomeWordDetailCell: UITableViewCell {
 
 private extension HomeWordDetailCell {
     func setupUI() {
-        backgroundColor = .gray30
-        view.backgroundColor = .white
+        backgroundColor = .white
         
-        contourView.backgroundColor = UIColor(
-            red: 0.933, green: 0.945, blue: 0.957, alpha: 1
-        )
+        contourView.backgroundColor = .gray30
         
         wordCreatedDateLabel.text = "2022-01-20 추가"
         wordCreatedDateLabel.font = .spoqaRegular(size: 12)
@@ -65,45 +63,38 @@ private extension HomeWordDetailCell {
     }
     
     func setupLayout() {
-        addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         [spellingLabel, statusButton,
          meaningsStackView,
          contourView,
          wordCreatedDateLabel
         ].forEach {
-            view.addSubview($0)
-        }
-        
-        view.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(6)
-            make.leading.trailing.equalToSuperview()
+            addSubview($0)
         }
         
         spellingLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.top).offset(20)
-            make.leading.equalTo(view.snp.leading).offset(24)
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(24)
         }
         
         meaningsStackView.snp.makeConstraints { make in
             make.top.equalTo(spellingLabel.snp.bottom).offset(20)
-            make.bottom.equalTo(view.snp.bottom).inset(24)
             make.leading.equalTo(spellingLabel.snp.leading)
-            make.trailing.equalTo(view.snp.trailing).inset(24)
+            make.trailing.equalToSuperview().inset(24)
         }
         
         statusButton.snp.makeConstraints { make in
             make.top.equalTo(spellingLabel.snp.top)
             make.leading.greaterThanOrEqualTo(spellingLabel.snp.trailing).offset(20)
-            make.trailing.equalTo(view.snp.trailing).inset(20)
+            make.trailing.equalToSuperview().inset(20)
             make.width.equalTo(54)
             make.height.equalTo(27)
         }
         
         contourView.snp.makeConstraints { make in
-            make.top.equalTo(meaningsStackView.snp.top).offset(20)
-            make.leading.trailing.equalTo(spellingLabel)
+            make.top.equalTo(meaningsStackView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().inset(24)
+            make.height.equalTo(1)
         }
         
         wordCreatedDateLabel.snp.makeConstraints { make in
@@ -123,5 +114,19 @@ private extension HomeWordDetailCell {
     
     func updateWord(_ word: Word) {
         spellingLabel.text = word.spelling
+        var meanings = [String]()
+        word.meanings.enumerated().forEach { index, meaning in
+            if index < 2 {
+                meanings.append(meaning)
+            }
+        }
+        
+        meaningsStackView.addSubMeaningViews(with: meanings)
+        
+        switch word.memorizationStatus {
+        case .incomplete: statusButton.setupIncomplete()
+        case .inProgress: statusButton.setupInProgress()
+        default: break
+        }
     }
 }
