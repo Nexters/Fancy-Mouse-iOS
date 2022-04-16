@@ -240,3 +240,113 @@ enum MockData {
         []
     ]
 }
+
+final class WordDetailListViewController: UIViewController {
+    private let collectionView = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: UICollectionViewCompositionalLayout(
+            section: CollectionViewComponents.makeWordDetailSection()
+        )
+    )
+    
+    private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
+    private let disposeBag = DisposeBag()
+    private var words: [Word] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupUI()
+        setupLayout()
+        setupCollectionView()
+        bindViewModel()
+        homeViewModel.loadWords()
+    }
+}
+
+extension WordDetailListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        guard indexPath.section > 0 else { return }
+        
+        let viewController = VocaDetailViewController()
+        viewController.configure(wordID: indexPath.row)
+        show(viewController, sender: self)
+    }
+}
+
+extension WordDetailListViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        words.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeWordDetailCell
+        let cellViewModel = HomeWordCellViewModel(
+            useCase: HomeWordUseCase(),
+            word: words[indexPath.row],
+            hidingStatusObservable: homeViewModel.hidingStatusObservable
+        )
+        cell.configure(viewModel: cellViewModel)
+        
+        return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(
+            for: indexPath
+        ) as WordSectionHeaderView
+        
+//        headerView.delegate = self
+        
+        return headerView
+    }
+}
+
+private extension WordDetailListViewController {
+    func setupUI() {
+        view.backgroundColor = .gray30
+        collectionView.backgroundColor = .gray30
+    }
+    
+    func setupLayout() {
+        view.addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.registerCell(ofType: HomeWordDetailCell.self)
+        collectionView.registerSupplementaryView(ofType: WordSectionHeaderView.self)
+    }
+    
+    func bindViewModel() {
+        homeViewModel.wordsObservable
+            .asDriver(onErrorDriveWith: .never())
+            .drive(onNext: { [weak self] in
+                self?.words = $0
+            })
+            .disposed(by: disposeBag)
+    }
+}
