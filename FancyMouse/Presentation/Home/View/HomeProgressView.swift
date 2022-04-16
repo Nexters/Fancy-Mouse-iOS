@@ -9,7 +9,7 @@ import SnapKit
 import UIKit
 
 protocol HomeProgressCellDelegate: AnyObject {
-    func didTapEntryButton(_ entryButton: UIButton)
+    func didTapEntryButton(_ homeProgressCell: HomeProgressView)
 }
 
 final class HomeProgressView: UICollectionViewCell {
@@ -55,7 +55,7 @@ final class HomeProgressView: UICollectionViewCell {
         let image = UIImage(named: "btn_entry")
         button.setImage(image, for: .normal)
         let entryAction = UIAction() { _ in
-            self.delegate?.didTapEntryButton(self.entryButton)
+            self.delegate?.didTapEntryButton(self)
         }
         button.addAction(entryAction, for: .touchUpInside)
         return button
