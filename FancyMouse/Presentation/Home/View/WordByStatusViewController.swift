@@ -10,12 +10,7 @@ import RxSwift
 import UIKit
 
 final class WordByStatusViewController: UIViewController {
-    private let collectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: UICollectionViewCompositionalLayout(
-            section: CollectionViewComponents.makeWordDetailSection()
-        )
-    )
+    private let collectionView = WordCollectionView()
     private var ellipsisView: EllipsisView?
     
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
@@ -113,7 +108,6 @@ extension WordByStatusViewController: WordCellDelegate {
 private extension WordByStatusViewController {
     func setupUI() {
         view.backgroundColor = .gray30
-        collectionView.backgroundColor = .gray30
     }
     
     func setupLayout() {
@@ -127,9 +121,6 @@ private extension WordByStatusViewController {
     func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        collectionView.registerCell(ofType: WordCell.self)
-        collectionView.registerSupplementaryView(ofType: WordSectionHeaderView.self)
     }
     
     func bindViewModel() {
