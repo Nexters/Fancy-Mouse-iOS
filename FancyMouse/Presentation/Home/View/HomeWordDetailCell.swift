@@ -9,15 +9,22 @@ import RxCocoa
 import RxSwift
 import UIKit
 
+protocol HomeWordDetailCellDelegate: AnyObject {
+    func didTapMoreButton(_ button: UIButton)
+}
+
 final class HomeWordDetailCell: UICollectionViewCell {
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
     private let contourView = UIView()
     private let wordCreatedDateLabel = UILabel()
+    private let moreButton = UIButton()
     
     private var viewModel: HomeWordCellViewModel?
     private var disposeBag = DisposeBag()
+    
+    weak var delegate: HomeWordDetailCellDelegate?
     
     var isStatusButtonHidden = false {
         didSet {
@@ -54,19 +61,31 @@ private extension HomeWordDetailCell {
         
         contourView.backgroundColor = .gray30
         
-        wordCreatedDateLabel.text = "2022-01-20 추가"
         wordCreatedDateLabel.font = .spoqaRegular(size: 12)
         wordCreatedDateLabel.textColor = .gray50
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        let statusButtonAction = UIAction { _ in
+            let isIncomplete = self.statusButton.titleLabel?.text == "미암기"
+            isIncomplete ? self.statusButton.setupInProgress() : self.statusButton.setupIncomplete()
+        }
+        statusButton.addAction(statusButtonAction, for: .touchUpInside)
         statusButton.titleLabel?.font = .spoqaBold(size: 12)
+        
+        moreButton.setImage(UIImage(named: "more"), for: .normal)
+        let moreButtonAction = UIAction { _ in
+            self.delegate?.didTapMoreButton(self.moreButton)
+        }
+        moreButton.addAction(moreButtonAction, for: .touchUpInside)
     }
     
     func setupLayout() {
         [spellingLabel, statusButton,
          meaningsStackView,
          contourView,
-         wordCreatedDateLabel
+         wordCreatedDateLabel,
+         moreButton
         ].forEach {
             addSubview($0)
         }
@@ -101,6 +120,12 @@ private extension HomeWordDetailCell {
             make.top.equalTo(contourView.snp.bottom).offset(12)
             make.leading.equalTo(spellingLabel.snp.leading)
         }
+        
+        moreButton.snp.makeConstraints { make in
+            make.centerY.equalTo(wordCreatedDateLabel.snp.centerY)
+            make.bottom.equalToSuperview().inset(12)
+            make.trailing.equalToSuperview().inset(24)
+        }
     }
     
     func bindViewModel() {
@@ -128,5 +153,9 @@ private extension HomeWordDetailCell {
         case .inProgress: statusButton.setupInProgress()
         default: break
         }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        wordCreatedDateLabel.text = dateFormatter.string(from: word.createdAt) + " 추가"
     }
 }

@@ -64,7 +64,7 @@ private extension WordSectionHeaderView {
         
         totalLabel.snp.makeConstraints { make in
             make.centerY.equalTo(filterButton.snp.centerY)
-            make.leading.equalToSuperview().offset(24)
+            make.leading.equalToSuperview()
         }
         
         numberLabel.snp.makeConstraints { make in
@@ -79,7 +79,7 @@ private extension WordSectionHeaderView {
         
         filterButton.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
+            make.trailing.equalToSuperview()
         }
     }
 }
@@ -162,7 +162,7 @@ private extension HomeSectionHeaderView {
         
         hidingSpellingButton.snp.makeConstraints { make in
             make.centerY.equalTo(shuffleButton.snp.centerY)
-            make.leading.equalToSuperview().offset(24)
+            make.leading.equalToSuperview()
         }
         
         ellipseImageView.snp.makeConstraints { make in
@@ -177,7 +177,7 @@ private extension HomeSectionHeaderView {
         
         shuffleButton.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().offset(3)
-            make.trailing.equalToSuperview().inset(24)
+            make.trailing.equalToSuperview()
         }
     }
 }

@@ -8,7 +8,13 @@
 import SnapKit
 import UIKit
 
+protocol HomeProgressCellDelegate: AnyObject {
+    func didTapEntryButton(_ homeProgressCell: HomeProgressView)
+}
+
 final class HomeProgressView: UICollectionViewCell {
+    weak var delegate: HomeProgressCellDelegate?
+    
     private let userName = "수진"
     private let progressPercent = 75
     private let wordCount = 20
@@ -49,6 +55,7 @@ final class HomeProgressView: UICollectionViewCell {
         let image = UIImage(named: "btn_entry")
         button.setImage(image, for: .normal)
         let entryAction = UIAction() { _ in
+            self.delegate?.didTapEntryButton(self)
         }
         button.addAction(entryAction, for: .touchUpInside)
         return button
