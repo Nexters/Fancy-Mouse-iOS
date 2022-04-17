@@ -92,7 +92,7 @@ extension HomeViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeProgressView
+            let cell = collectionView.dequeueReusableCell(for: indexPath) as WordProgressCell
             cell.delegate = self
             
             return cell
@@ -132,7 +132,7 @@ extension HomeViewController: UICollectionViewDataSource {
 }
 
 extension HomeViewController: HomeProgressCellDelegate {
-    func didTapEntryButton(_ homeProgressCell: HomeProgressView) {
+    func didTapEntryButton(_ homeProgressCell: WordProgressCell) {
         let viewController = WordByStatusViewController()
         show(viewController, sender: self)
     }

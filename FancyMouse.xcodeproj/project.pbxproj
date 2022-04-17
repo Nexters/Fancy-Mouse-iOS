@@ -104,7 +104,7 @@
 		E23CA6DD27A2F9C300C8381E /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DC27A2F9C300C8381E /* Dimmable.swift */; };
 		E23CA6DF27A2F9F200C8381E /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */; };
 		E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */; };
-		E271138627C8F9EA003B0D52 /* HomeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271138527C8F9EA003B0D52 /* HomeProgressView.swift */; };
+		E271138627C8F9EA003B0D52 /* WordProgressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E271138527C8F9EA003B0D52 /* WordProgressCell.swift */; };
 		E283E02227A6363300FC340F /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02127A6363300FC340F /* Folder.swift */; };
 		E283E02727A665D200FC340F /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E02627A665D200FC340F /* WordResponse.swift */; };
 		E2BF45DF27E8D7DF004B1498 /* WordTestSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */; };
@@ -246,7 +246,7 @@
 		E23CA6DC27A2F9C300C8381E /* Dimmable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
 		E23CA6DE27A2F9F200C8381E /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E23CA6E027A2FA0800C8381E /* RemoteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteProtocol.swift; sourceTree = "<group>"; };
-		E271138527C8F9EA003B0D52 /* HomeProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProgressView.swift; sourceTree = "<group>"; };
+		E271138527C8F9EA003B0D52 /* WordProgressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordProgressCell.swift; sourceTree = "<group>"; };
 		E283E02127A6363300FC340F /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 		E283E02627A665D200FC340F /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
 		E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTestSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -374,14 +374,14 @@
 			isa = PBXGroup;
 			children = (
 				D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */,
-				E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */,
 				E2D3278F27BD2EDB00D1458F /* WordTestCollectionView.swift */,
-				40DFDBAA27A832E100FF07CF /* WordTestCell.swift */,
-				E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */,
-				E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */,
+				E271138527C8F9EA003B0D52 /* WordProgressCell.swift */,
 				C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */,
+				40DFDBAA27A832E100FF07CF /* WordTestCell.swift */,
+				E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */,
+				E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */,
 				E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */,
-				E271138527C8F9EA003B0D52 /* HomeProgressView.swift */,
+				E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1147,7 +1147,7 @@
 				40AFEBEF27C4D1E60023E69B /* FolderAddEditViewModel.swift in Sources */,
 				44A8A97927B6F938004C8E6C /* ViewModelBindableType.swift in Sources */,
 				E234110D27C7F43600AC8DEE /* TogetherSavedSentenceView.swift in Sources */,
-				E271138627C8F9EA003B0D52 /* HomeProgressView.swift in Sources */,
+				E271138627C8F9EA003B0D52 /* WordProgressCell.swift in Sources */,
 				D16383FD27B011F1005C8326 /* UIFont+Extensions.swift in Sources */,
 				D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */,
 				40CF121627C3C7600018931D /* CoreDataManager.swift in Sources */,

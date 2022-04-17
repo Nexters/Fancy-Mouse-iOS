@@ -1,5 +1,5 @@
 //
-//  HomeProgressView.swift
+//  WordProgressCell.swift
 //  FancyMouse
 //
 //  Created by itzel.du on 2022/02/25.
@@ -9,10 +9,10 @@ import SnapKit
 import UIKit
 
 protocol HomeProgressCellDelegate: AnyObject {
-    func didTapEntryButton(_ homeProgressCell: HomeProgressView)
+    func didTapEntryButton(_ homeProgressCell: WordProgressCell)
 }
 
-final class HomeProgressView: UICollectionViewCell {
+final class WordProgressCell: UICollectionViewCell {
     weak var delegate: HomeProgressCellDelegate?
     
     private let userName = "수진"
@@ -79,7 +79,7 @@ final class HomeProgressView: UICollectionViewCell {
     }
 }
 
-private extension HomeProgressView {
+private extension WordProgressCell {
     func setupPercentFont() {
         let fullText = percentLabel.text ?? ""
         let attribtuedString = NSMutableAttributedString(string: fullText)
