@@ -61,7 +61,6 @@ private extension HomeWordDetailCell {
         
         contourView.backgroundColor = .gray30
         
-        wordCreatedDateLabel.text = "2022-01-20 추가"
         wordCreatedDateLabel.font = .spoqaRegular(size: 12)
         wordCreatedDateLabel.textColor = .gray50
         
@@ -148,5 +147,9 @@ private extension HomeWordDetailCell {
         case .inProgress: statusButton.setupInProgress()
         default: break
         }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        wordCreatedDateLabel.text = dateFormatter.string(from: word.createdAt) + " 추가"
     }
 }
