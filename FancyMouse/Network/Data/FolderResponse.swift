@@ -36,7 +36,8 @@ struct FolderResponse: Decodable {
 struct WordList: Decodable {
     let createdAt, folderID, id: String
     let meanings: [String]
-    let memo, pronounce, spelling: String
+    let memo: String?
+    let pronounce, spelling: String
     let synonyms: [String]
 
     enum CodingKeys: String, CodingKey {
