@@ -8,12 +8,12 @@
 import SnapKit
 import UIKit
 
-protocol HomeProgressCellDelegate: AnyObject {
+protocol WordProgressCellDelegate: AnyObject {
     func didTapEntryButton(_ homeProgressCell: WordProgressCell)
 }
 
 final class WordProgressCell: UICollectionViewCell {
-    weak var delegate: HomeProgressCellDelegate?
+    weak var delegate: WordProgressCellDelegate?
     
     private let userName = "수진"
     private let progressPercent = 75
