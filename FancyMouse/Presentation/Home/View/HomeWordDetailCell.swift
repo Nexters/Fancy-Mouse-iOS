@@ -65,6 +65,12 @@ private extension HomeWordDetailCell {
         wordCreatedDateLabel.textColor = .gray50
         
         spellingLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        let statusButtonAction = UIAction { _ in
+            let isIncomplete = self.statusButton.titleLabel?.text == "미암기"
+            isIncomplete ? self.statusButton.setupInProgress() : self.statusButton.setupIncomplete()
+        }
+        statusButton.addAction(statusButtonAction, for: .touchUpInside)
         statusButton.titleLabel?.font = .spoqaBold(size: 12)
         
         moreButton.setImage(UIImage(named: "more"), for: .normal)
