@@ -5,6 +5,7 @@
 //  Created by seunghwan Lee on 2022/02/14.
 //
 
+import Combine
 import SwiftUI
 
 enum MoreListRowType: String {
@@ -53,25 +54,62 @@ struct TitleView: View {
 }
 
 struct ProfileView: View {
+    let userName = UserManager.userName ?? ""
+    let userEmail = UserManager.userEmail ?? ""
+    
     var body: some View {
         Image("img_profile_default")
             .frame(width: 48, height: 48, alignment: .center)
         
-        // FIXME: 이름 고정값 x
-        Text("팬시마우스")
+        Text(userName)
             .spoqaRegular(size: 16)
             .foregroundColor(.gray60)
             .padding(EdgeInsets(top: 24, leading: 0, bottom: 8, trailing: 0))
         
-        // FIXME: 이메일 고정값 x
-        Text("Fancy@gmail.com")
+        Text(userEmail)
             .spoqaBold(size: 20)
             .accentColor(.primaryColor)
             .padding(.bottom, 40)
     }
 }
 
+// TODO: 파일 위치 이동
+final class MoreViewViewModel {
+    var bag = Set<AnyCancellable>()
+    let signOutWasTapped = PassthroughSubject<Void, Never>()
+    let withdrawalWasTapped = PassthroughSubject<Void, Never>()
+    let signOutSignal = PassthroughSubject<Void, Never>()
+    
+    init() {
+        bindAction()
+    }
+    
+    private func bindAction() {
+        signOutWasTapped
+            .sink { [weak self] _ in
+                self?.cleanUpUserData()
+                self?.signOutSignal.send()
+            }
+            .store(in: &bag)
+        
+        withdrawalWasTapped
+            .sink { [weak self] _ in
+                self?.cleanUpUserData()
+                // TODO: 회원 정보 삭제 추가
+                self?.signOutSignal.send()
+            }
+            .store(in: &bag)
+    }
+    
+    private func cleanUpUserData() {
+        UserManager.userID = nil
+        UserManager.userName = nil
+        UserManager.userEmail = nil
+    }
+}
+
 struct MoreView: View {
+    let viewModel: MoreViewViewModel
     let moreListRowTypes: [MoreListRowType] = [.makers, .openSourceLicense, .versionInfo]
     
     var body: some View {
@@ -82,7 +120,6 @@ struct MoreView: View {
                 
                 VStack(alignment: .leading) {
                     TitleView()
-                    
                     ProfileView()
                 
                     VStack(spacing: 12) {
@@ -97,10 +134,22 @@ struct MoreView: View {
                     
                     HStack(spacing: 20) {
                         Spacer()
-                        Text("로그아웃")
+                        
+                        Button {
+                            viewModel.signOutWasTapped.send()
+                        } label: {
+                            Text("로그아웃")
+                        }
+
                         Rectangle()
                             .frame(width: 1)
-                        Text("회원탈퇴")
+            
+                        Button {
+                            viewModel.withdrawalWasTapped.send()
+                        } label: {
+                            Text("회원탈퇴")
+                        }
+                        
                         Spacer()
                     }
                     .frame(height: 18)
@@ -113,6 +162,10 @@ struct MoreView: View {
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
             }
+        }
+        .onReceive(viewModel.signOutSignal) { _ in
+            let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            keyWindow?.rootViewController = WalkthroughMainViewController()
         }
     }
     
@@ -130,6 +183,6 @@ struct MoreView: View {
 
 struct MoreView_Previews: PreviewProvider {
     static var previews: some View {
-        MoreView()
+        MoreView(viewModel: MoreViewViewModel())
     }
 }

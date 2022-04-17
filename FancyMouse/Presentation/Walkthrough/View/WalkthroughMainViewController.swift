@@ -167,29 +167,22 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
             nextButton.contentHorizontalAlignment = .center
             nextButton.semanticContentAttribute = .forceLeftToRight
             nextButton.imageEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 32)
+            
             let action = UIAction(handler: { _ in
                 print("google")
                 guard let clientID = FirebaseApp.app()?.options.clientID else { return }
                 let config = GIDConfiguration(clientID: clientID)
                 GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-                    guard error == nil else {
-                        return
-                    }
-                    guard let authentication = user?.authentication,
-                          let idToken = authentication.idToken else {
-                                   return
-                    }
+                    guard let userID = user?.userID, error == nil else { return }
                     
-                    let credential
-                    = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                    accessToken: authentication.accessToken)
-                    Auth.auth().signIn(with: credential) { _, _ in
-                        let nextVC = TabBarController()
-                        nextVC.modalPresentationStyle = .overFullScreen
-                        self.present(nextVC, animated: true)
-                    }
+                    UserManager.userID = userID
+                    UserManager.userEmail = user?.profile?.email
+                    UserManager.userName = user?.profile?.name
+                    
+                    let tabBarController = TabBarController()
+                    let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+                    keyWindow?.rootViewController = tabBarController
                 }
-                UserDefaults.standard.set(true, forKey: "isLoginedUser")
             })
             nextButton.addAction(action, for: .touchUpInside)
         }
