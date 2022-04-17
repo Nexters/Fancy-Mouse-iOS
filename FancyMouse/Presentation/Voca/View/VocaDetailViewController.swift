@@ -10,7 +10,7 @@ import RxSwift
 import SnapKit
 import UIKit
 
-final class VocaDetailViewController: UIViewController {
+final class VocaDetailViewController: BaseViewController {
     private var word: String = "Purpose"
     private var wordAddDate: String = "2022-01-23"
     private var pronunciation: String = "[ ˈpɜːrpəs]"

@@ -134,8 +134,10 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: WordProgressCellDelegate {
     func didTapEntryButton(_ wordProgressCell: WordProgressCell) {
         let viewController = WordByStatusViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        showDetailViewController(viewController, sender: self)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        
+        showDetailViewController(navigationController, sender: self)
     }
 }
 

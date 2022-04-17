@@ -12,7 +12,6 @@ import UIKit
 final class WordByStatusViewController: UIViewController {
     private let collectionView = WordCollectionView()
     private var ellipsisView: EllipsisView?
-    private let closeButton = UIButton()
     
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
     private let disposeBag = DisposeBag()
@@ -36,6 +35,7 @@ extension WordByStatusViewController: UICollectionViewDelegateFlowLayout {
     ) {
         let viewController = VocaDetailViewController()
         viewController.configure(wordID: indexPath.row)
+        
         show(viewController, sender: self)
     }
 }
@@ -114,29 +114,29 @@ private extension WordByStatusViewController {
     func setupUI() {
         view.backgroundColor = .gray30
         
-        closeButton.tintColor = .primaryColor
-        closeButton.setImage(UIImage(named: "btn_close"), for: .normal)
+        let closeButtonItem = UIBarButtonItem(
+            image: UIImage(named: "btn_close"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapCloseButton)
+        )
+        closeButtonItem.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 7)
         
-        let closeAction = UIAction(handler: { _ in
-            self.dismiss(animated: true)
-        })
-        closeButton.addAction(closeAction, for: .touchUpInside)
+        navigationItem.rightBarButtonItem = closeButtonItem
+        navigationItem.rightBarButtonItem?.tintColor = .primaryColor
+    }
+    
+    @objc
+    func didTapCloseButton() {
+        dismiss(animated: true)
     }
     
     func setupLayout() {
-        [collectionView, closeButton].forEach {
-            view.addSubview($0)
-        }
-        
-        closeButton.snp.makeConstraints { make in
-            make.width.height.equalTo(24)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(18)
-            make.trailing.equalToSuperview().inset(24)
-        }
+        view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(closeButton.snp.bottom).offset(24)
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalToSuperview()
         }
     }
     
