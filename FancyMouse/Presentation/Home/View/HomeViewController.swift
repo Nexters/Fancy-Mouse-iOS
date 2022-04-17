@@ -98,7 +98,7 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         }
         
-        let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeWordCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as WordTestCell
         let cellViewModel = HomeWordCellViewModel(
             useCase: HomeWordUseCase(),
             word: words[indexPath.row],

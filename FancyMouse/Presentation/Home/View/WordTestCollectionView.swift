@@ -31,7 +31,7 @@ private extension WordTestCollectionView {
         backgroundColor = .gray30
         
         registerCell(ofType: HomeProgressView.self)
-        registerCell(ofType: HomeWordCell.self)
+        registerCell(ofType: WordTestCell.self)
         registerSupplementaryView(ofType: WordTestSectionHeaderView.self)
         registerSupplementaryView(ofType: EmptySectionHeaderView.self)
     }

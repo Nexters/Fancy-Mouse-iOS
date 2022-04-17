@@ -35,7 +35,7 @@
 		40CF121627C3C7600018931D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF121527C3C7600018931D /* CoreDataManager.swift */; };
 		40D2FD3127B48553002021C8 /* FilterViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D2FD3027B48553002021C8 /* FilterViewHeader.swift */; };
 		40DFDBA727A7012F00FF07CF /* HomeWordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */; };
-		40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */; };
+		40DFDBAB27A832E100FF07CF /* WordTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DFDBAA27A832E100FF07CF /* WordTestCell.swift */; };
 		40E9666A27BDE0BE0020DF89 /* WordMoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */; };
 		40E9666C27BDE0C60020DF89 /* WordMoveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */; };
 		440FE97D27C8D87D00C73212 /* WalkthroughFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440FE97C27C8D87D00C73212 /* WalkthroughFirstViewController.swift */; };
@@ -168,7 +168,7 @@
 		40CF121527C3C7600018931D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		40D2FD3027B48553002021C8 /* FilterViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewHeader.swift; sourceTree = "<group>"; };
 		40DFDBA627A7012F00FF07CF /* HomeWordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCellViewModel.swift; sourceTree = "<group>"; };
-		40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordCell.swift; sourceTree = "<group>"; };
+		40DFDBAA27A832E100FF07CF /* WordTestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTestCell.swift; sourceTree = "<group>"; };
 		40E9666927BDE0BE0020DF89 /* WordMoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveViewController.swift; sourceTree = "<group>"; };
 		40E9666B27BDE0C60020DF89 /* WordMoveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMoveViewCell.swift; sourceTree = "<group>"; };
 		440FE97C27C8D87D00C73212 /* WalkthroughFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughFirstViewController.swift; sourceTree = "<group>"; };
@@ -374,11 +374,11 @@
 			isa = PBXGroup;
 			children = (
 				D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */,
-				E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */,
 				E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */,
-				E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */,
 				E2D3278F27BD2EDB00D1458F /* WordTestCollectionView.swift */,
-				40DFDBAA27A832E100FF07CF /* HomeWordCell.swift */,
+				40DFDBAA27A832E100FF07CF /* WordTestCell.swift */,
+				E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */,
+				E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */,
 				C5AF267C27C62C50004E0A72 /* ProgressGradientView.swift */,
 				E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */,
 				E271138527C8F9EA003B0D52 /* HomeProgressView.swift */,
@@ -1140,7 +1140,7 @@
 				E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */,
 				E2F8478527C88C1C009499C7 /* WordViewModelProtocol.swift in Sources */,
 				C5AF267D27C62C50004E0A72 /* ProgressGradientView.swift in Sources */,
-				40DFDBAB27A832E100FF07CF /* HomeWordCell.swift in Sources */,
+				40DFDBAB27A832E100FF07CF /* WordTestCell.swift in Sources */,
 				E23CA6E127A2FA0800C8381E /* RemoteProtocol.swift in Sources */,
 				40A341A827AC66C200D4D8DC /* DeletionAlertViewController.swift in Sources */,
 				442275ED280AE38600633CAE /* StartViewController.swift in Sources */,

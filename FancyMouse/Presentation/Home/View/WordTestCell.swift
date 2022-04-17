@@ -1,5 +1,5 @@
 //
-//  HomeWordCell.swift
+//  WordTestCell.swift
 //  FancyMouse
 //
 //  Created by 한상진 on 2022/02/01.
@@ -9,7 +9,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class HomeWordCell: UICollectionViewCell {
+final class WordTestCell: UICollectionViewCell {
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
@@ -41,7 +41,7 @@ final class HomeWordCell: UICollectionViewCell {
     }
 }
 
-private extension HomeWordCell {
+private extension WordTestCell {
     func setupUI() {
         backgroundColor = .white
         
