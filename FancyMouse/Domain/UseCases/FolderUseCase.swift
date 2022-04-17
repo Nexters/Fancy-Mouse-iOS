@@ -70,7 +70,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return Observable<[Folder?]>.of(folders.values)
     }
     
-    func update(folderID: String, folderColor: String, folderName: String) -> Observable<Folder> {
+    func update(folderID: FolderID, folderColor: String, folderName: String) -> Observable<Folder> {
         //TODO: 구글 로그인 연동 후 path 수정 예정
         let itemsReference = Database.database().reference(withPath: "sangjin/folders")
         let userItemReference = itemsReference.child(folderID)
@@ -91,7 +91,7 @@ struct FolderUseCase: FolderUseCaseProtocol {
         return folderObservable
     }
     
-    func delete(_ folderID: String, completion: @escaping () -> Void) {
+    func delete(_ folderID: FolderID, completion: @escaping () -> Void) {
         //TODO: 구글 로그인 연동 후 path 수정 예정
         let reference = Database.database().reference(withPath: "sangjin/folders")
         reference.observeSingleEvent(of: .value, with: { snapshot in

@@ -8,16 +8,16 @@
 import Foundation
 
 struct WordResponse: Decodable {
-    let wordID: Int
-    let folderID: Int
-    let createdAt: Date
+    let wordID: String
+    let folderID: String
+    let createdAt: String
     let spelling: String
     let meanings: [String]
     let status: WordStatusResponse
-    let memo: String
+    let memo: String?
     let synonyms: [String]
     let examples: [String]
-    let urlString: String
+    let urlString: String?
     
     enum CodingKeys: String, CodingKey {
         case wordID = "wordId"

@@ -7,20 +7,20 @@
 
 import Foundation
 
-typealias WordID = Int
-typealias FolderID = Int
+typealias WordID = String
+typealias FolderID = String
 
 struct Word: Equatable, Identifiable {
     let id: WordID
     let folderID: FolderID
-    let createdAt: Date
+    let createdAt: String
     let spelling: String
     let meanings: [String]
     let memorizationStatus: MemorizationStatus
     let memo: String?
     let synonyms: [String]
     let examples: [String]
-    let urlString: String
+    let urlString: String?
 }
 
 extension Word {
