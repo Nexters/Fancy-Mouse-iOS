@@ -43,10 +43,15 @@ extension WordResponse {
 }
 
 extension WordResponse {
-    var mappedWord: Word {
+    static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss Z"
-        let createdAt = dateFormatter.date(from: self.createdAt) ?? Date()
+        
+        return dateFormatter
+    }()
+    
+    var mappedWord: Word {
+        let createdAt = Self.dateFormatter.date(from: self.createdAt) ?? Date()
         return Word(
             id: wordID, folderID: folderID,
             createdAt: createdAt,
