@@ -1,5 +1,5 @@
 //
-//  HomeSectionHeaderView.swift
+//  WordTestSectionHeaderView.swift
 //  FancyMouse
 //
 //  Created by itzel.du on 2022/03/22.
@@ -8,15 +8,15 @@
 import RxSwift
 import UIKit
 
-protocol HomeSectionHeaderViewDelegate: AnyObject {
-    func didTapShuffleButton(_ homeSectionHeaderView: HomeSectionHeaderView)
-    func didTapHidingSpellingButton(_ homeSectionHeaderView: HomeSectionHeaderView)
-    func didTapHidingMeaningsButton(_ homeSectionHeaderView: HomeSectionHeaderView)
+protocol WordTestSectionHeaderViewDelegate: AnyObject {
+    func didTapShuffleButton(_ headerView: WordTestSectionHeaderView)
+    func didTapHidingSpellingButton(_ headerView: WordTestSectionHeaderView)
+    func didTapHidingMeaningsButton(_ headerView: WordTestSectionHeaderView)
 }
 
 final class EmptySectionHeaderView: UICollectionReusableView { }
 
-final class WordSectionHeaderView: UICollectionReusableView {
+final class WordDetailListSectionHeaderView: UICollectionReusableView {
     private let totalLabel = UILabel()
     private let numberLabel = UILabel()
     private let countLabel = UILabel()
@@ -40,7 +40,7 @@ final class WordSectionHeaderView: UICollectionReusableView {
     }
 }
 
-private extension WordSectionHeaderView {
+private extension WordDetailListSectionHeaderView {
     func setupUI() {
         totalLabel.text = "총"
         numberLabel.text = "\(totalCount)"
@@ -84,7 +84,7 @@ private extension WordSectionHeaderView {
     }
 }
 
-final class HomeSectionHeaderView: UICollectionReusableView {
+final class WordTestSectionHeaderView: UICollectionReusableView {
     private let shuffleButton = UIButton()
     private let hidingSpellingButton = HomeWordHidingButton()
     private let ellipseImageView = UIImageView()
@@ -92,7 +92,7 @@ final class HomeSectionHeaderView: UICollectionReusableView {
     private let hidingMeaningsButton = HomeWordHidingButton()
     private let disposeBag = DisposeBag()
     
-    weak var delegate: HomeSectionHeaderViewDelegate?
+    weak var delegate: WordTestSectionHeaderViewDelegate?
     var hidingStatusObservable: Observable<HomeViewModel.HidingStatus>?
     
     override init(frame: CGRect) {
@@ -129,7 +129,7 @@ final class HomeSectionHeaderView: UICollectionReusableView {
     }
 }
 
-private extension HomeSectionHeaderView {
+private extension WordTestSectionHeaderView {
     func setupUI() {
         backgroundColor = .gray30
         hidingSpellingButton.setTitle("단어숨김", for: .normal)

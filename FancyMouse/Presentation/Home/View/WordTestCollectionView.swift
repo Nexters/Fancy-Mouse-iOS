@@ -1,5 +1,5 @@
 //
-//  HomeWordCollectionView.swift
+//  WordTestCollectionView.swift
 //  FancyMouse
 //
 //  Created by itzel.du on 2022/02/16.
@@ -10,7 +10,7 @@ import RxSwift
 import SnapKit
 import UIKit
 
-final class HomeWordCollectionView: UICollectionView {
+final class WordTestCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(
             frame: frame,
@@ -25,13 +25,13 @@ final class HomeWordCollectionView: UICollectionView {
     }
 }
 
-private extension HomeWordCollectionView {
+private extension WordTestCollectionView {
     func setupUI() {
         backgroundColor = .gray30
         
         registerCell(ofType: HomeProgressView.self)
         registerCell(ofType: HomeWordCell.self)
-        registerSupplementaryView(ofType: HomeSectionHeaderView.self)
+        registerSupplementaryView(ofType: WordTestSectionHeaderView.self)
         registerSupplementaryView(ofType: EmptySectionHeaderView.self)
     }
 }

@@ -14,7 +14,7 @@ final class HomeViewController: BaseViewController {
     private let disposeBag = DisposeBag()
     private var words: [Word] = []
     
-    private let homeWordCollectionView = HomeWordCollectionView()
+    private let collectionView = WordTestCollectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +35,17 @@ private extension HomeViewController {
     }
     
     func setupLayout() {
-        view.addSubview(homeWordCollectionView)
+        view.addSubview(collectionView)
         
-        homeWordCollectionView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.top.bottom.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
         }
     }
     
     func setupCollectionView() {
-        homeWordCollectionView.delegate = self
-        homeWordCollectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     func bindViewModel() {
@@ -122,7 +122,7 @@ extension HomeViewController: UICollectionViewDataSource {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(
             for: indexPath
-        ) as HomeSectionHeaderView
+        ) as WordTestSectionHeaderView
         
         headerView.delegate = self
         headerView.bind(hidingStatusObservable: homeViewModel.hidingStatusObservable)
@@ -138,19 +138,19 @@ extension HomeViewController: HomeProgressCellDelegate {
     }
 }
 
-extension HomeViewController: HomeSectionHeaderViewDelegate {
-    func didTapShuffleButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
+extension HomeViewController: WordTestSectionHeaderViewDelegate {
+    func didTapShuffleButton(_ homeSectionHeaderView: WordTestSectionHeaderView) {
         homeViewModel.shuffleWords()
         DispatchQueue.main.async {
-            self.homeWordCollectionView.reloadData()
+            self.collectionView.reloadData()
         }
     }
     
-    func didTapHidingSpellingButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
+    func didTapHidingSpellingButton(_ homeSectionHeaderView: WordTestSectionHeaderView) {
         homeViewModel.changeHidingStatus(with: .word)
     }
     
-    func didTapHidingMeaningsButton(_ homeSectionHeaderView: HomeSectionHeaderView) {
+    func didTapHidingMeaningsButton(_ homeSectionHeaderView: WordTestSectionHeaderView) {
         homeViewModel.changeHidingStatus(with: .meaning)
     }
 }
