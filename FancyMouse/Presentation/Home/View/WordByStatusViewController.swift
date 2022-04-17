@@ -60,7 +60,7 @@ extension WordByStatusViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath) as HomeWordDetailCell
+        let cell = collectionView.dequeueReusableCell(for: indexPath) as WordCell
         let cellViewModel = HomeWordCellViewModel(
             useCase: HomeWordUseCase(),
             word: words[indexPath.row],
@@ -88,7 +88,7 @@ extension WordByStatusViewController: UICollectionViewDataSource {
     }
 }
 
-extension WordByStatusViewController: HomeWordDetailCellDelegate {
+extension WordByStatusViewController: WordCellDelegate {
     func didTapMoreButton(_ button: UIButton) {
         ellipsisView?.removeFromSuperview()
         ellipsisView = EllipsisView()
@@ -128,7 +128,7 @@ private extension WordByStatusViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.registerCell(ofType: HomeWordDetailCell.self)
+        collectionView.registerCell(ofType: WordCell.self)
         collectionView.registerSupplementaryView(ofType: WordSectionHeaderView.self)
     }
     

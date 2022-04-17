@@ -1,5 +1,5 @@
 //
-//  HomeWordDetailCell.swift
+//  WordCell.swift
 //  FancyMouse
 //
 //  Created by itzel.du on 2022/02/25.
@@ -9,11 +9,11 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-protocol HomeWordDetailCellDelegate: AnyObject {
+protocol WordCellDelegate: AnyObject {
     func didTapMoreButton(_ button: UIButton)
 }
 
-final class HomeWordDetailCell: UICollectionViewCell {
+final class WordCell: UICollectionViewCell {
     private let spellingLabel = WordSpellingLabel()
     private let meaningsStackView = WordMeaningsStackView()
     private let statusButton = WordMemorizationBadgeButton()
@@ -24,7 +24,7 @@ final class HomeWordDetailCell: UICollectionViewCell {
     private var viewModel: HomeWordCellViewModel?
     private var disposeBag = DisposeBag()
     
-    weak var delegate: HomeWordDetailCellDelegate?
+    weak var delegate: WordCellDelegate?
     
     var isStatusButtonHidden = false {
         didSet {
@@ -55,7 +55,7 @@ final class HomeWordDetailCell: UICollectionViewCell {
     }
 }
 
-private extension HomeWordDetailCell {
+private extension WordCell {
     func setupUI() {
         backgroundColor = .white
         

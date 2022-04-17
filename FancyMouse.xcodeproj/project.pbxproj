@@ -115,7 +115,7 @@
 		E2DEFCAE27BCF68E0066FD54 /* WordMemorizationBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */; };
 		E2DEFCB027BCF6D50066FD54 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCAF27BCF6D50066FD54 /* UIView+Extensions.swift */; };
 		E2DEFCB227BCF72C0066FD54 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */; };
-		E2F8478327C889D2009499C7 /* HomeWordDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */; };
+		E2F8478327C889D2009499C7 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8478227C889D2009499C7 /* WordCell.swift */; };
 		E2F8478527C88C1C009499C7 /* WordViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8478427C88C1C009499C7 /* WordViewModelProtocol.swift */; };
 		E2F8478727C88C50009499C7 /* HomeWordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8478627C88C50009499C7 /* HomeWordDetailViewModel.swift */; };
 		E2F8478927C88C75009499C7 /* HomeWordDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8478827C88C75009499C7 /* HomeWordDetailCellViewModel.swift */; };
@@ -257,7 +257,7 @@
 		E2DEFCAD27BCF68D0066FD54 /* WordMemorizationBadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordMemorizationBadgeButton.swift; sourceTree = "<group>"; };
 		E2DEFCAF27BCF6D50066FD54 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E2DEFCB127BCF72C0066FD54 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordDetailCell.swift; sourceTree = "<group>"; };
+		E2F8478227C889D2009499C7 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		E2F8478427C88C1C009499C7 /* WordViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewModelProtocol.swift; sourceTree = "<group>"; };
 		E2F8478627C88C50009499C7 /* HomeWordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordDetailViewModel.swift; sourceTree = "<group>"; };
 		E2F8478827C88C75009499C7 /* HomeWordDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWordDetailCellViewModel.swift; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 				40DFDBAA27A832E100FF07CF /* WordTestCell.swift */,
 				E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */,
 				E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */,
-				E2F8478227C889D2009499C7 /* HomeWordDetailCell.swift */,
+				E2F8478227C889D2009499C7 /* WordCell.swift */,
 				E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */,
 			);
 			path = View;
@@ -1170,7 +1170,7 @@
 				D1E738F427B9230E0052D0F5 /* Color+Extensions.swift in Sources */,
 				E2F8478B27C88CD4009499C7 /* HomeWordCellViewModelProtocol.swift in Sources */,
 				D10A56ED27A80D78002466DA /* BottomSheet.swift in Sources */,
-				E2F8478327C889D2009499C7 /* HomeWordDetailCell.swift in Sources */,
+				E2F8478327C889D2009499C7 /* WordCell.swift in Sources */,
 				405F42EE27C8E35B004CA542 /* HomeFilterView.swift in Sources */,
 				E234110827C796E000AC8DEE /* WordDetailDescriptionsStackView.swift in Sources */,
 				D1AFE719279C0FAF0082D680 /* SceneDelegate.swift in Sources */,
