@@ -14,9 +14,10 @@ final class WordTestCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(
             frame: frame,
-            collectionViewLayout: CollectionViewComponents.homeWordCollectionViewLayout
+            collectionViewLayout: UICollectionViewLayout()
         )
         
+        collectionViewLayout = UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
         setupUI()
     }
     
@@ -34,22 +35,19 @@ private extension WordTestCollectionView {
         registerSupplementaryView(ofType: WordTestSectionHeaderView.self)
         registerSupplementaryView(ofType: EmptySectionHeaderView.self)
     }
-}
-
-enum CollectionViewComponents {
-    static let homeWordCollectionViewLayout: UICollectionViewLayout = {
-        let sectionProvider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            if sectionIndex == 0 {
-                return makeHomeWordProgressSectionLayout()
-            }
-            
-            return makeHomeWordSection(using: layoutEnvironment)
+    
+    func sectionProvider(
+        sectionIndex: Int,
+        layoutEnvironment: NSCollectionLayoutEnvironment
+    ) -> NSCollectionLayoutSection? {
+        if sectionIndex == 0 {
+            return makeProgressSectionLayout()
         }
         
-        return UICollectionViewCompositionalLayout(sectionProvider: sectionProvider)
-    }()
+        return makeWordTestSection(using: layoutEnvironment)
+    }
     
-    static func makeHomeWordProgressSectionLayout() -> NSCollectionLayoutSection {
+    func makeProgressSectionLayout() -> NSCollectionLayoutSection {
         let columns = 1
         
         let itemSize = NSCollectionLayoutSize(
@@ -76,7 +74,7 @@ enum CollectionViewComponents {
         return section
     }
     
-    static func makeHomeWordSection(
+    func makeWordTestSection(
         using layoutEnvironment: NSCollectionLayoutEnvironment
     ) -> NSCollectionLayoutSection {
         var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
@@ -116,7 +114,9 @@ enum CollectionViewComponents {
         
         return section
     }
-    
+}
+
+enum CollectionViewComponents {
     static func makeWordDetailSection() -> NSCollectionLayoutSection {
         let columns = 1
         
