@@ -89,6 +89,7 @@
 		D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */; };
 		D1FB3C7327C7B0C50017D64F /* OpenSourceLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */; };
 		E20CC1A0280BE53B00AC08F5 /* WordDetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CC19F280BE53B00AC08F5 /* WordDetailListViewController.swift */; };
+		E20CC1A2280BE5AA00AC08F5 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CC1A1280BE5AA00AC08F5 /* MockData.swift */; };
 		E21F870E27CD192700848B59 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F870D27CD192700848B59 /* UICollectionView+Extensions.swift */; };
 		E2220C8F27B15C2D00B08AF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */; };
 		E234110627C7969400AC8DEE /* WordDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */; };
@@ -229,6 +230,7 @@
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
 		E20CC19F280BE53B00AC08F5 /* WordDetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailListViewController.swift; sourceTree = "<group>"; };
+		E20CC1A1280BE5AA00AC08F5 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		E21F870D27CD192700848B59 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		E2220C8E27B15C2D00B08AF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E234110527C7969400AC8DEE /* WordDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailDescriptionView.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 			isa = PBXGroup;
 			children = (
 				E234110A27C7A15400AC8DEE /* WordDetailDescription.swift */,
+				E20CC1A1280BE5AA00AC08F5 /* MockData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1105,6 +1108,7 @@
 				44A8A97F27B6F9C3004C8E6C /* FolderViewController.swift in Sources */,
 				E2DEFCB027BCF6D50066FD54 /* UIView+Extensions.swift in Sources */,
 				E2DEFCAC27BCF65D0066FD54 /* WordMeaningView.swift in Sources */,
+				E20CC1A2280BE5AA00AC08F5 /* MockData.swift in Sources */,
 				D1DB209A27C115AA00EF3F6D /* OpenSourceLicenseView.swift in Sources */,
 				4009E18C27C81385007C5E15 /* FolderAddCell.swift in Sources */,
 				E20CC1A0280BE53B00AC08F5 /* WordDetailListViewController.swift in Sources */,
