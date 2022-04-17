@@ -65,7 +65,7 @@ class TabBarController: UITabBarController {
                                              selectedImage: lerningSelectedImage)
         lerningViewController.tabBarItem = lerningTabBarItem
         
-        let moreViewController = UIHostingController(rootView: MoreView())
+        let moreViewController = UIHostingController(rootView: MoreView(viewModel: MoreViewViewModel()))
         let moreTitle = "더보기"
         let moreImage = UIImage(named: "tab_more_n")?.withRenderingMode(.alwaysOriginal)
         let moreSelectedImage = UIImage(named: "tab_more_s")?.withRenderingMode(.alwaysOriginal)
