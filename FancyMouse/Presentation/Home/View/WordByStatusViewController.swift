@@ -1,5 +1,5 @@
 //
-//  WordDetailListViewController.swift
+//  WordByStatusViewController.swift
 //  FancyMouse
 //
 //  Created by itzel.du on 2022/04/17.
@@ -9,7 +9,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class WordDetailListViewController: UIViewController {
+final class WordByStatusViewController: UIViewController {
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewCompositionalLayout(
@@ -33,7 +33,7 @@ final class WordDetailListViewController: UIViewController {
     }
 }
 
-extension WordDetailListViewController: UICollectionViewDelegateFlowLayout {
+extension WordByStatusViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -44,7 +44,7 @@ extension WordDetailListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension WordDetailListViewController: UICollectionViewDataSource {
+extension WordByStatusViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
     }
@@ -88,7 +88,7 @@ extension WordDetailListViewController: UICollectionViewDataSource {
     }
 }
 
-extension WordDetailListViewController: HomeWordDetailCellDelegate {
+extension WordByStatusViewController: HomeWordDetailCellDelegate {
     func didTapMoreButton(_ button: UIButton) {
         ellipsisView?.removeFromSuperview()
         ellipsisView = EllipsisView()
@@ -110,7 +110,7 @@ extension WordDetailListViewController: HomeWordDetailCellDelegate {
     }
 }
 
-private extension WordDetailListViewController {
+private extension WordByStatusViewController {
     func setupUI() {
         view.backgroundColor = .gray30
         collectionView.backgroundColor = .gray30
@@ -141,4 +141,3 @@ private extension WordDetailListViewController {
             .disposed(by: disposeBag)
     }
 }
-

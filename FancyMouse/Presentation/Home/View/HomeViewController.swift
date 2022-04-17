@@ -133,7 +133,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: HomeProgressCellDelegate {
     func didTapEntryButton(_ homeProgressCell: HomeProgressView) {
-        let viewController = WordDetailListViewController()
+        let viewController = WordByStatusViewController()
         show(viewController, sender: self)
     }
 }

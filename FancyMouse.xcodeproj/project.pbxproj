@@ -88,7 +88,7 @@
 		D1E738F627B930470052D0F5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F527B930470052D0F5 /* View+Extensions.swift */; };
 		D1E738F827B9350B0052D0F5 /* LearningIntroEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E738F727B9350B0052D0F5 /* LearningIntroEndView.swift */; };
 		D1FB3C7327C7B0C50017D64F /* OpenSourceLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */; };
-		E20CC1A0280BE53B00AC08F5 /* WordDetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CC19F280BE53B00AC08F5 /* WordDetailListViewController.swift */; };
+		E20CC1A0280BE53B00AC08F5 /* WordByStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */; };
 		E20CC1A2280BE5AA00AC08F5 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CC1A1280BE5AA00AC08F5 /* MockData.swift */; };
 		E20CC1A4280BE71B00AC08F5 /* WordSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */; };
 		E21F870E27CD192700848B59 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F870D27CD192700848B59 /* UICollectionView+Extensions.swift */; };
@@ -230,7 +230,7 @@
 		D1FB3C7227C7B0C50017D64F /* OpenSourceLicense.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OpenSourceLicense.txt; sourceTree = "<group>"; usesTabs = 0; wrapsLines = 0; };
 		D627E1F630DCF265B2762B7A /* Pods-FancyMouseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouseTests.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouseTests/Pods-FancyMouseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DAED4D5BFD6E02C8DB8EEF /* Pods-FancyMouse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyMouse.debug.xcconfig"; path = "Target Support Files/Pods-FancyMouse/Pods-FancyMouse.debug.xcconfig"; sourceTree = "<group>"; };
-		E20CC19F280BE53B00AC08F5 /* WordDetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailListViewController.swift; sourceTree = "<group>"; };
+		E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordByStatusViewController.swift; sourceTree = "<group>"; };
 		E20CC1A1280BE5AA00AC08F5 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSectionHeaderView.swift; sourceTree = "<group>"; };
 		E21F870D27CD192700848B59 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				D1AFE71A279C0FAF0082D680 /* HomeViewController.swift */,
-				E20CC19F280BE53B00AC08F5 /* WordDetailListViewController.swift */,
+				E20CC19F280BE53B00AC08F5 /* WordByStatusViewController.swift */,
 				E2BF45DE27E8D7DF004B1498 /* WordTestSectionHeaderView.swift */,
 				E20CC1A3280BE71B00AC08F5 /* WordSectionHeaderView.swift */,
 				E2D3278F27BD2EDB00D1458F /* WordTestCollectionView.swift */,
@@ -1115,7 +1115,7 @@
 				E20CC1A2280BE5AA00AC08F5 /* MockData.swift in Sources */,
 				D1DB209A27C115AA00EF3F6D /* OpenSourceLicenseView.swift in Sources */,
 				4009E18C27C81385007C5E15 /* FolderAddCell.swift in Sources */,
-				E20CC1A0280BE53B00AC08F5 /* WordDetailListViewController.swift in Sources */,
+				E20CC1A0280BE53B00AC08F5 /* WordByStatusViewController.swift in Sources */,
 				D1B83E2027B95EEF00AD7A70 /* MoreView.swift in Sources */,
 				404F0C8C27B8FB80000851F5 /* FilterViewModel.swift in Sources */,
 				401837F427C01A3B00773574 /* SearchRecentWordsCell.swift in Sources */,
