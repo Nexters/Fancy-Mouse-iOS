@@ -268,8 +268,6 @@ extension WordDetailListViewController: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        guard indexPath.section > 0 else { return }
-        
         let viewController = VocaDetailViewController()
         viewController.configure(wordID: indexPath.row)
         show(viewController, sender: self)
