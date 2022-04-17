@@ -89,9 +89,13 @@ extension WordByStatusViewController: WordCellDelegate {
         ellipsisView?.removeFromSuperview()
         ellipsisView = EllipsisView()
         
-        ellipsisView?.addComponent(title: "이동하기", imageName: "edit", action: UIAction { _ in
-            self.ellipsisView?.removeFromSuperview()
-        })
+        ellipsisView?.addComponent(
+            title: "이동하기",
+            imageName: "btn_folder_send",
+            action: UIAction { _ in
+                self.ellipsisView?.removeFromSuperview()
+            }
+        )
         ellipsisView?.addComponent(title: "삭제하기", imageName: "delete", action: UIAction { _ in
             self.ellipsisView?.removeFromSuperview()
         })
