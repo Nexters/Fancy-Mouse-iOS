@@ -12,7 +12,10 @@ import UIKit
 
 final class HomeWordCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: CollectionViewComponents.homeWordCollectionViewLayout)
+        super.init(
+            frame: frame,
+            collectionViewLayout: CollectionViewComponents.homeWordCollectionViewLayout
+        )
         
         setupUI()
     }
@@ -59,10 +62,16 @@ enum CollectionViewComponents {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(305)
         )
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: columns)
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitem: item,
+            count: columns
+        )
 
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 12, leading: 24, bottom: 12, trailing: 24
+        )
         
         return section
     }
@@ -72,7 +81,10 @@ enum CollectionViewComponents {
     ) -> NSCollectionLayoutSection {
         var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
         configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
-            let delete = UIContextualAction(style: .destructive, title: "암기완료") { _, _, completion in
+            let delete = UIContextualAction(
+                style: .destructive,
+                title: "암기완료"
+            ) { _, _, completion in
 //                self?.delete(at: indexPath)
                 completion(true)
             }
@@ -80,8 +92,13 @@ enum CollectionViewComponents {
         }
         configuration.showsSeparators = false
         
-        let section = NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
+        let section = NSCollectionLayoutSection.list(
+            using: configuration,
+            layoutEnvironment: layoutEnvironment
+        )
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 12, leading: 24, bottom: 12, trailing: 24
+        )
         section.interGroupSpacing = 12
         
         let headerSize = NSCollectionLayoutSize(
@@ -113,10 +130,16 @@ enum CollectionViewComponents {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(172)
         )
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: columns)
+        let group = NSCollectionLayoutGroup.vertical(
+            layoutSize: groupSize,
+            subitem: item,
+            count: columns
+        )
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 12, leading: 24, bottom: 12, trailing: 24
+        )
         section.interGroupSpacing = 12
         
         let headerSize = NSCollectionLayoutSize(
