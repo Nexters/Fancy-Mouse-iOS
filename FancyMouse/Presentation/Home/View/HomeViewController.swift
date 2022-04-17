@@ -350,7 +350,7 @@ private extension WordDetailListViewController {
         view.addSubview(collectionView)
         
         collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
