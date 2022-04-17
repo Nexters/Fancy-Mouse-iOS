@@ -9,7 +9,7 @@ import SnapKit
 import UIKit
 
 protocol WordProgressCellDelegate: AnyObject {
-    func didTapEntryButton(_ homeProgressCell: WordProgressCell)
+    func didTapEntryButton(_ wordProgressCell: WordProgressCell)
 }
 
 final class WordProgressCell: UICollectionViewCell {

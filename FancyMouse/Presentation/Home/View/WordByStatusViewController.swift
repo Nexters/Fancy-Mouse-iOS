@@ -12,6 +12,7 @@ import UIKit
 final class WordByStatusViewController: UIViewController {
     private let collectionView = WordCollectionView()
     private var ellipsisView: EllipsisView?
+    private let closeButton = UIButton()
     
     private let homeViewModel = HomeViewModel(useCase: HomeViewUseCase())
     private let disposeBag = DisposeBag()
@@ -108,13 +109,30 @@ extension WordByStatusViewController: WordCellDelegate {
 private extension WordByStatusViewController {
     func setupUI() {
         view.backgroundColor = .gray30
+        
+        closeButton.tintColor = .primaryColor
+        closeButton.setImage(UIImage(named: "btn_close"), for: .normal)
+        
+        let closeAction = UIAction(handler: { _ in
+            self.dismiss(animated: true)
+        })
+        closeButton.addAction(closeAction, for: .touchUpInside)
     }
     
     func setupLayout() {
-        view.addSubview(collectionView)
+        [collectionView, closeButton].forEach {
+            view.addSubview($0)
+        }
+        
+        closeButton.snp.makeConstraints { make in
+            make.width.height.equalTo(24)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(18)
+            make.trailing.equalToSuperview().inset(24)
+        }
         
         collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(closeButton.snp.bottom).offset(24)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
