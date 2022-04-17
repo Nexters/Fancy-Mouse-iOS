@@ -13,7 +13,7 @@ typealias FolderID = String
 struct Word: Equatable, Identifiable {
     let id: WordID
     let folderID: FolderID
-    let createdAt: String
+    let createdAt: Date
     let spelling: String
     let meanings: [String]
     let memorizationStatus: MemorizationStatus

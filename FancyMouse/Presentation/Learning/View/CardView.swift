@@ -33,7 +33,7 @@ struct CardView: View {
         VStack(alignment: .center, spacing: 40) {
             HStack(alignment: .top) {
                 HStack(spacing: 4) {
-                    Text(String(word.id + 1))
+                    Text(String(Int(word.id) ?? 0 + 1))
                         .spoqaBold(size: 12)
                         .foregroundColor(.primaryColor)
                     Text("/")

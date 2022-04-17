@@ -33,10 +33,10 @@ class LearningViewModel: ObservableObject {
         let synonymsList: [[String]] = [["complete", "full"],[],[],["vague"],[],[],[]]
         let examplesList: [[String]] = [["a comprehensive survey of modern music."],[],[],["This light is too dim to read by."],[],[],[]]
         
-        for idx in (0..<spellings.count) {
-            let word = Word(id: idx, folderID: idx, createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
-                            spelling: spellings[idx], meanings: meaningsList[idx],
-                            memorizationStatus: .inProgress, memo: memos[idx], synonyms: synonymsList[idx], examples: examplesList[idx], urlString: "")
+        for index in (0..<spellings.count) {
+            let word = Word(id: "\(index)", folderID: "\(index)", createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
+                            spelling: spellings[index], meanings: meaningsList[index],
+                            memorizationStatus: .inProgress, memo: memos[index], synonyms: synonymsList[index], examples: examplesList[index], urlString: "")
             words.append(word)
         }
         

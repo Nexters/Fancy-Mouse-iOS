@@ -153,7 +153,7 @@ final class VocaDetailViewController: UIViewController {
         self.removeKeyboardNotifications()
     }
     
-    func configure(wordID: WordID) {
+    func configure(wordID: Int) {
         word = MockData.words[wordID].spelling
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

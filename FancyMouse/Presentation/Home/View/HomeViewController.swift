@@ -174,8 +174,8 @@ enum MockData {
     static let words: [Word] = {
         Self.spellings.enumerated().map { index, _ in
             Word(
-                id: index,
-                folderID: index,
+                id: "\(index)",
+                folderID: "\(index)",
                 createdAt: Date(timeIntervalSinceNow: Double(arc4random_uniform(100000))),
                 spelling: Self.spellings[index],
                 meanings: Self.meaningsList[index],
@@ -311,6 +311,7 @@ extension WordDetailListViewController: UICollectionViewDataSource {
             for: indexPath
         ) as WordSectionHeaderView
         
+        headerView.totalCount = words.count
 //        headerView.delegate = self
         
         return headerView
