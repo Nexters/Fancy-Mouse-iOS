@@ -179,6 +179,7 @@ extension WalkthroughMainViewController: UIPageViewControllerDataSource {
                           let idToken = authentication.idToken else {
                                    return
                     }
+                    
                     let credential
                     = GoogleAuthProvider.credential(withIDToken: idToken,
                                                     accessToken: authentication.accessToken)
