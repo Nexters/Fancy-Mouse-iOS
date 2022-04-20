@@ -95,7 +95,7 @@ private extension WordProgressCell {
         layer.cornerRadius = 24
         
         [userLabel, percentLabel, wordLabel, entryButton, gradientView, progressImageView].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
         
         userLabel.snp.makeConstraints { make in

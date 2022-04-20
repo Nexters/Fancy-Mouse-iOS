@@ -87,7 +87,7 @@ private extension WordCell {
          wordCreatedDateLabel,
          moreButton
         ].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
         
         spellingLabel.snp.makeConstraints { make in

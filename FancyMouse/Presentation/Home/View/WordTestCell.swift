@@ -58,7 +58,7 @@ private extension WordTestCell {
     
     func setupLayout() {
         [spellingLabel, meaningsStackView, statusButton].forEach {
-            addSubview($0)
+            contentView.addSubview($0)
         }
         
         spellingLabel.snp.makeConstraints { make in
